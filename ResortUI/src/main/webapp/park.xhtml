@@ -43,10 +43,23 @@
 				<h:form>
 					<span class="input-group-addon">Name</span>
 					<h:inputText label="Login" 
-								 value="${bungalow.dto.detail.name}" class="form-control"
+								 value="${park.dto.detail.name}" class="form-control"
 								 required="true">
 					</h:inputText>
-					<h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save"></h:commandButton>
+                                        
+                                        
+					<span class="input-group-addon">Location</span>
+					<h:inputText label="Login" 
+								 value="${park.dto.detail.location}" class="form-control"
+								 required="true">
+					</h:inputText>
+                                        
+					<span class="input-group-addon">Capacity</span>
+					<h:inputText label="Login" 
+								 value="${park.dto.detail.capacity}" class="form-control"
+								 required="true">
+					</h:inputText>
+					<h:commandButton class="btn btn-primary" action="${park.add()}" value="Save"></h:commandButton>
 
 				</h:form>
             </ui:define>

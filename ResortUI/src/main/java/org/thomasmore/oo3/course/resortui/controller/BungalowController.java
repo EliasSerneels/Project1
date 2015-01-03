@@ -60,8 +60,8 @@ public class BungalowController {
     public void add() {
         if(dto.getDetail().getId() == null){
            dto.getDetail().setId(UUID.randomUUID().toString()); 
-        }
-        
+        }        
+        dto.getList().add(dto.getDetail());
         BungalowEntity bungalowentity = new BungalowEntity();
         bungalowentity.setId(dto.getDetail().getId());
         bungalowentity.setName(dto.getDetail().getName());

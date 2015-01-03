@@ -17,6 +17,7 @@
 package org.thomasmore.oo3.course.resortui.controller;
 
 import java.util.List;
+import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
@@ -62,7 +63,9 @@ public class ParkController {
     }
 
     public void add(){
-        dto.getDetail().setId("NEW");
+        if(dto.getDetail().getId() == null){
+           dto.getDetail().setId(UUID.randomUUID().toString()); 
+        }
         dto.getList().add(dto.getDetail());
         ParkEntity parkentity = new ParkEntity();
         parkentity.setId(dto.getDetail().getId());
