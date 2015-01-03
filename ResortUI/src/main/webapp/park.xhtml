@@ -11,44 +11,59 @@
             <ui:define name="title">
                 Parks
             </ui:define>
-            
+
             <ui:define name="navbar">
                 <h1>Parken</h1>
             </ui:define>
             <ui:define name="content">
                 <table border="1" id="maintable">
-                                    <tr>
-                                        <td><h2>ID</h2></td>
-                                        <td><h2>Name</h2></td>
-                                       
-                                        <td><h2>Location</h2></td>
-                                        
-                                        <td><h2>Capacity</h2></td>
-                                        
-                                    </tr>
-                                    <ui:repeat value="${park.dto.list}" var="listDetail">
-                                            <tr>
-						<td>${listDetail.id}</td>
-                                                <td>${listDetail.name}</td>
-                                                
-                                                <td>${listDetail.location}</td>
-                                                
-                                                <td>${listDetail.capacity}</td>
-                                                
-                                                
-                                                </tr>
-					</ui:repeat>
+                    <tr>
+                        <td><h2>ID</h2></td>
+                        <td><h2>Name</h2></td>
 
-				</table>
-				<h:form>
-					<span class="input-group-addon">Name</span>
-					<h:inputText label="Login" 
-								 value="${bungalow.dto.detail.name}" class="form-control"
-								 required="true">
-					</h:inputText>
-					<h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save"></h:commandButton>
+                        <td><h2>Location</h2></td>
 
-				</h:form>
+                        <td><h2>Capacity</h2></td>
+
+                    </tr>
+                    <ui:repeat value="${park.dto.list}" var="listDetail">
+                        <tr>
+                            <td>${listDetail.id}</td>
+                            <td>${listDetail.name}</td>
+
+                            <td>${listDetail.location}</td>
+
+                            <td>${listDetail.capacity}</td>
+                            <td><a href="park.xhtml?edit=${listDetail.id}">edit</a></td>
+
+                        </tr>
+                    </ui:repeat>
+
+                </table>
+                <h:form>Form for Adding
+                    <span class="input-group-addon">Name</span>
+                    <h:inputText label="Login" 
+                                 value="${bungalow.dto.detail.name}" class="form-control"
+                                 required="true">
+                    </h:inputText>
+                    <h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save"></h:commandButton>
+
+                </h:form>
+                <h:form class="col-md-12" style="margin-left: -15px">Form for deleting
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon">ID of item to delete:</span>
+                            <h:inputText label="parkDeleteid" value="${park.dto.detail.id}" class="form-control" required="true">
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <h:commandButton class="btn btn-primary" action="${park.remove()}" value="Remove"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+
             </ui:define>
             <h:dataTable value="#{userData.authors}" var="c"
                          styleClass="authorTable"
@@ -58,10 +73,10 @@
                     <p>
                         Test
                     </p>
-                        #{c.id}
+                    #{c.id}
                 </h:column>
                 <h:column>
-                        #{c.name}
+                    #{c.name}
                 </h:column>
             </h:dataTable>
 

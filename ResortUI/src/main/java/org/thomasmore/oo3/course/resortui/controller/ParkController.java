@@ -21,7 +21,9 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
 import org.thomasmore.oo3.course.resortui.dao.ParkDao;
@@ -46,6 +48,9 @@ public class ParkController {
         
         
         dto = new ParkPageDto();
+        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String editId = req.getParameter("edit");
+
         
         
         List<ParkEntity> parks = parkDao.listAll();
@@ -72,7 +77,14 @@ public class ParkController {
         parkDao.save(parkentity);
     }
     
-    
+    public void remove(){
+        ParkEntity parkentity = new ParkEntity();
+        parkentity.setId(dto.getDetail().getId());
+        parkentity.setName(dto.getDetail().getName());
+        parkentity.setLocation(dto.getDetail().getLocation());
+        parkentity.setCapacity(dto.getDetail().getCapacity());
+        parkDao.deleteById(dto.getDetail().getId());
+    }
 
     public ParkPageDto getDto() {
         return dto;
