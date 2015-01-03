@@ -13,14 +13,14 @@
             </ui:define>
 
             <ui:define name="content">
-				<table border="1">
+				<table border="1" id="maintable">
                                     <tr>
                                         <td><h2>ID</h2></td>
                                         <td><h2>Name</h2></td>
                                         <td><h2>Type</h2></td>
-                                        <td><h2>Location</h2></td>
+                                        
                                         <td><h2>Price</h2></td>
-                                        <td><h2>Capacity</h2></td>
+                                        
                                         
                                     </tr>
                                     
@@ -29,24 +29,13 @@
 						<td>${listDetail.id}</td>
                                                 <td>${listDetail.name}</td>
                                                 <td>${listDetail.type}</td>
-                                                <td></td>
+                                                
                                                 <td>${listDetail.price}</td>
-                                                <td></td>
-                                                
-                                                </tr>
-					</ui:repeat>
-                                    <ui:repeat value="${park.dto.list}" var="listDetail">
-                                            <tr>
-						<td>${listDetail.id}</td>
-                                                <td>${listDetail.name}</td>
-                                                <td></td>
-                                                <td>${listDetail.location}</td>
-                                                <td></td>
-                                                <td>${listDetail.capacity}</td>
                                                 
                                                 
                                                 </tr>
 					</ui:repeat>
+                                    
 
 				</table>
 				<h:form>

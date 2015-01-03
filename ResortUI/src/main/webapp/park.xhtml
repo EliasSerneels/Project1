@@ -13,20 +13,39 @@
             </ui:define>
 
             <ui:define name="content">
-                <ul>
-                    <ui:repeat value="${park.dto.list}" var="listDetail">
-                        <li>${listDetail.id} - ${listDetail.name}</li>
-                    </ui:repeat>
-                </ul>
-                <h:form>
-                    <span class="input-group-addon">Name</span>
-                    <h:inputText label="Login" 
-                                 value="${park.dto.detail.name}" class="form-control"
-                                 required="true">
-                    </h:inputText>
-                    <h:commandButton class="btn btn-primary" action="${park.add()}" value="Save"></h:commandButton>
+                <table border="1" id="maintable">
+                                    <tr>
+                                        <td><h2>ID</h2></td>
+                                        <td><h2>Name</h2></td>
+                                       
+                                        <td><h2>Location</h2></td>
+                                        
+                                        <td><h2>Capacity</h2></td>
+                                        
+                                    </tr>
+                                    <ui:repeat value="${park.dto.list}" var="listDetail">
+                                            <tr>
+						<td>${listDetail.id}</td>
+                                                <td>${listDetail.name}</td>
+                                                
+                                                <td>${listDetail.location}</td>
+                                                
+                                                <td>${listDetail.capacity}</td>
+                                                
+                                                
+                                                </tr>
+					</ui:repeat>
 
-                </h:form>
+				</table>
+				<h:form>
+					<span class="input-group-addon">Name</span>
+					<h:inputText label="Login" 
+								 value="${bungalow.dto.detail.name}" class="form-control"
+								 required="true">
+					</h:inputText>
+					<h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save"></h:commandButton>
+
+				</h:form>
             </ui:define>
             <h:dataTable value="#{userData.authors}" var="c"
                          styleClass="authorTable"

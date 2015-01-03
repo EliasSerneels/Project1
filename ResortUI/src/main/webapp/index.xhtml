@@ -2,33 +2,32 @@
 <ui:composition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    template="./common/template.xhtml">
+    template="./common/template.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 
 
     <ui:define name="navbar">
-        <h1>Pet Daycare Center</h1>
+        <h1>Bungalowpark Javagangstazz</h1>
 			${index.dto.name}
     </ui:define>
 
     <ui:define name="content">
         <div class="col-md-6">
-            <div class="btn btn-success" style="display: block">Dit is een knop!</div>
-            <div class="thumbnail">
-                <img src="http://images6.fanpop.com/image/photos/34800000/Kittens-3-animals-34865316-1920-1200.jpg" />
-            </div>
-            Hallo, ik ben een schattige kat!
-			<br/><br/><br/>
+            <a class="btn btn-success" style="display: block" href="park.xhtml">Klik hier om onze parken te bekijken!</a>
+            <a class="thumbnail" href="park.xhtml">
+                <img src="./images/OO32.jpg" />
+            </a>
+     
         </div>
         <div class="col-md-6">
-            <div class="btn btn-success" style="display: block">Dit is ook een knop!</div>
-             <div class="thumbnail">
-                <img src="http://qzfwq3rieno15cw5madptxpgi.wpengine.netdna-cdn.com/wp-content/uploads/hammy-boo-pic.jpg" />
-            </div>En ik ben een schattige hond!
-            <br/><br/><br/>
+            <a class="btn btn-success" style="display: block" href="bungalow.xhtml">Klik hier om de verschillende bungalowtypes te bekijken!</a>
+             <a class="thumbnail" href="bungalow.xhtml">
+                <img src="./images/OO31.jpg" />
+            </a>
+
         </div>
 
     </ui:define>
 
 </ui:composition>
-
