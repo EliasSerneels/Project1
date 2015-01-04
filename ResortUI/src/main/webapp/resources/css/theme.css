@@ -6526,3 +6526,8 @@ button.close {
 .panel-primary .panel-title {
   color: #fff;
 }
+
+#logo{
+   float:left; 
+   margin:-8px 10px 0 10px;
+}

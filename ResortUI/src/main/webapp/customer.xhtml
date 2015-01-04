@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./common/template-simple.xhtml">
+
+            <ui:define name="title">Klantenpagina</ui:define>
+
+            <ui:define name="content">
+                <ul>
+                    <ui:repeat value="${customer.dto.list}" var="listDetail">
+                        <li>${listDetail.id} - ${listDetail.name}</li>
+                    </ui:repeat>
+                </ul>
+                <h:form>
+                    <span class="input-group-addon">Name</span>
+                    <h:inputText label="Login" 
+                                 value="${customer.dto.detail.name}" class="form-control"
+                                 required="true">
+                    </h:inputText>
+                    <h:commandButton class="btn btn-primary" action="${customer.add()}" value="Save"></h:commandButton>
+
+                </h:form>
+            </ui:define>
+            <h:dataTable value="#{userData.authors}" var="c"
+                         styleClass="authorTable"
+                         headerClass="authorTableHeader"
+                         rowClasses="authorTableOddRow,authorTableEvenRow">
+                <h:column>
+                    <p>
+                        Test
+                    </p>
+                        #{c.id}
+                </h:column>
+                <h:column>
+                        #{c.name}
+                </h:column>
+            </h:dataTable>
+
+        </ui:composition>
+    </body>
+</html>
