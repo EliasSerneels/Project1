@@ -21,8 +21,8 @@
                         <td><h2>ID</h2></td>
                         <td><h2>Name</h2></td>
                         <td><h2>Location</h2></td>
-				
-				
+
+
 
                         <td><h2>Capacity</h2></td>
 
@@ -43,25 +43,26 @@
 
                 </table>
                 <h:form>
-					<span class="input-group-addon">Name</span>
-					<h:inputText label="Login" 
-								 value="${park.dto.detail.name}" class="form-control"
-								 required="true">
-					</h:inputText>
-                                        
-                                        
-					<span class="input-group-addon">Location</span>
-					<h:inputText label="Login" 
-								 value="${park.dto.detail.location}" class="form-control"
-								 required="true">
-					</h:inputText>
-                                        
-					<span class="input-group-addon">Capacity</span>
-					<h:inputText label="Login" 
-								 value="${park.dto.detail.capacity}" class="form-control"
-								 required="true">
-					</h:inputText>
-					<h:commandButton class="btn btn-primary" action="${park.add()}" value="Save"></h:commandButton>
+                    <span class="input-group-addon">Name</span>
+                    <h:inputText label="Login" 
+                                 value="${park.dto.detail.name}" class="form-control"
+                                 required="true">
+                    </h:inputText>
+
+
+                    <span class="input-group-addon">Location</span>
+                    <h:inputText label="Login" 
+                                 value="${park.dto.detail.location}" class="form-control"
+                                 required="true">
+                    </h:inputText>
+
+                    <span class="input-group-addon">Capacity</span>
+                    <h:inputText label="Login" 
+                                 value="${park.dto.detail.capacity}" class="form-control"
+                                 required="true">
+                    </h:inputText>
+                    
+                    <h:commandButton class="btn btn-primary" action="${park.add()}" value="Save"></h:commandButton>
                 </h:form>
                 <h:form class="col-md-12" style="margin-left: -15px">Form for deleting
                     <div class="col-md-12">
