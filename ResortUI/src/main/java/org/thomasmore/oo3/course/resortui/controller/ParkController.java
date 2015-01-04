@@ -92,11 +92,9 @@ public class ParkController {
         return "bungalow.xhtml??faces-redirect=true";
     }
 
-    public String remove() {
-        
-        ParkEntity parkentity = new ParkEntity();
-        parkentity.setId(dto.getDetail().getId());
-        parkDao.deleteById(dto.getDetail().getId());
+    public String remove(String id) {
+       
+        parkDao.deleteById(id);
         
         return "park.xhtml??faces-redirect=true";
     }

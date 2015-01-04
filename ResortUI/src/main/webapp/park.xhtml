@@ -35,9 +35,10 @@
                             <td>${listDetail.location}</td>
 
                             <td>${listDetail.capacity}</td>
-                            <td><a href="park.xhtml?edit=${listDetail.id}">edit</a></td>
-                            <td><a href="park.xhtml?remove=${listDetail.id}">delete</a></td>
-
+                            <h:form>
+                                <td><h:commandButton class="btn btn-primary" action="${park.save()}" value="Aanpassen"></h:commandButton></td>
+                                <td><h:commandButton class="btn btn-primary" action="${park.remove(listDetail.id)}" value="Verwijderen"></h:commandButton></td>
+                            </h:form>
                         </tr>
                     </ui:repeat>
 
