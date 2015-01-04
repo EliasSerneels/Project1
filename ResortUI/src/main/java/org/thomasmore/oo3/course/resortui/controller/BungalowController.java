@@ -58,31 +58,38 @@ public class BungalowController {
         }
     }
 
-    public void add() {
-        if(dto.getDetail().getId() == null){
-           dto.getDetail().setId(UUID.randomUUID().toString()); 
-        }        
-        dto.getList().add(dto.getDetail());
-        BungalowEntity bungalowentity = new BungalowEntity();
-        bungalowentity.setId(dto.getDetail().getId());
-        bungalowentity.setName(dto.getDetail().getName());
-        bungalowentity.setPrice(dto.getDetail().getPrice());
-        bungalowentity.setType(dto.getDetail().getType());
-        bungalowDao.save(bungalowentity);
-    }
-    
-     public String edit(String id2) {
-        
-        String id = id2;
-        BungalowEntity pe = bungalowDao.findById(id);
-           
-        pe.setName("");
-        pe.setPrice(dto.getDetail().getPrice());
-        pe.setType(dto.getDetail().getType());
-        
-        bungalowDao.save(pe);
+    public String add() {
+        BungalowEntity bungalowEntity = null;
+        // Als de id niet geset is, dan kennen we hem 1 toe
+        if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
+            dto.getDetail().setId(UUID.randomUUID().toString());
+        } else {
+            bungalowEntity = bungalowDao.findById(dto.getDetail().getId());
+        }
+
+        if (bungalowEntity == null) {
+            bungalowEntity = new BungalowEntity();
+
+        }       
+        bungalowEntity.setId(dto.getDetail().getId());
+        bungalowEntity.setName(dto.getDetail().getName());
+        bungalowEntity.setPrice(dto.getDetail().getPrice());
+        bungalowEntity.setType(dto.getDetail().getType());
+        bungalowDao.save(bungalowEntity);
         
         return pageRedirect;
+    }
+    
+     public void edit(String id) { //Code werkt niet for some reason, waardes worden niet in veld weergegeven
+       BungalowEntity pe = bungalowDao.findById(id);
+           
+        dto.getDetail().setId(pe.getId());
+        dto.getDetail().setName(pe.getName());
+        dto.getDetail().setPrice(pe.getPrice());
+        dto.getDetail().setType(pe.getType());
+
+       
+
     }
     
     public String remove(String id) {

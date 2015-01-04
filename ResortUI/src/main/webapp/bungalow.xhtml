@@ -16,37 +16,35 @@
                 <h1>Bungalows</h1>
             </ui:define>
             <ui:define name="content">
+                <div id="tablebg">
 				<table border="1" id="maintable">
                                     <tr>
-                                        <td><h2>ID</h2></td>
-                                        <td><h2>Name</h2></td>
-                                        <td><h2>Type</h2></td>
-                                        
-                                        <td><h2>Price</h2></td>
-                                        
-                                        
+                                        <th class="idCol">ID</th>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Price</th>         
                                     </tr>
                                     
 					<ui:repeat value="${bungalow.dto.list}" var="listDetail">
                                             <h:form>
                                                 <tr>
-                                                    <td><input type="text" value="${listDetail.id}" /></td>
-                                                    <td><input type="text" value="${listDetail.name}" /></td>
-                                                    <td><input type="text" value="${listDetail.type}" /></td>
-                                                    <td><input type="text" value="${listDetail.price}" /></td>
+                                                    <td class="idCol">${listDetail.id}</td>
+                                                    <td>${listDetail.name}</td>
+                                                    <td>${listDetail.type}</td>
+                                                    <td>${listDetail.price}</td>
                                                     <td>
-                                                        <h:commandButton class="btn btn-primary" action="${bungalow.edit(listDetail.id)}" value="Wijzig">
-                                                      
-                                                        </h:commandButton>
+                                                        <h:commandButton class="btn btn-primary" action="${bungalow.edit(listDetail.id)}" value="Wijzig"></h:commandButton>
                                                         <h:commandButton class="btn btn-primary" action="${bungalow.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
                                                     </td>
                                                 </tr>
                                             </h:form>
 					</ui:repeat>
                                     
-
+                                    
 				</table>
+                    
 				<h:form>
+                                        <h:inputHidden value="${park.dto.detail.id}"/>
 					<span class="input-group-addon">Name</span>
 					<h:inputText label="Login" 
 								 value="${bungalow.dto.detail.name}" class="form-control"
@@ -68,6 +66,7 @@
 					<h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save"></h:commandButton>
 
 				</h:form>
+                </div>
             </ui:define>
 
         </ui:composition>

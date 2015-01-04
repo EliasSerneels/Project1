@@ -16,15 +16,13 @@
                 <h1>Parken</h1>
             </ui:define>
             <ui:define name="content">
+                <div id="tablebg">
                 <table border="1" id="maintable">
                     <tr>
-                        <td><h2>ID</h2></td>
-                        <td><h2>Name</h2></td>
-                        <td><h2>Location</h2></td>
-
-
-
-                        <td><h2>Capacity</h2></td>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Capacity</th> 
 
                     </tr>
                     <ui:repeat value="${park.dto.list}" var="listDetail">
@@ -36,8 +34,10 @@
 
                             <td>${listDetail.capacity}</td>
                             <h:form>
-                                <td><h:commandButton class="btn btn-primary" action="${park.save()}" value="Aanpassen"></h:commandButton></td>
-                                <td><h:commandButton class="btn btn-primary" action="${park.remove(listDetail.id)}" value="Verwijderen"></h:commandButton></td>
+                                <td>
+                                <h:commandButton class="btn btn-primary" action="${park.save()}" value="Wijzig"></h:commandButton>
+                                <h:commandButton class="btn btn-primary" action="${park.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
+                                </td>
                             </h:form>
                         </tr>
                     </ui:repeat>
@@ -65,8 +65,8 @@
                     
                     <h:commandButton class="btn btn-primary" action="${park.add()}" value="Save"></h:commandButton>
                 </h:form>
-                <h:form class="col-md-12" style="margin-left: -15px">Form for deleting
-                    <div class="col-md-12">
+                <h:form class="col-md-12" style="margin-top:55px">
+                    <div class="col-md-12" style="margin-top:15px">
                         <div class="input-group">
                             <span class="input-group-addon">ID of item to delete:</span>
                             <h:inputText label="parkDeleteid" value="${park.dto.detail.id}" class="form-control" required="true">
@@ -79,8 +79,9 @@
                         </div>
                     </div>
                 </h:form>
-
+</div>
             </ui:define>
+            
             <h:dataTable value="#{userData.authors}" var="c"
                          styleClass="authorTable"
                          headerClass="authorTableHeader"
@@ -95,6 +96,7 @@
                     #{c.name}
                 </h:column>
             </h:dataTable>
+            
 
         </ui:composition>
     </body>

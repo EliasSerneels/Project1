@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./common/template.xhtml">
+
+            <ui:define name="title">
+                Overzicht bungalows, parken en reservaties
+            </ui:define>
+            
+            <ui:define name="navbar">
+                <h1>Overzicht bungalows, parken en reservaties</h1>
+            </ui:define>
+            <ui:define name="content">
+                <div id="tablebg">
+                             <table border="1" id="maintable2">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Location</th>
+                                        <th>Capacity</th>       
+                                    </tr>
+                                    
+					<ui:repeat value="${park.dto.list}" var="listDetail1">
+                                            <h:form>
+                                                <tr>
+                                                    <td><input type="text" value="${listDetail1.id}" /></td>
+                                                    <td><input type="text" value="${listDetail1.name}" /></td>
+                                                    <td><input type="text" value="${listDetail1.location}" /></td>
+                                                    <td><input type="text" value="${listDetail1.capacity}" /></td>
+                                                </tr>
+                                            </h:form>
+					</ui:repeat>
+                                    
+
+				</table>
+                <br/>
+				<table border="1" id="maintable">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Price</th>         
+                                    </tr>
+                                    
+					<ui:repeat value="${bungalow.dto.list}" var="listDetail2">
+                                            <h:form>
+                                                <tr>
+                                                    <td><input type="text" value="${listDetail2.id}" /></td>
+                                                    <td><input type="text" value="${listDetail2.name}" /></td>
+                                                    <td><input type="text" value="${listDetail2.type}" /></td>
+                                                    <td><input type="text" value="${listDetail2.price}" /></td>
+                                                </tr>
+                                            </h:form>
+					</ui:repeat>
+                                    
+
+				</table>
+                <br/>
+                                <table border="1" id="maintable3">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Age</th>
+                                        <th>Bungalows Reserved</th>         
+                                    </tr>
+                                    
+					<ui:repeat value="${customer.dto.list}" var="listDetail3">
+                                            <h:form>
+                                                <tr>
+                                                    <td><input type="text" value="${listDetail3.id}" /></td>
+                                                    <td><input type="text" value="${listDetail3.name}" /></td>
+                                                    <td><input type="text" value="${listDetail3.location}" /></td>
+                                                    <td><input type="text" value="${listDetail3.capacity}" /></td>
+                                                </tr>
+                                            </h:form>
+					</ui:repeat>
+                                    
+
+				</table>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
