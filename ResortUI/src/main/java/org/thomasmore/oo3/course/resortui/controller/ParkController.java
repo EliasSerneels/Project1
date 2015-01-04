@@ -51,7 +51,7 @@ public class ParkController {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
 
-        ParkEntity parktest = parkDao.findById(editId);
+        
         
         List<ParkEntity> parks = parkDao.listAll();
         dto = new ParkPageDto();
@@ -92,13 +92,13 @@ public class ParkController {
         return "bungalow.xhtml??faces-redirect=true";
     }
 
-    public void remove() {
+    public String remove() {
+        
         ParkEntity parkentity = new ParkEntity();
         parkentity.setId(dto.getDetail().getId());
-        parkentity.setName(dto.getDetail().getName());
-        parkentity.setLocation(dto.getDetail().getLocation());
-        parkentity.setCapacity(dto.getDetail().getCapacity());
         parkDao.deleteById(dto.getDetail().getId());
+        
+        return "park.xhtml??faces-redirect=true";
     }
 
     public ParkPageDto getDto() {
