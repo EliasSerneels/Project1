@@ -37,6 +37,7 @@ import org.thomasmore.oo3.course.resortui.model.BungalowListDetailDto;
 public class BungalowController {
 
     private BungalowPageDto dto;
+    private String pageRedirect="bungalow.xhtml??faces-redirect=true";
 
     @EJB
     private BungalowDao bungalowDao;
@@ -68,7 +69,26 @@ public class BungalowController {
         bungalowentity.setPrice(dto.getDetail().getPrice());
         bungalowentity.setType(dto.getDetail().getType());
         bungalowDao.save(bungalowentity);
-
+    }
+    
+     public String edit(String id2) {
+        
+        String id = id2;
+        BungalowEntity pe = bungalowDao.findById(id);
+           
+        pe.setName("");
+        pe.setPrice(dto.getDetail().getPrice());
+        pe.setType(dto.getDetail().getType());
+        
+        bungalowDao.save(pe);
+        
+        return pageRedirect;
+    }
+    
+    public String remove(String id) {
+        bungalowDao.deleteById(id);
+        
+        return pageRedirect;
     }
    
 
