@@ -16,6 +16,10 @@
  */
 package org.thomasmore.oo3.course.resortui.ui.rest;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import org.thomasmore.oo3.course.resortui.ui.rest.*;
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -43,6 +47,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(org.thomasmore.oo3.course.resortui.sample.ui.rest.SampleInitDbREST.class);
         resources.add(org.thomasmore.oo3.course.resortui.ui.rest.InitDbREST.class);
+
     }
     
 }
