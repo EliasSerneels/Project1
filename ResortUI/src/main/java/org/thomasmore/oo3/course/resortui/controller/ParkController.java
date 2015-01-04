@@ -52,10 +52,7 @@ public class ParkController {
         String editId = req.getParameter("edit");
 
         ParkEntity parktest = parkDao.findById(editId);
-        if (parktest != null) {
-            dto.getDetail().setId(parktest.getId());
-            dto.getDetail().setName(parktest.getName());
-        }
+        
         List<ParkEntity> parks = parkDao.listAll();
         dto = new ParkPageDto();
 
@@ -91,7 +88,7 @@ public class ParkController {
         }
         pe.setName(dto.getDetail().getName());
         parkDao.save(pe);
-// Forces page refresh
+        // Forces page refresh
         return "bungalow.xhtml??faces-redirect=true";
     }
 
