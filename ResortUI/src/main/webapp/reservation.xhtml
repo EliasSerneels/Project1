@@ -22,8 +22,6 @@
                         <th>Starttime</th>
                         <th>Enddate</th>
                         <th>Endtime</th>
-                        <th>Amount of customers</th>
-                        <th>Cancellation insurance</th>
                         <th>Customer</th>
                         <th>Bungalow</th>
                     </tr>
@@ -36,8 +34,6 @@
                                 <td>${listDetail.startTime}</td>
                                 <td>${listDetail.endDate}</td>
                                 <td>${listDetail.endTime}</td>
-                                <td>${listDetail.amountCustomers}</td>
-                                <td>${listDetail.cancellationInsurance}</td>
                                 <td>${listDetail.customerName}</td>
                                 <td>${listDetail.bungalowName}</td>
                             </tr>
@@ -84,22 +80,6 @@
                             <h:selectOneMenu label="reservationEndtime" value="${reservation.dto.detail.endTime}" class="form-control" required="true">
                                 <f:selectItem itemValue="10:30" itemLabel="10:30"/>
                             </h:selectOneMenu>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-addon">Amount of customers</span>
-                            <h:inputText label="reservationAmountcust" value="${reservation.dto.detail.amountCustomers}" class="form-control" required="true">
-                            </h:inputText>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-addon">Cancellation insurance</span>
-                            <h:selectBooleanCheckbox label="reservationCancellationinsurance"
-                                                     value="${reservation.dto.detail.cancellationInsurance}" class="form-control" 
-                                                     required="true">
-                            </h:selectBooleanCheckbox>
                         </div>
                     </div>
                     <div class="col-md-6">

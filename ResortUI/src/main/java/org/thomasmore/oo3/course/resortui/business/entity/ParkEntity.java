@@ -16,11 +16,9 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
-import org.thomasmore.oo3.course.resortui.business.entity.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.thomasmore.oo3.course.resortui.business.entity.BasicEntity;
 
 /**
  *
@@ -29,7 +27,7 @@ import org.thomasmore.oo3.course.resortui.business.entity.BasicEntity;
 @Entity
 @Table(name = "park")
 @XmlRootElement
-public class ParkEntity extends BasicEntity{
+public class ParkEntity extends BasicEntity {
     
     private String location;
     private int capacity;

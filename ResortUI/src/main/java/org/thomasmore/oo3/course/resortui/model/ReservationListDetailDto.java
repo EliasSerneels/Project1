@@ -15,8 +15,6 @@ public class ReservationListDetailDto {
     private String startTime;
     private String endDate;
     private String endTime;
-    private Integer amountCustomers;
-    private boolean cancellationInsurance;
     private String bungalowName;
     private String customerName;
     public String getId() {
@@ -57,22 +55,6 @@ public class ReservationListDetailDto {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
-    }
-
-    public Integer getAmountCustomers() {
-        return amountCustomers;
-    }
-
-    public void setAmountCustomers(Integer amountCustomers) {
-        this.amountCustomers = amountCustomers;
-    }
-
-    public boolean isCancellationInsurance() {
-        return cancellationInsurance;
-    }
-
-    public void setCancellationInsurance(boolean cancellationInsurance) {
-        this.cancellationInsurance = cancellationInsurance;
     }
 
     public String getBungalowName() {

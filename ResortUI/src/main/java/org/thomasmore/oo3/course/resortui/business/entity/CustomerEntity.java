@@ -16,12 +16,9 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
-import java.util.Date;
-import org.thomasmore.oo3.course.resortui.business.entity.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.thomasmore.oo3.course.resortui.business.entity.BasicEntity;
 
 @Entity
 @Table(name = "customer")
