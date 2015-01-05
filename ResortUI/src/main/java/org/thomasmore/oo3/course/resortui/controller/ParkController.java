@@ -25,10 +25,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
 
 import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
-import org.thomasmore.oo3.course.resortui.dao.BungalowDao;
 import org.thomasmore.oo3.course.resortui.dao.ParkDao;
 import org.thomasmore.oo3.course.resortui.model.ParkPageDto;
 import org.thomasmore.oo3.course.resortui.model.ParkListDetailDto;
@@ -46,23 +44,25 @@ public class ParkController {
 
     @EJB
     private ParkDao parkDao;
-    @EJB
-    private BungalowDao bungalowsDao;
+
     @PostConstruct
     public void init() {
 
+        dto = new ParkPageDto();
+        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String editId = req.getParameter("edit");
+
+        
         
         List<ParkEntity> parks = parkDao.listAll();
         dto = new ParkPageDto();
 
-        
         for (ParkEntity park : parks) {
             ParkListDetailDto listDetail = new ParkListDetailDto();
             listDetail.setId(park.getId());
             listDetail.setName(park.getName());
             listDetail.setLocation(park.getLocation());
             listDetail.setCapacity(park.getCapacity());
-            listDetail.setBungalowName(park.getBungalowName());
             dto.getList().add(listDetail);
         }
     }
@@ -86,12 +86,7 @@ public class ParkController {
         parkEntity.setName(dto.getDetail().getName());
         parkEntity.setLocation(dto.getDetail().getLocation());
         parkEntity.setCapacity(dto.getDetail().getCapacity());
-        parkEntity.setBungalowName(dto.getDetail().getBungalowName());
         parkDao.save(parkEntity);
-        // Probeerde park aan bungalow te koppelen zodat de corecte bungalow de informatie over het park meekreeg
-//        BungalowEntity bungalowEntity = bungalowsDao.findById(park.getDetail().getId());
-//        bungalowEntity.setPark(park.getDetail().getBungalowName());
-//        bungalowsDao.save(bungalowEntity);
         
         return pageRedirect;
     }
@@ -103,7 +98,6 @@ public void edit(String id) {
         dto.getDetail().setName(pe.getName());
         dto.getDetail().setLocation(pe.getLocation());
         dto.getDetail().setCapacity(pe.getCapacity());
-        dto.getDetail().setBungalowName(pe.getBungalowName());
     }
     
     public String remove(String id) {
