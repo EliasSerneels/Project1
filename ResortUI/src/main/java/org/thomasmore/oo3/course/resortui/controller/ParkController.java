@@ -40,6 +40,7 @@ import org.thomasmore.oo3.course.resortui.model.ParkListDetailDto;
 public class ParkController {
 
     private ParkPageDto dto;
+    private String pageRedirect="park.xhtml??faces-redirect=true";
 
     @EJB
     private ParkDao parkDao;
@@ -66,37 +67,43 @@ public class ParkController {
         }
     }
 
-    public void add() {
-        dto.getDetail().setId(UUID.randomUUID().toString());
-        dto.getList().add(dto.getDetail());
-        ParkEntity parkentity = new ParkEntity();
-        parkentity.setId(dto.getDetail().getId());
-        parkentity.setName(dto.getDetail().getName());
-        parkentity.setLocation(dto.getDetail().getLocation());
-        parkentity.setCapacity(dto.getDetail().getCapacity());
-        parkDao.save(parkentity);
+    public String add() {
+        
+        ParkEntity parkEntity = null;
+        // Als de id niet geset is, dan kennen we hem 1 toe
+        if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
+            dto.getDetail().setId(UUID.randomUUID().toString());
+        } else {
+            parkEntity = parkDao.findById(dto.getDetail().getId());
+        }
+
+        if (parkEntity == null) {
+            parkEntity = new ParkEntity();
+
+        }       
+        parkEntity.setId(dto.getDetail().getId());
+        System.out.println(dto.getDetail().getId());
+        parkEntity.setName(dto.getDetail().getName());
+        parkEntity.setLocation(dto.getDetail().getLocation());
+        parkEntity.setCapacity(dto.getDetail().getCapacity());
+        parkDao.save(parkEntity);
+        
+        return pageRedirect;
     }
 
-    public String save() {
-        String id = dto.getDetail().getId();
-        ParkEntity pe = null;
-        if (id != null) {
-            pe = parkDao.findById(id);
-        }
-        if (pe == null) {
-            pe = new ParkEntity();
-        }
-        pe.setName(dto.getDetail().getName());
-        parkDao.save(pe);
-        // Forces page refresh
-        return "bungalow.xhtml??faces-redirect=true";
+public void edit(String id) {
+       ParkEntity pe = parkDao.findById(id);
+           
+        dto.getDetail().setId(pe.getId());
+        dto.getDetail().setName(pe.getName());
+        dto.getDetail().setLocation(pe.getLocation());
+        dto.getDetail().setCapacity(pe.getCapacity());
     }
-
+    
     public String remove(String id) {
-       
         parkDao.deleteById(id);
         
-        return "park.xhtml??faces-redirect=true";
+        return pageRedirect;
     }
 
     public ParkPageDto getDto() {

@@ -72,6 +72,7 @@ public class BungalowController {
 
         }       
         bungalowEntity.setId(dto.getDetail().getId());
+        System.out.println(dto.getDetail().getId());
         bungalowEntity.setName(dto.getDetail().getName());
         bungalowEntity.setPrice(dto.getDetail().getPrice());
         bungalowEntity.setType(dto.getDetail().getType());
@@ -80,16 +81,13 @@ public class BungalowController {
         return pageRedirect;
     }
     
-     public void edit(String id) { //Code werkt niet for some reason, waardes worden niet in veld weergegeven
+     public void edit(String id) {
        BungalowEntity pe = bungalowDao.findById(id);
            
         dto.getDetail().setId(pe.getId());
         dto.getDetail().setName(pe.getName());
         dto.getDetail().setPrice(pe.getPrice());
         dto.getDetail().setType(pe.getType());
-
-       
-
     }
     
     public String remove(String id) {

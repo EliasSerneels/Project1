@@ -24,7 +24,7 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
 import org.thomasmore.oo3.course.resortui.sample.business.entity.SampleParkEntity;
 
 /**
@@ -50,9 +50,9 @@ public class SampleInitDbREST {
         parkEntity.setName("EDF");
         objectsToSave.add(parkEntity);
         
-        BungalowEntity bungalowEntity = new BungalowEntity();
-        bungalowEntity.setName("abc");
-        objectsToSave.add(bungalowEntity);
+        ParkEntity ParkEntity = new ParkEntity();
+        ParkEntity.setName("abc");
+        objectsToSave.add(ParkEntity);
         
         for (Object objectToSave1 : objectsToSave){
             em.persist(objectToSave1);

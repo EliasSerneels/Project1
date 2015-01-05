@@ -17,6 +17,7 @@
 package org.thomasmore.oo3.course.resortui.controller;
 
 import java.util.List;
+import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
@@ -33,6 +34,7 @@ import org.thomasmore.oo3.course.resortui.model.CustomerListDetailDto;
 
 public class CustomerController {
     private CustomerPageDto dto;
+    private String pageRedirect="customer.xhtml??faces-redirect=true";
     
     @EJB
     private CustomerDao customerDao;
@@ -57,17 +59,42 @@ public class CustomerController {
         }
     }
 
-    public void add(){
-        dto.getDetail().setId("NEW");
-        dto.getList().add(dto.getDetail());
-        CustomerEntity customerentity = new CustomerEntity();
-        customerentity.setId(dto.getDetail().getId());
-        customerentity.setName(dto.getDetail().getName());
-        customerentity.setLocation(dto.getDetail().getLocation());
-        customerentity.setCapacity(dto.getDetail().getCapacity());
-        customerDao.save(customerentity);
+    public String add(){
+        CustomerEntity customerEntity = null;
+        // Als de id niet geset is, dan kennen we hem 1 toe
+        if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
+            dto.getDetail().setId(UUID.randomUUID().toString());
+        } else {
+            customerEntity = customerDao.findById(dto.getDetail().getId());
+        }
+
+        if (customerEntity == null) {
+            customerEntity = new CustomerEntity();
+
+        }       
+        customerEntity.setId(dto.getDetail().getId());
+        System.out.println(dto.getDetail().getId());
+        customerEntity.setName(dto.getDetail().getName());
+        customerEntity.setLocation(dto.getDetail().getLocation());
+        customerEntity.setCapacity(dto.getDetail().getCapacity());
+        customerDao.save(customerEntity);
+        
+        return pageRedirect;
+    }
+    public void edit(String id) {
+       CustomerEntity pe = customerDao.findById(id);
+           
+        dto.getDetail().setId(pe.getId());
+        dto.getDetail().setName(pe.getName());
+        dto.getDetail().setLocation(pe.getLocation());
+        dto.getDetail().setCapacity(pe.getCapacity());
     }
     
+    public String remove(String id) {
+        customerDao.deleteById(id);
+        
+        return pageRedirect;
+    }
     public CustomerPageDto getDto() {
         return dto;
     }

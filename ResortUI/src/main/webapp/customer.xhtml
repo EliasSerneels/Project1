@@ -16,15 +16,16 @@
                 <div id="tablebg">
                 <table border="1" id="maintable">
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Location</th>
-                        <th>Capacity</th> 
+                        <th class="idCol">ID</th>
+                        <th>Naam</th>
+                        <th>Leeftijd</th>
+                        <th>Gereserveerde Bungalows</th> 
+                        <th></th>
 
                     </tr>
-                    <ui:repeat value="${park.dto.list}" var="listDetail">
+                    <ui:repeat value="${customer.dto.list}" var="listDetail">
                         <tr>
-                            <td>${listDetail.id}</td>
+                            <td class="idCol">${listDetail.id}</td>
                             <td>${listDetail.name}</td>
 
                             <td>${listDetail.location}</td>
@@ -32,8 +33,8 @@
                             <td>${listDetail.capacity}</td>
                             <h:form>
                                 <td>
-                                <h:commandButton class="btn btn-primary" action="${park.save()}" value="Wijzig"></h:commandButton>
-                                <h:commandButton class="btn btn-primary" action="${park.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
+                                <h:commandButton class="btn btn-primary" action="${customer.edit(listDetail.id)}" value="Wijzig"></h:commandButton>
+                                <h:commandButton class="btn btn-primary" action="${customer.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
                                 </td>
                             </h:form>
                         </tr>
@@ -41,41 +42,50 @@
 
                 </table>
                 <h:form>
-                    <span class="input-group-addon">Name</span>
-                    <h:inputText label="Login" 
-                                 value="${park.dto.detail.name}" class="form-control"
-                                 required="true">
-                    </h:inputText>
+                    <ul class="formstyle">
+                                        <li>
+                                            <h:inputHidden value="${customer.dto.detail.id}"/>
+                                            <span class="input-group-addon">Name</span>
+                                            <h:inputText label="Login" 
+
+                                                                     value="${customer.dto.detail.name}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+
+                                            <span class="input-group-addon">Type</span>
+                                            <h:inputText label="Login" 
+                                                                     value="${customer.dto.detail.location}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
 
 
-                    <span class="input-group-addon">Location</span>
-                    <h:inputText label="Login" 
-                                 value="${park.dto.detail.location}" class="form-control"
-                                 required="true">
-                    </h:inputText>
+                                            
+                                            <h:commandButton class="btn btn-primary" action="${customer.add()}" value="Save" ></h:commandButton>
+                                        </li>
+                                        
+                                            
+                                        <li>
+                                            <h:inputHidden value="${customer.dto.detail.id}"/>
+                                            <span class="input-group-addon">AANPASSEN</span>
+                                            <h:inputText label="Login" 
 
-                    <span class="input-group-addon">Capacity</span>
-                    <h:inputText label="Login" 
-                                 value="${park.dto.detail.capacity}" class="form-control"
-                                 required="true">
-                    </h:inputText>
-                    
-                    <h:commandButton class="btn btn-primary" action="${park.add()}" value="Save"></h:commandButton>
+                                                                     value="${customer.dto.detail.name}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+
+                                            <span class="input-group-addon">AANPASSEN</span>
+                                            <h:inputText label="Login" 
+                                                                     value="${customer.dto.detail.location}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+
+
+                                            
+                                            
+                                        </li>
+                                    </ul>
                 </h:form>
-                <h:form class="col-md-12" style="margin-top:55px">
-                    <div class="col-md-12" style="margin-top:15px">
-                        <div class="input-group">
-                            <span class="input-group-addon">ID of item to delete:</span>
-                            <h:inputText label="parkDeleteid" value="${park.dto.detail.id}" class="form-control" required="true">
-                            </h:inputText>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <h:commandButton class="btn btn-primary" action="${park.remove()}" value="Remove"></h:commandButton>
-                        </div>
-                    </div>
-                </h:form>
+                
 </div>
             </ui:define>
             <h:dataTable value="#{userData.authors}" var="c"

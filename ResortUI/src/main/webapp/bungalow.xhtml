@@ -17,12 +17,13 @@
             </ui:define>
             <ui:define name="content">
                 <div id="tablebg">
-				<table border="1" id="maintable">
+				<table border="1" class="maintable">
                                     <tr>
                                         <th class="idCol">ID</th>
-                                        <th>Name</th>
+                                        <th>Naam</th>
                                         <th>Type</th>
-                                        <th>Price</th>         
+                                        <th>Prijs</th>  
+                                        <th></th> 
                                     </tr>
                                     
 					<ui:repeat value="${bungalow.dto.list}" var="listDetail">
@@ -44,27 +45,56 @@
 				</table>
                     
 				<h:form>
-                                        <h:inputHidden value="${park.dto.detail.id}"/>
-					<span class="input-group-addon">Name</span>
-					<h:inputText label="Login" 
-								 value="${bungalow.dto.detail.name}" class="form-control"
-								 required="true">
-					</h:inputText>
-                                        
-					<span class="input-group-addon">Type</span>
-					<h:inputText label="Login" 
-								 value="${bungalow.dto.detail.type}" class="form-control"
-								 required="true">
-					</h:inputText>
-                                        
-                                        
-					<span class="input-group-addon">Price</span>
-					<h:inputText label="Login" 
-								 value="${bungalow.dto.detail.price}" class="form-control"
-								 required="true">
-					</h:inputText>
-					<h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save"></h:commandButton>
+                                    <ul class="formstyle">
+                                        <li>
+                                            <h:inputHidden value="${bungalow.dto.detail.id}"/>
+                                            <span class="input-group-addon">Name</span>
+                                            <h:inputText label="Login" 
 
+                                                                     value="${bungalow.dto.detail.name}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+
+                                            <span class="input-group-addon">Type</span>
+                                            <h:inputText label="Login" 
+                                                                     value="${bungalow.dto.detail.type}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+
+
+                                            <span class="input-group-addon">Price</span>
+                                            <h:inputText label="Login" 
+                                                                     value="${bungalow.dto.detail.price}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+                                            <h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save" ></h:commandButton>
+                                        </li>
+                                        
+                                            
+                                        <li>
+                                            <h:inputHidden value="${bungalow.dto.detail.id}"/>
+                                            <span class="input-group-addon">AANPASSEN</span>
+                                            <h:inputText label="Login" 
+
+                                                                     value="${bungalow.dto.detail.name}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+
+                                            <span class="input-group-addon">AANPASSEN</span>
+                                            <h:inputText label="Login" 
+                                                                     value="${bungalow.dto.detail.type}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+
+
+                                            <span class="input-group-addon">AANPASSEN</span>
+                                            <h:inputText label="Login" 
+                                                                     value="${bungalow.dto.detail.price}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+                                            
+                                        </li>
+                                    </ul>
 				</h:form>
                 </div>
             </ui:define>
