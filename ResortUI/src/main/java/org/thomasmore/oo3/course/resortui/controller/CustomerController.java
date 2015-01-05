@@ -52,9 +52,12 @@ public class CustomerController {
         for (CustomerEntity customer : customers) {
             CustomerListDetailDto listDetail = new CustomerListDetailDto();
             listDetail.setId(customer.getId());
-            listDetail.setName(customer.getName());
-            listDetail.setLocation(customer.getLocation());
-            listDetail.setCapacity(customer.getCapacity());
+            listDetail.setFirstname(customer.getFirstname());
+            listDetail.setLastname(customer.getLastname());
+            listDetail.setBirthdate(customer.getBirthdate());
+            listDetail.setEmail(customer.getEmail());
+            listDetail.setNumber(customer.getNumber());
+            listDetail.setReceiveupdate(customer.isReceiveupdate());
            dto.getList().add(listDetail);
         }
     }
@@ -74,9 +77,14 @@ public class CustomerController {
         }       
         customerEntity.setId(dto.getDetail().getId());
         System.out.println(dto.getDetail().getId());
-        customerEntity.setName(dto.getDetail().getName());
-        customerEntity.setLocation(dto.getDetail().getLocation());
-        customerEntity.setCapacity(dto.getDetail().getCapacity());
+        customerEntity.setLastname(dto.getDetail().getLastname());
+        customerEntity.setFirstname(dto.getDetail().getFirstname());
+        System.out.println(dto.getDetail().getBirthdate());
+        customerEntity.setBirthdate(dto.getDetail().getBirthdate());
+        System.out.println(dto.getDetail().getBirthdate());
+        customerEntity.setEmail(dto.getDetail().getEmail());
+        customerEntity.setNumber(dto.getDetail().getNumber());
+        customerEntity.setReceiveupdate(dto.getDetail().isReceiveupdate());
         customerDao.save(customerEntity);
         
         return pageRedirect;
@@ -85,9 +93,13 @@ public class CustomerController {
        CustomerEntity pe = customerDao.findById(id);
            
         dto.getDetail().setId(pe.getId());
-        dto.getDetail().setName(pe.getName());
-        dto.getDetail().setLocation(pe.getLocation());
-        dto.getDetail().setCapacity(pe.getCapacity());
+        dto.getDetail().setFirstname(pe.getFirstname());
+        dto.getDetail().setLastname(pe.getLastname());
+        dto.getDetail().setBirthdate(pe.getBirthdate());
+        dto.getDetail().setEmail(pe.getEmail());
+        dto.getDetail().setNumber(pe.getNumber());
+        dto.getDetail().setReceiveupdate(pe.isReceiveupdate());
+        
     }
     
     public String remove(String id) {
