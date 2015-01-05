@@ -89,9 +89,5 @@ public class ReservationListDetailDto {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
-    }
-
-
-    
+    }    
 }
-

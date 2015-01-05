@@ -45,9 +45,9 @@ public class ReservationController {
 
         dto = new ReservationPageDto();
 
-        /*for (CustomerEntity customer : customers) {
+        for (CustomerEntity customer : customers) {
             dto.getCustomerList().add(customer.getFirstname() + " " + customer.getLastname());
-        }*/
+        }
 
         for (BungalowEntity bungalow : bungalows) {
             dto.getBungalowList().add(bungalow.getName());
