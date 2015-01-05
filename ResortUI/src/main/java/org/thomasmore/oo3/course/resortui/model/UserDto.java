@@ -50,5 +50,5 @@ public class UserDto {
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
-
+    
 }

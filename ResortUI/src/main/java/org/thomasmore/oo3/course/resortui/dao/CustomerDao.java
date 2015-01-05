@@ -26,7 +26,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 
 @Stateless
-public class CustomerDao {
+public class CustomerDao implements Serializable {
     @PersistenceContext
     private EntityManager em;
             

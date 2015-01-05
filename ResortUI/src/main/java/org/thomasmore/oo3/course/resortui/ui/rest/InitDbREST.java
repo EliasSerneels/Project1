@@ -25,6 +25,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
 
 
@@ -66,6 +67,20 @@ public class InitDbREST {
         parkEntity.setLocation("Antwerpen");
         parkEntity.setCapacity(165);
         objectsToSave.add(parkEntity);
+        
+        CustomerEntity ce1 = new CustomerEntity();
+        ce1.setFirstname("jos");
+        ce1.setLastname("janssens");
+        ce1.setBirthdate("01/01/1980");
+        ce1.setReceiveupdate(false);
+        objectsToSave.add(ce1);
+               
+        CustomerEntity ce2 = new CustomerEntity();
+        ce2.setFirstname("piet");
+        ce2.setLastname("uyttebroeck");
+        ce2.setBirthdate("01/01/1970");
+        ce2.setReceiveupdate(false);
+        objectsToSave.add(ce2);
         
         for (Object objectToSave1 : objectsToSave){
             em.persist(objectToSave1);
