@@ -16,6 +16,7 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.util.Date;
 import org.thomasmore.oo3.course.resortui.business.entity.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -27,16 +28,65 @@ import org.thomasmore.oo3.course.resortui.business.entity.BasicEntity;
 @XmlRootElement
 
 public class CustomerEntity extends BasicEntity{
-    private String location;
-    private int capacity;
-    private String name;
-    public String getLocation() {
-        return location;
+    
+    private String firstname;
+    private String lastname;
+    private String birthdate;
+    private String email;
+    private String number;
+    private boolean receiveupdate;
+
+    public boolean isReceiveupdate() {
+        return receiveupdate;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setReceiveupdate(boolean receiveupdate) {
+        this.receiveupdate = receiveupdate;
     }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+    private int capacity;
+
+    
 
     public int getCapacity() {
         return capacity;
@@ -46,11 +96,4 @@ public class CustomerEntity extends BasicEntity{
         this.capacity = capacity;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
