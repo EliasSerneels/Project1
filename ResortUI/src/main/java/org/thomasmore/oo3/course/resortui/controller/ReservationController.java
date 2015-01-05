@@ -60,8 +60,6 @@ public class ReservationController {
             listDetail.setStartTime(reservation.getStartTime());
             listDetail.setEndDate(reservation.getEndDate());
             listDetail.setEndTime(reservation.getEndTime());
-            listDetail.setAmountCustomers(reservation.getAmountCustomers());
-            listDetail.setCancellationInsurance(reservation.isCancellationInsurance());
             listDetail.setCustomerName(reservation.getCustomerName());
             listDetail.setBungalowName(reservation.getBungalowName());
             dto.getList().add(listDetail);
@@ -77,8 +75,6 @@ public class ReservationController {
         reservationEntity.setStartTime(dto.getDetail().getStartTime());
         reservationEntity.setEndDate(dto.getDetail().getEndDate());
         reservationEntity.setEndTime(dto.getDetail().getEndTime());
-        reservationEntity.setAmountCustomers(dto.getDetail().getAmountCustomers());
-        reservationEntity.setCancellationInsurance(dto.getDetail().isCancellationInsurance());
         reservationEntity.setCustomerName(dto.getDetail().getCustomerName());
         reservationEntity.setBungalowName(dto.getDetail().getBungalowName());
         reservationsDao.save(reservationEntity);
