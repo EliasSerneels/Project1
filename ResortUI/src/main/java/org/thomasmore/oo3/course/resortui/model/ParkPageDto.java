@@ -28,6 +28,15 @@ public class ParkPageDto {
     private ParkDetailDto detail = new ParkDetailDto();
 
     private List<ParkListDetailDto> list = new LinkedList<>();
+    private List<String> bungalowList = new LinkedList<>();
+
+    public List<String> getBungalowList() {
+        return bungalowList;
+    }
+
+    public void setBungalowList(List<String> bungalowList) {
+        this.bungalowList = bungalowList;
+    }
 
     public ParkDetailDto getDetail() {
         return detail;

@@ -23,9 +23,10 @@ import javax.ejb.EJB;
 import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import org.thomasmore.oo3.course.resortui.business.entity.BasicEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
 import org.thomasmore.oo3.course.resortui.dao.BungalowDao;
+import org.thomasmore.oo3.course.resortui.dao.ParkDao;
 import org.thomasmore.oo3.course.resortui.model.BungalowListDetailDto;
 
 /**
@@ -41,19 +42,26 @@ public class BungalowController {
 
     @EJB
     private BungalowDao bungalowDao;
-
+    @EJB
+    private ParkDao parkDao;
     @PostConstruct
     public void init() {
 
         List<BungalowEntity> bungalows = bungalowDao.listAll();
+        List<ParkEntity> parks = parkDao.listAll();
         dto = new BungalowPageDto();
-
+        dto.getParkList().add("");
+        for (ParkEntity park : parks) {
+            dto.getParkList().add(park.getName());
+        }
         for (BungalowEntity bungalow : bungalows) {
             BungalowListDetailDto listDetail = new BungalowListDetailDto();
             listDetail.setId(bungalow.getId());
             listDetail.setName(bungalow.getName());
             listDetail.setType(bungalow.getType());
             listDetail.setPrice(bungalow.getPrice());
+            listDetail.setPark(bungalow.getPark());
+            listDetail.setMaxpeople(bungalow.getMaxpeople());
             dto.getList().add(listDetail);
         }
     }
@@ -76,6 +84,8 @@ public class BungalowController {
         bungalowEntity.setName(dto.getDetail().getName());
         bungalowEntity.setPrice(dto.getDetail().getPrice());
         bungalowEntity.setType(dto.getDetail().getType());
+        bungalowEntity.setPark(dto.getDetail().getPark());
+        bungalowEntity.setMaxpeople(dto.getDetail().getMaxpeople());
         bungalowDao.save(bungalowEntity);
         
         return pageRedirect;
@@ -88,6 +98,8 @@ public class BungalowController {
         dto.getDetail().setName(pe.getName());
         dto.getDetail().setPrice(pe.getPrice());
         dto.getDetail().setType(pe.getType());
+        dto.getDetail().setPark(pe.getPark());
+        dto.getDetail().setMaxpeople(pe.getMaxpeople());
     }
     
     public String remove(String id) {

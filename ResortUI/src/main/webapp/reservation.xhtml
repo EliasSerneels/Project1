@@ -11,7 +11,7 @@
         <ui:composition template="./common/template.xhtml">
 
             <ui:define name="title">
-                reservation
+                Reservation
             </ui:define>
 
             <ui:define name="content">
@@ -106,20 +106,7 @@
                         </div>
                     </div>
                 </h:form>
-                <h:form>Form for deleting
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <span class="input-group-addon">Type the id of the record you want to delete</span>
-                            <h:inputText label="reservationDeleteid" value="${reservation.dto.detail.id}" class="form-control" required="true">
-                            </h:inputText>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <h:commandButton class="btn btn-primary" action="${reservation.remove()}" value="Remove"></h:commandButton>
-                        </div>
-                    </div>
-                </h:form>
+                
             </ui:define>
 
         </ui:composition>

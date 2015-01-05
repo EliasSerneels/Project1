@@ -48,18 +48,24 @@ public class InitDbREST {
         bungalowEntity.setName("ABC");
         bungalowEntity.setType("Type 5");
         bungalowEntity.setPrice(100);
+        bungalowEntity.setPark("Parkje 2");
+        bungalowEntity.setMaxpeople("5");
         objectsToSave.add(bungalowEntity);
         
         BungalowEntity bungalowEntity2 = new BungalowEntity();
-        bungalowEntity2.setName("EDF");
+        bungalowEntity2.setName("DEF");
         bungalowEntity2.setType("Type 1");
         bungalowEntity2.setPrice(150);
+        bungalowEntity2.setPark("Parkje 1");
+        bungalowEntity2.setMaxpeople("8");
         objectsToSave.add(bungalowEntity2);
         
         BungalowEntity bungalowEntity3 = new BungalowEntity();
-        bungalowEntity3.setName("Jef");
+        bungalowEntity3.setName("GHI");
         bungalowEntity3.setType("Type 2");
         bungalowEntity3.setPrice(80);
+        bungalowEntity3.setPark("Parkje 2");
+        bungalowEntity3.setMaxpeople("52");
         objectsToSave.add(bungalowEntity3);
         
         ParkEntity parkEntity = new ParkEntity();
@@ -67,6 +73,12 @@ public class InitDbREST {
         parkEntity.setLocation("Antwerpen");
         parkEntity.setCapacity(165);
         objectsToSave.add(parkEntity);
+        
+        ParkEntity parkEntity2 = new ParkEntity();
+        parkEntity2.setName("Parkje 2");
+        parkEntity2.setLocation("Mechelen");
+        parkEntity2.setCapacity(38445);
+        objectsToSave.add(parkEntity2);
         
         CustomerEntity ce1 = new CustomerEntity();
         ce1.setFirstname("jos");

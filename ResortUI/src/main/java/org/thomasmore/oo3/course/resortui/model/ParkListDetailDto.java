@@ -27,6 +27,15 @@ public class ParkListDetailDto {
     private String name;
     private String location;
     private int capacity;
+    private String bungalowName;
+
+    public String getBungalowName() {
+        return bungalowName;
+    }
+
+    public void setBungalowName(String bungalowName) {
+        this.bungalowName = bungalowName;
+    }
 
     public String getLocation() {
         return location;
