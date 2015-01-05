@@ -2,15 +2,18 @@
 <ui:composition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    template="./common/template.xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html">
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    template="./common/template.xhtml">
 
 
 
-    <ui:define name="navbar">
-        <h1>Bungalowpark Javagangstazz</h1>
-			${index.dto.name}
-    </ui:define>
+    <ui:define name="title">
+                Bungalowpark Javagangstazz
+            </ui:define>
+            
+            <ui:define name="navbar">
+                <h1>Bungalowpark Javagangstazz</h1>
+            </ui:define>
 
     <ui:define name="content">
         <div class="col-md-6">
@@ -21,7 +24,7 @@
      
         </div>
         <div class="col-md-6">
-            <a class="btn btn-success" style="display: block" href="bungalow.xhtml">Klik hier om de verschillende Parktypes te bekijken!</a>
+            <a class="btn btn-success" style="display: block" href="bungalow.xhtml">Klik hier om de verschillende bungalowtypes te bekijken!</a>
              <a class="thumbnail" href="bungalow.xhtml">
                 <img src="./resources/images/OO31.jpg" />
             </a>

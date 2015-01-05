@@ -26,6 +26,24 @@ public class BungalowListDetailDto {
     private String name;
     private String type;
     private int price;
+    private String park;
+    private String maxpeople;
+
+    public String getPark() {
+        return park;
+    }
+
+    public void setPark(String park) {
+        this.park = park;
+    }
+
+    public String getMaxpeople() {
+        return maxpeople;
+    }
+
+    public void setMaxpeople(String maxpeople) {
+        this.maxpeople = maxpeople;
+    }
 
     public int getPrice() {
         return price;

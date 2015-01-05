@@ -73,8 +73,8 @@ public class InitDbREST {
         
 
         return bungalowEntity;
+        
     }
 
-   
-
 }
+
