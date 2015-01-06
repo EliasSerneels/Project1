@@ -16,11 +16,16 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.thomasmore.oo3.course.resortui.business.entity.UserEntity;
+import org.thomasmore.oo3.course.resortui.dao.UserDao;
 import org.thomasmore.oo3.course.resortui.model.LoginDto;
 import org.thomasmore.oo3.course.resortui.model.SessionDto;
 
@@ -36,22 +41,41 @@ public class LoginController {
 
     @Inject
     private SessionDto sessionDto;
-
+    
+    @EJB
+    private UserDao userDao;
+    private List<UserEntity> userentities;
     @PostConstruct
     public void init() {
         dto = new LoginDto();
+        userentities = userDao.listAll();
     }
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index.xhtml?faces-redirect=true";
     }
-
+    
     public String login() {
-        sessionDto.getUserDto().setPassword("John");
-        sessionDto.getUserDto().setUsername("Doe");
-        sessionDto.getUserDto().setLoggedIn(true);
-        return "index.xhtml";
+        String dbUserName;
+        String dbPassword;
+        
+        for (UserEntity user : userentities ) {
+            dbUserName = user.getUsername();
+            dbPassword = user.getPassword();   
+            
+            if (dto.getName().equals(dbUserName) && dto.getPassword().equals(user.getPassword())) {
+                sessionDto.getUserDto().setUsername(dbUserName);
+                sessionDto.getUserDto().setPassword(dbPassword);
+                sessionDto.getUserDto().setLoggedIn(true);
+                return "index.xhtml";
+            }else{
+                FacesContext facesContext = FacesContext.getCurrentInstance();
+                FacesMessage facesMessage = new FacesMessage("U moet ingelogd zijn om deze pagina te kunnen bezoeken. ");
+                facesContext.addMessage(null, facesMessage);            
+            }
+        }
+        return null;
     }
 
     public LoginDto getDto() {

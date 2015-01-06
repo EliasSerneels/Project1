@@ -307,9 +307,7 @@ h2{
     background: linear-gradient(to bottom,  #ee720a 0%,#eba507 100%); 
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee720a', endColorstr='#eba507',GradientType=0 );
 }
-.forcemiddle{
 
-}
 ul{
     list-style-type: none;
 }
