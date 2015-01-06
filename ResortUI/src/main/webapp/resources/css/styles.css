@@ -17,49 +17,109 @@ html,body {
 
 }
 .icon-bar {
- background-color:#fff;
+    background-color:#fff;
 }
 
 .navbar-trans {
- background-color:#279ddd;
+    background-color:#279ddd;
     color:#fff;
 }
 .jumbotron{
     background: rgba(255,255,255,0.4);
 }
-.col-md-6, .col-md-6-l, .col-md-6-r{
+.col-md-6, .col-md-6-l, .col-md-6-r, .change-form li, .change-form li:nth-child(2n) {
     float:left;
     width:50%;
     padding: 20px;
     margin:5px 0 5px 0;
     background: rgba(255,255,255,0.5);
 }
-.col-md-6-l{
+.col-md-6-l, .change-form li{
     -moz-border-radius: 5px 0 0 5px;
     -webkit-border-radius: 5px 0 0 5px;
     border-radius: 5px 0 0 5px;
 }
-.col-md-6-r{
+.col-md-6-r, .change-form li:nth-child(2n){
     -moz-border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0;
     border-radius: 0 5px 5px 0;
 }
-
+.change-form li:last-child{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
 .col-md-12{
     float:right;
     padding: 7px;
-    margin:5px 0 5px 0;
+    margin:20px -6px 5px 0;
     width:auto;
-    background: rgba(255,255,255,0.5);
+}
+
+.inputinfo{
+    width:20%;
+    float:left;
+    padding:6px 0 6px 0;
+    font-size:14px;
+    color: #666666;
+    text-align: center;
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    -moz-border-radius:  4px 0 0 4px;
+    -webkit-border-radius:  4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+.change-form li input[type='text'], .change-form li select{
+    -moz-border-radius:  0 3px 3px 0;
+    -webkit-border-radius:  0 3px 3px 0;
+    border-radius: 0  3px 3px 0;
+}
+.change-form li select{
+    padding:7px 0 7px 0;
+}
+
+.change-form li input, .change-form li select{
+  float:left;
+  width:80%;
+}
+
+ul.change-form{
+    list-style-type:none;
+    padding-left:0px;
+}
+ul.change-form li span{
+    width:10%;
+}
+ul.change-form li{
+    width:50%;
+    float:left;
+    margin-bottom:15px;
+}
+.change-form li:nth-child(2n+1){
+    clear:both;
+}
+
+ul.change-form li.special-updates{
+    -moz-border-radius:  0 3px 3px 0;
+    -webkit-border-radius:  0 3px 3px 0;
+    border-radius: 0  3px 3px 0;
+}
+li.special-updates .inputinfo{
+    width:50%;
+    float:left;
+    -moz-border-radius:  3px;
+    -webkit-border-radius:  3px;
+    border-radius: 3px;
 }
 
 table {
-  border-collapse: separate;
-  border-spacing: 1px;
-  width:100%;
+    border-collapse: separate;
+    border-spacing: 1px;
+    width:100%;
+    margin:15px 0 30px 0;
 }
 tr{
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.4);
 }
 
 tr:nth-child(2n){
@@ -81,6 +141,9 @@ th:only-child{
     -moz-border-radius:  6px 6px 0 0;
     -webkit-border-radius:  6px 6px 0 0;
     border-radius: 6px 6px 0 0;
+}
+td{
+    padding:15px;
 }
 table tr:last-child td:first-child{
     -moz-border-radius:  0 0 0 3px;
@@ -107,10 +170,7 @@ th{
     font-weight:normal;
     background: rgba(0,0,0,0.6);
     color:rgba(255,255,255,0.9);
-    
-
 }
-
 .navbar-trans li>a:hover,.navbar-trans li>a:focus,.navbar-trans li.active {
  background-color:#38afef;
 }
@@ -129,12 +189,10 @@ th{
     margin-top:50px;
     
 }
-
 .formstyle li{
     display:inline;
     float:left;
     width:50%;
-    
 }
 section {
  padding-top:70px;  
@@ -205,14 +263,14 @@ footer .nav>li>a:hover {
 h1{
     margin-top:60px;
 }
-ul.form{
-    list-style-type:none;
-    padding-left:0px;
+
+
+br{
+    font-size:50px;
+    clear:both;
 }
-ul.form li span{
-    width:10%;
-}
-ul.form li{
-    width:50%;
-    float:left;
+
+h2{
+    color:white; 
+    margin:0 0 30px 15px;
 }

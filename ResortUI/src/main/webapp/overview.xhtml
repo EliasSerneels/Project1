@@ -8,87 +8,71 @@
 
         <ui:composition template="./common/template.xhtml">
 
-            <ui:define name="title">
-                Overzicht Parks, parken en reservaties
-            </ui:define>
+            <ui:define name="title">Overzicht Klanten, parken en reservaties</ui:define>
             
-            <ui:define name="navbar">
-                <h1>Overzicht Parks, parken en reservaties</h1>
-            </ui:define>
+            <ui:define name="navbar"><h1>Overzicht Klanten, parken en reservaties</h1></ui:define>
+            
             <ui:define name="content">
-                <div id="tablebg">
                     <div><h2>Parken</h2></div>
-                             <table border="1" class="maintable">
+                             <table class="overview">
                                     <tr>
-                                        <th class="idCol">ID</th>
+                                        <th>ID</th>
                                         <th>Naam</th>
                                         <th>Locatie</th>
                                         <th>Capaciteit</th>       
-                                    </tr>
-                                    
-					<ui:repeat value="${park.dto.list}" var="listDetail1">
-                                            <h:form>
+                                    </tr>                                 
+					<ui:repeat value="${park.dto.list}" var="listDetail1">                                         
                                                 <tr>
-                                                    <td class="idCol">${listDetail1.id}</td>
-                                                    <td>${listDetail1.name}</td>
-                                                    <td>${listDetail1.location}</td>
-                                                    <td>${listDetail1.capacity}</td>
-                                                </tr>
-                                            </h:form>
+                                                    <h:form>
+                                                        <td class="idCol">${listDetail1.id}</td>
+                                                        <td>${listDetail1.name}</td>
+                                                        <td>${listDetail1.location}</td>
+                                                        <td>${listDetail1.capacity}</td>
+                                                    </h:form>
+                                                </tr>                                           
 					</ui:repeat>
-                                    
-
-				</table>
-                <br/>
+                            </table>
+                <br class="overview-break" />
                 <div><h2>Bungalows</h2></div>
-				<table border="1" class="maintable">
+                            <table class="overview">
                                     <tr>
-                                        <th class="idCol">ID</th>
+                                        <th>ID</th>
                                         <th>Naam</th>
                                         <th>Type</th>
                                         <th>Prijs</th>         
-                                    </tr>
-                                    
-					<ui:repeat value="${bungalow.dto.list}" var="listDetail2">
-                                            <h:form>
+                                    </tr>                                 
+					<ui:repeat value="${bungalow.dto.list}" var="listDetail2">                                         
                                                 <tr>
-                                                    <td class="idCol">${listDetail2.id}</td>
-                                                    <td>${listDetail2.name}</td>
-                                                    <td>${listDetail2.type}</td>
-                                                    <td>${listDetail2.price}</td>
-                                                </tr>
-                                            </h:form>
-					</ui:repeat>
-                                    
-
-				</table>
+                                                    <h:form>
+                                                        <td class="idCol">${listDetail2.id}</td>
+                                                        <td>${listDetail2.name}</td>
+                                                        <td>${listDetail2.type}</td>
+                                                        <td>${listDetail2.price}</td>
+                                                    </h:form>
+                                                </tr>                                        
+					</ui:repeat>                                 
+                            </table>
                 <br/>
                 <div><h2>Klanten</h2></div>
-                                <table border="1" class="maintable">
+                            <table class="overview">
                                     <tr>
-                                        <th class="idCol">ID</th>
+                                        <th>ID</th>
                                         <th>Naam</th>
                                         <th>Leeftijd</th>
                                         <th>Gereserveerde Bungalows</th>         
-                                    </tr>
-                                    
-					<ui:repeat value="${customer.dto.list}" var="listDetail3">
-                                            <h:form>
+                                    </tr>                                 
+					<ui:repeat value="${customer.dto.list}" var="listDetail3" >                                          
                                                 <tr>
-                                                    <td class="idCol">${listDetail3.id}</td>
-                                                    <td>${listDetail3.name}</td>
-                                                    <td>${listDetail3.location}</td>
-                                                    <td>${listDetail3.capacity}</td>
-                                                </tr>
-                                            </h:form>
-					</ui:repeat>
-                                    
-
-				</table>
-                </div>
+                                                    <h:form>
+                                                        <td>${listDetail3.id}</td>
+                                                        <td>${listDetail3.capacity}</td>
+                                                        <td>Moet nog gevuld worden met juiste code</td>
+                                                        <td>Vorige eigenschappen waren niet in gebruik</td>
+                                                    </h:form>
+                                                </tr>                                           
+					</ui:repeat>                                 
+                            </table>
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>

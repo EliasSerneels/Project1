@@ -3324,7 +3324,6 @@ tbody.collapse.in {
 .btn-group > .btn,
 .btn-group-vertical > .btn {
   position: relative;
-  float: left;
 }
 .btn-group > .btn:hover,
 .btn-group-vertical > .btn:hover,
@@ -3347,7 +3346,7 @@ tbody.collapse.in {
 }
 .btn-toolbar .btn-group,
 .btn-toolbar .input-group {
-  float: left;
+
 }
 .btn-toolbar > .btn,
 .btn-toolbar > .btn-group,
@@ -3370,7 +3369,7 @@ tbody.collapse.in {
   border-top-left-radius: 0;
 }
 .btn-group > .btn-group {
-  float: left;
+
 }
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
@@ -3418,12 +3417,12 @@ tbody.collapse.in {
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn {
   display: block;
-  float: none;
+
   width: 100%;
   max-width: 100%;
 }
 .btn-group-vertical > .btn-group > .btn {
-  float: none;
+
 }
 .btn-group-vertical > .btn + .btn,
 .btn-group-vertical > .btn + .btn-group,
@@ -3465,7 +3464,7 @@ tbody.collapse.in {
 }
 .btn-group-justified > .btn,
 .btn-group-justified > .btn-group {
-  float: none;
+  
   display: table-cell;
   width: 1%;
 }
@@ -3489,14 +3488,14 @@ tbody.collapse.in {
   border-collapse: separate;
 }
 .input-group[class*="col-"] {
-  float: none;
+
   padding-left: 0;
   padding-right: 0;
 }
 .input-group .form-control {
   position: relative;
   z-index: 2;
-  float: left;
+ 
   width: 100%;
   margin-bottom: 0;
 }

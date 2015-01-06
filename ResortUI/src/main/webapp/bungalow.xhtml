@@ -9,18 +9,63 @@
 
         <ui:composition template="./common/template.xhtml">
 
-            <ui:define name="title">
-                Bungalows
-            </ui:define>
+            <ui:define name="title">Bungalows</ui:define>
 
-            <ui:define name="navbar">
-                <h1>Bungalows</h1>
-            </ui:define>
+            <ui:define name="navbar"><h1>Bungalows</h1></ui:define>
             <ui:define name="content">
-                <div id="tablebg">
-                    <table border="1" class="maintable">
+                    <h2>Bungalows aanmaken of wijzigen</h2>
+                    <h:form>
+                        <ul class="change-form">
+                            <li>
+                                <h:inputHidden value="${bungalow.dto.detail.id}"/>
+                                <div class="inputinfo">Naam</div>
+                                <h:inputText label="Naam" 
+
+                                             value="${bungalow.dto.detail.name}" class="form-control"
+                                             required="true">
+                                </h:inputText>
+                            </li>                                    
+                            <li>
+                                <div class="inputinfo">Type</div>
+                                <h:inputText label="Type" 
+                                             value="${bungalow.dto.detail.type}" class="form-control"
+                                             required="true">
+                                </h:inputText>
+                            </li>                                    
+                            <li>
+                                <div class="inputinfo">Prijs</div>
+                                <h:inputText label="prijs" 
+                                             value="${bungalow.dto.detail.price}" class="form-control"
+                                             required="true">
+                                </h:inputText>                              
+                            </li>
+                            <li>
+                                <div class="inputinfo">Max. # pers.</div>
+                                <h:inputText label="maxPersonen" 
+                                             value="${bungalow.dto.detail.maxpeople}" class="form-control"
+                                             required="true">
+                                </h:inputText>
+                            </li>                                    
+                            <li>                                
+                                <div class="inputinfo">Bungalow</div>
+                                        <h:selectOneMenu label="Bungalow" value="${bungalow.dto.detail.park}" class="form-control">
+                                            <f:selectItems value="${bungalow.dto.parkList}" var="bungalowName"
+                                                           itemValue="${bungalowName}" itemLabel="${bungalowName}"/>
+                                        </h:selectOneMenu>                               
+                            </li>
+                        </ul>
+                        <div class="col-md-12">
+                            <div class="input-group">   
+                                    <h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save"></h:commandButton>
+                            </div>
+                        </div>
+                    </h:form>
+                    
+                    <br/><br/>
+                    <h2>Bungalowoverzicht</h2>
+                    <table class="overview">
                         <tr>
-                            <th class="idCol">ID</th>
+                            <th>ID</th>
                             <th>Naam</th>
                             <th>Type</th>
                             <th>Prijs</th>
@@ -28,76 +73,24 @@
                             <th>Max aantal personen</th>
                             <th></th>
                         </tr>
-
-                        <ui:repeat value="${bungalow.dto.list}" var="listDetail">
-                            <h:form>
+                        <ui:repeat value="${bungalow.dto.list}" var="listDetail">                          
                                 <tr>
-                                    <td class="idCol">${listDetail.id}</td>
-                                    <td>${listDetail.name}</td>
-                                    <td>${listDetail.type}</td>
-                                    <td>${listDetail.price}</td>
-                                    <td>${listDetail.park}</td>
-                                    <td>${listDetail.maxpeople}</td>
-                                    <td>
-                                        <h:commandButton class="btn btn-primary" action="${bungalow.edit(listDetail.id)}" value="Wijzig"></h:commandButton>
-                                        <h:commandButton class="btn btn-primary" action="${bungalow.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
-                                    </td>
-                                </tr>
-                            </h:form>
+                                    <h:form>
+                                        <td class="idCol">${listDetail.id}</td>
+                                        <td>${listDetail.name}</td>
+                                        <td>${listDetail.type}</td>
+                                        <td>${listDetail.price}</td>
+                                        <td>${listDetail.park}</td>
+                                        <td>${listDetail.maxpeople}</td>
+                                        <td>
+                                            <h:commandButton class="btn btn-primary" action="${bungalow.edit(listDetail.id)}" value="Wijzig"></h:commandButton>
+                                            <h:commandButton class="btn btn-primary" action="${bungalow.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
+                                        </td>
+                                    </h:form>
+                                </tr>                          
                         </ui:repeat>
-
-
-                    </table>
-
-                    <h:form>
-                        <ul class="formstyle">
-                            <li>
-                                <h:inputHidden value="${bungalow.dto.detail.id}"/>
-                                <span class="input-group-addon">Naam</span>
-                                <h:inputText label="Login" 
-
-                                             value="${bungalow.dto.detail.name}" class="form-control"
-                                             required="true">
-                                </h:inputText>
-
-                                <span class="input-group-addon">Type</span>
-                                <h:inputText label="Login" 
-                                             value="${bungalow.dto.detail.type}" class="form-control"
-                                             required="true">
-                                </h:inputText>
-
-
-                                <span class="input-group-addon">Prijs</span>
-                                <h:inputText label="Login" 
-                                             value="${bungalow.dto.detail.price}" class="form-control"
-                                             required="true">
-                                </h:inputText>
-                                <h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save" ></h:commandButton>
-                            </li>
-
-
-                            <li>
-                                <span class="input-group-addon">Max. aantal personen</span>
-                                <h:inputText label="Login" 
-                                             value="${bungalow.dto.detail.maxpeople}" class="form-control"
-                                             required="true">
-                                </h:inputText>
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Bungalow</span>
-                                        <h:selectOneMenu label="Bungalow" value="${bungalow.dto.detail.park}" class="form-control">
-                                            <f:selectItems value="${bungalow.dto.parkList}" var="bungalowName"
-                                                           itemValue="${bungalowName}" itemLabel="${bungalowName}"/>
-                                        </h:selectOneMenu>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </h:form>
-                </div>
+                    </table>          
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>

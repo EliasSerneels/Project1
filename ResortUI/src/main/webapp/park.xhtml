@@ -6,83 +6,77 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
-        <div id="parkbody">
             <ui:composition template="./common/template.xhtml">
 
-                <ui:define name="title">
-                    Parks
-                </ui:define>
+            <ui:define name="title">Parken</ui:define>
 
-                <ui:define name="navbar">
-                    <h1>Parken</h1>
-                </ui:define>
-                <ui:define name="content">
-                    <div id="tablebg">
-                        <table border="1" id="maintable">
+            <ui:define name="navbar"><h1>Parken</h1></ui:define>
+            
+            <ui:define name="content">
+                        
+                        <h2>Park aanmaken of aanpassen</h2>
+                        <h:form>
+                            <ul class="change-form">
+                                <li>
+                                    <h:inputHidden value="${park.dto.detail.id}"/>
+                                    <div class="inputinfo">Naam</div>
+                                    <h:inputText label="Naam" 
+                                                 value="${park.dto.detail.name}" class="form-control"
+                                                 required="true">
+                                    </h:inputText>
+                                </li>
+                                <li>
+                                    <div class="inputinfo">Locatie</div>
+                                    <h:inputText label="Locatie" 
+                                                 value="${park.dto.detail.location}" class="form-control"
+                                                 required="true">
+                                    </h:inputText>      
+                                </li>
+                                <li>
+                                    <div class="inputinfo">Capaciteit</div>
+                                    <h:inputText label="Capaciteit" 
+                                                 value="${park.dto.detail.capacity}" class="form-control"
+                                                 required="true">
+                                    </h:inputText>                                 
+                                </li>                                                              
+                            </ul>
+                            <div class="col-md-12">
+                                <div class="input-group">  
+                                    <h:commandButton class="btn btn-primary" action="${park.add()}" value="Save" ></h:commandButton>
+                                </div> 
+                            </div>
+                        </h:form> 
+                        
+                        <br/><br/>
+                        <h2>Parkoverzicht</h2>
+                        <table id="overview">
                             <tr>
-                                <th class="idCol">ID</th>
+                                <th>ID</th>
                                 <th>Naam</th>
                                 <th>Locatie</th>
                                 <th>Capaciteit</th>  
                                 <th></th>
-
                             </tr>
                             <ui:repeat value="${park.dto.list}" var="listDetail">
                                 <tr>
                                     <td class="idCol">${listDetail.id}</td>
                                     <td>${listDetail.name}</td>
-
                                     <td>${listDetail.location}</td>
-
-                                    <td>${listDetail.capacity}</td>
-                                    <h:form>
+                                    <td>${listDetail.capacity}</td>                                   
                                         <td>
-                                            <h:commandButton class="btn btn-primary" action="${park.edit(listDetail.id)}" value="Wijzig"></h:commandButton>
-                                            <h:commandButton class="btn btn-primary" action="${park.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
-                                        </td>
-                                    </h:form>
+                                            <h:form>
+                                                <h:commandButton class="btn btn-primary" action="${park.edit(listDetail.id)}" value="Wijzig"></h:commandButton>
+                                                <h:commandButton class="btn btn-primary" action="${park.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
+                                            </h:form>
+                                        </td>                                  
                                 </tr>
                             </ui:repeat>
-
                         </table>
-                        <h:form>
-                            <ul class="formstyle">
-                                <li>
-                                    <h:inputHidden value="${park.dto.detail.id}"/>
-                                    <span class="input-group-addon">Naam</span>
-                                    <h:inputText label="Login" 
+            </ui:define>
 
-                                                 value="${park.dto.detail.name}" class="form-control"
-                                                 required="true">
-                                    </h:inputText>
-
-                                    <span class="input-group-addon">Locatie</span>
-                                    <h:inputText label="Login" 
-                                                 value="${park.dto.detail.location}" class="form-control"
-                                                 required="true">
-                                    </h:inputText>
-
-
-
-                                    <h:commandButton class="btn btn-primary" action="${park.add()}" value="Save" ></h:commandButton>
-                                </li>
-
-
-                                <li>
-                                    <span class="input-group-addon">Capaciteit</span>
-                                    <h:inputText label="Login" 
-                                                 value="${park.dto.detail.capacity}" class="form-control"
-                                                 required="true">
-                                    </h:inputText>
-                                   
-
-                                </li>
-                            </ul>
-                        </h:form>
-
-                    </div>
-                </ui:define>
-
+                <!-- IDEM, waarom staat dit hier nog?? -->
+                
+                
                 <h:dataTable value="#{userData.authors}" var="c"
                              styleClass="authorTable"
                              headerClass="authorTableHeader"
@@ -95,9 +89,8 @@
                         #{c.name}
                     </h:column>
                 </h:dataTable>
-
-
+                
+                
             </ui:composition>
-        </div>
     </body>
 </html>
