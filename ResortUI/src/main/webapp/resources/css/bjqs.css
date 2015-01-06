@@ -53,3 +53,11 @@ ol.bjqs-markers li a:hover{
 p.bjqs-caption{
         display:none;
 }
+
+.niceSldr{
+    width:900px; 
+    height:500px; 
+    position:relative; 
+    left:50%; 
+    margin-left:-450px;
+}
