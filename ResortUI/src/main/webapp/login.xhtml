@@ -16,9 +16,12 @@
             <ui:define name="navbar"><h1>Inloggen</h1></ui:define>
 
             <ui:define name="content">
+                <div class="fillerpic">
+                        <img src="resources/images/logo.png" alt=""/>
+                </div>
                 <h:form>
 					<h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-					<div class="col-md-6-l">
+					<div class="col-md-6">
 						<div class="input-group">
 							<span class="input-group-addon">Inloggen</span>
 							<h:inputText label="Login" p:placeholder="jhon@doe.org"
@@ -29,7 +32,7 @@
 							</h:inputText>
 						</div>
 					</div>
-					<div class="col-md-6-r">
+					<div class="col-md-6">
 						<div class="input-group">
 							<span class="input-group-addon">Wachtwoord</span>
 							<h:inputSecret label="Login" p:placeholder="******"

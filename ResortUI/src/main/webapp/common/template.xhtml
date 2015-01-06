@@ -17,7 +17,7 @@
         <h:outputStylesheet library="css" name="maxcdn.bootstrapcdn.com_bootstrap_3.3.1_css_bootstrap-theme.min.css"/>
         <h:outputStylesheet library="css" name="maxcdn.bootstrapcdn.com_bootstrap_3.3.1_css_bootstrap.min.css"/>
         
-        <h:outputStylesheet library="css" name="styles.css"/> 
+        <h:outputStylesheet library="css" name="styles.css"/>
     </h:head>
 
     <h:body>
@@ -39,6 +39,7 @@
 							<li><a href="bungalowinfo.xhtml">Bekijk bungalows</a></li>
 							<li><a href="parkinfo.xhtml">Bekijk parken</a></li>
                                                         
+                                                        
 							<ui:fragment rendered="${sessionDto.userDto.loggedIn}">
 								<li><a href="profile.xhtml">Profiel</a></li>
                                                                 <li><a href="bungalow.xhtml">Bungalows</a></li>
@@ -54,6 +55,7 @@
 							</ui:fragment>
 							<ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
 								<li><a href="login.xhtml">Inloggen</a></li>
+                                                                <li><a href="registration.xhtml">Registreren</a></li>
 							</ui:fragment>
 						</ul>
 					</div>
@@ -70,7 +72,7 @@
         <div class="container">
             <ui:insert name="content"></ui:insert>
         </div>
-        <footer>
+        <footer class="footerheight">
             <ul id="footerbuttons">
                 <li>
                     <h3>Nieuwe gebruiker?</h3>

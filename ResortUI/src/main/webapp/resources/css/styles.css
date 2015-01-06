@@ -399,3 +399,9 @@ footer p.lightColorFooter{
 footer p{
     color:rgba(255,255,255,0.3);
 }
+.fillerpic img{
+    float:left;
+    width:30%;
+    margin-left:auto;
+    margin-right:225px;
+}
