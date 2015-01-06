@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.thomasmore.oo3.course.resortui.controller;
-
+ 
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -60,19 +60,17 @@ public class LoginController {
         for (UserEntity user : userentities) {
             dbUserName = user.getUsername();
             dbPassword = user.getPassword();
-
+            
             if (sessionDto.getUserDto().getUsername().equals(dbUserName) && sessionDto.getUserDto().getPassword().equals(dbPassword)) {
                 sessionDto.getUserDto().setUsername(dbUserName);
                 sessionDto.getUserDto().setPassword(dbPassword);
                 sessionDto.getUserDto().setLoggedIn(true);
                 return "index.xhtml";
-            } else {
-                FacesContext facesContext = FacesContext.getCurrentInstance();
-                FacesMessage facesMessage = new FacesMessage("Foute gebruikersnaam en/of wachtwoord, gelieve opnieuw te proberen.");
-                facesContext.addMessage(null, facesMessage);
-                return null;
-            }
+            }      
         }
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesMessage facesMessage = new FacesMessage("Foute gebruikersnaam en/of wachtwoord, gelieve opnieuw te proberen.");
+        facesContext.addMessage(null, facesMessage);
         return null;
     }
 

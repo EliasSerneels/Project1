@@ -27,6 +27,7 @@ import javax.ws.rs.Produces;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.UserEntity;
 
 
 /**
@@ -93,6 +94,21 @@ public class InitDbREST {
         ce2.setBirthdate("01/01/1970");
         ce2.setReceiveupdate(false);
         objectsToSave.add(ce2);
+        
+        UserEntity ue1 = new UserEntity();
+        ue1.setUsername("Pieter");
+        ue1.setPassword("Pieter");
+        objectsToSave.add(ue1);
+        
+        UserEntity ue2 = new UserEntity();
+        ue2.setUsername("Timothy");
+        ue2.setPassword("Timothy");
+        objectsToSave.add(ue2);
+        
+        UserEntity ue3 = new UserEntity();
+        ue3.setUsername("Elias");
+        ue3.setPassword("Elias");
+        objectsToSave.add(ue3);
         
         for (Object objectToSave1 : objectsToSave){
             em.persist(objectToSave1);
