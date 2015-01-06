@@ -46,7 +46,30 @@
                         <div class="input-group">
                             <span class="input-group-addon">Starttijd</span>
                             <h:selectOneMenu label="reservationStarttime" value="${reservation.dto.detail.startTime}" class="form-control" required="true">
+                                <f:selectItem itemValue="00:00" itemLabel="00:00"/>
+                                <f:selectItem itemValue="01:00" itemLabel="01:00"/>
+                                <f:selectItem itemValue="02:00" itemLabel="02:00"/>
+                                <f:selectItem itemValue="03:00" itemLabel="03:00"/>
+                                <f:selectItem itemValue="04:00" itemLabel="04:00"/>
+                                <f:selectItem itemValue="05:00" itemLabel="05:00"/>
+                                <f:selectItem itemValue="06:00" itemLabel="06:00"/>
+                                <f:selectItem itemValue="07:00" itemLabel="07:00"/>
+                                <f:selectItem itemValue="08:00" itemLabel="08:00"/>
+                                <f:selectItem itemValue="09:00" itemLabel="09:00"/>
+                                <f:selectItem itemValue="10:00" itemLabel="10:00"/>
+                                <f:selectItem itemValue="11:00" itemLabel="11:00"/>
+                                <f:selectItem itemValue="12:00" itemLabel="12:00"/>
+                                <f:selectItem itemValue="13:00" itemLabel="13:00"/>
+                                <f:selectItem itemValue="14:00" itemLabel="14:00"/>
                                 <f:selectItem itemValue="15:00" itemLabel="15:00"/>
+                                <f:selectItem itemValue="16:00" itemLabel="16:00"/>
+                                <f:selectItem itemValue="17:00" itemLabel="17:00"/>
+                                <f:selectItem itemValue="18:00" itemLabel="18:00"/>
+                                <f:selectItem itemValue="19:00" itemLabel="19:00"/>
+                                <f:selectItem itemValue="20:00" itemLabel="20:00"/>
+                                <f:selectItem itemValue="21:00" itemLabel="21:00"/>
+                                <f:selectItem itemValue="22:00" itemLabel="22:00"/>
+                                <f:selectItem itemValue="23:00" itemLabel="23:00"/>
                             </h:selectOneMenu>
                         </div>
                     </div>
@@ -54,14 +77,38 @@
                         <div class="input-group">
                             <span class="input-group-addon">Eindtijd</span>
                             <h:selectOneMenu label="reservationEndtime" value="${reservation.dto.detail.endTime}" class="form-control" required="true">
-                                <f:selectItem itemValue="10:30" itemLabel="10:30"/>
+                                <f:selectItem itemValue="00:00" itemLabel="00:00"/>
+                                <f:selectItem itemValue="01:00" itemLabel="01:00"/>
+                                <f:selectItem itemValue="02:00" itemLabel="02:00"/>
+                                <f:selectItem itemValue="03:00" itemLabel="03:00"/>
+                                <f:selectItem itemValue="04:00" itemLabel="04:00"/>
+                                <f:selectItem itemValue="05:00" itemLabel="05:00"/>
+                                <f:selectItem itemValue="06:00" itemLabel="06:00"/>
+                                <f:selectItem itemValue="07:00" itemLabel="07:00"/>
+                                <f:selectItem itemValue="08:00" itemLabel="08:00"/>
+                                <f:selectItem itemValue="09:00" itemLabel="09:00"/>
+                                <f:selectItem itemValue="10:00" itemLabel="10:00"/>
+                                <f:selectItem itemValue="11:00" itemLabel="11:00"/>
+                                <f:selectItem itemValue="12:00" itemLabel="12:00"/>
+                                <f:selectItem itemValue="13:00" itemLabel="13:00"/>
+                                <f:selectItem itemValue="14:00" itemLabel="14:00"/>
+                                <f:selectItem itemValue="15:00" itemLabel="15:00"/>
+                                <f:selectItem itemValue="16:00" itemLabel="16:00"/>
+                                <f:selectItem itemValue="17:00" itemLabel="17:00"/>
+                                <f:selectItem itemValue="18:00" itemLabel="18:00"/>
+                                <f:selectItem itemValue="19:00" itemLabel="19:00"/>
+                                <f:selectItem itemValue="20:00" itemLabel="20:00"/>
+                                <f:selectItem itemValue="21:00" itemLabel="21:00"/>
+                                <f:selectItem itemValue="22:00" itemLabel="22:00"/>
+                                <f:selectItem itemValue="23:00" itemLabel="23:00"/>
                             </h:selectOneMenu>
+                            
                         </div>
                     </div>
                     <div class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Klant</span>
-                            <h:selectOneMenu label="reservationCustomer" value="${reservation.dto.detail.customerName}" class="form-control">
+                            <h:selectOneMenu label="Klant reservatie" value="${reservation.dto.detail.customerName}" class="form-control" required="true" validatorMessage="De inhoud van het veld klant is leeg.">
                                 <f:selectItems value="${reservation.dto.customerList}" var="customerName"
                                                itemValue="${customerName}" itemLabel="${customerName}"/>
                             </h:selectOneMenu>
@@ -70,7 +117,7 @@
                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Bungalow</span>
-                            <h:selectOneMenu label="reservationBungalow" value="${reservation.dto.detail.bungalowName}" class="form-control">
+                            <h:selectOneMenu label="Bungalow reservatie" value="${reservation.dto.detail.bungalowName}" class="form-control" required="true" validatorMessage="De inhoud van het veld bungalow is leeg.">
                                 <f:selectItems value="${reservation.dto.bungalowList}" var="bungalowName"
                                                itemValue="${bungalowName}" itemLabel="${bungalowName}"/>
                             </h:selectOneMenu>
@@ -86,7 +133,6 @@
                 <h2>Reservatieoverzicht</h2>
                 <table>
                     <tr>
-                        <th>ID</th>
                         <th>Startdate</th>
                         <th>Starttime</th>
                         <th>Enddate</th>
@@ -98,7 +144,6 @@
 
                         <ui:repeat value="${reservation.dto.list}" var="listDetail">
                             <tr>
-                                <td>${listDetail.id}</td>
                                 <td>${listDetail.startDate}</td>
                                 <td>${listDetail.startTime}</td>
                                 <td>${listDetail.endDate}</td>
