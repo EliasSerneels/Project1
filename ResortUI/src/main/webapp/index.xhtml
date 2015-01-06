@@ -5,30 +5,32 @@
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     template="./common/template.xhtml">
 
-
-
     <ui:define name="title">Bungalowpark Tipiel Resort</ui:define>
             
-            <ui:define name="navbar">
-                <h1>Bungalowpark Javagangstazz</h1>
-            </ui:define>
+    <ui:define name="navbar"><h1 style="text-align:center;">Bungalowpark Tipiel Resort</h1></ui:define>
 
     <ui:define name="content">
-        <div class="col-md-6">
-            <a class="btn btn-success" style="display: block" href="park.xhtml">Klik hier om onze parken te bekijken!</a>
-            <a class="thumbnail" href="park.xhtml">
-                <img src="./resources/images/OO32.jpg" />
-            </a>
-     
+        <div class="col-md-index" style="width:900px; height:500px; position:relative; left:50%; margin-left:-450px;">           
+            <div class="banner-slide">
+                <ul class="bjqs">
+                    <li><img src="http://www.bluegreenvacations.com/Carousels/Resorts/resort-landing-01.jpg" title="Resort 1" /></li>
+                    <li><img src="http://www.pranaresorts.com/koh-samui-nandana/images/phocagallery/20-prana-resort-nandana-gallery_03.jpg" title="Resort 2" /></li>
+                    <li><img src="http://hiltonglobalmediacenter.com/assets/HILT/properties/Resorts/HiltonBodrumTurkbukuResortSpa_FP.jpg" title="Resort 3" /></li>
+                    <li><img src="http://www.bluegreenvacations.com/Carousels/Resorts/resort-landing-01.jpg" title="Resort 1" /></li>
+                </ul>
+            </div>    
         </div>
-        <div class="col-md-6">
-            <a class="btn btn-success" style="display: block" href="bungalow.xhtml">Klik hier om de verschillende bungalowtypes te bekijken!</a>
-             <a class="thumbnail" href="bungalow.xhtml">
-                <img src="./resources/images/OO31.jpg" />
-            </a>
-
-        </div>
-
+        <script>
+            jQuery(document).ready(function($) {       
+                $('.banner-slide').bjqs({
+                  animtype      : 'slide',
+                  height        : 430,
+                  width         : 860,
+                  animspeed 	  : 3000,
+                  responsive    : true
+                });
+            });
+      </script>
     </ui:define>
 
 </ui:composition>

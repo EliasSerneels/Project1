@@ -31,12 +31,15 @@ html,body {
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
-.col-md-6, .col-md-6-l, .col-md-6-r, .change-form li, .change-form li:nth-child(2n) {
+.col-md-6, .col-md-6-l, .col-md-6-r, .col-md-index, .change-form li, .change-form li:nth-child(2n) {
     float:left;
     width:50%;
     padding: 20px;
     margin:5px 0 5px 0;
     background: rgba(255,255,255,0.55);
+}
+.col-md-index{
+    width:auto;
 }
 .col-md-6-l, .change-form li{
     -moz-border-radius: 5px 0 0 5px;
