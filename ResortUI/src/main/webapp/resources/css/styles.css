@@ -63,7 +63,7 @@ html,body {
 }
 
 .inputinfo{
-    width:17%;
+    width:20%;
     float:left;
     padding:6px 0 6px 0;
     font-size:14px;
@@ -86,7 +86,7 @@ html,body {
 
 .change-form li input, .change-form li select{
   float:left;
-  width:83%;
+  width:80%;
 }
 
 ul.change-form{
@@ -105,6 +105,18 @@ ul.change-form li{
     clear:both;
 }
 
+ul.change-form li.special-updates{
+    -moz-border-radius:  0 3px 3px 0;
+    -webkit-border-radius:  0 3px 3px 0;
+    border-radius: 0  3px 3px 0;
+}
+li.special-updates .inputinfo{
+    width:50%;
+    float:left;
+    -moz-border-radius:  3px;
+    -webkit-border-radius:  3px;
+    border-radius: 3px;
+}
 
 table {
     border-collapse: separate;
