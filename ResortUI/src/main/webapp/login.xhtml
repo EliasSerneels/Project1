@@ -22,7 +22,7 @@
 						<div class="input-group">
 							<span class="input-group-addon">Inloggen</span>
 							<h:inputText label="Login" p:placeholder="jhon@doe.org"
-										 value="${login.dto.name}" class="form-control"
+                                                                     value="${login.sessionDto.userDto.username}" class="form-control"
 										 required="true">
 								<f:validateLength minimum="4" maximum="30" >
 								</f:validateLength>
@@ -33,7 +33,7 @@
 						<div class="input-group">
 							<span class="input-group-addon">Wachtwoord</span>
 							<h:inputSecret label="Login" p:placeholder="******"
-										   value="${login.dto.password}" class="form-control"
+										   value="${login.sessionDto.userDto.password}" class="form-control"
 										   required="true">
 								<f:validateLength minimum="4"  >
 								</f:validateLength>

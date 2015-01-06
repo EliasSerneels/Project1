@@ -18,7 +18,6 @@ package org.thomasmore.oo3.course.resortui.controller;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -49,13 +48,7 @@ public class LoginController {
     }
 
     public String login() {
-        if (dto.getName().startsWith("a")) {
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            FacesMessage facesMessage = new FacesMessage("Invalid login - Can't start with [a]");
-            facesContext.addMessage(null, facesMessage);
-            return null;
-        }
-        sessionDto.getUserDto().setPassword("Jhon");
+        sessionDto.getUserDto().setPassword("John");
         sessionDto.getUserDto().setUsername("Doe");
         sessionDto.getUserDto().setLoggedIn(true);
         return "index.xhtml";
@@ -69,4 +62,11 @@ public class LoginController {
         this.dto = dto;
     }
 
+    public SessionDto getSessionDto() {
+        return sessionDto;
+    }
+
+    public void setSessionDto(SessionDto sessionDto) {
+        this.sessionDto = sessionDto;
+    }
 }

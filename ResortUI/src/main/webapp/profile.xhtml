@@ -8,14 +8,14 @@
         <ui:composition template="./common/template.xhtml">
 
             <ui:define name="title">
-                title
+                Mijn profiel
             </ui:define>
 
             <ui:define name="navbar">
-        <h1>Dit is je profiel!</h1>
-			${index.dto.name}
+                <h1>${login.sessionDto.userDto.username}</h1>
+			
     </ui:define>
-
+           
     <ui:define name="content">
         
                 <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">

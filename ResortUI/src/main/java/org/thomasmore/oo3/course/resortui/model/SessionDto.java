@@ -44,5 +44,4 @@ public class SessionDto implements Serializable {
     public void setUserDto(UserDetailDto UserDto) {
         this.userDto = UserDto;
     }
-
 }
