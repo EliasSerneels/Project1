@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.thomasmore.oo3.course.resortui.controller;
-
+ 
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
