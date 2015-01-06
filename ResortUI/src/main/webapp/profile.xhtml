@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
 
     <body>
-
         <ui:composition template="./common/template.xhtml">
 
             <ui:define name="title">
@@ -12,30 +13,67 @@
             </ui:define>
 
             <ui:define name="navbar">
-                <h1>${login.sessionDto.userDto.username}</h1>
-			
-    </ui:define>
-           
-    <ui:define name="content">
-        
-                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                <script>
-                    window.location.href = "http:login.xhtml";
-                </script>
-            </ui:fragment>
-        
-        <div class="col-md-6">
-            <div class="btn btn-success" style="display: block">Dit is een knop!</div>
-            Wij houden van dieren!
-			<br/><br/><br/>
-        </div>
-        <div class="col-md-6">
-            <div class="btn btn-success" style="display: block">Dit is ook een knop!</div>
-            </div>Daarom gebruiken we enkel de beste producten.
-            <br/><br/><br/>
-        
+                <h1>Welkom op je profiel, ${login.sessionDto.userDto.username}</h1>
+            </ui:define>
 
-    </ui:define>
+            <ui:define name="content">
+
+                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                    <script>
+                        window.location.href = "http:login.xhtml";
+                    </script>
+                </ui:fragment>
+
+                <div class="col-md-6-l">
+                    <h:form>
+                        <h3>Mijn gegevens</h3> 
+                        <a class="btn btn-primary" onclick="document.getElementById('inputForm').style.display = 'block';">edit</a>
+                        <!--<button onclick="document.getElementById('inputForm').style.display = 'block';"/>-->
+                        <table class="profileTable">
+                            <tr><td>Gebruikersnaam</td><td>${login.sessionDto.userDto.username}</td></tr>
+                            <tr><td>Volledige naam</td><td>${login.sessionDto.userDto.fullName}</td></tr>
+                            <tr><td>Email-adres</td><td>${login.sessionDto.userDto.email}</td></tr>
+                            <tr><td>Telefoonnummer</td><td>${login.sessionDto.userDto.phone}</td> </tr>                           
+                        </table>
+                    </h:form>
+                </div>                
+                <div style="display:none;" id="inputForm" class="col-md-6-r">
+                    <h:form>
+
+                        <ul class="profilechange-form">
+                            <li>
+                                <div class="inputinfo">Gebruikersnaam</div>
+                                <h:inputText label="Gebruikersnaam" class="form-control"
+                                             value="${login.sessionDto.userDto.username}"
+                                             required="true"/>
+                            </li>
+                            <li>
+                                <div class="inputinfo">Volledige naam</div>
+                                <h:inputText label="Volledige naam" class="form-control"
+                                             value="${login.sessionDto.userDto.fullName}"
+                                             required="true"/>
+                            </li>
+                            <li>
+                                <div class="inputinfo">Email-adres</div>
+                                <h:inputText label="Email-adres" class="form-control"
+                                             value="${login.sessionDto.userDto.email}"
+                                             required="true"/>
+                            </li>
+                            <li>
+                                <div class="inputinfo">Telefoonnummer</div>
+                                <h:inputText label="Telefoonnummer" class="form-control"
+                                             value="${login.sessionDto.userDto.phone}"
+                                             required="true"/>
+                                <li>
+                                    <h:commandButton class="btn btn-primary" action="${profile.edit()}" value="Wijzig"/>
+                                </li>
+                            </li>
+                        </ul>
+                    </h:form>
+                </div>
+
+
+            </ui:define>
 
         </ui:composition>
 

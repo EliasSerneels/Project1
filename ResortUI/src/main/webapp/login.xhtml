@@ -2,10 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
 
-	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -17,35 +17,35 @@
 
             <ui:define name="content">
                 <div class="fillerpic">
-                        <img src="resources/images/logo.png" alt="Logo tipiel resort"/>
+                    <img src="resources/images/logo.png" alt="Logo tipiel resort"/>
                 </div>
                 <h:form>
-					<h:messages styleClass="alert alert-danger loginMelding" p:role="alert"></h:messages>
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">Inloggen</span>
-							<h:inputText label="Gebruikersnaam" p:placeholder="jhon@doe.org"
-                                                                     value="${login.sessionDto.userDto.username}" class="form-control"
-										 required="true">
-							</h:inputText>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">Wachtwoord</span>
-							<h:inputSecret label="Wachtwoord" p:placeholder="******"
-										   value="${login.sessionDto.userDto.password}" class="form-control"
-										   required="true">
-							</h:inputSecret>
-						</div>
-					</div>
-                                        <div class="col-md-6" style="width:auto;">
-                                            <div class="input-group">U kan zich <a href="registration.xhtml" style="width:auto;">hier registreren.</a></div>
-					</div>
-					<div class="col-md-12" style="margin-top:0px;">
-							<h:commandButton class="btn btn-primary" action="${login.login()}" value="Inloggen"></h:commandButton>						
-					</div>
-				</h:form>
+                    <h:messages styleClass="alert alert-danger loginMelding" p:role="alert"></h:messages>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">Inloggen</span>
+                            <h:inputText label="Gebruikersnaam" p:placeholder="jhon@doe.org"
+                                         value="${login.sessionDto.userDto.username}" class="form-control"
+                                         required="true">
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">Wachtwoord</span>
+                            <h:inputSecret label="Wachtwoord" p:placeholder="******"
+                                           value="${login.sessionDto.userDto.password}" class="form-control"
+                                           required="true">
+                            </h:inputSecret>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="width:auto;">
+                        <div class="input-group">U kan zich <a href="registration.xhtml" style="width:auto;">hier registreren.</a></div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:0px;">
+                        <h:commandButton class="btn btn-primary" action="${login.login()}" value="Inloggen"></h:commandButton>						
+                    </div>
+                </h:form>
             </ui:define>
 
         </ui:composition>

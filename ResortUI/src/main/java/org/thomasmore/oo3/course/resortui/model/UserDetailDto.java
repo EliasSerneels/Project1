@@ -24,7 +24,11 @@ public class UserDetailDto {
 
     private String id;
     private String username;
-    private String password;
+    private String password;    
+    private String fullName;
+    private String gender;
+    private String email;
+    private String phone;
 
     private boolean loggedIn;
 
@@ -59,5 +63,38 @@ public class UserDetailDto {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
     
 }
