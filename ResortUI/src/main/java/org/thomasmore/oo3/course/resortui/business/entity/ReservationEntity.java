@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "Reservation")
+@Table(name = "reservation")
 @XmlRootElement
 public class ReservationEntity extends BasicEntity {
 

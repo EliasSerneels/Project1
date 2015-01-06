@@ -76,11 +76,9 @@ public class BungalowController {
         }
 
         if (bungalowEntity == null) {
-            bungalowEntity = new BungalowEntity();
-
+            bungalowEntity = new BungalowEntity();            
         }       
         bungalowEntity.setId(dto.getDetail().getId());
-        System.out.println(dto.getDetail().getId());
         bungalowEntity.setName(dto.getDetail().getName());
         bungalowEntity.setPrice(dto.getDetail().getPrice());
         bungalowEntity.setType(dto.getDetail().getType());

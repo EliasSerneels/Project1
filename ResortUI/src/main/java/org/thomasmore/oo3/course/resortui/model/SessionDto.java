@@ -29,19 +29,19 @@ import javax.inject.Named;
 @SessionScoped
 public class SessionDto implements Serializable {
 
-    private UserDto userDto;
+    private UserDetailDto userDto;
 
     @PostConstruct
     public void init() {
         System.out.println("SessionDto - init");
-        userDto = new UserDto();
+        userDto = new UserDetailDto();
     }
 
-    public UserDto getUserDto() {
+    public UserDetailDto getUserDto() {
         return userDto;
     }
 
-    public void setUserDto(UserDto UserDto) {
+    public void setUserDto(UserDetailDto UserDto) {
         this.userDto = UserDto;
     }
 
