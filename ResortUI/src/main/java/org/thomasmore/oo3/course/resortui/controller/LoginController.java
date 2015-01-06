@@ -57,27 +57,24 @@ public class LoginController {
     }
     
     public String login() {
-        String test = "nee";
+        String dbUserName;
+        String dbPassword;
+        
         for (UserEntity user : userentities ) {
-           
-
-            if (dto.getName().equals(user.getUsername()) && dto.getPassword().equals(user.getPassword())) {
-                test = "ja";
+            dbUserName = user.getUsername();
+            dbPassword = user.getPassword();   
+            
+            if (dto.getName().equals(dbUserName) && dto.getPassword().equals(user.getPassword())) {
+                sessionDto.getUserDto().setUsername(dbUserName);
+                sessionDto.getUserDto().setPassword(dbPassword);
+                sessionDto.getUserDto().setLoggedIn(true);
+            }else{
+                FacesContext facesContext = FacesContext.getCurrentInstance();
+                FacesMessage facesMessage = new FacesMessage("U moet ingelogd zijn om deze pagina te kunnen bezoeken. ");
+                facesContext.addMessage(null, facesMessage);
+                return null;
             }
         }
-        
-        String naam ="pieter";
-        String pwd ="stinkt";
-        
-        if (!dto.getName().equals(naam) && !dto.getPassword().equals(pwd)) {
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            FacesMessage facesMessage = new FacesMessage("U moet ingelogd zijn om deze pagina te kunnen bezoeken. "+test);
-            facesContext.addMessage(null, facesMessage);
-            return null;
-        }
-        sessionDto.getUserDto().setPassword(pwd);
-        sessionDto.getUserDto().setUsername(naam);
-        sessionDto.getUserDto().setLoggedIn(true);
         return "index.xhtml";
     }
 
