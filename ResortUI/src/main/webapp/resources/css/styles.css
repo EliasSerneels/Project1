@@ -92,7 +92,7 @@ ul.change-form li span{
 ul.change-form li{
     width:50%;
     float:left;
-    margin-bottom:15px;
+    margin-bottom:5dpx;
 }
 .change-form li:nth-child(2n+1){
     clear:both;
@@ -272,26 +272,4 @@ br{
 h2{
     color:white; 
     margin:0 0 30px 15px;
-}
-
-.forcemiddle{
-    text-align:center;
-}
-.forcemiddle ul{
-    list-style-type: none;
-}
-.overview li{
-    width: 50%;
-    float:left;
-    padding-bottom: 25px;
-}
-.overview li p{
-    text-align:center;
-    margin-right: auto;
-    margin-left: auto;
-    width: 75%;
-}
-.overview img{
-    width: 400px;
-    height: 300px;  
 }
