@@ -26,6 +26,14 @@
                                             </h:inputText>
                                         </li>
                                         <li>
+                                            <div class="inputinfo">Achternaam</div>
+                                            <h:inputText label="Achternaam" 
+
+                                                                     value="${customer.dto.detail.lastname}" class="form-control"
+                                                                     required="true">
+                                            </h:inputText>
+                                        </li>      
+                                        <li>
                                             <div class="inputinfo">Geboortedatum</div>
                                             <h:inputText label="Geboortedatum" 
                                                                      value="${customer.dto.detail.birthdate}" class="form-control"
@@ -42,15 +50,7 @@
                                                                      validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
                                             <f:validateRegex pattern="([0-9].{6,20})"/>
                                             </h:inputText>
-                                        </li>                                                                      
-                                        <li>
-                                            <div class="inputinfo">Achternaam</div>
-                                            <h:inputText label="Achternaam" 
-
-                                                                     value="${customer.dto.detail.lastname}" class="form-control"
-                                                                     required="true">
-                                            </h:inputText>
-                                        </li>                                                                      
+                                        </li>                                                                                                                                                                             
                                         <li>   
                                             <div class="inputinfo">E-mail</div>
                                             <h:inputText label="E-mail" 

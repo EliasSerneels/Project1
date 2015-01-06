@@ -20,7 +20,7 @@
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <div class="col-md-6-l">
                         <div class="input-group">
-                            <span class="input-group-addon">Start date</span>
+                            <span class="input-group-addon">Startdatum</span>
                             <h:selectOneMenu label="reservationStartdate" value="${reservation.dto.detail.startDate}" class="form-control" required="true">
                                 <f:selectItem itemValue="monday" itemLabel="monday"/>
                                 <f:selectItem itemValue="friday" itemLabel="friday"/>
@@ -29,18 +29,10 @@
                                 <f:selectItem itemValue="tuesday" itemLabel="tuesday"/>
                             </h:selectOneMenu>
                         </div>
-                    </div>
+                    </div>                    
                     <div class="col-md-6-r">
                         <div class="input-group">
-                            <span class="input-group-addon">Start time</span>
-                            <h:selectOneMenu label="reservationStarttime" value="${reservation.dto.detail.startTime}" class="form-control" required="true">
-                                <f:selectItem itemValue="15:00" itemLabel="15:00"/>
-                            </h:selectOneMenu>
-                        </div>
-                    </div>
-                    <div class="col-md-6-l">
-                        <div class="input-group">
-                            <span class="input-group-addon">End date</span>
+                            <span class="input-group-addon">Einddatum</span>
                             <h:selectOneMenu label="reservationEnddate" value="${reservation.dto.detail.endDate}" class="form-control" required="true">
                                 <f:selectItem itemValue="friday" itemLabel="friday"/>
                                 <f:selectItem itemValue="monday" itemLabel="monday"/>
@@ -50,9 +42,17 @@
                             </h:selectOneMenu>
                         </div>
                     </div>
+                    <div class="col-md-6-l">
+                        <div class="input-group">
+                            <span class="input-group-addon">Starttijd</span>
+                            <h:selectOneMenu label="reservationStarttime" value="${reservation.dto.detail.startTime}" class="form-control" required="true">
+                                <f:selectItem itemValue="15:00" itemLabel="15:00"/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
                     <div class="col-md-6-r">
                         <div class="input-group">
-                            <span class="input-group-addon">End time</span>
+                            <span class="input-group-addon">Eindtijd</span>
                             <h:selectOneMenu label="reservationEndtime" value="${reservation.dto.detail.endTime}" class="form-control" required="true">
                                 <f:selectItem itemValue="10:30" itemLabel="10:30"/>
                             </h:selectOneMenu>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-md-6-l">
                         <div class="input-group">
-                            <span class="input-group-addon">Customer</span>
+                            <span class="input-group-addon">Klant</span>
                             <h:selectOneMenu label="reservationCustomer" value="${reservation.dto.detail.customerName}" class="form-control">
                                 <f:selectItems value="${reservation.dto.customerList}" var="customerName"
                                                itemValue="${customerName}" itemLabel="${customerName}"/>
