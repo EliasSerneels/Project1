@@ -11,18 +11,14 @@
 
         <ui:composition template="./common/template.xhtml">
 
-            <ui:define name="title">
-                Login in the application
-            </ui:define>
+            <ui:define name="title">Inloggen</ui:define>
 
-            <ui:define name="navbar">
-                <h1>Login</h1>
-            </ui:define>
+            <ui:define name="navbar"><h1>Inloggen</h1></ui:define>
 
             <ui:define name="content">
                 <h:form>
 					<h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-					<div class="col-md-6">
+					<div class="col-md-6-l">
 						<div class="input-group">
 							<span class="input-group-addon">Login:</span>
 							<h:inputText label="Login" p:placeholder="jhon@doe.org"
@@ -33,7 +29,7 @@
 							</h:inputText>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6-r">
 						<div class="input-group">
 							<span class="input-group-addon">Password:</span>
 							<h:inputSecret label="Login" p:placeholder="******"
