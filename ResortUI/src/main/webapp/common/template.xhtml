@@ -13,11 +13,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>       
         <!-- Latest compiled and minified CSS -->
-        
+
         <h:outputStylesheet library="css" name="maxcdn.bootstrapcdn.com_bootstrap_3.3.1_css_bootstrap-theme.min.css"/>
         <h:outputStylesheet library="css" name="maxcdn.bootstrapcdn.com_bootstrap_3.3.1_css_bootstrap.min.css"/>
-        
-        <h:outputStylesheet library="css" name="styles.css"/>
+
+        <h:outputStylesheet library="css" name="styles.css"/> 
     </h:head>
 
     <h:body>
@@ -32,34 +32,32 @@
                     </button>
                     <img src="./resources/images/logo.png" alt="Party resort" height="35" width="34" style="float:left; margin:10px 15px 0px 15px;" /><a class="navbar-brand" href="index.xhtml">Party Resort</a>
                 </div>
-				<h:form>
-					<!-- A command-action must always be in a form, it also updates all the data in the form.-->
-					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="bungalowinfo.xhtml">Bekijk bungalows</a></li>
-							<li><a href="parkinfo.xhtml">Bekijk parken</a></li>
-                                                        
-                                                        
-							<ui:fragment rendered="${sessionDto.userDto.loggedIn}">
-								<li><a href="profile.xhtml">Profiel</a></li>
-                                                                <li><a href="bungalow.xhtml">Bungalows</a></li>
-                                                                <li><a href="park.xhtml">Parken</a></li>
-                                                                <li><a href="customer.xhtml">Klanten</a></li>
-                                                                <li><a href="reservation.xhtml">Reservaties</a></li>
-                                                                <li><a href="overview.xhtml">Overzicht</a></li>
-                                                                <li><a href="rest/init-db">db init</a></li>
-								<li>
-									<!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
-									<h:commandLink action="${login.logout()}">Uitloggen</h:commandLink>
-								</li>
-							</ui:fragment>
-							<ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-								<li><a href="login.xhtml">Inloggen</a></li>
-                                                                <li><a href="registration.xhtml">Registreren</a></li>
-							</ui:fragment>
-						</ul>
-					</div>
-				</h:form>
+                <h:form>
+                    <!-- A command-action must always be in a form, it also updates all the data in the form.-->
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="bungalowinfo.xhtml">Bekijk bungalows</a></li>
+                            <li><a href="parkinfo.xhtml">Bekijk parken</a></li>
+
+                            <ui:fragment rendered="${sessionDto.userDto.loggedIn}">
+                                <li><a href="profile.xhtml">Profiel</a></li>
+                                <li><a href="bungalow.xhtml">Bungalows</a></li>
+                                <li><a href="park.xhtml">Parken</a></li>
+                                <li><a href="customer.xhtml">Klanten</a></li>
+                                <li><a href="reservation.xhtml">Reservaties</a></li>
+                                <li><a href="overview.xhtml">Overzicht</a></li>
+                                <li><a href="rest/init-db">db init</a></li>
+                                <li>
+                                    <!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
+                                    <h:commandLink action="${login.logout()}">Uitloggen</h:commandLink>
+                                </li>
+                            </ui:fragment>
+                            <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                                <li><a href="login.xhtml">Inloggen</a></li>
+                            </ui:fragment>
+                        </ul>
+                    </div>
+                </h:form>
 
             </div>
         </nav>
@@ -72,19 +70,25 @@
         <div class="container">
             <ui:insert name="content"></ui:insert>
         </div>
-        <footer class="footerheight">
-            <ul id="footerbuttons">
-                <li>
-                    <h3>Nieuwe gebruiker?</h3>
-                    <p>Klik hieronder om je te registreren</p>
-                    <a class="btn btn-success" href="registration.xhtml">Registreer</a>
-                </li>
-                <li>
-                    <h3>Heb je al een account?</h3>
-                    <p>Klik hieronder om je in te loggen</p>
-                    <a class="btn btn-success" href="login.xhtml">Inloggen</a>
-                </li>
-            </ul>
+        <footer>
+
+            <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                <ul id="footerbuttons">
+                    <li>
+                        <h3>Nieuwe gebruiker?</h3>
+                        <p>Klik hieronder om je te registreren</p>
+                        <a class="btn btn-success" href="registration.xhtml">Registreer</a>
+                    </li>
+                    <li>
+                        <h3>Heb je al een account?</h3>
+                        <p>Klik hieronder om je in te loggen</p>
+                        <a class="btn btn-success" href="login.xhtml">Inloggen</a>
+                    </li>
+                </ul>
+            </ui:fragment>
+            <ui:fragment rendered="${sessionDto.userDto.loggedIn}">
+                <h3>Welkom ${login.sessionDto.userDto.username}</h3>
+            </ui:fragment>
             <br style="font-size:2px"/>
             <ul>
                 <li><p class="lightColorFooter">© Party Resort - 2015</p></li>
