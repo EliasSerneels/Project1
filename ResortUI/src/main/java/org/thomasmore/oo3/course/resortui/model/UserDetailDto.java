@@ -20,27 +20,28 @@ package org.thomasmore.oo3.course.resortui.model;
  *
  * @author lucs
  */
-public class UserDto {
+public class UserDetailDto {
 
-    private String lname;
-    private String fname;
+    private String id;
+    private String username;
+    private String password;
 
     private boolean loggedIn;
 
-    public String getLname() {
-        return lname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setUsername(String lname) {
+        this.username = lname;
     }
 
-    public String getFname() {
-        return fname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setPassword(String fname) {
+        this.password = fname;
     }
 
     public boolean isLoggedIn() {
@@ -49,6 +50,14 @@ public class UserDto {
 
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
+    }    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
     
 }

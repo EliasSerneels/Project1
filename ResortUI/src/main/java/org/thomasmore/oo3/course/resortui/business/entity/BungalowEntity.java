@@ -20,20 +20,16 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Stephan
- */
 @Entity
 @Table(name = "bungalow")
 @XmlRootElement
-public class BungalowEntity extends BasicEntity{
-    
-   private String type;
-   private int price;
-   private String name;
-   private String park;
-   private String maxpeople;
+public class BungalowEntity extends BasicEntity {
+
+    private String type;
+    private int price;
+    private String name;
+    private String park;
+    private String maxpeople;
 
     public String getPark() {
         return park;
@@ -50,7 +46,7 @@ public class BungalowEntity extends BasicEntity{
     public void setMaxpeople(String maxpeople) {
         this.maxpeople = maxpeople;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -74,6 +70,4 @@ public class BungalowEntity extends BasicEntity{
     public void setName(String name) {
         this.name = name;
     }
-   
-    
 }

@@ -55,8 +55,8 @@ public class LoginController {
             facesContext.addMessage(null, facesMessage);
             return null;
         }
-        sessionDto.getUserDto().setFname("Jhon");
-        sessionDto.getUserDto().setLname("Doe");
+        sessionDto.getUserDto().setPassword("Jhon");
+        sessionDto.getUserDto().setUsername("Doe");
         sessionDto.getUserDto().setLoggedIn(true);
         return "index.xhtml";
     }
