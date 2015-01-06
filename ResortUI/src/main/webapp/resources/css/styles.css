@@ -59,7 +59,7 @@ table {
   width:100%;
 }
 tr{
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.3);
 }
 
 tr:nth-child(2n){
@@ -107,10 +107,7 @@ th{
     font-weight:normal;
     background: rgba(0,0,0,0.6);
     color:rgba(255,255,255,0.9);
-    
-
 }
-
 .navbar-trans li>a:hover,.navbar-trans li>a:focus,.navbar-trans li.active {
  background-color:#38afef;
 }
