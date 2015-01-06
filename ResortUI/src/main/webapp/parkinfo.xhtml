@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+    <div id="customerbody">
+        <ui:composition template="./common/template.xhtml">
+
+            <ui:define name="title">Info over onze parken</ui:define>
+            <ui:define name="navbar">
+                <h1>Info over onze verschillende parken</h1>
+            </ui:define>
+            <ui:define name="content">
+                <section class="overview">
+		<div class="forcemiddle">
+		
+	
+		<ul>
+			<li>
+                            <h3>Type 1</h3>
+				<img src= "http://www.mrwallpaper.com/wallpapers/resort-bungalow-1600x900.jpg" alt="Type 1" />
+				
+                
+				<p>Ons park voor de rijkere mensen. Een verblijf in dit park is al mogelijk vanaf €68745 per persoon voor 1 nacht! Geniet van de ultieme luxe (zolang er geen orkaan langs komt)!
+				</p>
+				
+			</li>
+			
+			<li>
+                            <h3>Type 2</h3>
+				<img src="http://i.huffpost.com/gen/1441072/thumbs/o-GARBAGE-DUMP-facebook.jpg" alt="Type 2" />
+				
+                                <p>Ons tweede park is nog maar net open en biedt een ongeëvenaard groepsgevoel voor al onze klanten. Iedereen slaapt in een kartonnen doos, zonder extra beschutting, buiten bij weer en wind. Ideaal voor teambuilding!
+                                </p>
+
+			</li>
+			
+		
+		</ul>
+		
+		
+		<div class="clearfix">&nbsp;</div>
+		</div><!-- end forcemiddle -->
+	</section>	
+            </ui:define>
+            <h:dataTable value="#{userData.authors}" var="c"
+                         styleClass="authorTable"
+                         headerClass="authorTableHeader"
+                         rowClasses="authorTableOddRow,authorTableEvenRow">
+                <h:column>
+                    <p>
+                        Test
+                    </p>
+                        #{c.id}
+                </h:column>
+                <h:column>
+                        #{c.name}
+                </h:column>
+            </h:dataTable>
+
+        </ui:composition>
+    </div>
+    </body>
+</html>

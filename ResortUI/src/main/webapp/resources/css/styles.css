@@ -302,3 +302,26 @@ h2{
     background: linear-gradient(to bottom,  #ee720a 0%,#eba507 100%); 
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee720a', endColorstr='#eba507',GradientType=0 );
 }
+.forcemiddle{
+
+}
+ul{
+    list-style-type: none;
+}
+.overview li{
+   text-align: center;
+    float:left;
+   background-color: rgba(255,255,255,0.55);
+   margin-bottom:25px;
+   border-radius: 5px;
+}
+.overview li img{
+   width:800px;
+   height:400px;
+}
+.overview li p{
+    text-align:left;
+   margin-left:auto;
+   margin-right: auto;
+   width:72%;
+}
