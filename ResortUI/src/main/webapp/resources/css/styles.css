@@ -219,7 +219,8 @@ ul.form li{
 }
 
 br{
-    font-size:50px
+    font-size:50px;
+    clear:both;
 }
 
 h2{
