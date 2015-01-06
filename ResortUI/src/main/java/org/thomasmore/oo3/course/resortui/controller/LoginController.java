@@ -26,7 +26,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import org.thomasmore.oo3.course.resortui.business.entity.UserEntity;
 import org.thomasmore.oo3.course.resortui.dao.UserDao;
-import org.thomasmore.oo3.course.resortui.model.LoginDto;
 import org.thomasmore.oo3.course.resortui.model.SessionDto;
 
 /**
@@ -37,17 +36,15 @@ import org.thomasmore.oo3.course.resortui.model.SessionDto;
 @RequestScoped
 public class LoginController {
 
-    private LoginDto dto;
-
     @Inject
     private SessionDto sessionDto;
-    
+
     @EJB
     private UserDao userDao;
     private List<UserEntity> userentities;
+
     @PostConstruct
     public void init() {
-        dto = new LoginDto();
         userentities = userDao.listAll();
     }
 
@@ -55,35 +52,28 @@ public class LoginController {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index.xhtml?faces-redirect=true";
     }
-    
+
     public String login() {
         String dbUserName;
         String dbPassword;
-        
-        for (UserEntity user : userentities ) {
+
+        for (UserEntity user : userentities) {
             dbUserName = user.getUsername();
-            dbPassword = user.getPassword();   
-            
-            if (dto.getName().equals(dbUserName) && dto.getPassword().equals(user.getPassword())) {
+            dbPassword = user.getPassword();
+
+            if (sessionDto.getUserDto().getUsername().equals(dbUserName) && sessionDto.getUserDto().getPassword().equals(dbPassword)) {
                 sessionDto.getUserDto().setUsername(dbUserName);
                 sessionDto.getUserDto().setPassword(dbPassword);
                 sessionDto.getUserDto().setLoggedIn(true);
                 return "index.xhtml";
-            }else{
+            } else {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
-                FacesMessage facesMessage = new FacesMessage("U moet ingelogd zijn om deze pagina te kunnen bezoeken. ");
-                facesContext.addMessage(null, facesMessage);            
+                FacesMessage facesMessage = new FacesMessage("Foute gebruikersnaam en/of wachtwoord, gelieve opnieuw te proberen.");
+                facesContext.addMessage(null, facesMessage);
+                return null;
             }
         }
         return null;
-    }
-
-    public LoginDto getDto() {
-        return dto;
-    }
-
-    public void setDto(LoginDto dto) {
-        this.dto = dto;
     }
 
     public SessionDto getSessionDto() {
