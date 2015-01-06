@@ -13,6 +13,13 @@
             <ui:define name="navbar"><h1>Klanten</h1></ui:define>
             
             <ui:define name="content">
+                
+            <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                <script>
+                    window.location.href = "http:login.xhtml";
+                </script>
+            </ui:fragment>
+                
                  <h:form>
                     <h2>Klant toevoegen of aanpassen</h2>
                     <ul class="change-form">

@@ -17,6 +17,13 @@
     </ui:define>
 
     <ui:define name="content">
+        
+                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                <script>
+                    window.location.href = "http:login.xhtml";
+                </script>
+            </ui:fragment>
+        
         <div class="col-md-6">
             <div class="btn btn-success" style="display: block">Dit is een knop!</div>
             Wij houden van dieren!

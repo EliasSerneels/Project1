@@ -36,8 +36,8 @@
 					<!-- A command-action must always be in a form, it also updates all the data in the form.-->
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="">Bekijk bungalows</a></li>
-							<li><a href="">Bekijk parken</a></li>
+							<li><a href="bungalowinfo.xhtml">Bekijk bungalows</a></li>
+							<li><a href="parkinfo.xhtml">Bekijk parken</a></li>
                                                         
 							<ui:fragment rendered="${sessionDto.userDto.loggedIn}">
 								<li><a href="profile.xhtml">Profiel</a></li>
@@ -54,7 +54,6 @@
 							</ui:fragment>
 							<ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
 								<li><a href="login.xhtml">Inloggen</a></li>
-								<li><a href="registration.xhtml">Registreren</a></li>
 							</ui:fragment>
 						</ul>
 					</div>
@@ -81,7 +80,7 @@
                 <li>
                     <h3>Heb je al een account?</h3>
                     <p>Klik hieronder om je in te loggen</p>
-                    <a class="btn btn-success" href="login.xhtml">Login</a>
+                    <a class="btn btn-success" href="login.xhtml">Inloggen</a>
                 </li>
             </ul>
             <br style="font-size:2px"/>
