@@ -354,3 +354,33 @@ ul{
    margin-right: auto;
    width:75%;
 }
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    margin-bottom:-50px;
+}
+footer #footerbuttons li{
+    float:left;
+    width:50%;
+    background-color:rgba(255,255,255,0.1);
+}
+
+footer #footerbuttons li p{
+    margin-top:-5px;
+}
+
+footer #footerbuttons li h3{
+    margin-top:15px;
+}
+footer #footerbuttons li a{
+    margin-bottom: 15px;
+}
+
+footer #footernamen li{
+    float:left;
+    width:33%;
+    background-color:rgba(255,255,255,0.1);
+    margin-bottom:-15px;
+}
