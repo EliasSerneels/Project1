@@ -68,14 +68,14 @@ public class LoginController {
                 sessionDto.getUserDto().setUsername(dbUserName);
                 sessionDto.getUserDto().setPassword(dbPassword);
                 sessionDto.getUserDto().setLoggedIn(true);
+                return "index.xhtml";
             }else{
                 FacesContext facesContext = FacesContext.getCurrentInstance();
                 FacesMessage facesMessage = new FacesMessage("U moet ingelogd zijn om deze pagina te kunnen bezoeken. ");
-                facesContext.addMessage(null, facesMessage);
-                return null;
+                facesContext.addMessage(null, facesMessage);            
             }
         }
-        return "index.xhtml";
+        return null;
     }
 
     public LoginDto getDto() {
