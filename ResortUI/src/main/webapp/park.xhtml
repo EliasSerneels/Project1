@@ -38,13 +38,13 @@
                                                  value="${park.dto.detail.capacity}" class="form-control"
                                                  required="true">
                                     </h:inputText>                                 
-                                </li>
-                                <li>
-                                    <div class="input-group">  
-                                     <h:commandButton class="btn btn-primary btn-save-issue" action="${park.add()}" value="Save" ></h:commandButton>
-                                    </div>
-                                </li>                                
+                                </li>                                                              
                             </ul>
+                            <div class="col-md-12">
+                                <div class="input-group">  
+                                    <h:commandButton class="btn btn-primary" action="${park.add()}" value="Save" ></h:commandButton>
+                                </div> 
+                            </div>
                         </h:form> 
                         
                         <br/><br/>

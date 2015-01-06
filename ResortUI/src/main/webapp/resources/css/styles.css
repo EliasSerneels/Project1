@@ -44,21 +44,15 @@ html,body {
     -webkit-border-radius: 0 5px 5px 0;
     border-radius: 0 5px 5px 0;
 }
-.change-form li:nth-last-child(2){
+.change-form li:last-child{
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
-.change-form li:last-child{
-    background-color: rgba(255,255,255,0); // = doorzichtig
-}
-.btn-save-issue{
-    padding-right:27px;
-}
 .col-md-12{
     float:right;
     padding: 7px;
-    margin:5px 0 5px 0;
+    margin:20px -6px 5px 0;
     width:auto;
 }
 

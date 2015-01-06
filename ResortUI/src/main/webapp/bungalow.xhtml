@@ -53,13 +53,14 @@
                                                            itemValue="${bungalowName}" itemLabel="${bungalowName}"/>
                                         </h:selectOneMenu>                               
                             </li>
-                            <li>
-                                <div class="input-group">   
-                                    <h:commandButton class="btn btn-primary btn-save-issue" action="${bungalow.add()}" value="Save"></h:commandButton>
-                                </div>
-                            </li>
                         </ul>
+                        <div class="col-md-12">
+                            <div class="input-group">   
+                                    <h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save"></h:commandButton>
+                            </div>
+                        </div>
                     </h:form>
+                    
                     <br/><br/>
                     <h2>Bungalowoverzicht</h2>
                     <table class="overview">
