@@ -16,28 +16,34 @@
                         
                         <h2>Park aanmaken of aanpassen</h2>
                         <h:form>
-                            <ul class="formstyle">
+                            <ul class="change-form">
                                 <li>
                                     <h:inputHidden value="${park.dto.detail.id}"/>
-                                    <span class="input-group-addon">Naam</span>
-                                    <h:inputText label="Login" 
+                                    <div class="inputinfo">Naam</div>
+                                    <h:inputText label="Naam" 
                                                  value="${park.dto.detail.name}" class="form-control"
                                                  required="true">
                                     </h:inputText>
-                                    <span class="input-group-addon">Locatie</span>
-                                    <h:inputText label="Login" 
-                                                 value="${park.dto.detail.location}" class="form-control"
-                                                 required="true">
-                                    </h:inputText>
-                                    <h:commandButton class="btn btn-primary" action="${park.add()}" value="Save" ></h:commandButton>
                                 </li>
                                 <li>
-                                    <span class="input-group-addon">Capaciteit</span>
-                                    <h:inputText label="Login" 
+                                    <div class="inputinfo">Locatie</div>
+                                    <h:inputText label="Locatie" 
+                                                 value="${park.dto.detail.location}" class="form-control"
+                                                 required="true">
+                                    </h:inputText>      
+                                </li>
+                                <li>
+                                    <div class="inputinfo">Capaciteit</div>
+                                    <h:inputText label="Capaciteit" 
                                                  value="${park.dto.detail.capacity}" class="form-control"
                                                  required="true">
                                     </h:inputText>                                 
                                 </li>
+                                <li>
+                                    <div class="input-group">  
+                                     <h:commandButton class="btn btn-primary btn-save-issue" action="${park.add()}" value="Save" ></h:commandButton>
+                                    </div>
+                                </li>                                
                             </ul>
                         </h:form> 
                         

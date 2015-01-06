@@ -15,41 +15,47 @@
             <ui:define name="content">
                     <h2>Bungalows aanmaken of wijzigen</h2>
                     <h:form>
-                        <ul class="formstyle">
+                        <ul class="change-form">
                             <li>
                                 <h:inputHidden value="${bungalow.dto.detail.id}"/>
-                                <span class="input-group-addon">Naam</span>
-                                <h:inputText label="Login" 
+                                <div class="inputinfo">Naam</div>
+                                <h:inputText label="Naam" 
 
                                              value="${bungalow.dto.detail.name}" class="form-control"
                                              required="true">
                                 </h:inputText>
-                                <span class="input-group-addon">Type</span>
-                                <h:inputText label="Login" 
+                            </li>                                    
+                            <li>
+                                <div class="inputinfo">Type</div>
+                                <h:inputText label="Type" 
                                              value="${bungalow.dto.detail.type}" class="form-control"
                                              required="true">
                                 </h:inputText>
-                                <span class="input-group-addon">Prijs</span>
-                                <h:inputText label="Login" 
+                            </li>                                    
+                            <li>
+                                <div class="inputinfo">Prijs</div>
+                                <h:inputText label="prijs" 
                                              value="${bungalow.dto.detail.price}" class="form-control"
                                              required="true">
-                                </h:inputText>
-                                <h:commandButton class="btn btn-primary" action="${bungalow.add()}" value="Save" ></h:commandButton>
+                                </h:inputText>                              
                             </li>
                             <li>
-                                <span class="input-group-addon">Max. aantal personen</span>
-                                <h:inputText label="Login" 
+                                <div class="inputinfo">Max. # pers.</div>
+                                <h:inputText label="maxPersonen" 
                                              value="${bungalow.dto.detail.maxpeople}" class="form-control"
                                              required="true">
                                 </h:inputText>
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Bungalow</span>
+                            </li>                                    
+                            <li>                                
+                                <div class="inputinfo">Bungalow</div>
                                         <h:selectOneMenu label="Bungalow" value="${bungalow.dto.detail.park}" class="form-control">
                                             <f:selectItems value="${bungalow.dto.parkList}" var="bungalowName"
                                                            itemValue="${bungalowName}" itemLabel="${bungalowName}"/>
-                                        </h:selectOneMenu>
-                                    </div>
+                                        </h:selectOneMenu>                               
+                            </li>
+                            <li>
+                                <div class="input-group">   
+                                    <h:commandButton class="btn btn-primary btn-save-issue" action="${bungalow.add()}" value="Save"></h:commandButton>
                                 </div>
                             </li>
                         </ul>
