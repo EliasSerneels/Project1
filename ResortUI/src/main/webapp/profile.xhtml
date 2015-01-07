@@ -45,25 +45,25 @@
                                 <div class="inputinfo">Gebruikersnaam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="${login.sessionDto.userDto.username}"
-                                             required="true"/>
+                                             required="false"/>
                             </li>
                             <li>
                                 <div class="inputinfo">Volledige naam</div>
                                 <h:inputText label="Volledige naam" class="form-control"
                                              value="${login.sessionDto.userDto.fullName}"
-                                             required="true"/>
+                                             required="false"/>
                             </li>
                             <li>
                                 <div class="inputinfo">Email-adres</div>
                                 <h:inputText label="Email-adres" class="form-control"
                                              value="${login.sessionDto.userDto.email}"
-                                             required="true"/>
+                                             required="false"/>
                             </li>
                             <li>
                                 <div class="inputinfo">Telefoonnummer</div>
                                 <h:inputText label="Telefoonnummer" class="form-control"
                                              value="${login.sessionDto.userDto.phone}"
-                                             required="true"/>
+                                             required="false"/>
                                 <li>
                                     <h:commandButton class="btn btn-primary" action="${profile.edit()}" value="Wijzig"/>
                                 </li>

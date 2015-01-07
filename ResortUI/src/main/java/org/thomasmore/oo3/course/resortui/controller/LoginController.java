@@ -62,6 +62,7 @@ public class LoginController {
             dbPassword = user.getPassword();
             
             if (sessionDto.getUserDto().getUsername().equals(dbUserName) && sessionDto.getUserDto().getPassword().equals(dbPassword)) {
+                sessionDto.getUserDto().setId(user.getId());
                 sessionDto.getUserDto().setUsername(dbUserName);
                 sessionDto.getUserDto().setPassword(dbPassword);
                 sessionDto.getUserDto().setLoggedIn(true);
