@@ -10,6 +10,6 @@
     <property name="PortNumber" value="1527"/>
     <property name="DatabaseName" value="resortdb"/>
     <property name="User" value="root"/>
-    <property name="Password" value="bwd"/>
+    <property name="Password" value="pwd"/>
   </jdbc-connection-pool>
 </resources>
