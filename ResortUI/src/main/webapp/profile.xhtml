@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 
     <body>
@@ -40,31 +42,41 @@
                 </div>                
                 <div style="display:none;" id="inputForm" class="col-md-6-r">
                     <h:form>
-
+                        <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                         <ul class="profilechange-form">
                             <li>
                                 <div class="inputinfo">Gebruikersnaam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="${login.sessionDto.userDto.username}"
-                                             required="true"/>
+                                             required="true" validatorMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                </h:inputText>
                             </li>
                             <li>
                                 <div class="inputinfo">Volledige naam</div>
-                                <h:inputText label="Volledige naam" class="form-control"
+                                <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="${login.sessionDto.userDto.fullName}"
-                                             required="false"/>
+                                             required="true" validatorMessage="Vul uw gebruikersnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                </h:inputText>
                             </li>
                             <li>
                                 <div class="inputinfo">Email-adres</div>
                                 <h:inputText label="Email-adres" class="form-control"
                                              value="${login.sessionDto.userDto.email}"
-                                             required="false"/>
+                                             required="false" validatorMessage="U hebt geen geldig e-mailadres opgegeven" >
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/> 
+                                </h:inputText>
                             </li>
                             <li>
                                 <div class="inputinfo">Telefoonnummer</div>
                                 <h:inputText label="Telefoonnummer" class="form-control"
                                              value="${login.sessionDto.userDto.phone}"
-                                             required="false"/>
+                                             required="false" validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
+                                <f:validateRegex pattern="([0-9].{6,20})"/>
+                                </h:inputText>
                                 <li>
                                     <h:commandButton class="btn btn-primary" action="${profile.edit()}" value="Opslaan"/>
                                 </li>

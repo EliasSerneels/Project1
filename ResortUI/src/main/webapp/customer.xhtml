@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
     <body>
         <ui:composition template="./common/template.xhtml">
@@ -22,6 +23,7 @@
 
                 <h:form>
                     <h2>Klant toevoegen of aanpassen</h2>
+                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul class="change-form">
                         <li>
                             <h:inputHidden value="${customer.dto.detail.id}"/>
@@ -29,7 +31,11 @@
                             <h:inputText label="Voornaam" 
 
                                          value="${customer.dto.detail.firstname}" class="form-control"
-                                         required="true">
+                                         required="true"
+                                         validatorMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
                             </h:inputText>
                         </li>
                         <li>
@@ -37,7 +43,10 @@
                             <h:inputText label="Achternaam" 
 
                                          value="${customer.dto.detail.lastname}" class="form-control"
-                                         required="true">
+                                         required="true"
+                                         validatorMessage="Vul uw achternaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
                             </h:inputText>
                         </li>      
                         <li>

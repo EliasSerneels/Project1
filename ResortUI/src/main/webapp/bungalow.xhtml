@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
     <body>
 
@@ -23,13 +24,17 @@
 
                 <h2>Bungalows aanmaken of wijzigen</h2>
                 <h:form>
+                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul class="change-form">
                         <li>
                             <h:inputHidden value="${bungalow.dto.detail.id}"/>
                             <div class="inputinfo">Naam</div>
                             <h:inputText label="Naam"
                                          value="${bungalow.dto.detail.name}" class="form-control"
-                                         required="true">
+                                         required="true" validatorMessage="Vul een bungalownaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
                             </h:inputText>
                         </li>                                    
                         <li class="typelist">
@@ -45,8 +50,9 @@
                             <div class="inputinfo">Prijs</div>
                             <h:inputText label="Prijs" 
                                          value="${bungalow.dto.detail.price}" class="form-control"
-                                         required="true">
-                            </h:inputText>                              
+                                         required="true"
+                            />
+                                 
                         </li>
                         <li>
                             <div class="inputinfo">Max. # pers.</div>
