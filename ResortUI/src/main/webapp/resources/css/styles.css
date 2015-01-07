@@ -63,6 +63,36 @@ html,body {
     width:auto;
 }
 
+
+.profilechange-form div {    
+    width:40%;
+    float:left;
+    padding:6px 0 6px 0;
+    font-size:14px;
+    color: #666666;
+    text-align: center;
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    -moz-border-radius:  4px 0 0 4px;
+    -webkit-border-radius:  4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.profilechange-form li {
+    margin-bottom: 10px;
+}
+.profilechange-form .form-control {
+    width: 60%;
+}
+
+.profileTable td{
+    width: 70%;
+}
+
+.profileTable td:first-child{
+    width: 30%;
+}
+
 .inputinfo{
     width:20%;
     float:left;

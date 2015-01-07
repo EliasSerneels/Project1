@@ -6,6 +6,7 @@ package org.thomasmore.oo3.course.resortui.controller;
  */
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,11 +20,12 @@ public class ProfileController {
 
     private String pageRedirect = "profile.xhtml??faces-redirect=true";
     private UserEntity ue;
-    private UserDao dao;
     private List<UserEntity> users;
 
     @Inject
     private SessionDto sessionDto;
+    @EJB
+    private UserDao dao;
 
     @PostConstruct
     public void init() {
@@ -36,17 +38,11 @@ public class ProfileController {
     }
 
     public String edit() {
-        for (int i = 0; i <= 2; i++) {
-            if (i < 2) {
-                pageRedirect = "..";
-            } else {
-                pageRedirect = "profile.xhtml??faces-redirect=true";
-            }
-        }
         ue.setEmail(sessionDto.getUserDto().getEmail());
         ue.setFullName(sessionDto.getUserDto().getFullName());
         ue.setPhone(sessionDto.getUserDto().getPhone());
         ue.setUsername(sessionDto.getUserDto().getUsername());
+        dao.save(ue);
         return pageRedirect;
     }
 

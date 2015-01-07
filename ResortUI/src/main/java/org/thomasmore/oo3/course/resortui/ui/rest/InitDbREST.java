@@ -96,16 +96,19 @@ public class InitDbREST {
         objectsToSave.add(ce2);
         
         UserEntity ue1 = new UserEntity();
+        ue1.setId("sjreqzehqmzegh");
         ue1.setUsername("Pieter");
         ue1.setPassword("Pieter");
         objectsToSave.add(ue1);
         
         UserEntity ue2 = new UserEntity();
+        ue2.setId("sjreqzegqzeg");
         ue2.setUsername("Timothy");
         ue2.setPassword("Timothy");
         objectsToSave.add(ue2);
         
         UserEntity ue3 = new UserEntity();
+        ue3.setId("sjrqzehzqezrzhqmzegh");
         ue3.setUsername("Elias");
         ue3.setPassword("Elias");
         objectsToSave.add(ue3);
