@@ -46,7 +46,8 @@
                         <th>ID</th>
                         <th>Naam</th>
                         <th>Type</th>
-                        <th>Prijs</th>         
+                        <th>Prijs</th>   
+                        <th># Reservaties</th>
                     </tr>                                 
                     <ui:repeat value="${bungalow.dto.list}" var="listDetail2">                                         
                         <tr>
@@ -55,6 +56,7 @@
                                 <td>${listDetail2.name}</td>
                                 <td>${listDetail2.type}</td>
                                 <td>${listDetail2.price}</td>
+                                <td>${listDetail2.reservations}</td>
                             </h:form>
                         </tr>                                        
                     </ui:repeat>                                 
@@ -63,18 +65,20 @@
                 <div><h2>Klanten</h2></div>
                 <table class="overview">
                     <tr>
-                        <th>ID</th>
-                        <th>Naam</th>
-                        <th>Leeftijd</th>
-                        <th>Gereserveerde Bungalows</th>         
+                        <th>Achternaam</th>
+                        <th>Voornaam</th>
+                        <th>Geboortedatum</th>
+                        <th>Email</th>
+                        <th>Telefoonnr</th>                 
                     </tr>                                 
                     <ui:repeat value="${customer.dto.list}" var="listDetail3" >                                          
                         <tr>
                             <h:form>
-                                <td>${listDetail3.id}</td>
-                                <td>${listDetail3.capacity}</td>
-                                <td>Moet nog gevuld worden met juiste code</td>
-                                <td>Vorige eigenschappen waren niet in gebruik</td>
+                                <td>${listDetail3.lastname}</td>
+                                <td>${listDetail3.firstname}</td>
+                                <td>${listDetail3.birthdate}</td>
+                                <td>${listDetail3.email}</td>
+                                <td>${listDetail3.number}</td>
                             </h:form>
                         </tr>                                           
                     </ui:repeat>                                 
