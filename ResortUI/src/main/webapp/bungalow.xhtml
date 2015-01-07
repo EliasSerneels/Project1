@@ -34,21 +34,23 @@
                         </li>                                    
                         <li>
                             <div class="inputinfo">Type</div>
-                            <h:inputText label="Type" 
-                                         value="${bungalow.dto.detail.type}" class="form-control"
-                                         required="true">
-                            </h:inputText>
+                            <h:selectOneMenu label="Type" value="${bungalow.dto.detail.type}" class="form-control">
+                                <f:selectItem itemValue="Type 1" itemLabel="Type 1"/>
+                                <f:selectItem itemValue="Type 2" itemLabel="Type 2"/>
+                                <f:selectItem itemValue="Type 3" itemLabel="Type 3"/>
+                                <f:selectItem itemValue="Type 4" itemLabel="Type 4"/>
+                            </h:selectOneMenu> 
                         </li>                                    
                         <li>
                             <div class="inputinfo">Prijs</div>
-                            <h:inputText label="prijs" 
+                            <h:inputText label="Prijs" 
                                          value="${bungalow.dto.detail.price}" class="form-control"
                                          required="true">
                             </h:inputText>                              
                         </li>
                         <li>
                             <div class="inputinfo">Max. # pers.</div>
-                            <h:inputText label="maxPersonen" 
+                            <h:inputText label="Maxpersonen" 
                                          value="${bungalow.dto.detail.maxpeople}" class="form-control"
                                          required="true">
                             </h:inputText>

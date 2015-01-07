@@ -1,9 +1,5 @@
 package org.thomasmore.oo3.course.resortui.controller;
 
-/**
- *
- * @author Moegie
- */
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;

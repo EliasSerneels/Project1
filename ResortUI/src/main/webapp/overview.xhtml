@@ -2,83 +2,83 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
         <ui:composition template="./common/template.xhtml">
 
             <ui:define name="title">Overzicht Klanten, parken en reservaties</ui:define>
-            
+
             <ui:define name="navbar"><h1>Overzicht Klanten, parken en reservaties</h1></ui:define>
-            
+
             <ui:define name="content">
-            
-            <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                <script>
-                    window.location.href = "http:login.xhtml";
-                </script>
-            </ui:fragment>
-                
-                    <div><h2>Parken</h2></div>
-                             <table class="overview">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Naam</th>
-                                        <th>Locatie</th>
-                                        <th>Capaciteit</th>       
-                                    </tr>                                 
-					<ui:repeat value="${park.dto.list}" var="listDetail1">                                         
-                                                <tr>
-                                                    <h:form>
-                                                        <td class="idCol">${listDetail1.id}</td>
-                                                        <td>${listDetail1.name}</td>
-                                                        <td>${listDetail1.location}</td>
-                                                        <td>${listDetail1.capacity}</td>
-                                                    </h:form>
-                                                </tr>                                           
-					</ui:repeat>
-                            </table>
+
+                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                    <script>
+                        window.location.href = "http:login.xhtml";
+                    </script>
+                </ui:fragment>
+
+                <div><h2>Parken</h2></div>
+                <table class="overview">
+                    <tr>
+                        <th>ID</th>
+                        <th>Naam</th>
+                        <th>Locatie</th>
+                        <th>Capaciteit</th>       
+                    </tr>                                 
+                    <ui:repeat value="${park.dto.list}" var="listDetail1">                                         
+                        <tr>
+                            <h:form>
+                                <td class="idCol">${listDetail1.id}</td>
+                                <td>${listDetail1.name}</td>
+                                <td>${listDetail1.location}</td>
+                                <td>${listDetail1.capacity}</td>
+                            </h:form>
+                        </tr>                                           
+                    </ui:repeat>
+                </table>
                 <br class="overview-break" />
                 <div><h2>Bungalows</h2></div>
-                            <table class="overview">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Naam</th>
-                                        <th>Type</th>
-                                        <th>Prijs</th>         
-                                    </tr>                                 
-					<ui:repeat value="${bungalow.dto.list}" var="listDetail2">                                         
-                                                <tr>
-                                                    <h:form>
-                                                        <td class="idCol">${listDetail2.id}</td>
-                                                        <td>${listDetail2.name}</td>
-                                                        <td>${listDetail2.type}</td>
-                                                        <td>${listDetail2.price}</td>
-                                                    </h:form>
-                                                </tr>                                        
-					</ui:repeat>                                 
-                            </table>
+                <table class="overview">
+                    <tr>
+                        <th>ID</th>
+                        <th>Naam</th>
+                        <th>Type</th>
+                        <th>Prijs</th>         
+                    </tr>                                 
+                    <ui:repeat value="${bungalow.dto.list}" var="listDetail2">                                         
+                        <tr>
+                            <h:form>
+                                <td class="idCol">${listDetail2.id}</td>
+                                <td>${listDetail2.name}</td>
+                                <td>${listDetail2.type}</td>
+                                <td>${listDetail2.price}</td>
+                            </h:form>
+                        </tr>                                        
+                    </ui:repeat>                                 
+                </table>
                 <br/>
                 <div><h2>Klanten</h2></div>
-                            <table class="overview">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Naam</th>
-                                        <th>Leeftijd</th>
-                                        <th>Gereserveerde Bungalows</th>         
-                                    </tr>                                 
-					<ui:repeat value="${customer.dto.list}" var="listDetail3" >                                          
-                                                <tr>
-                                                    <h:form>
-                                                        <td>${listDetail3.id}</td>
-                                                        <td>${listDetail3.capacity}</td>
-                                                        <td>Moet nog gevuld worden met juiste code</td>
-                                                        <td>Vorige eigenschappen waren niet in gebruik</td>
-                                                    </h:form>
-                                                </tr>                                           
-					</ui:repeat>                                 
-                            </table>
+                <table class="overview">
+                    <tr>
+                        <th>ID</th>
+                        <th>Naam</th>
+                        <th>Leeftijd</th>
+                        <th>Gereserveerde Bungalows</th>         
+                    </tr>                                 
+                    <ui:repeat value="${customer.dto.list}" var="listDetail3" >                                          
+                        <tr>
+                            <h:form>
+                                <td>${listDetail3.id}</td>
+                                <td>${listDetail3.capacity}</td>
+                                <td>Moet nog gevuld worden met juiste code</td>
+                                <td>Vorige eigenschappen waren niet in gebruik</td>
+                            </h:form>
+                        </tr>                                           
+                    </ui:repeat>                                 
+                </table>
             </ui:define>
         </ui:composition>
     </body>

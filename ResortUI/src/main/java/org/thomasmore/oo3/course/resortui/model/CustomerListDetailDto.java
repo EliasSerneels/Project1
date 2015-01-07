@@ -16,7 +16,6 @@
  */
 package org.thomasmore.oo3.course.resortui.model;
 
-import java.util.Date;
 
 public class CustomerListDetailDto {
     

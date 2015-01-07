@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.thomasmore.oo3.course.resortui.controller;
 
 import java.util.List;
@@ -21,10 +16,7 @@ import org.thomasmore.oo3.course.resortui.model.ReservationDetailDto;
 import org.thomasmore.oo3.course.resortui.model.ReservationListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.ReservationPageDto;
 
-/**
- *
- * @author User
- */
+
 @Named(value = "reservation")
 @RequestScoped
 public class ReservationController {
