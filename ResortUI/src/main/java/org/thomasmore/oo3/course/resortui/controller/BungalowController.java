@@ -62,6 +62,7 @@ public class BungalowController {
             listDetail.setPrice(bungalow.getPrice());
             listDetail.setPark(bungalow.getPark());
             listDetail.setMaxpeople(bungalow.getMaxpeople());
+            listDetail.setReservations(bungalow.getReservations());
             dto.getList().add(listDetail);
         }
     }

@@ -28,6 +28,7 @@ public class BungalowListDetailDto {
     private int price;
     private String park;
     private String maxpeople;
+    private int reservations;
 
     public String getPark() {
         return park;
@@ -76,5 +77,12 @@ public class BungalowListDetailDto {
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    public int getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(int reservations) {
+        this.reservations = reservations;
+    }    
 }

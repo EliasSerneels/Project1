@@ -28,11 +28,13 @@ public class ReservationController {
     private BungalowDao bungalowsDao;
     @EJB
     private CustomerDao customersDao;
+    
+    private List<BungalowEntity> bungalows;
 
     @PostConstruct
     public void init() {
+        bungalows = bungalowsDao.listAll();
         List<ReservationEntity> reservations = reservationsDao.listAll();
-        List<BungalowEntity> bungalows = bungalowsDao.listAll();
         List<CustomerEntity> customers = customersDao.listAll();
 
         dto = new ReservationPageDto();
@@ -70,6 +72,14 @@ public class ReservationController {
         reservationEntity.setCustomerName(dto.getDetail().getCustomerName());
         reservationEntity.setBungalowName(dto.getDetail().getBungalowName());
         reservationsDao.save(reservationEntity);
+        BungalowEntity be = null;
+        for(BungalowEntity bungalow: bungalows) {
+            if(bungalow.getName().equals(dto.getDetail().getBungalowName())) {
+                be = bungalow;
+                be.addReservation();
+                bungalowsDao.save(be);
+            }
+        }
     }
 
     public void remove() {
