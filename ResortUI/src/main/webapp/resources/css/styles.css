@@ -77,9 +77,11 @@ html,body {
     -webkit-border-radius:  4px 0 0 4px;
     border-radius: 4px 0 0 4px;
 }
-
+.profilechange-form{
+    padding-top:76px;
+}
 .profilechange-form li {
-    margin-bottom: 10px;
+    margin-bottom: 17px;
 }
 .profilechange-form .form-control {
     width: 60%;
@@ -96,7 +98,7 @@ html,body {
 .inputinfo{
     width:20%;
     float:left;
-    padding:6px 0 6px 0;
+    padding:7px 0 6px 0;
     font-size:14px;
     color: #666666;
     text-align: center;
@@ -463,4 +465,10 @@ footer p{
 .loginMelding{
     float:right;
     width:50%;
+}
+.typelist{
+    padding-bottom:-1px;
+}
+#javax_faces_developmentstage_messages li{
+    color:blue;
 }

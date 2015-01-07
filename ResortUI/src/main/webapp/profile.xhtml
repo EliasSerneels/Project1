@@ -27,14 +27,14 @@
                 <div class="col-md-6-l">
                     <h:form>
                         <h3>Mijn gegevens</h3> 
-                        <a class="btn btn-primary" onclick="document.getElementById('inputForm').style.display = 'block';">edit</a>
-                        <!--<button onclick="document.getElementById('inputForm').style.display = 'block';"/>-->
                         <table class="profileTable">
                             <tr><td>Gebruikersnaam</td><td>${login.sessionDto.userDto.username}</td></tr>
                             <tr><td>Volledige naam</td><td>${login.sessionDto.userDto.fullName}</td></tr>
                             <tr><td>Email-adres</td><td>${login.sessionDto.userDto.email}</td></tr>
                             <tr><td>Telefoonnummer</td><td>${login.sessionDto.userDto.phone}</td> </tr>                           
                         </table>
+                        <a class="btn btn-primary" id="knop" onclick="document.getElementById('inputForm').style.display = 'block';
+                            document.getElementById('knop').setAttribute('disabled', 'disabled');">Wijzig</a>
                     </h:form>
                 </div>                
                 <div style="display:none;" id="inputForm" class="col-md-6-r">
@@ -65,7 +65,7 @@
                                              value="${login.sessionDto.userDto.phone}"
                                              required="false"/>
                                 <li>
-                                    <h:commandButton class="btn btn-primary" action="${profile.edit()}" value="Wijzig"/>
+                                    <h:commandButton class="btn btn-primary" action="${profile.edit()}" value="Opslaan"/>
                                 </li>
                             </li>
                         </ul>
