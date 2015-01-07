@@ -13,7 +13,6 @@ public class UserEntity extends BasicEntity {
     private String username;
     private String password;
     private String fullName;
-    private String gender;
     private String email;
     private String phone;
     
@@ -39,14 +38,6 @@ public class UserEntity extends BasicEntity {
 
     public void setFullName(String fname) {
         this.fullName = fname;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getEmail() {

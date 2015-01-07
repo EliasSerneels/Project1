@@ -63,10 +63,13 @@ public class LoginController {
             
             if (sessionDto.getUserDto().getUsername().equals(dbUserName) && sessionDto.getUserDto().getPassword().equals(dbPassword)) {
                 sessionDto.getUserDto().setId(user.getId());
+                sessionDto.getUserDto().setFullName(user.getFullName());
+                sessionDto.getUserDto().setEmail(user.getEmail());
+                sessionDto.getUserDto().setPhone(user.getPhone());
                 sessionDto.getUserDto().setUsername(dbUserName);
                 sessionDto.getUserDto().setPassword(dbPassword);
                 sessionDto.getUserDto().setLoggedIn(true);
-                return "index.xhtml";
+                return "profile.xhtml";
             }      
         }
         FacesContext facesContext = FacesContext.getCurrentInstance();

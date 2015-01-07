@@ -14,6 +14,7 @@
 
             <ui:define name="navbar">
                 <h1>Welkom op je profiel, ${login.sessionDto.userDto.username}</h1>
+                <h4>Je kan je gegevens hier nu verder aanvullen, of dit later doen door op Profiel te klikken in de menubar.</h4>
             </ui:define>
 
             <ui:define name="content">
@@ -45,7 +46,7 @@
                                 <div class="inputinfo">Gebruikersnaam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="${login.sessionDto.userDto.username}"
-                                             required="false"/>
+                                             required="true"/>
                             </li>
                             <li>
                                 <div class="inputinfo">Volledige naam</div>

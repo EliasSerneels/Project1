@@ -31,7 +31,7 @@ public class RegistrationController {
         ue.setUsername(dto.getDetail().getUsername());
         ue.setPassword(dto.getDetail().getPassword());
         registrationDao.save(ue);
-        return pageRedirect;
+        return "login.xhtml";
     }
 
     public RegistrationPageDto getDto() {
