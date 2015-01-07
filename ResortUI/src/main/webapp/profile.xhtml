@@ -48,35 +48,29 @@
                                 <div class="inputinfo">Gebruikersnaam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="${login.sessionDto.userDto.username}"
-                                             required="true" validatorMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                             required="true" 
                                          >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                                 </h:inputText>
                             </li>
                             <li>
                                 <div class="inputinfo">Volledige naam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="${login.sessionDto.userDto.fullName}"
-                                             required="true" validatorMessage="Vul uw gebruikersnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                             required="true" 
                                          >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                                 </h:inputText>
                             </li>
                             <li>
                                 <div class="inputinfo">Email-adres</div>
                                 <h:inputText label="Email-adres" class="form-control"
                                              value="${login.sessionDto.userDto.email}"
-                                             required="false" validatorMessage="U hebt geen geldig e-mailadres opgegeven" >
-                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/> 
-                                </h:inputText>
+                                             required="false" /> 
                             </li>
                             <li>
                                 <div class="inputinfo">Telefoonnummer</div>
                                 <h:inputText label="Telefoonnummer" class="form-control"
                                              value="${login.sessionDto.userDto.phone}"
-                                             required="false" validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
-                                <f:validateRegex pattern="([0-9].{6,20})"/>
-                                </h:inputText>
+                                             required="false" />
                                 <li>
                                     <h:commandButton class="btn btn-primary" action="${profile.edit()}" value="Opslaan"/>
                                 </li>

@@ -82,16 +82,10 @@ public class ReservationController {
         }
     }
 
-    public void remove() {
-        String id = dto.getDetail().getId();
-        ReservationListDetailDto removeFromListobject = new ReservationDetailDto();
-        for (ReservationListDetailDto reservationListDetailDto : dto.getList()) {
-            if (reservationListDetailDto.getId().equals(id)) {
-                removeFromListobject = reservationListDetailDto;
-            }
-        }
-        dto.getList().remove(removeFromListobject);
+    public String remove(String id) {
         reservationsDao.deleteById(id);
+        
+        return "reservation.xhtml?faces-redirect=true";
     }
 
     public ReservationPageDto getDto() {

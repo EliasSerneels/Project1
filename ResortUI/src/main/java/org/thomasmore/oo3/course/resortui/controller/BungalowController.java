@@ -38,7 +38,7 @@ import org.thomasmore.oo3.course.resortui.model.BungalowListDetailDto;
 public class BungalowController {
 
     private BungalowPageDto dto;
-    private String pageRedirect="bungalow.xhtml??faces-redirect=true";
+    private String pageRedirect="bungalow.xhtml?faces-redirect=true";
 
     @EJB
     private BungalowDao bungalowDao;
