@@ -38,16 +38,19 @@
                     <!-- A command-action must always be in a form, it also updates all the data in the form.-->
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="bungalowinfo.xhtml">Bekijk bungalows</a></li>
-                            <li><a href="parkinfo.xhtml">Bekijk parken</a></li>
-                            <li><a href="rest/init-db">db init</a></li>
-                            <ui:fragment rendered="${sessionDto.userDto.loggedIn}">
-                                <li><a href="profile.xhtml">Profiel</a></li>
-                                <li><a href="bungalow.xhtml">Bungalows</a></li>
+                            <li><a href="bungalow.xhtml">Bungalows</a></li>
                                 <li><a href="park.xhtml">Parken</a></li>
                                 <li><a href="customer.xhtml">Klanten</a></li>
                                 <li><a href="reservation.xhtml">Reservaties</a></li>
-                                <li><a href="overview.xhtml">Overzicht</a></li>                             
+                                <li><a href="overview.xhtml">Overzicht</a></li>  
+                            <!--
+                            <li><a href="bungalowinfo.xhtml">Bekijk bungalows</a></li>
+                            <li><a href="parkinfo.xhtml">Bekijk parken</a></li>
+                            -->
+                            <li><a href="rest/init-db">db init</a></li>
+                            <ui:fragment rendered="${sessionDto.userDto.loggedIn}">
+                                <li><a href="profile.xhtml">Profiel</a></li>
+                                                           
                                 <li>
                                     <!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
                                     <h:commandLink action="${login.logout()}">Uitloggen</h:commandLink>
@@ -95,9 +98,8 @@
                 <li><p class="lightColorFooter">© Party Resort - 2015</p></li>
             </ul>         
             <ul id="footernamen">
-                <li>Timothy De Groot</li>
-                <li>Pieter Drijkoningen</li>
-                <li>Elias Serneels</li>
+                <li>Persoon 1</li>
+                <li>Persoon 2</li>
             </ul>
             <br style="font-size:0px"/>
         </footer>
