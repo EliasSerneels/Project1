@@ -86,14 +86,22 @@ public class InitDbREST {
         ce1.setFirstname("Jos");
         ce1.setLastname("Janssens");
         ce1.setBirthdate("01/01/1980");
-        ce1.setReceiveupdate(false);
+        ce1.setCountry("Belgium");
+        ce1.setCity("Vilmort");
+        ce1.setStreet("Leuvensestraat");
+        ce1.setHousenumber(1);
+        ce1.setPhonenumber("0499203051");
         objectsToSave.add(ce1);
                
         CustomerEntity ce2 = new CustomerEntity();
         ce2.setFirstname("Piet");
         ce2.setLastname("Uyttebroeck");
         ce2.setBirthdate("01/01/1970");
-        ce2.setReceiveupdate(false);
+        ce2.setCountry("Belgium");
+        ce2.setCity("Malinwa");
+        ce2.setStreet("Kerkstraat");
+        ce2.setHousenumber(5);
+        ce2.setPhonenumber("0488992211");
         objectsToSave.add(ce2);
         
         UserEntity ue1 = new UserEntity();

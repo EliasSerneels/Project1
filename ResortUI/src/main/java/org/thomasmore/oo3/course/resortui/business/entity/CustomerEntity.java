@@ -29,17 +29,11 @@ public class CustomerEntity extends BasicEntity{
     private String firstname;
     private String lastname;
     private String birthdate;
-    private String email;
-    private String number;
-    private boolean receiveupdate;
-
-    public boolean isReceiveupdate() {
-        return receiveupdate;
-    }
-
-    public void setReceiveupdate(boolean receiveupdate) {
-        this.receiveupdate = receiveupdate;
-    }
+    private String country;
+    private String city;
+    private String street;
+    private int housenumber;
+    private String phonenumber;
 
     public String getFirstname() {
         return firstname;
@@ -65,32 +59,45 @@ public class CustomerEntity extends BasicEntity{
         this.birthdate = birthdate;
     }
 
-
-    public String getEmail() {
-        return email;
+    public String getCountry() {
+        return country;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public String getNumber() {
-        return number;
+    public String getCity() {
+        return city;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-    private int capacity;
-
-    
-
-    public int getCapacity() {
-        return capacity;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public String getStreet() {
+        return street;
     }
 
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public int getHousenumber() {
+        return housenumber;
+    }
+
+    public void setHousenumber(int housenumber) {
+        this.housenumber = housenumber;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+   
 }
