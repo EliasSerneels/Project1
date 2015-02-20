@@ -97,9 +97,14 @@
                                 <td>${listDetail.price}</td>
                                 <td>${listDetail.park}</td>
                                 <td>${listDetail.maxpeople}</td>
+<!--                                <td>
+                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?edit=${listDetail.id}" value="Wijzig"></h:commandButton>
+                                    
+                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?delete=${listDetail.id}" value="Verwijder"></h:commandButton>
+                                </td>-->
                                 <td>
-                                    <h:commandButton class="btn btn-primary" action="${bungalow.edit(listDetail.id)}" value="Wijzig"></h:commandButton>
-                                    <h:commandButton class="btn btn-primary" action="${bungalow.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
+                                 <a href="bungalow.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                 <a href="bungalow.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
                                 </td>
                             </h:form>
                         </tr>                          

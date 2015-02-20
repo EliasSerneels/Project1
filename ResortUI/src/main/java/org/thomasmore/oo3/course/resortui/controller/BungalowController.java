@@ -16,18 +16,17 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
-import java.util.List;
 import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
-import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
-import org.thomasmore.oo3.course.resortui.dao.BungalowDao;
 import org.thomasmore.oo3.course.resortui.dao.ParkDao;
-import org.thomasmore.oo3.course.resortui.model.BungalowListDetailDto;
+import org.thomasmore.oo3.course.resortui.facade.BungalowFacade;
 
 /**
  *
@@ -41,73 +40,26 @@ public class BungalowController {
     private String pageRedirect="bungalow.xhtml?faces-redirect=true";
 
     @EJB
-    private BungalowDao bungalowDao;
-    @EJB
-    private ParkDao parkDao;
+    private BungalowFacade bungalowFacade;
+
     @PostConstruct
     public void init() {
 
-        List<BungalowEntity> bungalows = bungalowDao.listAll();
-        List<ParkEntity> parks = parkDao.listAll();
         dto = new BungalowPageDto();
-        dto.getParkList().add("");
-        for (ParkEntity park : parks) {
-            dto.getParkList().add(park.getName());
-        }
-        for (BungalowEntity bungalow : bungalows) {
-            BungalowListDetailDto listDetail = new BungalowListDetailDto();
-            listDetail.setId(bungalow.getId());
-            listDetail.setName(bungalow.getName());
-            listDetail.setType(bungalow.getType());
-            listDetail.setPrice(bungalow.getPrice());
-            listDetail.setPark(bungalow.getPark());
-            listDetail.setMaxpeople(bungalow.getMaxpeople());
-            listDetail.setReservations(bungalow.getReservations());
-            dto.getList().add(listDetail);
-        }
+        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String editId = req.getParameter("edit");
+        String deleteId = req.getParameter("delete");
+        dto = bungalowFacade.loadBungalowOverviewPage(editId, deleteId);
+        
     }
 
     public String add() {
-        BungalowEntity bungalowEntity = null;
-        // Als de id niet geset is, dan kennen we hem 1 toe
-        if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
-            dto.getDetail().setId(UUID.randomUUID().toString());
-        } else {
-            bungalowEntity = bungalowDao.findById(dto.getDetail().getId());
-        }
-
-        if (bungalowEntity == null) {
-            bungalowEntity = new BungalowEntity();            
-        }       
-        bungalowEntity.setId(dto.getDetail().getId());
-        bungalowEntity.setName(dto.getDetail().getName());
-        bungalowEntity.setPrice(dto.getDetail().getPrice());
-        bungalowEntity.setType(dto.getDetail().getType());
-        bungalowEntity.setPark(dto.getDetail().getPark());
-        bungalowEntity.setMaxpeople(dto.getDetail().getMaxpeople());
-        bungalowDao.save(bungalowEntity);
+        
+        dto = bungalowFacade.add();
         
         return pageRedirect;
     }
     
-     public void edit(String id) {
-       BungalowEntity pe = bungalowDao.findById(id);
-           
-        dto.getDetail().setId(pe.getId());
-        dto.getDetail().setName(pe.getName());
-        dto.getDetail().setPrice(pe.getPrice());
-        dto.getDetail().setType(pe.getType());
-        dto.getDetail().setPark(pe.getPark());
-        dto.getDetail().setMaxpeople(pe.getMaxpeople());
-    }
-    
-    public String remove(String id) {
-        bungalowDao.deleteById(id);
-        
-        return pageRedirect;
-    }
-   
-
     public BungalowPageDto getDto() {
         return dto;
     }
