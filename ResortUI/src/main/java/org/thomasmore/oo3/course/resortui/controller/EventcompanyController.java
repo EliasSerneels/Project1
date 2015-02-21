@@ -11,8 +11,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.thomasmore.oo3.course.resortui.facade.EventtypeFacade;
-import org.thomasmore.oo3.course.resortui.model.EventtypePageDto;
+import org.thomasmore.oo3.course.resortui.facade.EventcompanyFacade;
+import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
 
 /**
  *
@@ -20,39 +20,37 @@ import org.thomasmore.oo3.course.resortui.model.EventtypePageDto;
  */
 @Named(value = "eventtype")
 @RequestScoped
-public class EventtypeController {
-
-    private EventtypePageDto dto;
-    private String pageRedirect="eventtype.xhtml?faces-redirect=true";
+public class EventcompanyController {
+    
+    private EventcompanyPageDto dto;
+    private String pageRedirect="eventcompany.xhtml?faces-redirect=true";
 
     @EJB
-    private EventtypeFacade eventtypeFacade;
+    private EventcompanyFacade eventcompanyFacade;
 
     @PostConstruct
     public void init() {
 
-        dto = new EventtypePageDto();
+        dto = new EventcompanyPageDto();
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
-        dto = eventtypeFacade.loadEventtypeOverviewPage(editId, deleteId);
+        dto = eventcompanyFacade.loadEventcompanyOverviewPage(editId, deleteId);
         
     }
-
+    
     public String add() {
         
-        dto = eventtypeFacade.add();
+        dto = eventcompanyFacade.add();
         
         return pageRedirect;
     }
     
-    public EventtypePageDto getDto() {
+    public EventcompanyPageDto getDto() {
         return dto;
     }
 
-    public void setDto(EventtypePageDto dto) {
+    public void setDto(EventcompanyPageDto dto) {
         this.dto = dto;
     }
-
 }
-
