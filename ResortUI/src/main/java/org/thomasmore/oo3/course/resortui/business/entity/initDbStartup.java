@@ -71,14 +71,12 @@ public class initDbStartup {
         ce1.setFirstname("Jos");
         ce1.setLastname("Janssens");
         ce1.setBirthdate("01/01/1980");
-        ce1.setReceiveupdate(false);
         objectsToSave.add(ce1);
                
         CustomerEntity ce2 = new CustomerEntity();
         ce2.setFirstname("Piet");
         ce2.setLastname("Uyttebroeck");
         ce2.setBirthdate("01/01/1970");
-        ce2.setReceiveupdate(false);
         objectsToSave.add(ce2);
         
         UserEntity ue1 = new UserEntity();

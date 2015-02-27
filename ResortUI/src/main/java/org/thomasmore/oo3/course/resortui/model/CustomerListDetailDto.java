@@ -28,6 +28,24 @@ public class CustomerListDetailDto {
     private String street;
     private int housenumber;
     private String phonenumber;
+    private String email;
+    private boolean receiveupdate;
+
+    public boolean isReceiveupdate() {
+        return receiveupdate;
+    }
+
+    public void setReceiveupdate(boolean receiveupdate) {
+        this.receiveupdate = receiveupdate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getId() {
         return id;
