@@ -29,7 +29,7 @@ public class EventtypedetailController {
     private String pageRedirect="eventtypedetail.xhtml?faces-redirect=true";
 
     @EJB
-    private EventtypedetailFacade bungalowFacade;
+    private EventtypedetailFacade eventtypedetailFacade;
 
     @PostConstruct
     public void init() {

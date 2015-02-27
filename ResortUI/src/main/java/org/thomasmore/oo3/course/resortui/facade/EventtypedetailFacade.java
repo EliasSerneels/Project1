@@ -5,13 +5,17 @@
  */
 package org.thomasmore.oo3.course.resortui.facade;
 
+import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventtypedetailEntity;
 import org.thomasmore.oo3.course.resortui.dao.EventcompanyDao;
 import org.thomasmore.oo3.course.resortui.dao.EventtypeDao;
 import org.thomasmore.oo3.course.resortui.dao.EventtypedetailDao;
+import org.thomasmore.oo3.course.resortui.model.EventtypedetailListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.EventtypedetailPageDto;
 
 /**
@@ -36,31 +40,39 @@ public class EventtypedetailFacade {
             EventtypedetailEntity eventtypedetailEntity = eventtypedetailDao.findById(editId);
             if (eventtypedetailEntity != null) {
                 dto.getDetail().setId(eventtypedetailEntity.getId());
-                dto.getDetail().setName(bungalowEntity.getName());
-                dto.getDetail().setPrice(bungalowEntity.getPrice());
+                dto.getDetail().setEventtypename(eventtypedetailEntity.getEventtypename());
+                dto.getDetail().setEventcompany(eventtypedetailEntity.getEventcompany());
                 
             }
         }
 
         if (deleteId != null) {
-            bungalowDao.deleteById(deleteId);
+            eventtypedetailDao.deleteById(deleteId);
         }
-        List<BungalowEntity> bungalows = bungalowDao.listAll();
-        List<ParkEntity> parks = parkDao.listAll();
-        dto = new BungalowPageDto();
-        dto.getParkList().add("");
-        for (ParkEntity park : parks) {
-            dto.getParkList().add(park.getName());
+        List<EventtypedetailEntity> eventtypedetails = eventtypedetailDao.listAll();
+        
+        List<EventtypeEntity> eventtypes = eventtypeDao.listAll();
+        List<EventcompanyEntity> eventcompanys = eventcompanyDao.listAll();
+        
+        dto = new EventtypedetailPageDto();
+        
+        dto.getEventtypeList().add("");
+        for (EventtypeEntity eventtype : eventtypes) {
+            dto.getEventtypeList().add(eventtype.getEventname());
         }
-        for (BungalowEntity bungalow : bungalows) {
-            BungalowListDetailDto listDetail = new BungalowListDetailDto();
-            listDetail.setId(bungalow.getId());
-            listDetail.setName(bungalow.getName());
-            listDetail.setType(bungalow.getType());
-            listDetail.setPrice(bungalow.getPrice());
-            listDetail.setPark(bungalow.getPark());
-            listDetail.setMaxpeople(bungalow.getMaxpeople());
-            listDetail.setReservations(bungalow.getReservations());
+        
+        dto.getEventcompanyList().add("");
+        for (EventcompanyEntity eventcompany : eventcompanys) {
+            dto.getEventcompanyList().add(eventcompany.getName());
+        }
+        
+        
+        for (EventtypedetailEntity eventtypedetail : eventtypedetails) {
+            EventtypedetailListDetailDto listDetail = new EventtypedetailListDetailDto();
+            listDetail.setId(eventtypedetail.getId());
+            listDetail.setEventtypename(eventtypedetail.getEventtypename());
+            listDetail.setEventcompany(eventtypedetail.getEventcompany());
+            
             dto.getList().add(listDetail);
         }
         return dto;
@@ -79,12 +91,11 @@ EventtypedetailEntity eventtypedetailEntity = null;
         if (eventtypedetailEntity == null) {
             eventtypedetailEntity = new EventtypedetailEntity();            
         }       
-        bungalowEntity.setId(dto.getDetail().getId());
-        bungalowEntity.setName(dto.getDetail().getName());
-        bungalowEntity.setPrice(dto.getDetail().getPrice());
-        bungalowEntity.setType(dto.getDetail().getType());
-        bungalowEntity.setPark(dto.getDetail().getPark());
-        bungalowEntity.setMaxpeople(dto.getDetail().getMaxpeople());
-        bungalowDao.save(bungalowEntity);
+        eventtypedetailEntity.setId(dto.getDetail().getId());
+        eventtypedetailEntity.setEventtypename(dto.getDetail().getEventtypename());
+        eventtypedetailEntity.setEventcompany(dto.getDetail().getEventcompany());
+        
+        eventtypedetailDao.save(eventtypedetailEntity);
         return dto;
+}
 }
