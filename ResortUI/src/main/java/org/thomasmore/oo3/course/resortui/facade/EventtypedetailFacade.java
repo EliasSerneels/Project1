@@ -25,7 +25,6 @@ import org.thomasmore.oo3.course.resortui.model.EventtypedetailPageDto;
 @Stateless
 public class EventtypedetailFacade {
 
-  private EventtypedetailPageDto dto;
 
     @EJB
     private EventtypedetailDao eventtypedetailDao;
@@ -35,7 +34,7 @@ public class EventtypedetailFacade {
     private EventcompanyDao eventcompanyDao;
 
     public EventtypedetailPageDto loadEventtypedetailOverviewPage(String editId, String deleteId) {
-
+EventtypedetailPageDto dto = new EventtypedetailPageDto();
         if (editId != null) {
             EventtypedetailEntity eventtypedetailEntity = eventtypedetailDao.findById(editId);
             if (eventtypedetailEntity != null) {
@@ -54,7 +53,7 @@ public class EventtypedetailFacade {
         List<EventtypeEntity> eventtypes = eventtypeDao.listAll();
         List<EventcompanyEntity> eventcompanys = eventcompanyDao.listAll();
         
-        dto = new EventtypedetailPageDto();
+        
         
         dto.getEventtypeList().add("");
         for (EventtypeEntity eventtype : eventtypes) {
@@ -78,7 +77,7 @@ public class EventtypedetailFacade {
         return dto;
     }
 
-    public EventtypedetailPageDto add() {
+    public EventtypedetailPageDto add(EventtypedetailPageDto dto) {
         
 EventtypedetailEntity eventtypedetailEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe

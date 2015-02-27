@@ -112,8 +112,8 @@
                             <td>${listDetail.receiveupdate}</td>
                             <h:form>
                                 <td>
-                                    <h:commandButton class="btn btn-primary" action="${customer.edit(listDetail.id)}" value="Wijzig"></h:commandButton>
-                                    <h:commandButton class="btn btn-primary" action="${customer.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
+                                 <a href="customer.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                 <a href="customer.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
                                 </td>
                             </h:form>
                         </tr>

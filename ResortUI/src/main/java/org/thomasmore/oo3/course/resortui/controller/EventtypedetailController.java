@@ -44,7 +44,7 @@ public class EventtypedetailController {
 
     public String add() {
         
-        dto = eventtypedetailFacade.add();
+        eventtypedetailFacade.add(dto);
         
         return pageRedirect;
     }

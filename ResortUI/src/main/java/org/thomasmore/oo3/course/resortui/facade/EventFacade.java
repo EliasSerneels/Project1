@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import org.primefaces.push.impl.EventBusImpl;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
@@ -25,7 +26,7 @@ import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 @Stateless
 public class EventFacade {
 
- private EventPageDto dto;
+
 
     @EJB
     private EventDao eventDao;
@@ -36,7 +37,7 @@ public class EventFacade {
     
     
     public EventPageDto loadEventOverviewPage(String editId, String deleteId) {
-
+        EventPageDto dto = new EventPageDto();
         if (editId != null) {
             EventEntity eventEntity = eventDao.findById(editId);
             if (eventEntity != null) {
@@ -53,7 +54,7 @@ public class EventFacade {
         List<EventEntity> events = eventDao.listAll();
         List<EventcompanyEntity> eventcompanys = eventcompanyDao.listAll();
         List<EventtypeEntity> eventtypes = eventtypeDao.listAll();
-        dto = new EventPageDto();
+        
         
         dto.getEventcompanyList().add("");
         for (EventcompanyEntity eventcompany : eventcompanys) {
@@ -75,7 +76,7 @@ public class EventFacade {
         return dto;
     }
     
-    public EventPageDto add() {
+    public EventPageDto add(EventPageDto dto) {
         
 EventEntity eventEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe

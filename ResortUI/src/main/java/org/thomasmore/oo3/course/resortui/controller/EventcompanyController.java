@@ -41,7 +41,7 @@ public class EventcompanyController {
     
     public String add() {
         
-        dto = eventcompanyFacade.add();
+        eventcompanyFacade.add(dto);
         
         return pageRedirect;
     }

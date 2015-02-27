@@ -40,7 +40,7 @@ public class Eventcontroller {
     
     public String add() {
         
-        dto = eventFacade.add();
+        eventFacade.add(dto);
         
         return pageRedirect;
     }

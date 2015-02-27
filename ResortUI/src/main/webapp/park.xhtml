@@ -77,11 +77,9 @@
                             <td>${listDetail.location}</td>
                             <td>${listDetail.capacity}</td>                                   
                             <td>
-                                <h:form>
-                                    <h:commandButton class="btn btn-primary" action="${park.edit(listDetailedit.id)}" value="Wijzig"></h:commandButton>
-                                    <h:commandButton class="btn btn-primary" action="${park.remove(listDetail.id)}" value="Verwijder"></h:commandButton>
-                                </h:form>
-                            </td>                                  
+                                 <a href="park.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                 <a href="park.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                            </td>                                 
                         </tr>
                     </ui:repeat>
                 </table>

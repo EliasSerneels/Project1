@@ -21,14 +21,13 @@ import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
 @Stateless
 public class EventcompanyFacade {
 
-   private EventcompanyPageDto dto;
 
     @EJB
     private EventcompanyDao eventcompanyDao;
     
 
     public EventcompanyPageDto loadEventcompanyOverviewPage(String editId, String deleteId) {
-
+    EventcompanyPageDto dto = new EventcompanyPageDto();
         if (editId != null) {
             EventcompanyEntity eventcompanyEntity = eventcompanyDao.findById(editId);
             if (eventcompanyEntity != null) {
@@ -46,7 +45,7 @@ public class EventcompanyFacade {
             eventcompanyDao.deleteById(deleteId);
         }
         List<EventcompanyEntity> eventcompanies = eventcompanyDao.listAll();
-        dto = new EventcompanyPageDto();
+        
         
         
         for (EventcompanyEntity eventcompany : eventcompanies) {
@@ -62,7 +61,7 @@ public class EventcompanyFacade {
         return dto;
     }
 
-    public EventcompanyPageDto add() {
+    public EventcompanyPageDto add(EventcompanyPageDto dto) {
         
 EventcompanyEntity eventcompanyEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe

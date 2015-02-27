@@ -21,11 +21,11 @@ import org.thomasmore.oo3.course.resortui.model.CustomerPageDto;
 @Stateless
 public class CustomerFacade {
 
-    private CustomerPageDto dto;
     @EJB
     private CustomerDao customerDao;
 
     public CustomerPageDto loadCustomerOverviewPage(String editId, String deleteId) {
+        CustomerPageDto dto = new CustomerPageDto();
         if (editId != null) {
             CustomerEntity customerEntity = customerDao.findById(editId);
             if (customerEntity != null) {
@@ -45,7 +45,7 @@ public class CustomerFacade {
             customerDao.deleteById(deleteId);
         }
         List<CustomerEntity> customers = customerDao.listAll();
-        dto = new CustomerPageDto();
+        
         for (CustomerEntity customer : customers) {
             CustomerListDetailDto listDetail = new CustomerListDetailDto();
             listDetail.setId(customer.getId());
@@ -65,7 +65,7 @@ public class CustomerFacade {
 
     }
 
-    public CustomerPageDto add() {
+    public CustomerPageDto add(CustomerPageDto dto) {
         CustomerEntity customerEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {

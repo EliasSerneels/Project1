@@ -53,7 +53,7 @@ public class CustomerController {
     }
 
     public String add(){
-        dto = customerFacade.add();
+        customerFacade.add(dto);
         return pageRedirect;
         
         }
