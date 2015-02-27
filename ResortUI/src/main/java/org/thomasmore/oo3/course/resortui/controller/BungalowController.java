@@ -42,7 +42,6 @@ public class BungalowController {
     @PostConstruct
     public void init() {
 
-        dto = new BungalowPageDto();
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
