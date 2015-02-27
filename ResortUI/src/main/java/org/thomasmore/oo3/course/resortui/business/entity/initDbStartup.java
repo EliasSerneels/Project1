@@ -71,22 +71,28 @@ public class initDbStartup {
         ce1.setFirstname("Jos");
         ce1.setLastname("Janssens");
         ce1.setBirthdate("01/01/1980");
+<<<<<<< HEAD
+=======
         ce1.setCountry("Belgium");
         ce1.setCity("Vilvoorde");
         ce1.setStreet("Leuvensestraat");
         ce1.setHousenumber(1);
         ce1.setPhonenumber("0499203051");
+>>>>>>> origin/master
         objectsToSave.add(ce1);
                
         CustomerEntity ce2 = new CustomerEntity();
         ce2.setFirstname("Piet");
         ce2.setLastname("Uyttebroeck");
         ce2.setBirthdate("01/01/1970");
+<<<<<<< HEAD
+=======
         ce2.setCountry("Belgium");
         ce2.setCity("Mechelen");
         ce2.setStreet("Kerkstraat");
         ce2.setHousenumber(5);
         ce2.setPhonenumber("0488992211");
+>>>>>>> origin/master
         objectsToSave.add(ce2);
         
         UserEntity ue1 = new UserEntity();

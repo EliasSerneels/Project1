@@ -18,7 +18,7 @@ import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
  *
  * @author Jeroen
  */
-@Named(value = "eventtype")
+@Named(value = "eventcompany")
 @RequestScoped
 public class EventcompanyController {
     

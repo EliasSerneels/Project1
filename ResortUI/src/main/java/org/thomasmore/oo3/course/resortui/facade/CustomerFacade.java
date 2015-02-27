@@ -38,6 +38,7 @@ public class CustomerFacade {
                 dto.getDetail().setStreet(customerEntity.getStreet());
                 dto.getDetail().setHousenumber(customerEntity.getHousenumber());
                 dto.getDetail().setPhonenumber(customerEntity.getPhonenumber());
+                dto.getDetail().setEmail(customerEntity.getEmail());
             }
         }
         if (deleteId != null) {
@@ -56,6 +57,7 @@ public class CustomerFacade {
             listDetail.setStreet(customer.getStreet());
             listDetail.setHousenumber(customer.getHousenumber());
             listDetail.setPhonenumber(customer.getPhonenumber());
+            listDetail.setEmail(customer.getEmail());
             dto.getList().add(listDetail);
 
         }
@@ -84,6 +86,7 @@ public class CustomerFacade {
         customerEntity.setStreet(dto.getDetail().getStreet());
         customerEntity.setHousenumber(dto.getDetail().getHousenumber());
         customerEntity.setPhonenumber(dto.getDetail().getPhonenumber());
+        customerEntity.setEmail(dto.getDetail().getEmail());
         customerDao.save(customerEntity);
         return dto;
     }
