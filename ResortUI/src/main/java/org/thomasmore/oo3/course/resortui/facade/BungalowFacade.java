@@ -23,15 +23,23 @@ import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
 @Stateless
 public class BungalowFacade {
 
-    private BungalowPageDto dto;
-
     @EJB
     private BungalowDao bungalowDao;
     @EJB
     private ParkDao parkDao;
 
     public BungalowPageDto loadBungalowOverviewPage(String editId, String deleteId) {
+        BungalowPageDto dto = new BungalowPageDto();
 
+        if (deleteId != null) {
+            bungalowDao.deleteById(deleteId);
+        }
+        List<ParkEntity> parks = parkDao.listAll();
+
+        dto.getParkList().add("");
+        for (ParkEntity park : parks) {
+            dto.getParkList().add(park.getName());
+        }
         if (editId != null) {
             BungalowEntity bungalowEntity = bungalowDao.findById(editId);
             if (bungalowEntity != null) {
@@ -43,34 +51,27 @@ public class BungalowFacade {
                 dto.getDetail().setMaxpeople(bungalowEntity.getMaxpeople());
             }
         }
+                List<BungalowEntity> bungalows = bungalowDao.listAll();
 
-        if (deleteId != null) {
-            bungalowDao.deleteById(deleteId);
-        }
-        List<BungalowEntity> bungalows = bungalowDao.listAll();
-        List<ParkEntity> parks = parkDao.listAll();
-        dto = new BungalowPageDto();
-        dto.getParkList().add("");
-        for (ParkEntity park : parks) {
-            dto.getParkList().add(park.getName());
-        }
-        for (BungalowEntity bungalow : bungalows) {
-            BungalowListDetailDto listDetail = new BungalowListDetailDto();
-            listDetail.setId(bungalow.getId());
-            listDetail.setName(bungalow.getName());
-            listDetail.setType(bungalow.getType());
-            listDetail.setPrice(bungalow.getPrice());
-            listDetail.setPark(bungalow.getPark());
-            listDetail.setMaxpeople(bungalow.getMaxpeople());
-            listDetail.setReservations(bungalow.getReservations());
-            dto.getList().add(listDetail);
-        }
-        return dto;
-    }
+                for (BungalowEntity bungalow : bungalows) {
+                    BungalowListDetailDto listDetail = new BungalowListDetailDto();
+                    listDetail.setId(bungalow.getId());
+                    listDetail.setName(bungalow.getName());
+                    listDetail.setType(bungalow.getType());
+                    listDetail.setPrice(bungalow.getPrice());
+                    listDetail.setPark(bungalow.getPark());
+                    listDetail.setMaxpeople(bungalow.getMaxpeople());
+                    listDetail.setReservations(bungalow.getReservations());
+                    dto.getList().add(listDetail);
+                }
+                return dto;
+            }
 
-    public BungalowPageDto add() {
+    
+
+    public BungalowPageDto add(BungalowPageDto dto) {
         
-BungalowEntity bungalowEntity = null;
+        BungalowEntity bungalowEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
             dto.getDetail().setId(UUID.randomUUID().toString());
@@ -79,8 +80,8 @@ BungalowEntity bungalowEntity = null;
         }
 
         if (bungalowEntity == null) {
-            bungalowEntity = new BungalowEntity();            
-        }       
+            bungalowEntity = new BungalowEntity();
+        }
         bungalowEntity.setId(dto.getDetail().getId());
         bungalowEntity.setName(dto.getDetail().getName());
         bungalowEntity.setPrice(dto.getDetail().getPrice());

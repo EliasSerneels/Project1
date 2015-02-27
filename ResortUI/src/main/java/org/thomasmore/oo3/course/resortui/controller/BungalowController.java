@@ -51,7 +51,7 @@ public class BungalowController {
 
     public String add() {
         
-        dto = bungalowFacade.add();
+        bungalowFacade.add(dto);
         
         return pageRedirect;
     }
