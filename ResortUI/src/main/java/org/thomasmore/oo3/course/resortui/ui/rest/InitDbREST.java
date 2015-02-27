@@ -87,7 +87,7 @@ public class InitDbREST {
         ce1.setLastname("Janssens");
         ce1.setBirthdate("01/01/1980");
         ce1.setCountry("Belgium");
-        ce1.setCity("Vilmort");
+        ce1.setCity("Vilvoorde");
         ce1.setStreet("Leuvensestraat");
         ce1.setHousenumber(1);
         ce1.setPhonenumber("0499203051");
@@ -98,7 +98,7 @@ public class InitDbREST {
         ce2.setLastname("Uyttebroeck");
         ce2.setBirthdate("01/01/1970");
         ce2.setCountry("Belgium");
-        ce2.setCity("Malinwa");
+        ce2.setCity("Mechelen");
         ce2.setStreet("Kerkstraat");
         ce2.setHousenumber(5);
         ce2.setPhonenumber("0488992211");
