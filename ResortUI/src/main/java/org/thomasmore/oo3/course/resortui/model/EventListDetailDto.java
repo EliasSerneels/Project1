@@ -12,32 +12,35 @@ package org.thomasmore.oo3.course.resortui.model;
 public class EventListDetailDto {
 
     private String id;
-    private String eventcompanyname;
-    private String eventtypename;
+    private String eventcompany;
+    private String eventtype;
 
     public String getId() {
         return id;
     }
 
-    public String getEventcompanyname() {
-        return eventcompanyname;
+    public String getEventcompany() {
+        return eventcompany;
     }
 
-    public String getEventtypename() {
-        return eventtypename;
+    public String getEventtype() {
+        return eventtype;
     }
+
+    
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setEventcompanyname(String eventcompanyname) {
-        this.eventcompanyname = eventcompanyname;
+    public void setEventcompany(String eventcompany) {
+        this.eventcompany = eventcompany;
     }
 
-    public void setEventtypename(String eventtypename) {
-        this.eventtypename = eventtypename;
+    public void setEventtype(String eventtype) {
+        this.eventtype = eventtype;
     }
+
     
     
     
