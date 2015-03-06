@@ -1,44 +1,24 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Evenementen</title>
-            </f:facet>
-        </h:head>
-
-        <h:body>
-            <ui:composition template="./common/primetemplate.xhtml">
-                <p:layout fullPage="true">
-
-                    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                        Dit zijn de evenementen
-                    </p:layoutUnit>
-
-                    <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                        Footer
-                    </p:layoutUnit>
-
-
-
-                    <p:layoutUnit position="center">
+    <body>
+        <ui:composition template="./common/primetemplate.xhtml">
+            
                         <ui:define name="content">
                             <h:form>
                                 <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                                 <ul class="change-form">
                                     <li>
                                     <h:inputHidden value="${event.dto.detail.id}"/>
-
-
                                     </li>
                                     <li>
-                                        <div class="inputinfo">Locatie</div>
+                                        <div class="inputinfo">EventType</div>
                                     <h:inputText label="Locatie" 
                                                  value="${event.dto.detail.eventtype}" class="form-control"
                                                  required="true" validatorMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 200 tekens)"
@@ -47,7 +27,7 @@
                                     </h:inputText>
                                     </li>
                                     <li>
-                                        <div class="inputinfo">Capaciteit</div>
+                                    <div class="inputinfo">Company</div>
                                     <h:inputText label="Capaciteit" 
                                                  value="${event.dto.detail.eventcompany}" class="form-control"
                                                  required="true">
@@ -62,6 +42,7 @@
                             </h:form> 
 
                             <br/><br/>
+                            
                             <h2>Eventoverzicht</h2>
                             <table id="overview">
                                 <tr>
@@ -84,11 +65,8 @@
                                     </tr>
                                 </ui:repeat>
                             </table>
+                            
                         </ui:define>
-                    </p:layoutUnit>
-
-                </p:layout>
             </ui:composition>
-        </h:body>
-    </f:view>
+    </body>
 </html>
