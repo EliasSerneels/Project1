@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
         <ui:composition template="./common/primetemplate.xhtml">
@@ -65,7 +65,37 @@
                                     </tr>
                                 </ui:repeat>
                             </table>
+                             
+                    <p:dataTable var="listDetail" value="#{bungalow.dto.list}">                          
+                        
                             
+                                <p:column headerText="Id" sortBy="#{listDetail.id}">
+                                    <h:outputText value="#{listDetail.id}"/>
+                                </p:column>
+                                 <p:column headerText="Naam">
+                                    <h:outputText value="#{listDetail.name}"/>
+                                </p:column>
+                                 <p:column headerText="Type">
+                                    <h:outputText value="#{listDetail.type}"/>
+                                </p:column>
+                                 <p:column headerText="Prijs">
+                                    <h:outputText value="#{listDetail.price}"/>
+                                </p:column>
+                                 <p:column headerText="Park">
+                                    <h:outputText value="#{listDetail.park}"/>
+                                </p:column>
+                                 <p:column headerText="Maximum personen">
+                                    <h:outputText value="#{listDetail.maxpeople}"/>
+                                </p:column>
+                                <p:column headerText="Maximum personen">
+                                     <a href="bungalow.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                 <a href="bungalow.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                                </p:column>
+                               
+                            
+                                                
+                    
+                </p:dataTable> 
                         </ui:define>
             </ui:composition>
     </body>
