@@ -5,7 +5,14 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.util.List;
+import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -14,15 +21,30 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Jeroen
  */
 @Entity
-@Table(name = "eventbedrijf")
+@Table(name = "eventcompany")
 @XmlRootElement
 public class EventcompanyEntity extends BasicEntity{
+
 
 private String name;
 private String city;
 private String street;
 private String phone;
 private String contact;
+
+
+
+
+@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="eventcompanyentity")
+    public List<EventEntity> testevent;
+
+    public List<EventEntity> getEvententity() {
+        return testevent;
+    }
+
+    public void setEvententity(List<EventEntity> evententity) {
+        this.testevent = evententity;
+    }
 
     public String getContact() {
         return contact;

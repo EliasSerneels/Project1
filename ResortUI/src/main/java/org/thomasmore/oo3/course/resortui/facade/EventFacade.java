@@ -42,7 +42,7 @@ public class EventFacade {
             EventEntity eventEntity = eventDao.findById(editId);
             if (eventEntity != null) {
                 dto.getDetail().setId(eventEntity.getId());
-                dto.getDetail().setEventcompany(eventEntity.getEventcompany());
+
                 dto.getDetail().setEventtype(eventEntity.getEventtype());
                 
             }
@@ -69,7 +69,7 @@ public class EventFacade {
         for (EventEntity event : events) {
             EventListDetailDto listDetail = new EventListDetailDto();
             listDetail.setId(event.getId());
-            listDetail.setEventcompany(event.getEventcompany());
+
             listDetail.setEventtype(event.getEventtype());
             dto.getList().add(listDetail);
         }
@@ -90,7 +90,7 @@ EventEntity eventEntity = null;
             eventEntity = new EventEntity();            
         }       
         eventEntity.setId(dto.getDetail().getId());
-        eventEntity.setEventcompany(dto.getDetail().getEventcompany());
+
         eventEntity.setEventtype(dto.getDetail().getEventtype());
         eventDao.save(eventEntity);
         return dto;

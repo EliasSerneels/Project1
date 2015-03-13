@@ -28,7 +28,7 @@ import javax.persistence.MappedSuperclass;
 public class BasicEntity {
     
     @Id
-    private String id = UUID.randomUUID().toString();
+    protected String id = UUID.randomUUID().toString();
     
     public String getId() {
         return id;

@@ -5,6 +5,9 @@
  */
 package org.thomasmore.oo3.course.resortui.model;
 
+import java.util.List;
+import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
+
 /**
  *
  * @author Jeroen
@@ -17,12 +20,19 @@ private String city;
 private String street;
 private String phone;
 private String contact;
+public List<EventEntity> evententity;
+
+    public List<EventEntity> getEvententity() {
+        return evententity;
+    }
+
+    public void setEvententity(List<EventEntity> evententity) {
+        this.evententity = evententity;
+    }
 
     public String getId() {
         return id;
     }
-
-
 
     public String getContact() {
         return contact;
@@ -48,8 +58,6 @@ private String contact;
         this.id = id;
     }
 
-    
-    
     public void setName(String name) {
         this.name = name;
     }

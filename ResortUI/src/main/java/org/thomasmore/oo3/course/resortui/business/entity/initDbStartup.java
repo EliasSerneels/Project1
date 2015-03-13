@@ -107,6 +107,24 @@ public class initDbStartup {
         ue3.setPassword("Elias");
         objectsToSave.add(ue3);
         
+        EventEntity ee1 = new EventEntity();
+        ee1.setId(UUID.randomUUID().toString());
+
+        ee1.setEventtype("Bruiloft");
+        objectsToSave.add(ee1);
+        
+        EventEntity ee2 = new EventEntity();
+        ee2.setId(UUID.randomUUID().toString());
+
+        ee2.setEventtype("BBQ");
+        objectsToSave.add(ee2);
+        
+        EventcompanyEntity ece1 = new EventcompanyEntity();
+        ece1.setId(UUID.randomUUID().toString());
+        ece1.setName("Bedrijf 1");
+        ece1.setPhone("0497181245545454");
+        ece1.setContact("dsfdsf");
+        objectsToSave.add(ece1);
         for (Object objectToSave1 : objectsToSave){
             em.persist(objectToSave1);
         }

@@ -5,7 +5,11 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -16,22 +20,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "event")
 @XmlRootElement
-public class EventEntity extends BasicEntity{
+public class EventEntity extends BasicEntity implements Serializable{
 
-    private String eventcompany;
     private String eventtype;
+    private String eventname;
+  
 
-    public String getEventcompany() {
-        return eventcompany;
-    }
-
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="eventid")
+    public EventcompanyEntity eventcompanyentity;
+    
     public String getEventtype() {
         return eventtype;
     }
 
-    public void setEventcompany(String eventcompany) {
-        this.eventcompany = eventcompany;
-    }
 
     public void setEventtype(String eventtype) {
         this.eventtype = eventtype;
