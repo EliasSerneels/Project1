@@ -11,6 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import org.thomasmore.oo3.course.resortui.facade.LocationFacade;
 import org.thomasmore.oo3.course.resortui.model.LocationPageDto;
 
 /**
@@ -27,7 +28,7 @@ public class LocationController {
     private String pageRedirect="location.xhtml??faces-redirect=true";
     
     @EJB
-    private LocationFacade customerFacade;
+    private LocationFacade locationFacade;
     
     @PostConstruct
     public void init() {
@@ -36,11 +37,11 @@ public class LocationController {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
-        dto = customerFacade.loadCustomerOverviewPage(editId, deleteId);
+        dto = locationFacade.loadLocationOverviewPage(editId, deleteId);
     }
 
     public String add(){
-        customerFacade.add(dto);
+        locationFacade.add(dto);
         return pageRedirect;
         
         }
