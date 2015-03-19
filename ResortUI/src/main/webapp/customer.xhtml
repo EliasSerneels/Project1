@@ -49,6 +49,7 @@
                                 
                             </h:inputText>
                         </li>      
+                        
                         <li>
                             <div class="inputinfo">Geboortedatum</div>
                             <h:inputText label="Geboortedatum" 
@@ -59,6 +60,52 @@
                             </h:inputText>
                         </li>
                         <li>
+                            <div class="inputinfo">Land</div>
+                            <h:inputText label="Land" 
+
+                                         value="${customer.dto.detail.country}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
+                            </h:inputText>
+                        </li>    
+                        
+                        <li>
+                            <div class="inputinfo">Stad</div>
+                            <h:inputText label="Stad" 
+
+                                         value="${customer.dto.detail.city}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
+                            </h:inputText>
+                        </li>    
+                        
+                        <li>
+                            <div class="inputinfo">Straat</div>
+                            <h:inputText label="Straat" 
+
+                                         value="${customer.dto.detail.street}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
+                            </h:inputText>
+                        </li>    
+                        
+                        <li>
+                            <div class="inputinfo">Huisnummer</div>
+                            <h:inputText label="Huisnummer" 
+                                         value="${customer.dto.detail.housenumber}" class="form-control"
+                                         required="false"
+                                         validatorMessage="Het huisnummer mag enkel cijfers bevatten en is maximum 6 cijfers lang zijn.">
+                                <f:validateRegex pattern="([0-9].{1,6})"/>
+                            </h:inputText>
+                            
+                        </li>    
+                        <li>
                             <div class="inputinfo">Telefoonnr.</div>
                             <h:inputText label="Telefoonnummer" 
                                          value="${customer.dto.detail.phonenumber}" class="form-control"
@@ -68,21 +115,8 @@
                             </h:inputText>
                             
                         </li>                                                                                                                                                                             
-                        <li>   
-                            <div class="inputinfo">E-mail</div>
-                            <h:inputText label="E-mail" 
-
-                                         value="${customer.dto.detail.email}" class="form-control"
-                                         required="false" validatorMessage="De inhoud van e-mail voldoet niet aan de vereisten.">
-                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/> 
-                            </h:inputText>
-                        </li>                                                                      
-                        <li class="special-updates">
-                            <div class="inputinfo">Ontvangt e-mail updates?</div>
-                            <h:selectBooleanCheckbox label="Updates" 
-                                                     value="${customer.dto.detail.receiveupdate}" class="form-control" style="width:9%; float:right; margin:0;"
-                                                     required="true" />            
-                        </li>
+                                                                                             
+                        
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group"> 
@@ -97,9 +131,11 @@
                         <th>Voornaam</th>
                         <th>Achternaam</th>
                         <th>Geboortedatum</th>
-                        <th>Email</th>
+                        <th>Land</th>
+                        <th>Stad</th>
+                        <th>Straat</th>
+                        <th>huisnummer</th>
                         <th>TelefoonNr.</th> 
-                        <th>Ontvangt updates</th> 
                         <th></th>
                     </tr>
                     <ui:repeat value="${customer.dto.list}" var="listDetail">
@@ -107,9 +143,11 @@
                             <td>${listDetail.firstname}</td>
                             <td>${listDetail.lastname}</td>
                             <td>${listDetail.birthdate}</td>
-                            <td>${listDetail.email}</td>
+                            <td>${listDetail.country}</td>
+                            <td>${listDetail.city}</td>
+                            <td>${listDetail.street}</td>
+                            <td>${listDetail.housenumber}</td>
                             <td>${listDetail.phonenumber}</td>
-                            <td>${listDetail.receiveupdate}</td>
                             <h:form>
                                 <td>
                                  <a href="customer.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
