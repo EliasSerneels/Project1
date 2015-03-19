@@ -95,16 +95,7 @@
                             </h:inputText>
                         </li>    
                         
-                        <li>
-                            <div class="inputinfo">Huisnummer</div>
-                            <h:inputText label="Huisnummer" 
-                                         value="${customer.dto.detail.housenumber}" class="form-control"
-                                         required="false"
-                                         validatorMessage="Het huisnummer mag enkel cijfers bevatten en is maximum 6 cijfers lang zijn.">
-                                <f:validateRegex pattern="([0-9].{1,6})"/>
-                            </h:inputText>
-                            
-                        </li>    
+                        
                         <li>
                             <div class="inputinfo">Telefoonnr.</div>
                             <h:inputText label="Telefoonnummer" 
@@ -134,7 +125,7 @@
                         <th>Land</th>
                         <th>Stad</th>
                         <th>Straat</th>
-                        <th>huisnummer</th>
+                        
                         <th>TelefoonNr.</th> 
                         <th></th>
                     </tr>
@@ -146,7 +137,7 @@
                             <td>${listDetail.country}</td>
                             <td>${listDetail.city}</td>
                             <td>${listDetail.street}</td>
-                            <td>${listDetail.housenumber}</td>
+                            
                             <td>${listDetail.phonenumber}</td>
                             <h:form>
                                 <td>
