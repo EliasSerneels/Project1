@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+        <ui:composition template="./common/template.xhtml">
+
+            <ui:define name="title">Eventtype</ui:define>
+
+            <ui:define name="navbar"><h1>Eventtype</h1></ui:define>
+
+            <ui:define name="content">
+<!--
+                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                    <script>
+                        window.location.href = "http:login.xhtml";
+                    </script>
+                </ui:fragment>
+-->
+                <h:form>
+                    <h2>Eventtype toevoegen of aanpassen</h2>
+                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+                    <ul class="change-form">
+                        <li>
+                            <h:inputHidden value="${eventtype.dto.detail.id}"/>
+                            <div class="inputinfo">Naam</div>
+                            <h:inputText label="Naam" 
+
+                                         value="${eventtype.dto.detail.eventname}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul het type event in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
+                            </h:inputText>
+                        </li>
+                        
+                                                                                             
+                        
+                    </ul>
+                    <div class="col-md-12">
+                        <div class="input-group"> 
+                            <h:commandButton class="btn btn-primary" action="${eventtype.add()}" value="Save" ></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+                <br/><br/>
+                <h2>Eventtypes overzicht</h2>
+                <table id="overview">
+                    <tr>
+                        <th>Eventnaam</th>
+                        <th></th>
+                    </tr>
+                    <ui:repeat value="${eventtype.dto.list}" var="listDetail">
+                        <tr>
+                            <td>${listDetail.eventname}</td>
+                            
+                            <h:form>
+                                <td>
+                                 <a href="customer.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                 <a href="customer.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                                </td>
+                            </h:form>
+                        </tr>
+                    </ui:repeat>
+
+                </table>
+
+
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>
