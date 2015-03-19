@@ -115,15 +115,7 @@
                             </h:selectOneMenu>
                         </div>
                     </div>
-                    <div class="col-md-6-r">
-                        <div class="input-group">
-                            <span class="input-group-addon">Bungalow</span>
-                            <h:selectOneMenu label="Bungalow reservatie" value="${reservation.dto.detail.bungalowName}" class="form-control" required="true" validatorMessage="De inhoud van het veld bungalow is leeg.">
-                                <f:selectItems value="${reservation.dto.bungalowList}" var="Bungalownaam"
-                                               itemValue="${bungalowName}" itemLabel="${bungalowName}"/>
-                            </h:selectOneMenu>
-                        </div>
-                    </div>
+                    
                     <div class="col-md-12">
                         <div class="input-group">
                             <h:commandButton class="btn btn-primary" action="${reservation.add()}" value="Save" ></h:commandButton>
@@ -139,7 +131,6 @@
                         <th>Starttijdstip</th>
                         <th>Eindtijdstip</th>
                         <th>Klant</th>
-                        <th>Bungalow</th>
                         <th></th>
                     </tr>
                     <tbody>
@@ -151,7 +142,7 @@
                                     <td>${listDetail.startTime}</td>
                                     <td>${listDetail.endTime}</td>
                                     <td>${listDetail.customerName}</td>
-                                    <td>${listDetail.bungalowName}</td> 
+                                     
                                     <td><h:commandButton class="btn btn-primary" action="${reservation.remove(listDetail.id)}" value="Verwijder"></h:commandButton></td>
                                 </tr>
                             </h:form>
