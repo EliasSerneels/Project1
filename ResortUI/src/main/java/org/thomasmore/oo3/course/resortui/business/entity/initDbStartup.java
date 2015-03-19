@@ -74,7 +74,7 @@ public class initDbStartup {
         ce1.setCountry("Belgium");
         ce1.setCity("Vilvoorde");
         ce1.setStreet("Leuvensestraat");
-        ce1.setHousenumber(1);
+        ce1.setHousenumber("1");
         ce1.setPhonenumber("0499203051");
         objectsToSave.add(ce1);
                
@@ -85,7 +85,7 @@ public class initDbStartup {
         ce2.setCountry("Belgium");
         ce2.setCity("Mechelen");
         ce2.setStreet("Kerkstraat");
-        ce2.setHousenumber(5);
+        ce2.setHousenumber("5");
         ce2.setPhonenumber("0488992211");
         objectsToSave.add(ce2);
         
