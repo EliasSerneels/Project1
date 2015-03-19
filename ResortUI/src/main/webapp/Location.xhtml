@@ -9,9 +9,9 @@
     <body>
         <ui:composition template="./common/template.xhtml">
 
-            <ui:define name="title">Eventtype</ui:define>
+            <ui:define name="title">Location</ui:define>
 
-            <ui:define name="navbar"><h1>Eventtype</h1></ui:define>
+            <ui:define name="navbar"><h1>Locatie</h1></ui:define>
 
             <ui:define name="content">
 <!--
@@ -22,48 +22,59 @@
                 </ui:fragment>
 -->
                 <h:form>
-                    <h2>Eventtype toevoegen of aanpassen</h2>
+                    <h2>Loctie toevoegen of aanpassen</h2>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul class="change-form">
                         <li>
-                            <h:inputHidden value="${eventtype.dto.detail.id}"/>
-                            <div class="inputinfo">Naam</div>
+                            <h:inputHidden value="${location.dto.detail.id}"/>
+                            <div class="inputinfo">Stad</div>
                             <h:inputText label="Naam" 
 
-                                         value="${eventtype.dto.detail.eventname}" class="form-control"
+                                         value="${location.dto.detail.city}" class="form-control"
                                          required="true"
-                                         validatorMessage="Vul het type event in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         validatorMessage="Vul de stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                                 
                             </h:inputText>
                         </li>
                         
-                                                                                             
+                    <li>
+                            <div class="inputinfo">Straat</div>
+                            <h:inputText label="Straat" 
+
+                                         value="${location.dto.detail.street}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
+                            </h:inputText>
+                        </li>                                                                           
                         
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group"> 
-                            <h:commandButton class="btn btn-primary" action="${eventtype.add()}" value="Save" ></h:commandButton>
+                            <h:commandButton class="btn btn-primary" action="${location.add()}" value="Save" ></h:commandButton>
                         </div>
                     </div>
                 </h:form>
                 <br/><br/>
-                <h2>Eventtypes overzicht</h2>
+                <h2>Locaties overzicht</h2>
                 <table id="overview">
                     <tr>
-                        <th>Eventnaam</th>
+                        <th>Stad</th>
+                        <th>Straat</th>
                         <th></th>
                     </tr>
-                    <ui:repeat value="${eventtype.dto.list}" var="listDetail">
+                    <ui:repeat value="${location.dto.list}" var="listDetail">
                         <tr>
-                            <td>${listDetail.eventname}</td>
-                            
+                            <td>${listDetail.city}</td>
+                            <td>${listDetail.street}</td>
                             
                             <h:form>
                                 <td>
-                                 <a href="eventtype.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                                 <a href="eventtype.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                                 <a href="location.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                 <a href="location.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
                                 </td>
                             </h:form>
                         </tr>
