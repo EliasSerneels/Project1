@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./common/template.xhtml">
+
+            <ui:define name="title">Event Company</ui:define>
+
+            <ui:define name="navbar"><h1>Event Companies</h1></ui:define>
+
+            <ui:define name="content">
+                <!--
+                                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                                    <script>
+                                        window.location.href = "http:login.xhtml";
+                                    </script>
+                                </ui:fragment>
+                -->
+                <h2>Eventbedrijven aanmaken of wijzigen</h2>
+                
+                <h:form>
+                    <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
+                    <ul class="change-form">
+                        <li>
+                            <h:inputHidden value="${eventcompany.dto.detail.id}"/>
+                            <div class="inputinfo">Naam</div>
+                            <h:inputText label="Naam"
+                                         value="${eventcompany.dto.detail.name}" class="form-control"
+                                         required="true" validatorMessage="Vul een bedrijfsnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+
+                            </h:inputText>
+                        </li>                                    
+                        <li class="typelist">
+                            <div class="inputinfo">Stad</div>
+                            <h:inputText label="Naam"
+                                         value="${eventcompany.dto.detail.city}" class="form-control"
+                                         required="true" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+
+                            </h:inputText>
+                        </li>                                    
+                        <li>
+                            <div class="inputinfo">Straat</div>
+                            <h:inputText label="Naam"
+                                         value="${eventcompany.dto.detail.street}" class="form-control"
+                                         required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+
+                            </h:inputText>
+
+                        </li>
+                        <li>
+                            <div class="inputinfo">Telefoonnr.</div>
+                            <h:inputText label="Maxpersonen" 
+                                         value="${eventcompany.dto.detail.phone}" class="form-control"
+                                         required="true">
+                            </h:inputText>
+                        </li>                                    
+
+                    </ul>
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <p:commandButton value="Test" onclick="PF('dlg').show();" type="button" />
+
+                            <p:dialog header="Basic Dialog" widgetVar="dlg" minHeight="1000">
+                                <h:outputText value="Resistance to PrimeFaces is futile!" />
+                            </p:dialog>
+
+                            <p:commandButton class="btn btn-primary" action="${eventcompany.add()}" value="Save"/>
+                        </div>
+                    </div>
+                    
+                </h:form>
+
+                <br/><br/>
+                <h1>Eventcompany</h1>
+                <p:dataTable var="listDetail" value="#{eventcompany.dto.list}">                          
+
+
+                    <p:column headerText="Id" sortBy="#{listDetail.id}">
+                        <h:outputText value="#{listDetail.id}"/>
+                    </p:column>
+                    <p:column headerText="Naam">
+                        <h:outputText value="#{listDetail.name}"/>
+                    </p:column>
+                    <p:column headerText="Stad">
+                        <h:outputText value="#{listDetail.city}"/>
+                    </p:column>
+                    <p:column headerText="Straat">
+                        <h:outputText value="#{listDetail.street}"/>
+                    </p:column>
+                    <p:column headerText="TelefoonNr.">
+                        <h:outputText value="#{listDetail.phone}"/>
+                    </p:column>
+                    <p:column headerText="Contact">
+                        <h:outputText value="#{listDetail.contact}"/>
+                    </p:column>
+                    <p:column headerText="TESTLIJST">
+                        <h:outputText value="#{listDetail.evententity}"/>
+                    </p:column>
+                    <p:column>
+                        <a href="eventcompany.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                        <a href="eventcompany.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                    </p:column> 
+                </p:dataTable>             
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
