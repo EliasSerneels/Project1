@@ -63,53 +63,73 @@
                         </tr>                                        
                     </ui:repeat>                                 
                 </table>
-                <br/>
-                <div><h2>Klanten</h2></div>
-                <table class="overview">
-                    <tr>
-                        <th>Achternaam</th>
-                        <th>Voornaam</th>
-                        <th>Geboortedatum</th>
-                        <th>Email</th>
-                        <th>Telefoonnr</th>                 
-                    </tr>                                 
-                    <ui:repeat value="${customer.dto.list}" var="listDetail3" >                                          
-                        <tr>
-                            <h:form>
-                                <td>${listDetail3.lastname}</td>
-                                <td>${listDetail3.firstname}</td>
-                                <td>${listDetail3.birthdate}</td>
-                                <td>${listDetail3.email}</td>
-                                <td>${listDetail3.phonenumber}</td>
-                            </h:form>
-                        </tr>                                           
-                    </ui:repeat>                                 
-                </table>
                 
-                <h:form>  
-                    <p:dataTable id="basicDT" var="lsdt" value="#{customer.dto.list}">
+                <h:form id="formBungalows">  
+                    <p:dataTable id="DTbungalows" var="lsdtB" value="#{bungalow.dto.list}" selectionMode="multiple" selection="#{bungalow.selectedBungalow}" rowKey="#{lsdtB.id}">
+        <f:facet name="header">
+            Bungalows
+        </f:facet>
+        <p:column headerText="ID">
+            <h:outputText value="#{lsdtB.id}" />
+        </p:column>
+        <p:column headerText="Naam">
+            <h:outputText value="#{lsdtB.name}" />
+        </p:column>
+        <p:column headerText="Type">
+            <h:outputText value="#{lsdtB.type}" />
+        </p:column>
+        <p:column headerText="Prijs">
+            <h:outputText value="#{lsdtB.price}" />
+        </p:column>
+         <p:column headerText="Reservaties">
+             <h:outputText value="#{lsdtB.reservations}" />
+        </p:column>
+        <f:facet name="footer">
+           <p:commandButton process="DTbungalows" update=":formBungalows:multiBungalowDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiBungalowDialog').show()" />
+        </f:facet>
+    </p:dataTable>
+                    
+        <p:dialog header="Selected Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
+        <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
+            <ui:repeat value="#{bungalow.selectedBungalow}" var="lsdtB">
+                <h:outputText value="#{lsdtB.name} - #{lsdtB.park} - #{lsdtB.maxpeople} - #{lsdtB.price}" style="display:block"/>
+            </ui:repeat>
+        </p:outputPanel>
+    </p:dialog>
+                </h:form>
+                
+       <h:form id="formCustomers">  
+        <p:dataTable id="DTcustomer" var="lsdtC" value="#{customer.dto.list}" selectionMode="multiple" selection="#{customer.selectedCustomers}" rowKey="#{lsdtC.id}">
         <f:facet name="header">
             Customers
         </f:facet>
-        <p:column headerText="Id">
-            <h:outputText value="#{lsdt.lastname}" />
+        <p:column headerText="Naam">
+            <h:outputText value="#{lsdtC.lastname}" />
         </p:column>
-        <p:column headerText="Year">
-            <h:outputText value="#{lsdt.firstname}" />
+        <p:column headerText="Voornaam">
+            <h:outputText value="#{lsdtC.firstname}" />
         </p:column>
-        <p:column headerText="Brand">
-            <h:outputText value="#{lsdt.birthdate}" />
+        <p:column headerText="Geboortedatum">
+            <h:outputText value="#{lsdtC.birthdate}" />
         </p:column>
-        <p:column headerText="Color">
-            <h:outputText value="#{lsdt.email}" />
+        <p:column headerText="E-mail">
+            <h:outputText value="#{lsdtC.email}" />
         </p:column>
-         <p:column headerText="Color">
-            <h:outputText value="#{lsdt.phonenumber}" />
+         <p:column headerText="Telefoon">
+            <h:outputText value="#{lsdtC.phonenumber}" />
         </p:column>
         <f:facet name="footer">
-         
+           <p:commandButton process="DTcustomer" update=":formCustomers:multiCustomerDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiCustomerDialog').show()" />
         </f:facet>
     </p:dataTable>
+                    
+        <p:dialog header="Selected Customers" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+        <p:outputPanel id="multiCustomerDetail" style="text-align:center;">
+            <ui:repeat value="#{customer.selectedCustomers}" var="lsdtC">
+                <h:outputText value="#{lsdtC.lastname} - #{lsdtC.firstname}  #{lsdtC.phonenumber}" style="display:block"/>
+            </ui:repeat>
+        </p:outputPanel>
+    </p:dialog>
                 </h:form>
                 
             </ui:define>
