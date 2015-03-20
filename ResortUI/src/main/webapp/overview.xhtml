@@ -10,129 +10,127 @@
 
         <ui:composition template="./common/template.xhtml">
 
-            <ui:define name="title">Overzicht Klanten, parken en reservaties</ui:define>
+            <ui:define name="title">Overzicht</ui:define>
 
-            <ui:define name="navbar"><h1>Overzicht Klanten, parken en reservaties</h1></ui:define>
+            <ui:define name="navbar"><h1>Overzicht</h1></ui:define>
 
             <ui:define name="content">
-<!--
-                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                    <script>
-                        window.location.href = "http:login.xhtml";
-                    </script>
-                </ui:fragment>
--->
-                <div><h2>Parken</h2></div>
-                <table class="overview">
-                    <tr>
-                        <th>ID</th>
-                        <th>Naam</th>
-                        <th>Locatie</th>
-                        <th>Capaciteit</th>       
-                    </tr>                                 
-                    <ui:repeat value="${park.dto.list}" var="listDetail1">                                         
-                        <tr>
-                            <h:form>
-                                <td class="idCol">${listDetail1.id}</td>
-                                <td>${listDetail1.name}</td>
-                                <td>${listDetail1.location}</td>
-                                <td>${listDetail1.capacity}</td>
-                            </h:form>
-                        </tr>                                           
-                    </ui:repeat>
-                </table>
-                <br class="overview-break" />
-                <div><h2>Bungalows</h2></div>
-                <table class="overview">
-                    <tr>
-                        <th>ID</th>
-                        <th>Naam</th>
-                        <th>Type</th>
-                        <th>Prijs</th>   
-                        <th># Reservaties</th>
-                    </tr>                                 
-                    <ui:repeat value="${bungalow.dto.list}" var="listDetail2">                                         
-                        <tr>
-                            <h:form>
-                                <td class="idCol">${listDetail2.id}</td>
-                                <td>${listDetail2.name}</td>
-                                <td>${listDetail2.type}</td>
-                                <td>${listDetail2.price}</td>
-                                <td>${listDetail2.reservations}</td>
-                            </h:form>
-                        </tr>                                        
-                    </ui:repeat>                                 
-                </table>
-                
+                <!--
+                                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                                    <script>
+                                        window.location.href = "http:login.xhtml";
+                                    </script>
+                                </ui:fragment>
+                -->
+                <h2>Parken</h2>
+
+                <h:form id="formParks">  
+                    <p:dataTable id="DTparks" var="lsdtP" value="#{park.dto.list}" selectionMode="multiple" selection="#{park.selectedParks}" rowKey="#{lsdtP.id}">
+                       
+                        <p:column headerText="ID">
+                            <h:outputText value="#{lsdtP.id}" />
+                        </p:column>
+                        <p:column headerText="Naam">
+                            <h:outputText value="#{lsdtP.name}" />
+                        </p:column>
+                        <p:column headerText="Type">
+                            <h:outputText value="#{lsdtP.location}" />
+                        </p:column>
+                        <p:column headerText="Prijs">
+                            <h:outputText value="#{lsdtP.capacity}" />
+                        </p:column>
+                        <p:column headerText="Reservaties">
+                            <h:outputText value="#{lsdtP.bungalowName}" />
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton process="DTparks" update=":formParks:multiParkDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiParkDialog').show()" />
+                        </f:facet>
+                    </p:dataTable>
+
+                    <p:dialog header="Selected Parks" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
+                        <p:outputPanel id="multiParkDetail" style="text-align:center;">
+                            <ui:repeat value="#{park.selectedParks}" var="lsdtP">
+                                <h:outputText value="#{lsdtP.name} - #{lsdtP.location} - #{lsdtP.capacity}" style="display:block"/>
+                            </ui:repeat>
+                        </p:outputPanel>
+                    </p:dialog>
+                </h:form>
+
+                <br/>
+                <br/>
+
+                <h2>Bungalows</h2>
+
                 <h:form id="formBungalows">  
                     <p:dataTable id="DTbungalows" var="lsdtB" value="#{bungalow.dto.list}" selectionMode="multiple" selection="#{bungalow.selectedBungalow}" rowKey="#{lsdtB.id}">
-        <f:facet name="header">
-            Bungalows
-        </f:facet>
-        <p:column headerText="ID">
-            <h:outputText value="#{lsdtB.id}" />
-        </p:column>
-        <p:column headerText="Naam">
-            <h:outputText value="#{lsdtB.name}" />
-        </p:column>
-        <p:column headerText="Type">
-            <h:outputText value="#{lsdtB.type}" />
-        </p:column>
-        <p:column headerText="Prijs">
-            <h:outputText value="#{lsdtB.price}" />
-        </p:column>
-         <p:column headerText="Reservaties">
-             <h:outputText value="#{lsdtB.reservations}" />
-        </p:column>
-        <f:facet name="footer">
-           <p:commandButton process="DTbungalows" update=":formBungalows:multiBungalowDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiBungalowDialog').show()" />
-        </f:facet>
-    </p:dataTable>
-                    
-        <p:dialog header="Selected Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
-        <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
-            <ui:repeat value="#{bungalow.selectedBungalow}" var="lsdtB">
-                <h:outputText value="#{lsdtB.name} - #{lsdtB.park} - #{lsdtB.maxpeople} - #{lsdtB.price}" style="display:block"/>
-            </ui:repeat>
-        </p:outputPanel>
-    </p:dialog>
+                        
+                        <p:column headerText="ID">
+                            <h:outputText value="#{lsdtB.id}" />
+                        </p:column>
+                        <p:column headerText="Naam">
+                            <h:outputText value="#{lsdtB.name}" />
+                        </p:column>
+                        <p:column headerText="Type">
+                            <h:outputText value="#{lsdtB.type}" />
+                        </p:column>
+                        <p:column headerText="Prijs">
+                            <h:outputText value="#{lsdtB.price}" />
+                        </p:column>
+                        <p:column headerText="Reservaties">
+                            <h:outputText value="#{lsdtB.reservations}" />
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton process="DTbungalows" update=":formBungalows:multiBungalowDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiBungalowDialog').show()" />
+                        </f:facet>
+                    </p:dataTable>
+
+                    <p:dialog header="Selected Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
+                        <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
+                            <ui:repeat value="#{bungalow.selectedBungalow}" var="lsdtB">
+                                <h:outputText value="#{lsdtB.name} - #{lsdtB.park} - #{lsdtB.maxpeople} - #{lsdtB.price}" style="display:block"/>
+                            </ui:repeat>
+                        </p:outputPanel>
+                    </p:dialog>
                 </h:form>
-                
-       <h:form id="formCustomers">  
-        <p:dataTable id="DTcustomer" var="lsdtC" value="#{customer.dto.list}" selectionMode="multiple" selection="#{customer.selectedCustomers}" rowKey="#{lsdtC.id}">
-        <f:facet name="header">
-            Customers
-        </f:facet>
-        <p:column headerText="Naam">
-            <h:outputText value="#{lsdtC.lastname}" />
-        </p:column>
-        <p:column headerText="Voornaam">
-            <h:outputText value="#{lsdtC.firstname}" />
-        </p:column>
-        <p:column headerText="Geboortedatum">
-            <h:outputText value="#{lsdtC.birthdate}" />
-        </p:column>
-        <p:column headerText="E-mail">
-            <h:outputText value="#{lsdtC.email}" />
-        </p:column>
-         <p:column headerText="Telefoon">
-            <h:outputText value="#{lsdtC.phonenumber}" />
-        </p:column>
-        <f:facet name="footer">
-           <p:commandButton process="DTcustomer" update=":formCustomers:multiCustomerDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiCustomerDialog').show()" />
-        </f:facet>
-    </p:dataTable>
-                    
-        <p:dialog header="Selected Customers" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
-        <p:outputPanel id="multiCustomerDetail" style="text-align:center;">
-            <ui:repeat value="#{customer.selectedCustomers}" var="lsdtC">
-                <h:outputText value="#{lsdtC.lastname} - #{lsdtC.firstname}  #{lsdtC.phonenumber}" style="display:block"/>
-            </ui:repeat>
-        </p:outputPanel>
-    </p:dialog>
+
+                <br/><br/>
+
+                <h2>Customers</h2>
+
+                <h:form id="formCustomers">  
+                    <p:dataTable id="DTcustomer" var="lsdtC" value="#{customer.dto.list}" selectionMode="multiple" selection="#{customer.selectedCustomers}" rowKey="#{lsdtC.id}">
+
+                        <p:column headerText="Naam">
+                            <h:outputText value="#{lsdtC.lastname}" />
+                        </p:column>
+                        <p:column headerText="Voornaam">
+                            <h:outputText value="#{lsdtC.firstname}" />
+                        </p:column>
+                        <p:column headerText="Geboortedatum">
+                            <h:outputText value="#{lsdtC.birthdate}" />
+                        </p:column>
+                        <p:column headerText="E-mail">
+                            <h:outputText value="#{lsdtC.email}" />
+                        </p:column>
+                        <p:column headerText="Telefoon">
+                            <h:outputText value="#{lsdtC.phonenumber}" />
+                        </p:column>
+
+                        <f:facet name="footer">
+                            <p:commandButton process="DTcustomer" update=":formCustomers:multiCustomerDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiCustomerDialog').show()" />
+                        </f:facet>
+                    </p:dataTable>
+
+                    <p:dialog header="Selected Customers" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:outputPanel id="multiCustomerDetail" style="text-align:center;">
+                            <ui:repeat value="#{customer.selectedCustomers}" var="lsdtC">
+                                <h:outputText value="#{lsdtC.lastname} - #{lsdtC.firstname}  #{lsdtC.phonenumber}" style="display:block"/>
+                            </ui:repeat>
+                        </p:outputPanel>
+                    </p:dialog>
                 </h:form>
-                
-                
+
+
             </ui:define>
         </ui:composition>
     </body>

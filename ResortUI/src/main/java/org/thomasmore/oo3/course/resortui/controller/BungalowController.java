@@ -16,13 +16,19 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.facade.BungalowFacade;
 
 /**
@@ -35,6 +41,7 @@ public class BungalowController {
 
     private BungalowPageDto dto;
     private String pageRedirect="bungalow.xhtml?faces-redirect=true";
+    private List<BungalowEntity> selectedBungalow;
 
     @EJB
     private BungalowFacade bungalowFacade;
@@ -56,6 +63,16 @@ public class BungalowController {
         return pageRedirect;
     }
     
+         public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Bungalow Selected", ((BungalowEntity) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+ 
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Bungalow Unselected", ((BungalowEntity) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
     public BungalowPageDto getDto() {
         return dto;
     }
@@ -64,4 +81,13 @@ public class BungalowController {
         this.dto = dto;
     }
 
+    public List<BungalowEntity> getSelectedBungalow() {
+        return selectedBungalow;
+    }
+
+    public void setSelectedBungalow(List<BungalowEntity> selectedBungalow) {
+        this.selectedBungalow = selectedBungalow;
+    }
+
+    
 }

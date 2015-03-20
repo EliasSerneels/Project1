@@ -16,13 +16,18 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 
 import org.thomasmore.oo3.course.resortui.facade.CustomerFacade;
 import org.thomasmore.oo3.course.resortui.model.CustomerPageDto;
@@ -33,6 +38,7 @@ import org.thomasmore.oo3.course.resortui.model.CustomerPageDto;
 public class CustomerController {
     private CustomerPageDto dto;
     private String pageRedirect="customer.xhtml??faces-redirect=true";
+    private List<CustomerEntity> selectedCustomers;
     
     @EJB
     private CustomerFacade customerFacade;
@@ -52,6 +58,16 @@ public class CustomerController {
         return pageRedirect;
         
         }
+    
+      public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Customer Selected", ((CustomerEntity) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+ 
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Customer Unselected", ((CustomerEntity) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
     public CustomerPageDto getDto() {
         return dto;
@@ -60,5 +76,15 @@ public class CustomerController {
     public void setDto(CustomerPageDto dto) {
         this.dto = dto;
     }
+
+    public List<CustomerEntity> getSelectedCustomers() {
+        return selectedCustomers;
+    }
+
+    public void setSelectedCustomers(List<CustomerEntity> selectedCustomers) {
+        this.selectedCustomers = selectedCustomers;
+    }
+    
+    
     
     }

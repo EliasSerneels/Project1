@@ -16,13 +16,18 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 
 import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
 import org.thomasmore.oo3.course.resortui.facade.ParkFacade;
@@ -38,6 +43,7 @@ public class ParkController {
 
     private ParkPageDto dto;
     private String pageRedirect="park.xhtml??faces-redirect=true";
+    private List<ParkEntity> selectedParks;
 
     @EJB
     private ParkFacade parkFacade;
@@ -57,6 +63,16 @@ public class ParkController {
         
         return pageRedirect;
     }
+    
+       public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Customer Selected", ((CustomerEntity) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+ 
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Customer Unselected", ((CustomerEntity) event.getObject()).getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
     public ParkPageDto getDto() {
         return dto;
@@ -66,4 +82,13 @@ public class ParkController {
         this.dto = dto;
     }
 
+    public List<ParkEntity> getSelectedParks() {
+        return selectedParks;
+    }
+
+    public void setSelectedParks(List<ParkEntity> selectedParks) {
+        this.selectedParks = selectedParks;
+    }
+
+    
 }
