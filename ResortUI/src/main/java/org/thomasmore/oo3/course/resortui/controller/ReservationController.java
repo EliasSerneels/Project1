@@ -1,11 +1,16 @@
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.event.SelectEvent;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.ReservationEntity;
@@ -15,7 +20,6 @@ import org.thomasmore.oo3.course.resortui.dao.ReservationDao;
 import org.thomasmore.oo3.course.resortui.model.ReservationDetailDto;
 import org.thomasmore.oo3.course.resortui.model.ReservationListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.ReservationPageDto;
-
 
 @Named(value = "reservation")
 @RequestScoped
@@ -28,8 +32,10 @@ public class ReservationController {
     private BungalowDao bungalowsDao;
     @EJB
     private CustomerDao customersDao;
-    
+
     private List<BungalowEntity> bungalows;
+
+    private Date date1;
 
     @PostConstruct
     public void init() {
@@ -73,8 +79,8 @@ public class ReservationController {
         reservationEntity.setBungalowName(dto.getDetail().getBungalowName());
         reservationsDao.save(reservationEntity);
         BungalowEntity be = null;
-        for(BungalowEntity bungalow: bungalows) {
-            if(bungalow.getName().equals(dto.getDetail().getBungalowName())) {
+        for (BungalowEntity bungalow : bungalows) {
+            if (bungalow.getName().equals(dto.getDetail().getBungalowName())) {
                 be = bungalow;
                 be.addReservation();
                 bungalowsDao.save(be);
@@ -82,9 +88,23 @@ public class ReservationController {
         }
     }
 
+    public void onDateSelect(SelectEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+    }
+
+    public Date getDate1() {
+        return date1;
+    }
+    public void setDate1(Date date1) {
+        this.date1 = date1;
+    }
+ 
+
     public String remove(String id) {
         reservationsDao.deleteById(id);
-        
+
         return "reservation.xhtml?faces-redirect=true";
     }
 
@@ -97,5 +117,3 @@ public class ReservationController {
     }
 
 }
-
-
