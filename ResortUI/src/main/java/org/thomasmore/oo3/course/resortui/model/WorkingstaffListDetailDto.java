@@ -15,7 +15,7 @@ private String function;
 private String event;
 private String staff;
 private String starttime;
-private String endTime;
+private String endtime;
 
     public String getId() {
         return id;
@@ -57,12 +57,12 @@ private String endTime;
         this.starttime = starttime;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getEndtime() {
+        return endtime;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
     }
 
 
