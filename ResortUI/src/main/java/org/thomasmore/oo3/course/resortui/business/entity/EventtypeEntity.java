@@ -17,16 +17,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "eventtype")
 @XmlRootElement
 public class EventtypeEntity extends BasicEntity {
-    
-  private String eventname;
+
+    private String eventname;
 
     public String getEventname() {
         return eventname;
     }
 
-    public void setEventname(String eventnaam) {
+    public void setEventname(String eventname) {
         this.eventname = eventname;
     }
-  
-  
 }

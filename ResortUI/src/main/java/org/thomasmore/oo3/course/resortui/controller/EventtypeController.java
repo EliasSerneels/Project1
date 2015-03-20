@@ -23,7 +23,7 @@ import org.thomasmore.oo3.course.resortui.model.EventtypePageDto;
 public class EventtypeController {
 
     private EventtypePageDto dto;
-    private String pageRedirect="eventtype.xhtml?faces-redirect=true";
+    private final String pageRedirect="eventtype.xhtml?faces-redirect=true";
 
     @EJB
     private EventtypeFacade eventtypeFacade;

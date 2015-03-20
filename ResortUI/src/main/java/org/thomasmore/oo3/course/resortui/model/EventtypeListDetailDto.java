@@ -18,20 +18,16 @@ private String eventname;
         return id;
     }
 
-
     public String getEventname() {
         return eventname;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-    
+    }  
      
 
     public void setEventname(String eventname) {
         this.eventname = eventname;
     }
-
-
 }

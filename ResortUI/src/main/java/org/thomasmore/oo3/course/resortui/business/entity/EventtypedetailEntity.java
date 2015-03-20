@@ -5,6 +5,7 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -16,10 +17,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "eventtypedetail")
 @XmlRootElement
-public class EventtypedetailEntity extends BasicEntity {
- 
-private String Eventtypename;
-private String Eventcompany;  
+public class EventtypedetailEntity extends BasicEntity implements Serializable {
+
+    private String Eventtypename;
+    private String Eventcompany;
 
     public String getEventtypename() {
         return Eventtypename;
@@ -37,6 +38,4 @@ private String Eventcompany;
         this.Eventcompany = Eventcompany;
     }
 
-
-    
 }
