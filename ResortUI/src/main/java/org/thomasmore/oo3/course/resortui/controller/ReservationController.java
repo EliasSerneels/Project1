@@ -43,9 +43,7 @@ public class ReservationController {
             dto.getCustomerList().add(customer.getFirstname() + " " + customer.getLastname());
         }
 
-        for (BungalowEntity bungalow : bungalows) {
-            dto.getBungalowList().add(bungalow.getName());
-        }
+        
 
         for (ReservationEntity reservation : reservations) {
             ReservationListDetailDto listDetail = new ReservationDetailDto();
@@ -55,7 +53,7 @@ public class ReservationController {
             listDetail.setEndDate(reservation.getEndDate());
             listDetail.setEndTime(reservation.getEndTime());
             listDetail.setCustomerName(reservation.getCustomerName());
-            listDetail.setBungalowName(reservation.getBungalowName());
+            
             dto.getList().add(listDetail);
         }
     }
@@ -70,7 +68,7 @@ public class ReservationController {
         reservationEntity.setEndDate(dto.getDetail().getEndDate());
         reservationEntity.setEndTime(dto.getDetail().getEndTime());
         reservationEntity.setCustomerName(dto.getDetail().getCustomerName());
-        reservationEntity.setBungalowName(dto.getDetail().getBungalowName());
+        
         reservationsDao.save(reservationEntity);
         BungalowEntity be = null;
         for(BungalowEntity bungalow: bungalows) {
