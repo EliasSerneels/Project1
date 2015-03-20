@@ -13,7 +13,7 @@ public class ReservationPageDto {
     private ReservationDetailDto detail = new ReservationDetailDto();
     private List<ReservationListDetailDto> list = new LinkedList<>();
     private List<String> customerList = new LinkedList<>();
-    private List<String> bungalowList = new LinkedList<>();
+    
 
     public ReservationDetailDto getDetail() {
         return detail;
@@ -39,12 +39,5 @@ public class ReservationPageDto {
         this.customerList = customerList;
     }
 
-    public List<String> getBungalowList() {
-        return bungalowList;
-    }
-
-    public void setBungalowList(List<String> bungalowList) {
-        this.bungalowList = bungalowList;
-    }
-
+    
 }
