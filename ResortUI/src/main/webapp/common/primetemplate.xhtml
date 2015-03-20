@@ -15,7 +15,7 @@
         <h:body>
 
             <p:layout fullPage="true">
-
+            
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
                     Bungalowpark
                 </p:layoutUnit>
@@ -63,9 +63,18 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
+                    <div name="content">
                     <ui:insert name="content"></ui:insert>
+                    </div>
                 </p:layoutUnit>
+                <p:dock position="bottom">
+                    <p:menuitem value="Home" icon="logoKlein.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
+                    <p:menuitem value="Home" icon="logoKlein.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
+                    <p:menuitem value="Home" icon="logoKlein.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
+                    <p:menuitem value="Home" icon="logoKlein.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
+                    <p:menuitem value="Home" icon="logoKlein.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
 
+                </p:dock>
             </p:layout>
 
         </h:body>
