@@ -1,11 +1,13 @@
 package org.thomasmore.oo3.course.resortui.model;
 
+import java.util.Date;
+
 
 public class ReservationListDetailDto {
     private String id;
-    private String startDate;
+    private Date startDate;
     private String startTime;
-    private String endDate;
+    private Date endDate;
     private String endTime;
     private String bungalowName;
     private String customerName;
@@ -17,11 +19,11 @@ public class ReservationListDetailDto {
         this.id = id;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -33,11 +35,11 @@ public class ReservationListDetailDto {
         this.startTime = startTime;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

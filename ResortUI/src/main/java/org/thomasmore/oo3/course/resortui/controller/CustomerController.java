@@ -16,8 +16,6 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
-import java.util.List;
-import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
@@ -26,11 +24,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
-import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
-import org.thomasmore.oo3.course.resortui.dao.CustomerDao;
 import org.thomasmore.oo3.course.resortui.facade.CustomerFacade;
 import org.thomasmore.oo3.course.resortui.model.CustomerPageDto;
-import org.thomasmore.oo3.course.resortui.model.CustomerListDetailDto;
 
 @Named(value = "customer")
 @RequestScoped

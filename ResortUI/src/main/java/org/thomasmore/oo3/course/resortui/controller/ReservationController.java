@@ -35,8 +35,11 @@ public class ReservationController {
 
     private List<BungalowEntity> bungalows;
 
-    private Date date1;
+    private Date EndDate;
+    
+    private Date StartDate;
 
+    
     @PostConstruct
     public void init() {
         bungalows = bungalowsDao.listAll();
@@ -94,12 +97,6 @@ public class ReservationController {
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
     }
 
-    public Date getDate1() {
-        return date1;
-    }
-    public void setDate1(Date date1) {
-        this.date1 = date1;
-    }
  
 
     public String remove(String id) {
@@ -114,6 +111,13 @@ public class ReservationController {
 
     public void setDto(ReservationPageDto dto) {
         this.dto = dto;
+    }
+    public Date getEndDate() {
+        return EndDate;
+    }
+
+    public Date getStartDate() {
+        return StartDate;
     }
 
 }

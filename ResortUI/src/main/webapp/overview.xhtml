@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -78,11 +80,38 @@
                                 <td>${listDetail3.firstname}</td>
                                 <td>${listDetail3.birthdate}</td>
                                 <td>${listDetail3.email}</td>
-                                <td>${listDetail3.number}</td>
+                                <td>${listDetail3.phonenumber}</td>
                             </h:form>
                         </tr>                                           
                     </ui:repeat>                                 
                 </table>
+                
+                <h:form>  
+                    <p:dataTable id="basicDT" var="lsdt" value="#{customer.dto.list}">
+        <f:facet name="header">
+            Customers
+        </f:facet>
+        <p:column headerText="Id">
+            <h:outputText value="#{lsdt.lastname}" />
+        </p:column>
+        <p:column headerText="Year">
+            <h:outputText value="#{lsdt.firstname}" />
+        </p:column>
+        <p:column headerText="Brand">
+            <h:outputText value="#{lsdt.birthdate}" />
+        </p:column>
+        <p:column headerText="Color">
+            <h:outputText value="#{lsdt.email}" />
+        </p:column>
+         <p:column headerText="Color">
+            <h:outputText value="#{lsdt.phonenumber}" />
+        </p:column>
+        <f:facet name="footer">
+         
+        </f:facet>
+    </p:dataTable>
+                </h:form>
+                
             </ui:define>
         </ui:composition>
     </body>
