@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./common/primetemplate.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h2>Klant toevoegen of aanpassen</h2>
+                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+                    <ul class="change-form">
+                        <li>
+                            <h:inputHidden value="${customer.dto.detail.id}"/>
+                            <div class="inputinfo">Voornaam</div>
+                            <h:inputText label="Voornaam" 
+
+                                         value="${customer.dto.detail.firstname}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+
+                            </h:inputText>
+                        </li>
+                        <li>
+                            <div class="inputinfo">Achternaam</div>
+                            <h:inputText label="Achternaam" 
+
+                                         value="${customer.dto.detail.lastname}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw achternaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+
+                            </h:inputText>
+                        </li>      
+
+                        <li>
+                            <div class="inputinfo">Geboortedatum</div>
+                            <h:inputText label="Geboortedatum" 
+                                         value="${customer.dto.detail.birthdate}" class="form-control"
+                                         required="true"
+                                         validatorMessage="De geboortedatum moet in het formaat dd/mm/yyy">
+                                <f:validateRegex pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"/>
+                            </h:inputText>
+                        </li>
+                        <li>
+                            <div class="inputinfo">Land</div>
+                            <h:inputText label="Land" 
+
+                                         value="${customer.dto.detail.country}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+
+                            </h:inputText>
+                        </li>    
+
+                        <li>
+                            <div class="inputinfo">Stad</div>
+                            <h:inputText label="Stad" 
+
+                                         value="${customer.dto.detail.city}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+
+                            </h:inputText>
+                        </li>    
+
+                        <li>
+                            <div class="inputinfo">Straat</div>
+                            <h:inputText label="Straat" 
+
+                                         value="${customer.dto.detail.street}" class="form-control"
+                                         required="true"
+                                         validatorMessage="Vul uw straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+
+                            </h:inputText>
+                        </li>    
+
+
+                        <li>
+                            <div class="inputinfo">Telefoonnr.</div>
+                            <h:inputText label="Telefoonnummer" 
+                                         value="${customer.dto.detail.phonenumber}" class="form-control"
+                                         required="false"
+                                         validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
+                                <f:validateRegex pattern="([0-9].{6,20})"/>
+                            </h:inputText>
+
+                        </li>                                                                                                                                                                             
+
+
+                    </ul>
+                    <div class="col-md-12">
+                        <div class="input-group"> 
+                            <h:commandButton class="btn btn-primary" action="${customer.add()}" value="Save" ></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+                <h:form id="form">
+                    <p:dataTable value="#{customer.dto.list}" var="listDetail" >
+                        <p:column headerText="ID">
+                            <h:outputText value="#{listDetail.id}" />
+                        </p:column>
+
+                        <p:column headerText="FirstName">
+                            <h:outputText value="#{listDetail.firstname}" />
+                        </p:column>
+
+                        <p:column headerText="LastName">
+                            <h:outputText value="#{listDetail.lastname}" />
+                        </p:column>
+
+                        <p:column headerText="Birthdate">
+                            <h:outputText value="#{listDetail.birthdate}" />
+                        </p:column>
+                        <p:column headerText="Country">
+                            <h:outputText value="#{listDetail.country}" />
+                        </p:column>
+
+                        <p:column headerText="City">
+                            <h:outputText value="#{listDetail.city}" />
+                        </p:column>
+
+                        <p:column headerText="Street">
+                            <h:outputText value="#{listDetail.street}" />
+                        </p:column>
+
+                        <p:column headerText="Phonenumber">
+                            <h:outputText value="#{listDetail.phonenumber}" />
+                        </p:column>
+                        <p:column headerText="Edit/Save">
+                            <h:form>
+                                <a href="customer.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                <a href="customer.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

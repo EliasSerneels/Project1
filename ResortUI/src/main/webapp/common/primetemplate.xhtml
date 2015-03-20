@@ -7,7 +7,6 @@
 
     <f:view contentType="text/html">
         <h:head>
-
             <h:outputStylesheet library="css" name="maxcdn.bootstrapcdn.com_bootstrap_3.3.1_css_bootstrap-theme.min.css"/>
             <h:outputStylesheet library="css" name="maxcdn.bootstrapcdn.com_bootstrap_3.3.1_css_bootstrap.min.css"/>
         </h:head>
@@ -15,57 +14,39 @@
         <h:body>
 
             <p:layout fullPage="true">
-            
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Bungalowpark
-                </p:layoutUnit>
+                <p:layoutUnit position="center">
+                    
+                    <div class="col-md-3r">
+                        <img src="./resources/images/logo.png" alt="Party resort" height="129" width="250"/>
+                    </div>
+                    
+                    <div name="content">
+                        <ui:insert name="content"></ui:insert>
+                    </div>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
                     <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                        <ul id="footerbuttons">
-                            <li>
-                                <h3>Nieuwe gebruiker?</h3>
-                                <p>Klik hieronder om je te registreren</p>
-                                <a class="btn btn-success" href="registration.xhtml">Registreer</a>
-                            </li>
-                            <li>
-                                <h3>Heb je al een account?</h3>
-                                <p>Klik hieronder om je in te loggen</p>
-                                <a class="btn btn-success" href="login.xhtml">Inloggen</a>
-                            </li>
-                        </ul>
+
+
+                        <div class="col-md-6">
+                            <h3>Nieuwe gebruiker?</h3>
+                            <p>Klik hieronder om je te registreren</p>
+                            <a class="btn btn-success" href="registration.xhtml">Registreer</a>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Heb je al een account?</h3>
+                            <p>Klik hieronder om je in te loggen</p>
+                            <a class="btn btn-success" href="login.xhtml">Inloggen</a>
+                        </div>
+
+
                     </ui:fragment>
                     <ui:fragment rendered="${sessionDto.userDto.loggedIn}">
                         <h3>Welkom ${login.sessionDto.userDto.username}</h3>
                     </ui:fragment>
-                    <br style="font-size:2px"/>
                     <ul>
                         <li><p class="lightColorFooter">© Party Resort - 2015</p></li>
                     </ul>
-                    <br style="font-size:0px"/>
 
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="175" header="Pagina's" collapsible="true">
-                    <p:menu>
-                        
-                            
-                            <p:menuitem value="Customer" url="http://localhost:8080/ResortUI/customer.xhtml" />
-                            <p:menuitem value="Eventcompany" url="http://localhost:8080/ResortUI/eventcompany.xhtml" />                            
-                            <p:menuitem value="Eventtype" url="http://localhost:8080/ResortUI/eventtype.xhtml" />
-                            <p:menuitem value="Location" url="http://localhost:8080/ResortUI/location.xhtml" />
-                            <p:menuitem value="Overview" url="http://localhost:8080/ResortUI/overview.xhtml" />
-                            <p:menuitem value="Reservation" url="http://localhost:8080/ResortUI/locareservation.xhtml" />
-                            
-
-
-                    </p:menu>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-                    <div name="content">
-                    <ui:insert name="content"></ui:insert>
-                    </div>
                 </p:layoutUnit>
                 <p:dock position="bottom">
                     <p:menuitem value="Home" icon="./resources/images/home.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
@@ -73,7 +54,6 @@
                     <p:menuitem value="Reservation" icon="./resources/images/Reservation.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
                     <p:menuitem value="Customer" icon="./resources/images/customer.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
                     <p:menuitem value="Park" icon="./resources/images/park.png" url="http://localhost:8080/ResortUI/index.xhtml"/>
-
                 </p:dock>
             </p:layout>
 

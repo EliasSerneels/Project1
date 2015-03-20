@@ -10,85 +10,15 @@
     <body>
         <ui:composition template="./common/primetemplate.xhtml">
             <ui:define name="content">
-                <h:form>
-                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-                    <ul class="change-form">
-                        <li>
-                            <h:inputHidden value="${event.dto.detail.id}"/>
-                        </li>
-                        <li>
-                            <div class="inputinfo">EventType</div>
-                            <h:inputText label="Locatie" 
-                                         value="${event.dto.detail.eventtype}" class="form-control"
-                                         required="true" validatorMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 200 tekens)"
-                                         >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. Ã©Ã¨ÃªÃ¢Ã´Ã»Ã®Ã«Ã¤Ã¤Ã¼Ã¯Ã¶Ã Ã§]{1,20}"/>
-                            </h:inputText>
-                        </li>
-                        <li>
-                            <div class="inputinfo">Company</div>
-                            <h:inputText label="Capaciteit" 
-                                         value="${event.dto.detail.eventcompany}" class="form-control"
-                                         required="true">
-                            </h:inputText>                                 
-                        </li>                                                              
-                    </ul>
-                    <div class="col-md-12">
-                        <div class="input-group">  
-                            <h:commandButton class="btn btn-primary" action="${event.add()}" value="Save" ></h:commandButton>
-                        </div> 
-                    </div>
-                </h:form> 
-
-                <h2>Eventoverzicht</h2>
-                <h:form>
-                    <p:dataTable var="listDetail" value="#{event.dto.list}">                          
-                        <p:column headerText="Id" sortBy="#{listDetail.id}">
-                            <h:outputText value="#{listDetail.id}"/>
-                        </p:column>
-                        <p:column headerText="Naam">
-                            <h:outputText value="#{listDetail.eventtype}"/>
-                        </p:column>
-                        <p:column headerText="Type">
-                            <h:outputText value="#{listDetail.eventcompany}"/>
-                        </p:column>
-
-                        <p:column headerText="Maximum personen">
-                            <a href="event.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                            <a href="event.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
-                        </p:column> 
-                    </p:dataTable>
-                </h:form>  
-                <h1>Eventcompany</h1>
-                <h:form>
-                    <p:dataTable var="listDetail" value="#{eventcompany.dto.list}">                          
-                        <p:column headerText="Id" sortBy="#{listDetail.id}">
-                            <h:outputText value="#{listDetail.id}"/>
-                        </p:column>
-                        <p:column headerText="Naam">
-                            <h:outputText value="#{listDetail.name}"/>
-                        </p:column>
-                        <p:column headerText="Stad">
-                            <h:outputText value="#{listDetail.city}"/>
-                        </p:column>
-                        <p:column headerText="Straat">
-                            <h:outputText value="#{listDetail.street}"/>
-                        </p:column>
-                        <p:column headerText="TelefoonNr.">
-                            <h:outputText value="#{listDetail.phone}"/>
-                        </p:column>
-                        <p:column headerText="Contact">
-                            <h:outputText value="#{listDetail.contact}"/>
-                        </p:column>
-                        <p:column headerText="TESTLIJST">
-                            <h:outputText value="#{listDetail.evententity}"/>
-                        </p:column>
-                        <p:column headerText="Maximum personen">
-                            <a href="event.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                            <a href="event.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
-                        </p:column> 
-                    </p:dataTable>  
+                <h:form id="form">
+                    <p:dataList value="#{listdetail.eventid}" var="id" type="ordered">
+                        <f:facet name="header">
+                            Events
+                        </f:facet>
+                        #{event.id}, #{event.type}
+                    </p:dataList>
                 </h:form>
+
 
             </ui:define>
         </ui:composition>
