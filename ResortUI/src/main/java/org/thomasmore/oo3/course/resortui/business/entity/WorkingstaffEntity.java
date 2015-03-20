@@ -18,19 +18,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class WorkingstaffEntity extends BasicEntity {
 
-    private String fucntion;
+    private String function;
     private String event;
     private String staff;
     private String starttime;
     private String endtime;
 
-    public String getFucntion() {
-        return fucntion;
+    public String getFunction() {
+        return function;
     }
 
-    public void setFucntion(String fucntion) {
-        this.fucntion = fucntion;
+    public void setFunction(String function) {
+        this.function = function;
     }
+
+    
 
     public String getEvent() {
         return event;
