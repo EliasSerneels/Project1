@@ -17,14 +17,11 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
-import org.thomasmore.oo3.course.resortui.dao.ParkDao;
 import org.thomasmore.oo3.course.resortui.model.IndexPageDto;
 
 /**
@@ -37,23 +34,25 @@ public class IndexController
 {
 
     private IndexPageDto dto;
-    
-    @EJB
-    private ParkDao parkDao;
+    private List<String> images;
+
 
     @PostConstruct
     public void init()
     {
-        ParkEntity entity =  new ParkEntity();
-        entity.setName("abc");
-        try {
-            parkDao.save(entity);
-        }
-        catch (Exception ex) {
-            Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, ex);
+        images = new ArrayList<String>();
+        for (int i = 1; i <= 4; i++) {
+            images.add("nature" + i + ".jpg");
         }
     }
+ 
+    public List<String> getImages() {
+        return images;
+    
+    }
 
+     
+ 
     public IndexPageDto getDto()
     {
         return dto;
