@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./common/template.xhtml">
+            <ui:define name="title">Eventtypes</ui:define>
+            <ui:define name="navbar"><h1>Eventtypes</h1></ui:define>
+            <ui:define name="content">
+<!--
+                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                    <script>
+                        window.location.href = "http:login.xhtml";
+                    </script>
+                </ui:fragment>
+-->
+                <h2>Eventtype aanmaken of aanpassen</h2>
+                <h:form>
+                    <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
+                    <ul class="change-form">
+                        <li>
+                            <h:inputHidden value="${eventtype.dto.detail.id}"/>
+                            <div class="inputinfo">Naam</div>
+                            <h:inputText label="Naam" 
+                                         value="${eventtype.dto.detail.eventname}" class="form-control"
+                                         required="true" validatorMessage="Vul een parknaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                </h:inputText>
+                        </li>                                                             
+                    </ul>
+                    <div class="col-md-12">
+                        <div class="input-group">  
+                            <h:commandButton class="btn btn-primary" action="${eventtype.add()}" value="Save" ></h:commandButton>
+                        </div> 
+                    </div>
+                </h:form> 
+
+                <br/><br/>
+                
+                <p:dataTable var="listDetail" value="#{eventtype.dto.list}">
+                    <p:column headerText="Id" sortBy="#{listDetail.id}">
+                        <h:outputText value="#{listDetail.id}"/>
+                    </p:column>
+                    <p:column headerText="Naam">
+                        <h:outputText value="#{listDetail.eventname}"/>
+                    </p:column>
+                    <p:column>
+                        <a href="eventtype.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                        <a href="eventtype.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                    </p:column> 
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

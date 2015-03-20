@@ -10,5 +10,4 @@ package org.thomasmore.oo3.course.resortui.model;
  * @author Jeroen
  */
 public class EventtypeDetailDto extends EventtypeListDetailDto { 
-    
 }

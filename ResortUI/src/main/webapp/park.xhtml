@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
@@ -24,7 +24,7 @@
 -->
                 <h2>Park aanmaken of aanpassen</h2>
                 <h:form>
-                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+                    <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
                     <ul class="change-form">
                         <li>
                             <h:inputHidden value="${park.dto.detail.id}"/>

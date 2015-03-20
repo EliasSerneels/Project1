@@ -24,15 +24,14 @@ public class EventtypeFacade {
     @EJB
     private EventtypeDao eventtypeDao;
 
-    
-public EventtypePageDto loadEventtypeOverviewPage(String editId, String deleteId) {
-EventtypePageDto dto = new EventtypePageDto();
+    public EventtypePageDto loadEventtypeOverviewPage(String editId, String deleteId) {
+        EventtypePageDto dto = new EventtypePageDto();
         if (editId != null) {
             EventtypeEntity eventtypeEntity = eventtypeDao.findById(editId);
             if (eventtypeEntity != null) {
                 dto.getDetail().setId(eventtypeEntity.getId());
                 dto.getDetail().setEventname(eventtypeEntity.getEventname());
-                
+
             }
         }
 
@@ -40,10 +39,7 @@ EventtypePageDto dto = new EventtypePageDto();
             eventtypeDao.deleteById(deleteId);
         }
         List<EventtypeEntity> events = eventtypeDao.listAll();
-        
-        
-        
-        
+
         for (EventtypeEntity eventtype : events) {
             EventtypeListDetailDto listDetail = new EventtypeListDetailDto();
             listDetail.setId(eventtype.getId());
@@ -54,8 +50,8 @@ EventtypePageDto dto = new EventtypePageDto();
     }
 
     public EventtypePageDto add(EventtypePageDto dto) {
-        
-EventtypeEntity eventtypeEntity = null;
+
+        EventtypeEntity eventtypeEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
             dto.getDetail().setId(UUID.randomUUID().toString());
@@ -64,12 +60,12 @@ EventtypeEntity eventtypeEntity = null;
         }
 
         if (eventtypeEntity == null) {
-            eventtypeEntity = new EventtypeEntity();            
-        }       
+            eventtypeEntity = new EventtypeEntity();
+        }
         eventtypeEntity.setId(dto.getDetail().getId());
         eventtypeEntity.setEventname(dto.getDetail().getEventname());
         eventtypeDao.save(eventtypeEntity);
         return dto;
-        
+
     }
 }
