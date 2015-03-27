@@ -36,7 +36,7 @@
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">  
-                            <h:commandButton class="btn btn-primary" action="${eventtype.add()}" value="Save" ></h:commandButton>
+                            <h:commandButton class="button" action="${eventtype.add()}" value="Save" ></h:commandButton>
                         </div> 
                     </div>
                 </h:form> 
@@ -51,8 +51,8 @@
                         <h:outputText value="#{listDetail.eventname}"/>
                     </p:column>
                     <p:column>
-                        <a href="eventtype.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                        <a href="eventtype.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                        <a href="eventtype.xhtml?edit=${listDetail.id}" class=" button">edit</a>
+                        <a href="eventtype.xhtml?delete=${listDetail.id}" class=" button">delete</a>
                     </p:column> 
                 </p:dataTable>
             </ui:define>

@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,62 +15,86 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>       
         <!-- Latest compiled and minified CSS -->
-<!--        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-        <script src="resources/js/bjqs-1.3.js"></script>-->
-        
+        <!--        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+                <script src="resources/js/bjqs-1.3.js"></script>-->
+
         <h:outputStylesheet library="css" name="maxcdn.bootstrapcdn.com_bootstrap_3.3.1_css_bootstrap-theme.min.css"/>
         <h:outputStylesheet library="css" name="maxcdn.bootstrapcdn.com_bootstrap_3.3.1_css_bootstrap.min.css"/>
 
         <h:outputStylesheet library="css" name="styles.css"/> 
         <h:outputStylesheet library="css" name="bjqs.css"/>
-        
-    </h:head>
 
+    </h:head>
     <h:body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <nav class="navbar  navbar-fixed-top" role="navigation">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <img src="./resources/images/logo.png" alt="Party resort" height="35" width="34" style="float:left; margin:10px 15px 0px 15px;" /><a class="navbar-brand" href="index.xhtml">Tipiel Resort</a>
-                </div>
-                <h:form>
-                    <!-- A command-action must always be in a form, it also updates all the data in the form.-->
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="bungalow.xhtml">Bungalows</a></li>
-                                <li><a href="park.xhtml">Parken</a></li>
-                                <li><a href="customer.xhtml">Klanten</a></li>
-                                <li><a href="reservation.xhtml">Reservaties</a></li>
-                                <li><a href="overview.xhtml">Overzicht</a></li> 
-                                <li><a href="eventcompany.xhtml">Eventcompany</a></li> 
-                                <li><a href="eventtype.xhtml">Eventtypes</a></li> 
-                            <!--
-                            <li><a href="bungalowinfo.xhtml">Bekijk bungalows</a></li>
-                            <li><a href="parkinfo.xhtml">Bekijk parken</a></li>
-                            -->
-                            
-                            <ui:fragment rendered="${sessionDto.userDto.loggedIn}">
-                                <li><a href="profile.xhtml">Profiel</a></li>
-                                                           
-                                <li>
-                                    <!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
-                                    <h:commandLink action="${login.logout()}">Uitloggen</h:commandLink>
-                                </li>
-                            </ui:fragment>
-                            <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                                <li><a href="login.xhtml">Inloggen</a></li>
-                            </ui:fragment>
-                        </ul>
-                    </div>
+
+                <h:form>  
+                    <p:growl id="messages"/>
+
+                    <p:menubar>
+                        <p:submenu label="Bungalows">
+                            <p:menuitem value="Park" url="park.xhtml"  />
+                            <p:menuitem value="Bungalow" url="bungalow.xhtml" />
+                            <p:menuitem value="Klant" url="customer.xhtml" />
+                            <p:menuitem value="Reservatie" url="reservation.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Events">
+
+                            <p:menuitem value="Event" url="bungalow.xhtml" />
+                            <p:menuitem value="Eventbedrijf" url="bungalow.xhtml" />
+                            <p:menuitem value="Eventtype" url="bungalow.xhtml" />
+                        </p:submenu>
+                        <p:menuitem value="Overzicht" url="overview.xhtml" />
+                        <f:facet name="options">
+                            <p:inputText style="margin-right:10px" placeholder="Search"/>
+                            <p:commandButton type="button" value="Logout" action="${login.logout()}" icon="ui-icon-extlink" />
+                        </f:facet>
+                    </p:menubar>
                 </h:form>
+                <!--                        <div class="navbar-header">
+                                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                            <img src="./resources/images/logo.png" alt="Party resort" height="35" width="34" style="float:left; margin:10px 15px 0px 15px;" /><a class="navbar-brand" href="index.xhtml">Tipiel Resort</a>
+                                        </div>-->
+                <!--                        <h:form>
+                                             A command-action must always be in a form, it also updates all the data in the form.
+                                            <div id="navbar" class="navbar-collapse collapse">
+                                                <ul class="nav navbar-nav navbar-right">
+                                                    <li><a href="bungalow.xhtml">Bungalows</a></li>
+                                                        <li><a href="park.xhtml">Parken</a></li>
+                                                        <li><a href="customer.xhtml">Klanten</a></li>
+                                                        <li><a href="reservation.xhtml">Reservaties</a></li>
+                                                        <li><a href="overview.xhtml">Overzicht</a></li> 
+                                                        <li><a href="eventcompany.xhtml">Eventcompany</a></li> 
+                                                        <li><a href="eventtype.xhtml">Eventtypes</a></li> 
+                                                    
+                                                    <li><a href="bungalowinfo.xhtml">Bekijk bungalows</a></li>
+                                                    <li><a href="parkinfo.xhtml">Bekijk parken</a></li>
+                                                    
+                                                    
+                                                    <ui:fragment rendered="${sessionDto.userDto.loggedIn}">
+                                                        <li><a href="profile.xhtml">Profiel</a></li>
+                                                                                   
+                                                        <li>
+                                                             This is true for all pages implementing the template, so we did not have a specific controller for the template. 
+                                                            <h:commandLink action="${login.logout()}">Uitloggen</h:commandLink>
+                                                        </li>
+                                                    </ui:fragment>
+                                                    <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                                                        <li><a href="login.xhtml">Inloggen</a></li>
+                                                    </ui:fragment>
+                                                </ul>
+                                            </div>
+                                        </h:form>-->
 
             </div>
-        </nav>
+        </nav> 
         <div class="jumbotron">
             <div class="container">
                 <ui:insert name="navbar"></ui:insert>
@@ -77,6 +104,9 @@
         <div class="container">
             <ui:insert name="content"></ui:insert>
         </div>
+        <div class="push">
+            
+        </div>
         <footer>
 
             <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
@@ -84,12 +114,12 @@
                     <li>
                         <h3>Nieuwe gebruiker?</h3>
                         <p>Klik hieronder om je te registreren</p>
-                        <a class="btn btn-success" href="registration.xhtml">Registreer</a>
+                        <a class="button" href="registration.xhtml">Registreer</a>
                     </li>
                     <li>
                         <h3>Heb je al een account?</h3>
                         <p>Klik hieronder om je in te loggen</p>
-                        <a class="btn btn-success" href="login.xhtml">Inloggen</a>
+                        <a class="button" href="login.xhtml">Inloggen</a>
                     </li>
                 </ul>
             </ui:fragment>
@@ -103,6 +133,7 @@
             <ul id="footernamen">
                 <li>Elias Serneels</li>
                 <li>Olivier Van de Perre</li>
+                <li>Pieter Drijkoningen</li>
             </ul>
             <br style="font-size:0px"/>
         </footer>

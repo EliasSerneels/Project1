@@ -36,7 +36,7 @@
                             <tr><td>Email-adres</td><td>${login.sessionDto.userDto.email}</td></tr>
                             <tr><td>Telefoonnummer</td><td>${login.sessionDto.userDto.phone}</td> </tr>                           
                         </table>
-                        <a class="btn btn-primary" id="knop" onclick="document.getElementById('inputForm').style.display = 'block';
+                        <a class="button" id="knop" onclick="document.getElementById('inputForm').style.display = 'block';
                             document.getElementById('knop').setAttribute('disabled', 'disabled');">Wijzig</a>
                     </h:form>
                 </div>                
@@ -72,7 +72,7 @@
                                              value="${login.sessionDto.userDto.phone}"
                                              required="false" />
                                 <li>
-                                    <h:commandButton class="btn btn-primary" action="${profile.edit()}" value="Opslaan"/>
+                                    <h:commandButton class="button" action="${profile.edit()}" value="Opslaan"/>
                                 </li>
                             </li>
                         </ul>
