@@ -14,7 +14,11 @@ html,body {
     background:center no-repeat fixed ;
     background-size: cover;
     background-image: url('http://localhost:8080/ResortUI/resources/images/bg.jpg');
+    min-height: 100%;
+    height: auto !important;
     height: 100%;
+    margin: 0 auto -300px; /* the bottom margin is the negative value of the footer's height */
+
 }
 .icon-bar {
     background-color:#fff;
@@ -419,6 +423,12 @@ ul{
 }
 .infoBung p{
     margin:20px 0 40px 0;
+}
+.footer, .push {
+    height: 300px; /* .push must be the same height as .footer */
+}
+footer{
+    
 }
 
 footer ul, footer ul li{

@@ -86,13 +86,13 @@
                 </p:dialog> 
                 <br/><br/>
                 <h1>Eventcompany</h1>
-                <p:dataTable var="listDetail" value="#{eventcompany.dto.list}" draggableColumns="true" class="overview">                          
+                <p:dataTable var="listDetail" value="#{eventcompany.dto.list}" class="overview">                          
 
 
                     <p:column headerText="Id" sortBy="#{listDetail.id}">
                         <h:outputText value="#{listDetail.id}"/>
                     </p:column>
-                    <p:column headerText="Naam" sortBy="#{listDetail.name}">
+                    <p:column headerText="Naam">
                         <h:outputText value="#{listDetail.name}"/>
                     </p:column>
                     <p:column headerText="Stad">
