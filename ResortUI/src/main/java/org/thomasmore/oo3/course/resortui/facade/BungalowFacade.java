@@ -67,8 +67,6 @@ public class BungalowFacade {
                 return dto;
             }
 
-    
-
     public BungalowPageDto add(BungalowPageDto dto) {
         
         BungalowEntity bungalowEntity = null;
