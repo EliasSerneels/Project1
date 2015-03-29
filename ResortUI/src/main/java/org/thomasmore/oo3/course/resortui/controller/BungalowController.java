@@ -16,11 +16,12 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
 import javax.enterprise.context.RequestScoped;
+import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -28,7 +29,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
-import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.facade.BungalowFacade;
 
 /**
@@ -37,10 +37,10 @@ import org.thomasmore.oo3.course.resortui.facade.BungalowFacade;
  */
 @Named(value = "bungalow")
 @RequestScoped
-public class BungalowController {
+public class BungalowController implements Serializable {
 
     private BungalowPageDto dto;
-    private String pageRedirect="bungalow.xhtml?faces-redirect=true";
+    private String pageRedirect = "bungalow.xhtml?faces-redirect=true";
     private List<BungalowEntity> selectedBungalow;
 
     @EJB
@@ -53,26 +53,30 @@ public class BungalowController {
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
         dto = bungalowFacade.loadBungalowOverviewPage(editId, deleteId);
+
+    }
+
+    public void test() {
         
     }
 
     public String add() {
-        
+
         bungalowFacade.add(dto);
-        
+
         return pageRedirect;
     }
-    
-         public void onRowSelect(SelectEvent event) {
+
+    public void onRowSelect(SelectEvent event) {
         FacesMessage msg = new FacesMessage("Bungalow Selected", ((BungalowEntity) event.getObject()).getId());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
- 
+
     public void onRowUnselect(UnselectEvent event) {
         FacesMessage msg = new FacesMessage("Bungalow Unselected", ((BungalowEntity) event.getObject()).getId());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
+
     public BungalowPageDto getDto() {
         return dto;
     }
@@ -89,5 +93,4 @@ public class BungalowController {
         this.selectedBungalow = selectedBungalow;
     }
 
-    
 }

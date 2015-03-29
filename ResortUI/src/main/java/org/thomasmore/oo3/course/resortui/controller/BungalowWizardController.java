@@ -1,26 +1,24 @@
 package org.thomasmore.oo3.course.resortui.controller;
  
 import java.io.Serializable;
-import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import org.primefaces.event.FlowEvent;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
-import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
 import org.thomasmore.oo3.course.resortui.dao.BungalowDao;
 import org.thomasmore.oo3.course.resortui.dao.ParkDao;
-import org.thomasmore.oo3.course.resortui.model.BungalowListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
+import org.thomasmore.oo3.course.resortui.model.ParkPageDto;
 
 /**
  *
  * @author Timothy De Groot
  */
 
-@ManagedBean(name="BungalowWizardController")
-@ViewScoped
+@Named(value="BungalowWizardController")
+@SessionScoped
 public class BungalowWizardController implements Serializable {
 
     @EJB
@@ -28,6 +26,18 @@ public class BungalowWizardController implements Serializable {
     @EJB
     private ParkDao parkDao;
     
+    private ParkPageDto parkdto;
+
+    public ParkPageDto getParkdto() {
+        return parkdto;
+    }
+
+    public void setParkdto(ParkPageDto parkdto) {
+        this.parkdto = parkdto;
+    }
+    public void init() {
+        parkdto = new ParkPageDto();
+    }
     private boolean skip =false;
      
     public boolean isSkip() {
