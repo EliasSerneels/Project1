@@ -3,28 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.thomasmore.oo3.course.resortui.model;
+package org.thomasmore.oo3.course.resortui.business.entity;
 
 /**
  *
  * @author Jeroen
  */
-public class StaffListDetailDto {
- private String id;
+public class StaffEntity extends BasicEntity{
+    
  private String firstname;
  private String lastname;
  private String country;
  private String city;
+ private String street;
  private String phone;
  private String birthdate;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -58,6 +51,14 @@ public class StaffListDetailDto {
         this.city = city;
     }
 
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -75,5 +76,6 @@ public class StaffListDetailDto {
     }
  
  
-}
  
+ 
+}
