@@ -10,13 +10,13 @@ package org.thomasmore.oo3.course.resortui.model;
  * @author Jeroen
  */
 public class StaffListDetailDto {
-
-private String id;
-private String naam;
-private String city;
-private String street;
-private String phone;
-private String birthdate;
+ private String id;
+ private String firstname;
+ private String lastname;
+ private String country;
+ private String city;
+ private String phone;
+ private String birthdate;
 
     public String getId() {
         return id;
@@ -26,12 +26,28 @@ private String birthdate;
         this.id = id;
     }
 
-    public String getNaam() {
-        return naam;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCity() {
@@ -40,14 +56,6 @@ private String birthdate;
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
     }
 
     public String getPhone() {
@@ -65,6 +73,7 @@ private String birthdate;
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
-
-
+ 
+ 
 }
+ 

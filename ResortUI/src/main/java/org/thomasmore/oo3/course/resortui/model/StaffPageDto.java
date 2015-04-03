@@ -13,8 +13,7 @@ import java.util.List;
  * @author Jeroen
  */
 public class StaffPageDto {
-
-    private StaffDetailDto detail = new StaffDetailDto();
+ private StaffDetailDto detail = new StaffDetailDto();
 
     private List<StaffListDetailDto> list = new LinkedList<>();
 
@@ -32,5 +31,5 @@ public class StaffPageDto {
 
     public void setList(List<StaffListDetailDto> list) {
         this.list = list;
-    }
+    }   
 }
