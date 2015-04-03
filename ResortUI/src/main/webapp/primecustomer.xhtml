@@ -73,7 +73,7 @@
                         </li>    
 
                         <li>
-                            <div class="inputinfo">Straat</div>
+                            <div class="inputinfo" width="20%">Straat</div>
                             <h:inputText label="Straat" 
 
                                          value="${customer.dto.detail.street}" class="form-control"
@@ -106,10 +106,6 @@
                 </h:form>
                 <h:form id="form">
                     <p:dataTable value="#{customer.dto.list}" var="listDetail" >
-                        <p:column headerText="ID">
-                            <h:outputText value="#{listDetail.id}" />
-                        </p:column>
-
                         <p:column headerText="FirstName">
                             <h:outputText value="#{listDetail.firstname}" />
                         </p:column>
