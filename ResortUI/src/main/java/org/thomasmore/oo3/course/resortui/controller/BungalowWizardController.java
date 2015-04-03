@@ -3,7 +3,7 @@ package org.thomasmore.oo3.course.resortui.controller;
 import java.io.Serializable;
 import java.util.UUID;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import org.primefaces.event.FlowEvent;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
@@ -18,7 +18,7 @@ import org.thomasmore.oo3.course.resortui.model.ParkPageDto;
  */
 
 @Named(value="BungalowWizardController")
-@SessionScoped
+@RequestScoped
 public class BungalowWizardController implements Serializable {
 
     @EJB

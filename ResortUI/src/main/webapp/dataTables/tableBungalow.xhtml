@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="bungalowform">
+        <p:dataTable id="bungalow" var="listDetail" value="#{bungalow.dto.list}" class="overview" selectionMode="multiple" selection="#{bungalow.selectedBungalow}" rowKey="#{listDetail.id}">                          
+
+
+            <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
+                <h:outputText value="#{listDetail.id}"/>
+            </p:column>
+            <p:column headerText="Naam" sortBy="#{listDetail.name}">
+                <h:outputText value="#{listDetail.name}"/>
+            </p:column>
+            <p:column headerText="Stad">
+                <h:outputText value="#{listDetail.type}"/>
+            </p:column>
+            <p:column headerText="Straat">
+                <h:outputText value="#{listDetail.price}"/>
+            </p:column>
+            <p:column headerText="TelefoonNr.">
+                <h:outputText value="#{listDetail.park}"/>
+            </p:column>
+            <p:column headerText="Contact">
+                <h:outputText value="#{listDetail.maxpeople}"/>
+            </p:column>
+
+            <p:column>
+                <a href="bungalow.xhtml?edit=${listDetail.id}" class=" button">edit</a>
+                <a href="bungalow.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+            </p:column>
+            <f:facet name="footer">
+                <p:commandButton process="bungalow" update=":bungalowform:multiBungalowDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiBungalowDialog').show()" />
+            </f:facet>
+        </p:dataTable>
+        <p:dialog header="Geselecteerde Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
+            <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
+                <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail">
+                    <img src="resources/images/icons/#{listDetail.name}.jpg"/>
+                    <h:outputText value="#{listDetail.name} - #{listDetail.type} - #{listDetail.price} - #{listDetail.park} - #{listDetail.maxpeople}" style="display:block"/>
+                </ui:repeat>
+            </p:outputPanel>
+        </p:dialog>
+    </h:form>
+</ui:composition>

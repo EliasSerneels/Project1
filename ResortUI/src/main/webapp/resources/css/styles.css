@@ -16,6 +16,9 @@ html,body {
     background-image: url('http://localhost:8080/ResortUI/resources/images/bg.jpg');
     height: 100%;
 }
+a{
+    color:#ffffff;
+}
 .icon-bar {
     background-color:#fff;
 }

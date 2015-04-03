@@ -40,7 +40,7 @@ import org.thomasmore.oo3.course.resortui.facade.BungalowFacade;
 public class BungalowController implements Serializable {
 
     private BungalowPageDto dto;
-    private String pageRedirect = "bungalow.xhtml?faces-redirect=true";
+    private final String pageRedirect = "bungalow.xhtml?faces-redirect=true";
     private List<BungalowEntity> selectedBungalow;
 
     @EJB
@@ -48,22 +48,14 @@ public class BungalowController implements Serializable {
 
     @PostConstruct
     public void init() {
-
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
         dto = bungalowFacade.loadBungalowOverviewPage(editId, deleteId);
-
-    }
-
-    public void test() {
-        
     }
 
     public String add() {
-
         bungalowFacade.add(dto);
-
         return pageRedirect;
     }
 

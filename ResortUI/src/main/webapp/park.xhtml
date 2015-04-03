@@ -62,27 +62,7 @@
 
                 <br/><br/>
                 <h2>Parkoverzicht</h2>
-                <table id="overview">
-                    <tr>
-                        <th>ID</th>
-                        <th>Naam</th>
-                        <th>Locatie</th>
-                        <th>Capaciteit</th>  
-                        <th></th>
-                    </tr>
-                    <ui:repeat value="${park.dto.list}" var="listDetail">
-                        <tr>
-                            <td class="idCol">${listDetail.id}</td>
-                            <td>${listDetail.name}</td>
-                            <td>${listDetail.location}</td>
-                            <td>${listDetail.capacity}</td>                                   
-                            <td>
-                                 <a href="park.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-                                 <a href="park.xhtml?delete=${listDetail.id}" class=" button">delete</a>
-                            </td>                                 
-                        </tr>
-                    </ui:repeat>
-                </table>
+                <ui:include src="dataTables/tablePark.xhtml"></ui:include>
             </ui:define>
         </ui:composition>
     </body>
