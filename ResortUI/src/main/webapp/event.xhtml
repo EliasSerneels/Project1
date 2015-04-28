@@ -14,20 +14,8 @@
         </h:head>
 
         <h:body>
-            <ui:composition template="./common/primetemplate.xhtml">
-                <p:layout fullPage="true">
-
-                    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                        Dit zijn de evenementen
-                    </p:layoutUnit>
-
-                    <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                        Footer
-                    </p:layoutUnit>
-
-
-
-                    <p:layoutUnit position="center">
+            <ui:composition template="./common/template.xhtml">
+                
                         <ui:define name="content">
                             <h:form>
                                 <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
@@ -63,31 +51,9 @@
 
                             <br/><br/>
                             <h2>Eventoverzicht</h2>
-                            <table id="overview">
-                                <tr>
-                                    <th>ID</th>
-
-                                    <th>Type</th>
-                                    <th>Company</th>  
-                                    <th></th>
-                                </tr>
-                                <ui:repeat value="${event.dto.list}" var="listDetail">
-                                    <tr>
-                                        <td class="idCol">${listDetail.id}</td>
-
-                                        <td>${listDetail.eventtype}</td>
-                                        <td>${listDetail.eventcompany}</td>                                   
-                                        <td>
-                                            <a href="event.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                                            <a href="event.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
-                                        </td>                                 
-                                    </tr>
-                                </ui:repeat>
-                            </table>
+                            <ui:include src="dataTables/tableEvent.xhtml"></ui:include>
                         </ui:define>
-                    </p:layoutUnit>
-
-                </p:layout>
+           
             </ui:composition>
         </h:body>
     </f:view>

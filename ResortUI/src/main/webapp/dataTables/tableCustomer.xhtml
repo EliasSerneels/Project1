@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+        <p:dataTable var="listDetail" value="#{bungalow.dto.list}" class="overview">                          
+
+
+                        <p:column headerText="Id" sortBy="#{listDetail.id}">
+                            <h:outputText value="#{listDetail.id}"/>
+                        </p:column>
+                        <p:column headerText="Naam" sortBy="#{listDetail.name}">
+                            <h:outputText value="#{listDetail.name}"/>
+                        </p:column>
+                        <p:column headerText="Stad">
+                            <h:outputText value="#{listDetail.type}"/>
+                        </p:column>
+                        <p:column headerText="Straat">
+                            <h:outputText value="#{listDetail.price}"/>
+                        </p:column>
+                        <p:column headerText="TelefoonNr.">
+                            <h:outputText value="#{listDetail.park}"/>
+                        </p:column>
+                        <p:column headerText="Contact">
+                            <h:outputText value="#{listDetail.maxpeople}"/>
+                        </p:column>
+
+                        <p:column>
+                            <a href="bungalow.xhtml?edit=${listDetail.id}" class=" button">edit</a>
+                            <a href="bungalow.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+                        </p:column> 
+                    </p:dataTable> 
+</ui:composition>

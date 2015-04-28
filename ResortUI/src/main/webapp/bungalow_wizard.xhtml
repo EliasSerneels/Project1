@@ -154,61 +154,13 @@
                 </h:form>
                                
                 <h2>Parkoverzicht</h2>
-                <table id="overview">
-                    <tr>
-                        <th>ID</th>
-                        <th>Naam</th>
-                        <th>Locatie</th>
-                        <th>Capaciteit</th>  
-                        <th></th>
-                    </tr>
-                    <ui:repeat value="${park.dto.list}" var="listDetail">
-                        <tr>
-                            <td class="idCol">${listDetail.id}</td>
-                            <td>${listDetail.name}</td>
-                            <td>${listDetail.location}</td>
-                            <td>${listDetail.capacity}</td>                                   
-                            <td>
-                                 <a href="park.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-                                 <a href="park.xhtml?delete=${listDetail.id}" class=" button">delete</a>
-                            </td>                                 
-                        </tr>
-                    </ui:repeat>
-                </table>
+                <ui:include src="dataTables/tablePark.xhtml"></ui:include>
                 
                 <h2>Bungalowoverzicht</h2>
-                <table class="overview">
-                    <tr>
-                        <th>ID</th>
-                        <th>Naam</th>
-                        <th>Type</th>
-                        <th>Prijs</th>
-                        <th>Park</th>
-                        <th>Max aantal personen</th>
-                        <th></th>
-                    </tr>
-                    <ui:repeat value="${bungalow.dto.list}" var="listDetail">                          
-                        <tr>
-                            <h:form>
-                                <td>${listDetail.id}</td>
-                                <td>${listDetail.name}</td>
-                                <td>${listDetail.type}</td>
-                                <td>${listDetail.price}</td>
-                                <td>${listDetail.park}</td>
-                                <td>${listDetail.maxpeople}</td>
-<!--                                <td>
-                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?edit=${listDetail.id}" value="Wijzig"></h:commandButton>
-                                    
-                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?delete=${listDetail.id}" value="Verwijder"></h:commandButton>
-                                </td>-->
-                                <td>
-                                 <a href="bungalow.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                                 <a href="bungalow.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
-                                </td>
-                            </h:form>
-                        </tr>                          
-                    </ui:repeat>
-                </table>          
+                <ui:include src="dataTables/tableBungalow.xhtml"></ui:include>
+                
+                <h2>Klantoverzicht</h2>
+                <ui:include src="dataTables/tableCustomer.xhtml"></ui:include>
   
             </ui:define>
         </ui:composition>

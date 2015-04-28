@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <p:dataTable var="listDetail" value="#{reservation.dto.list}" class="overview">                          
+
+
+        <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
+            <h:outputText value="#{listDetail.id}"/>
+        </p:column>
+        <p:column headerText="Start" sortBy="#{listDetail.startDate}">
+            <h:outputText value="#{listDetail.startDate}"/>
+        </p:column>
+        <p:column headerText="Einde" sortBy="#{listDetail.endDate}">
+            <h:outputText value="#{listDetail.endDate}"/>
+        </p:column>
+        <p:column headerText="Klant" sortBy="#{listDetail.customerName}">
+            <h:outputText value="#{listDetail.customerName}"/>
+        </p:column>
+        <p:column headerText="Bungalow" sortBy="#{listDetail.bungalowName}">
+            <h:outputText value="#{listDetail.bungalowName}"/>
+        </p:column>
+
+
+        <p:column>
+            <a href="reservation.xhtml?edit=${listDetail.id}" class=" button">edit</a>
+            <a href="reservation.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+        </p:column> 
+    </p:dataTable> 
+</ui:composition>

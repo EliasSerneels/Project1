@@ -4,7 +4,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
     <body>
@@ -16,13 +15,13 @@
             <ui:define name="navbar"><h1>Bungalows</h1></ui:define>
 
             <ui:define name="content">
-<!--
-                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                    <script>
-                        window.location.href = "http:login.xhtml";
-                    </script>
-                </ui:fragment>
--->
+                <!--
+                                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                                    <script>
+                                        window.location.href = "http:login.xhtml";
+                                    </script>
+                                </ui:fragment>
+                -->
                 <h2>Bungalows aanmaken of wijzigen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
@@ -35,7 +34,7 @@
                                          required="true" validatorMessage="Vul een bungalownaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-                                
+
                             </h:inputText>
                         </li>                                    
                         <li class="typelist">
@@ -52,8 +51,8 @@
                             <h:inputText label="Prijs" 
                                          value="${bungalow.dto.detail.price}" class="form-control"
                                          required="true"
-                            />
-                                 
+                                         />
+
                         </li>
                         <li>
                             <div class="inputinfo">Max. # pers.</div>
@@ -72,14 +71,22 @@
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">   
-                            <h:commandButton class="button" action="${bungalow.add()}" value="Save"></h:commandButton>
+                            <p:commandButton class="button" action="${bungalow.add()}" value="Save"></p:commandButton>
                         </div>
                     </div>
                 </h:form>
 
                 <br/><br/>
                 <h2>Bungalowoverzicht</h2>
-                <table class="overview">
+               
+                
+                  
+                <!--TESTING WIP
+                Trying to include a datable from an external file so we can re-use it.
+                It works!-->
+                <ui:include src="dataTables/tableBungalow.xhtml"></ui:include>
+
+<!--                <table class="overview">
                     <tr>
                         <th>ID</th>
                         <th>Naam</th>
@@ -98,19 +105,19 @@
                                 <td>${listDetail.price}</td>
                                 <td>${listDetail.park}</td>
                                 <td>${listDetail.maxpeople}</td>
-<!--                                <td>
-                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?edit=${listDetail.id}" value="Wijzig"></h:commandButton>
-                                    
-                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?delete=${listDetail.id}" value="Verwijder"></h:commandButton>
-                                </td>-->
+                                                                <td>
+                                                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?edit=${listDetail.id}" value="Wijzig"></h:commandButton>
+                                                                    
+                                                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?delete=${listDetail.id}" value="Verwijder"></h:commandButton>
+                                                                </td>
                                 <td>
-                                 <a href="bungalow.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                                 <a href="bungalow.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                                    <a href="bungalow.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                    <a href="bungalow.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
                                 </td>
                             </h:form>
                         </tr>                          
                     </ui:repeat>
-                </table>          
+                </table>          -->
             </ui:define>
         </ui:composition>
     </body>

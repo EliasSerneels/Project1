@@ -92,34 +92,7 @@
                 </h:form>
                 <br/><br/>
                 <h2>Klantoverzicht</h2>
-                <table id="overview">
-                    <tr>
-                        <th>Voornaam</th>
-                        <th>Achternaam</th>
-                        <th>Geboortedatum</th>
-                        <th>Email</th>
-                        <th>TelefoonNr.</th> 
-                        <th>Ontvangt updates</th> 
-                        <th></th>
-                    </tr>
-                    <ui:repeat value="${customer.dto.list}" var="listDetail">
-                        <tr>
-                            <td>${listDetail.firstname}</td>
-                            <td>${listDetail.lastname}</td>
-                            <td>${listDetail.birthdate}</td>
-                            <td>${listDetail.email}</td>
-                            <td>${listDetail.phonenumber}</td>
-                            <td>${listDetail.receiveupdate}</td>
-                            <h:form>
-                                <td>
-                                 <a href="customer.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-                                 <a href="customer.xhtml?delete=${listDetail.id}" class=" button">delete</a>
-                                </td>
-                            </h:form>
-                        </tr>
-                    </ui:repeat>
-
-                </table>
+                <ui:include src="dataTables/tableCustomer.xhtml"></ui:include>
 
 
             </ui:define>

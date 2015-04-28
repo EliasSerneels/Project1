@@ -77,32 +77,7 @@
                 </h:form> 
                 <br/><br/>
                 <h2>Reservatieoverzicht</h2>
-                <table>
-                    <tr>
-                        <th>Startdatum</th>
-                        <th>Einddatum</th>
-                        <th>Starttijdstip</th>
-                        <th>Eindtijdstip</th>
-                        <th>Klant</th>
-                        <th>Bungalow</th>
-                        <th></th>
-                    </tr>
-                    <tbody>
-                        <ui:repeat value="${reservation.dto.list}" var="listDetail">
-                            <h:form>
-                                <tr>                              
-                                    <td>${listDetail.startDate}</td>
-                                    <td>${listDetail.endDate}</td>
-                                    <td>${listDetail.startTime}</td>
-                                    <td>${listDetail.endTime}</td>
-                                    <td>${listDetail.customerName}</td>
-                                    <td>${listDetail.bungalowName}</td> 
-                                    <td><h:commandButton class="button" action="${reservation.remove(listDetail.id)}" value="Verwijder"></h:commandButton></td>
-                                </tr>
-                            </h:form>
-                        </ui:repeat>
-                    </tbody>
-                </table>
+                <ui:include src="dataTables/tableReservation.xhtml"></ui:include>
 
             </ui:define>
 
