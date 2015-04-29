@@ -33,6 +33,7 @@ public class initDbStartup {
         List<Object> objectsToSave = new LinkedList<>();
         
         BungalowEntity bungalowEntity = new BungalowEntity();
+        bungalowEntity.setImageID("b1");
         bungalowEntity.setName("Bananendoos");
         bungalowEntity.setType("Type 3");
         bungalowEntity.setPrice(500000);
@@ -41,6 +42,7 @@ public class initDbStartup {
         objectsToSave.add(bungalowEntity);
 
         BungalowEntity bungalowEntity2 = new BungalowEntity();
+        bungalowEntity2.setImageID("b2");
         bungalowEntity2.setName("Tomattenbak");
         bungalowEntity2.setType("Type 2");
         bungalowEntity2.setPrice(10);
@@ -49,6 +51,7 @@ public class initDbStartup {
         objectsToSave.add(bungalowEntity2);
 
         BungalowEntity bungalowEntity3 = new BungalowEntity();
+        bungalowEntity3.setImageID("b3");
         bungalowEntity3.setName("Paalwoning");
         bungalowEntity3.setType("Type 4");
         bungalowEntity3.setPrice(80);

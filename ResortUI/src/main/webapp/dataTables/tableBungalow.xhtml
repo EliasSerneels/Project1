@@ -4,25 +4,50 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:form id="bungalowform">
-        <p:dataTable id="bungalow" var="listDetail" value="#{bungalow.dto.list}" class="overview" selectionMode="multiple" selection="#{bungalow.selectedBungalow}" rowKey="#{listDetail.id}">                          
 
+        <p:dataTable id="bungalow" var="listDetail" value="#{bungalow.dto.list}" widgetVar="bungalowTable" class="overview" selectionMode="multiple" selection="#{bungalow.selectedBungalow}" rowKey="#{listDetail.id}" emptyMessage="Geen data gevonden.">                          
+            <p:ajax event="rowSelect" update=":bungalowform:multiBungalowDetail" />
+            <p:ajax event="rowUnselect" update=":bungalowform:multiBungalowDetail" />
+            <p:ajax event="rowReorder" update=":bungalowform:multiBungalowDetail" />
 
+            <f:facet name="header">
+                <p:outputPanel>
+                    <h:outputText value="Doorzoek alle velden: " />
+                    <p:inputText id="globalFilter" onkeyup="PF('bungalowTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
+                </p:outputPanel>
+            </f:facet>
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
             </p:column>
-            <p:column headerText="Naam" sortBy="#{listDetail.name}">
+            <p:column id="bungalowname" headerText="Naam" sortBy="#{listDetail.name}" filterBy="#{listDetail.name}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.name}"/>
             </p:column>
-            <p:column headerText="Stad">
+            <p:column headerText="Type" filterBy="#{listDetail.type}" filterMatchMode="contains">
+                <f:facet name="filter">
+                    <p:selectOneButton onchange="PF('bungalowTable').filter()">
+
+                        <f:selectItem itemLabel="Type 1" itemValue="Type 1" />
+                        <f:selectItem itemLabel="Type 2" itemValue="Type 2" />
+                        <f:selectItem itemLabel="Type 3" itemValue="Type 3" />
+                        <f:selectItem itemLabel="Type 4" itemValue="Type 4" />
+                        <f:selectItem itemLabel="Geen" itemValue="" />
+                    </p:selectOneButton>
+                </f:facet>
                 <h:outputText value="#{listDetail.type}"/>
             </p:column>
-            <p:column headerText="Straat">
+            <p:column headerText="Prijs" sortBy="#{listDetail.price}" filterBy="#{listDetail.price}" filterMatchMode="startsWith">
                 <h:outputText value="#{listDetail.price}"/>
             </p:column>
-            <p:column headerText="TelefoonNr.">
+            <p:column headerText="Park"  sortBy="#{listDetail.park}" filterBy="#{listDetail.park}" filterMatchMode="exact">
+                <f:facet name="filter"> 
+                    <p:selectOneMenu onchange="PF('bungalowTable').filter()">
+                        <f:selectItem itemLabel="Alle Parken" itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItems itemLabel="#{listDetail.park}" value="#{bungalow.dto.parkList}" /> 
+                    </p:selectOneMenu>
+                </f:facet>
                 <h:outputText value="#{listDetail.park}"/>
             </p:column>
-            <p:column headerText="Contact">
+            <p:column headerText="Maximum capaciteit" sortBy="#{listDetail.maxpeople}" filterBy="#{listDetail.maxpeople}" filterMatchMode="exact">
                 <h:outputText value="#{listDetail.maxpeople}"/>
             </p:column>
 
@@ -31,13 +56,13 @@
                 <a href="bungalow.xhtml?delete=${listDetail.id}" class=" button">delete</a>
             </p:column>
             <f:facet name="footer">
-                <p:commandButton process="bungalow" update=":bungalowform:multiBungalowDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiBungalowDialog').show()" />
+                <p:commandButton process="bungalow" update=":bungalowform:multiBungalowDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiBungalowDialog').show()" />
             </f:facet>
         </p:dataTable>
         <p:dialog header="Geselecteerde Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
-            <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
-                <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail">
-                    <img src="resources/images/icons/#{listDetail.name}.jpg"/>
+            <p:outputPanel id="multiBungalowDetail" style="text-align:center;" >
+                <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail" rendered="true">
+                    <p:graphicImage value="resources/images/icons/#{listDetail.imageID}.jpg"/>
                     <h:outputText value="#{listDetail.name} - #{listDetail.type} - #{listDetail.price} - #{listDetail.park} - #{listDetail.maxpeople}" style="display:block"/>
                 </ui:repeat>
             </p:outputPanel>

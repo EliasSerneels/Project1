@@ -38,7 +38,7 @@ import org.thomasmore.oo3.course.resortui.model.CustomerPageDto;
 public class CustomerController {
     private CustomerPageDto dto;
     private String pageRedirect="customer.xhtml??faces-redirect=true";
-    private List<CustomerEntity> selectedCustomers;
+    private List<CustomerEntity> selectedCustomer;
     
     @EJB
     private CustomerFacade customerFacade;
@@ -77,12 +77,12 @@ public class CustomerController {
         this.dto = dto;
     }
 
-    public List<CustomerEntity> getSelectedCustomers() {
-        return selectedCustomers;
+    public List<CustomerEntity> getSelectedCustomer() {
+        return selectedCustomer;
     }
 
-    public void setSelectedCustomers(List<CustomerEntity> selectedCustomers) {
-        this.selectedCustomers = selectedCustomers;
+    public void setSelectedCustomer(List<CustomerEntity> selectedCustomer) {
+        this.selectedCustomer = selectedCustomer;
     }
     
     

@@ -3,32 +3,45 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:form id="bungalowform">
-        <p:dataTable id="bungalow" var="listDetail" value="#{event.dto.list}" class="overview" selectionMode="multiple" selection="#{event.selectedEvent}" rowKey="#{listDetail.id}">                          
+    <h:form id="eventform">
 
+        <p:dataTable id="event" var="listDetail" value="#{event.dto.list}" widgetVar="eventTable" class="overview" selectionMode="multiple" selection="#{event.selectedEvent}" rowKey="#{listDetail.id}" emptyMessage="Geen data gevonden.">                          
+            <p:ajax event="rowSelect" update=":eventform:multiEventDetail" />
+            <p:ajax event="rowUnselect" update=":eventform:multiEventDetail" />
+            <p:ajax event="rowReorder" update=":eventform:multiEventDetail" />
 
+            <f:facet name="header">
+                <p:outputPanel>
+                    <h:outputText value="Doorzoek alle velden: " />
+                    <p:inputText id="globalFilter" onkeyup="PF('eventTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
+                </p:outputPanel>
+            </f:facet>
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
             </p:column>
-            <p:column headerText="Naam" sortBy="#{listDetail.eventcompany}">
+            <p:column id="eventname" headerText="Event Naam" sortBy="#{listDetail.eventname}" filterBy="#{listDetail.eventname}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.eventname}"/>
+            </p:column>
+            <p:column id="eventcompany" headerText="Event Bedrijf" sortBy="#{listDetail.eventcompany}" filterBy="#{listDetail.eventcompany}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.eventcompany}"/>
             </p:column>
-            <p:column headerText="Stad">
+            <p:column id="eventtype" headerText="Event Type" sortBy="#{listDetail.eventtype}" filterBy="#{listDetail.eventtype}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.eventtype}"/>
             </p:column>
-                       <p:column>
+            
+            <p:column>
                 <a href="event.xhtml?edit=${listDetail.id}" class=" button">edit</a>
                 <a href="event.xhtml?delete=${listDetail.id}" class=" button">delete</a>
             </p:column>
             <f:facet name="footer">
-                <p:commandButton process="bungalow" update=":bungalowform:multiBungalowDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiBungalowDialog').show()" />
+                <p:commandButton process="event" update=":eventform:multiEventDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiEventDialog').show()" />
             </f:facet>
         </p:dataTable>
-        <p:dialog header="Geselecteerde Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
-            <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
-                <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail">
-                    <img src="resources/images/icons/#{listDetail.name}.jpg"/>
-                    <h:outputText value="#{listDetail.name} - #{listDetail.type} - #{listDetail.price} - #{listDetail.park} - #{listDetail.maxpeople}" style="display:block"/>
+        <p:dialog header="Geselecteerde Events" widgetVar="multiEventDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
+            <p:outputPanel id="multiEventDetail" style="text-align:center;" >
+                <ui:repeat value="#{event.selectedEvent}" var="listDetail" rendered="true">
+
+                    <h:outputText value="#{listDetail.eventname} - #{listDetail.eventtype} - #{listDetail.eventcompany}" style="display:block" />
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

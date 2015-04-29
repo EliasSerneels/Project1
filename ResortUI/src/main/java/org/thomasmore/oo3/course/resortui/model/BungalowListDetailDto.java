@@ -23,6 +23,7 @@ package org.thomasmore.oo3.course.resortui.model;
 public class BungalowListDetailDto {
     
     private String id;
+    private String imageID;
     private String name;
     private String type;
     private int price;
@@ -30,6 +31,14 @@ public class BungalowListDetailDto {
     private String maxpeople;
     private int reservations;
 
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+    
     public String getPark() {
         return park;
     }
@@ -45,6 +54,7 @@ public class BungalowListDetailDto {
     public void setMaxpeople(String maxpeople) {
         this.maxpeople = maxpeople;
     }
+
 
     public int getPrice() {
         return price;
