@@ -34,7 +34,7 @@ public class ReservationController {
     private CustomerDao customersDao;
 
     private List<BungalowEntity> bungalows;
-
+    private List<ReservationEntity> selectedReservation;
     private Date EndDate;
     
     private Date StartDate;
@@ -118,6 +118,14 @@ public class ReservationController {
 
     public Date getStartDate() {
         return StartDate;
+    }
+
+    public List<ReservationEntity> getSelectedReservation() {
+        return selectedReservation;
+    }
+
+    public void setSelectedReservation(List<ReservationEntity> selectedReservation) {
+        this.selectedReservation = selectedReservation;
     }
 
 }
