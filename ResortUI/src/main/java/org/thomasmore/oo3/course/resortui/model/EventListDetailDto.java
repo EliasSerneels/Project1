@@ -12,6 +12,7 @@ package org.thomasmore.oo3.course.resortui.model;
 public class EventListDetailDto {
 
     private String id;
+    private String eventname;
     private String eventcompany;
     private String eventtype;
 
@@ -27,7 +28,13 @@ public class EventListDetailDto {
         return eventtype;
     }
 
-    
+    public String getEventname() {
+        return eventname;
+    }
+
+    public void setEventname(String eventname) {
+        this.eventname = eventname;
+    }
 
     public void setId(String id) {
         this.id = id;

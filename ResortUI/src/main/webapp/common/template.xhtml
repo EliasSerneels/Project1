@@ -26,7 +26,27 @@
 
     </h:head>
     <h:body>
+  
+        <script> //facebook plugin
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '860881423950283',
+                    xfbml: true,
+                    version: 'v2.3'
+                });
+            };
 
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <nav class="navbar  navbar-fixed-top" role="navigation">
             <div class="container">
 
@@ -40,15 +60,18 @@
                             <p:menuitem value="Bungalow" url="bungalow.xhtml" />
                             <p:menuitem value="Klant" url="customer.xhtml" />
                             <p:menuitem value="Reservatie" url="reservation.xhtml" />
+                            <p:menuitem value="Wizard" url="bungalow_wizard.xhtml" />
                         </p:submenu>
                         <p:submenu label="Events">
 
                             <p:menuitem value="Event" url="event.xhtml" />
                             <p:menuitem value="Eventbedrijf" url="eventcompany.xhtml" />
                             <p:menuitem value="Eventtype" url="eventtype.xhtml" />
+                            <p:menuitem value="Wizard" url="event_wizard.xhtml" />
                             <p:menuitem value="Locatie" url="location.xhtml"/>
                         </p:submenu>
                         <p:menuitem value="Overzicht" url="overview.xhtml" />
+                        <p:menuitem value="Contact" url="contact.xhtml" />
                         <f:facet name="options">
                             <p:inputText style="margin-right:10px" placeholder="Search"/>
                             <p:commandButton type="button" value="Logout" action="${login.logout()}" icon="ui-icon-extlink" />
@@ -107,7 +130,7 @@
             <ui:insert name="content"></ui:insert>
         </div>
         <div class="push">
-            
+
         </div>
         <footer>
 
@@ -136,6 +159,12 @@
                 <li>Elias Serneels</li>
                 <li>Olivier Van de Perre</li>
                 <li>Pieter Drijkoningen</li>
+                <li>Timothy De Groot</li>
+                <li>Pepijn Mores</li>
+                <li>Elliot Braekeleire</li>
+                <li>Jeroen De Wolf</li>
+                <li>Nicolas De Rechter</li>
+                <li>Stijn Zwaenepoel</li>
             </ul>
             <br style="font-size:0px"/>
         </footer>

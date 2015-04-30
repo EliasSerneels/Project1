@@ -6,6 +6,7 @@
 package org.thomasmore.oo3.course.resortui.dao;
 
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,6 +17,7 @@ import org.thomasmore.oo3.course.resortui.business.entity.LocationEntity;
  *
  * @author Elliot
  */
+@Stateless
 public class LocationDao {
 
     @PersistenceContext

@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class BungalowEntity extends BasicEntity {
 
+    private String imageID;
     private String type;
     private int price;
     private String name;
@@ -32,20 +33,20 @@ public class BungalowEntity extends BasicEntity {
     private String maxpeople;
     private int reservations;
 
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+    
     public String getPark() {
         return park;
     }
 
     public void setPark(String park) {
         this.park = park;
-    }
-
-    public String getMaxpeople() {
-        return maxpeople;
-    }
-
-    public void setMaxpeople(String maxpeople) {
-        this.maxpeople = maxpeople;
     }
 
     public String getName() {
@@ -55,6 +56,15 @@ public class BungalowEntity extends BasicEntity {
     public int getPrice() {
         return price;
     }
+
+    public String getMaxpeople() {
+        return maxpeople;
+    }
+
+    public void setMaxpeople(String maxpeople) {
+        this.maxpeople = maxpeople;
+    }
+    
 
     public void setPrice(int price) {
         this.price = price;

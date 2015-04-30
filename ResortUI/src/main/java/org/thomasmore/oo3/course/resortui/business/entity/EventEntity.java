@@ -24,6 +24,7 @@ public class EventEntity extends BasicEntity implements Serializable{
 
     private String eventtype;
     private String eventname;
+    private String eventcompany;
   
 
     @ManyToOne(fetch=FetchType.LAZY)
@@ -34,9 +35,33 @@ public class EventEntity extends BasicEntity implements Serializable{
         return eventtype;
     }
 
+    public String getEventcompany() {
+        return eventcompany;
+    }
+
+    public void setEventcompany(String eventcompany) {
+        this.eventcompany = eventcompany;
+    }
+
 
     public void setEventtype(String eventtype) {
         this.eventtype = eventtype;
+    }
+
+    public String getEventname() {
+        return eventname;
+    }
+
+    public void setEventname(String eventname) {
+        this.eventname = eventname;
+    }
+
+    public EventcompanyEntity getEventcompanyentity() {
+        return eventcompanyentity;
+    }
+
+    public void setEventcompanyentity(EventcompanyEntity eventcompanyentity) {
+        this.eventcompanyentity = eventcompanyentity;
     }
     
     

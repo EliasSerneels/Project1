@@ -56,7 +56,6 @@
                     </h:form>
                 </p:panel>
                 <p:draggable for="gpn1"/>
-                <p:resizable for="gpn1"/>
 
                 <p:panel id="gpn2" header="Bungalow">
 
@@ -93,12 +92,11 @@
                     </h:form>
                     </p:panel>
                     <p:draggable for="gpn2"/>
-                    <p:resizable for="gpn2" />
 
                     <p:panel id="gpn3" header="Klanten">
 
                         <h:form id="formCustomers">  
-                            <p:dataTable id="DTcustomer" var="lsdtC" value="#{customer.dto.list}" selectionMode="multiple" selection="#{customer.selectedCustomers}" rowKey="#{lsdtC.id}">
+                            <p:dataTable id="DTcustomer" var="lsdtC" value="#{customer.dto.list}" selectionMode="multiple" selection="#{customer.selectedCustomer}" rowKey="#{lsdtC.id}">
 
                                 <p:column headerText="Naam">
                                     <h:outputText value="#{lsdtC.lastname}" />
@@ -123,7 +121,7 @@
 
                             <p:dialog header="Selected Customers" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
                                 <p:outputPanel id="multiCustomerDetail" style="text-align:center;">
-                                    <ui:repeat value="#{customer.selectedCustomers}" var="lsdtC">
+                                    <ui:repeat value="#{customer.selectedCustomer}" var="lsdtC">
                                         <h:outputText value="#{lsdtC.lastname} - #{lsdtC.firstname}  #{lsdtC.phonenumber}" style="display:block"/>
                                     </ui:repeat>
                                 </p:outputPanel>
@@ -131,7 +129,6 @@
                         </h:form>
                     </p:panel>
                     <p:draggable for="gpn3"/>
-                    <p:resizable for="gpn3" />
 
 
             </ui:define>
