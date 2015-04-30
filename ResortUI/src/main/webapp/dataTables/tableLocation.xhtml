@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+        <p:dataTable var="listDetail" value="#{location.dto.list}" class="overview">                          
+
+
+                        <p:column headerText="Id" sortBy="#{listDetail.id}">
+                            <h:outputText value="#{listDetail.id}"/>
+                        </p:column>
+                        <p:column headerText="Stad" sortBy="#{listDetail.city}">
+                            <h:outputText value="#{listDetail.city}"/>
+                        </p:column>
+                        <p:column headerText="Straat">
+                            <h:outputText value="#{listDetail.street}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <a href="location.xhtml?edit=${listDetail.id}" class=" button">edit</a>
+                            <a href="location.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+                        </p:column> 
+                    </p:dataTable> 
+</ui:composition>
