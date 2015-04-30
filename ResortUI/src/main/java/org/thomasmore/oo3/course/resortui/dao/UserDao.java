@@ -29,5 +29,8 @@ public class UserDao implements Serializable {
     public UserEntity findById(String id) {
         return em.find(UserEntity.class, id);
     }
- 
+    
+    public void deletebyId(String id) {
+        em.remove(findById(id));
+    } 
 }

@@ -26,9 +26,9 @@ public class UserDetailDto {
     private String username;
     private String password;    
     private String fullName;
-    private String gender;
     private String email;
     private String phone;
+    private String type;
 
     private boolean loggedIn;
 
@@ -71,15 +71,7 @@ public class UserDetailDto {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
+    
     public String getEmail() {
         return email;
     }
@@ -94,6 +86,14 @@ public class UserDetailDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
     
     

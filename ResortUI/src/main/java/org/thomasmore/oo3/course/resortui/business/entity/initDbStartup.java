@@ -97,6 +97,7 @@ public class initDbStartup {
         ue1.setId(UUID.randomUUID().toString());
         ue1.setUsername("Pieter");
         ue1.setPassword("Pieter");
+        ue1.setType("admin");
         objectsToSave.add(ue1);
 
         UserEntity ue2 = new UserEntity();

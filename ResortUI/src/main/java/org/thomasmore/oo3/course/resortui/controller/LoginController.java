@@ -68,6 +68,7 @@ public class LoginController {
                 sessionDto.getUserDto().setPhone(user.getPhone());
                 sessionDto.getUserDto().setUsername(dbUserName);
                 sessionDto.getUserDto().setPassword(dbPassword);
+                sessionDto.getUserDto().setType(user.getType());
                 sessionDto.getUserDto().setLoggedIn(true);
                 return "profile.xhtml";
             }      

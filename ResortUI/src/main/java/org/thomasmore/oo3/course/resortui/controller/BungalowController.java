@@ -53,7 +53,6 @@ public class BungalowController implements Serializable {
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
         dto = bungalowFacade.loadBungalowOverviewPage(editId, deleteId);
-
     }
 
     public String add() {
@@ -76,6 +75,4 @@ public class BungalowController implements Serializable {
     public void setSelectedBungalow(List<BungalowEntity> selectedBungalow) {
         this.selectedBungalow = selectedBungalow;
     }
-
-
 }
