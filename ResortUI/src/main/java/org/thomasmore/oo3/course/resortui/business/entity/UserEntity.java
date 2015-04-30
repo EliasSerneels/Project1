@@ -15,6 +15,7 @@ public class UserEntity extends BasicEntity {
     private String fullName;
     private String email;
     private String phone;
+    private String type;
     
     public String getUsername() {
         return username;
@@ -54,5 +55,13 @@ public class UserEntity extends BasicEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }   
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
