@@ -15,7 +15,37 @@
             <ui:define name="navbar"><h1>Useroverzicht</h1></ui:define>
 
             <ui:define name="content">
-                
+                <h2>Useroverzicht</h2>
+                <table class="overview">
+                    <tr>
+                        <th>ID</th>
+                        <th>Gebruikersnaam</th>
+                        <th>Volledige naam</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th></th>
+                    </tr>
+                    <ui:repeat value="${useroverview.dto.list}" var="listDetail">                          
+                        <tr>
+                            <h:form>
+                                <td>${listDetail.id}</td>
+                                <td>${listDetail.username}</td>
+                                <td>${listDetail.fullName}</td>
+                                <td>${listDetail.email}</td>
+                                <td>${listDetail.type}</td>
+                                <!--<td>
+                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?edit=${listDetail.id}" value="Wijzig"></h:commandButton>
+
+                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?delete=${listDetail.id}" value="Verwijder"></h:commandButton>
+                                </td>
+                                <td>
+                                    <a href="bungalow.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
+                                    <a href="bungalow.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
+                                </td>-->
+                            </h:form>
+                        </tr>                          
+                    </ui:repeat>
+                </table>
             </ui:define>
         </ui:composition>
 

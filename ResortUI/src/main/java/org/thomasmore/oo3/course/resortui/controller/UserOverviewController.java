@@ -34,6 +34,5 @@ public class UserOverviewController {
 
     public void setDto(UserOverviewPageDto dto) {
         this.dto = dto;
-    }
-    
+    }    
 }
