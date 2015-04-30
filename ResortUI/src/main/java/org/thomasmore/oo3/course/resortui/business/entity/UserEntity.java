@@ -1,4 +1,3 @@
-
 package org.thomasmore.oo3.course.resortui.business.entity;
 
 import javax.persistence.Entity;
@@ -9,13 +8,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "users")
 @XmlRootElement
 public class UserEntity extends BasicEntity {
-    
+
     private String username;
     private String password;
     private String fullName;
     private String email;
     private String phone;
-    
+    private String type;
+
+    public UserEntity()
+    {
+        type = "user";
+    }
+
     public String getUsername() {
         return username;
     }
@@ -54,5 +59,13 @@ public class UserEntity extends BasicEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }   
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

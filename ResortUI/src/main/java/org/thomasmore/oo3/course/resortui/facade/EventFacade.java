@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import org.primefaces.push.impl.EventBusImpl;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
@@ -42,8 +41,9 @@ public class EventFacade {
             EventEntity eventEntity = eventDao.findById(editId);
             if (eventEntity != null) {
                 dto.getDetail().setId(eventEntity.getId());
-
+                dto.getDetail().setEventname(eventEntity.getEventname());
                 dto.getDetail().setEventtype(eventEntity.getEventtype());
+                dto.getDetail().setEventcompany(eventEntity.getEventcompany());
                 
             }
         }

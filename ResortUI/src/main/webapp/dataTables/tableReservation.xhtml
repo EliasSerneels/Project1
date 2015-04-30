@@ -4,29 +4,57 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <p:dataTable var="listDetail" value="#{reservation.dto.list}" class="overview">                          
+    <h:form id="reservationform">
 
+        <p:dataTable id="reservation" var="listDetail" value="#{reservation.dto.list}" widgetVar="reservationTable" class="overview" selectionMode="multiple" selection="#{reservation.selectedReservation}" rowKey="#{listDetail.id}" emptyMessage="Geen data gevonden.">                          
+            <p:ajax event="rowSelect" update=":reservationform:multiReservationDetail" />
+            <p:ajax event="rowUnselect" update=":reservationform:multiReservationDetail" />
+            <p:ajax event="rowReorder" update=":reservationform:multiReservationDetail" />
 
-        <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
-            <h:outputText value="#{listDetail.id}"/>
-        </p:column>
-        <p:column headerText="Start" sortBy="#{listDetail.startDate}">
-            <h:outputText value="#{listDetail.startDate}"/>
-        </p:column>
-        <p:column headerText="Einde" sortBy="#{listDetail.endDate}">
-            <h:outputText value="#{listDetail.endDate}"/>
-        </p:column>
-        <p:column headerText="Klant" sortBy="#{listDetail.customerName}">
-            <h:outputText value="#{listDetail.customerName}"/>
-        </p:column>
-        <p:column headerText="Bungalow" sortBy="#{listDetail.bungalowName}">
-            <h:outputText value="#{listDetail.bungalowName}"/>
-        </p:column>
+            <f:facet name="header">
+                <p:outputPanel>
+                    <h:outputText value="Doorzoek alle velden: " />
+                    <p:inputText id="globalFilter" onkeyup="PF('reservationTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
+                </p:outputPanel>
+            </f:facet>
+            <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
+                <h:outputText value="#{listDetail.id}"/>
+            </p:column>
+            <p:column id="bungalowname" headerText="Bungalownaam" sortBy="#{listDetail.bungalowName}" filterBy="#{listDetail.bungalowName}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.bungalowName}"/>
+            </p:column>
+            <p:column id="customername" headerText="Klantnaam" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.customerName}"/>
+            </p:column>
+            <p:column id="reservationstartdate" headerText="Startdatum" sortBy="#{listDetail.startDate}" filterBy="#{listDetail.startDate}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.startDate}"/>
+            </p:column>
+            <p:column id="reservationstarttime" headerText="Starttijd" sortBy="#{listDetail.startTime}" filterBy="#{listDetail.startTime}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.startTime}"/>
+            </p:column>
+            <p:column id="reservationenddate" headerText="Einddatum" sortBy="#{listDetail.endDate}" filterBy="#{listDetail.endDate}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.endDate}"/>
+            </p:column>
+            <p:column id="reservationendtime" headerText="Eindtijd" sortBy="#{listDetail.endTime}" filterBy="#{listDetail.endTime}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.endTime}"/>
+            </p:column>
+            
 
+            <p:column>
+                <a href="reservation.xhtml?edit=${listDetail.id}" class=" button">edit</a>
+                <a href="reservation.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+            </p:column>
+            <f:facet name="footer">
+                <p:commandButton process="reservation" update=":reservationform:multiReservationDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiReservationDialog').show()" />
+            </f:facet>
+        </p:dataTable>
+        <p:dialog header="Geselecteerde Reservations" widgetVar="multiReservationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
+            <p:outputPanel id="multiReservationDetail" style="text-align:center;" >
+                <ui:repeat value="#{reservation.selectedReservation}" var="listDetail" rendered="true">
 
-        <p:column>
-            <a href="reservation.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-            <a href="reservation.xhtml?delete=${listDetail.id}" class=" button">delete</a>
-        </p:column> 
-    </p:dataTable> 
+                    <h:outputText value="#{listDetail.bungalowName} - #{listDetail.customerName} - #{listDetail.startDate} - #{listDetail.startTime} - #{listDetail.endDate} - #{listDetail.endTime}" style="display:block"/>
+                </ui:repeat>
+            </p:outputPanel>
+        </p:dialog>
+    </h:form>
 </ui:composition>

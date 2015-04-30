@@ -17,6 +17,7 @@
 package org.thomasmore.oo3.course.resortui.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -59,16 +60,6 @@ public class BungalowController implements Serializable {
         return pageRedirect;
     }
 
-    public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Bungalow Selected", ((BungalowEntity) event.getObject()).getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public void onRowUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage("Bungalow Unselected", ((BungalowEntity) event.getObject()).getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
     public BungalowPageDto getDto() {
         return dto;
     }
@@ -84,5 +75,4 @@ public class BungalowController implements Serializable {
     public void setSelectedBungalow(List<BungalowEntity> selectedBungalow) {
         this.selectedBungalow = selectedBungalow;
     }
-
 }
