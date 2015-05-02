@@ -15,13 +15,9 @@
             <ui:define name="navbar"><h1>Bungalows</h1></ui:define>
 
             <ui:define name="content">
-                <!--
-                                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                                    <script>
-                                        window.location.href = "http:login.xhtml";
-                                    </script>
-                                </ui:fragment>
-                -->
+
+                <ui:include src="common/vraagLogin.xhtml"></ui:include>
+
                 <h2>Bungalows aanmaken of wijzigen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
@@ -78,47 +74,11 @@
 
                 <br/><br/>
                 <h2>Bungalowoverzicht</h2>
-               
-                
-                  
-                <!--TESTING WIP
-                Trying to include a datable from an external file so we can re-use it.
-                It works!-->
-                <ui:include src="dataTables/tableBungalow.xhtml"></ui:include>
 
-<!--                <table class="overview">
-                    <tr>
-                        <th>ID</th>
-                        <th>Naam</th>
-                        <th>Type</th>
-                        <th>Prijs</th>
-                        <th>Park</th>
-                        <th>Max aantal personen</th>
-                        <th></th>
-                    </tr>
-                    <ui:repeat value="${bungalow.dto.list}" var="listDetail">                          
-                        <tr>
-                            <h:form>
-                                <td>${listDetail.id}</td>
-                                <td>${listDetail.name}</td>
-                                <td>${listDetail.type}</td>
-                                <td>${listDetail.price}</td>
-                                <td>${listDetail.park}</td>
-                                <td>${listDetail.maxpeople}</td>
-                                                                <td>
-                                                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?edit=${listDetail.id}" value="Wijzig"></h:commandButton>
-                                                                    
-                                                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?delete=${listDetail.id}" value="Verwijder"></h:commandButton>
-                                                                </td>
-                                <td>
-                                    <a href="bungalow.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                                    <a href="bungalow.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
-                                </td>
-                            </h:form>
-                        </tr>                          
-                    </ui:repeat>
-                </table>          -->
+                <ui:include src="dataTables/tableBungalow.xhtml"></ui:include>
+                
             </ui:define>
+                
         </ui:composition>
     </body>
 </html>

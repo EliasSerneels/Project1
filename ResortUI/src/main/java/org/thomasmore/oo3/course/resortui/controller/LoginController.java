@@ -16,6 +16,7 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
  
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -34,7 +35,7 @@ import org.thomasmore.oo3.course.resortui.model.SessionDto;
  */
 @Named(value = "login")
 @RequestScoped
-public class LoginController {
+public class LoginController implements Serializable {
 
     @Inject
     private SessionDto sessionDto;
@@ -48,9 +49,8 @@ public class LoginController {
         userentities = userDao.listAll();
     }
 
-    public String logout() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/index.xhtml?faces-redirect=true";
+    public String goToLogin(){
+        return "/login.xhtml?faces-redirect=true";
     }
 
     public String login() {
@@ -78,7 +78,24 @@ public class LoginController {
         facesContext.addMessage(null, facesMessage);
         return null;
     }
-
+    
+     public String logOut() {
+                 
+        // Zet waarde van loggedIn op false
+        sessionDto.getUserDto().setLoggedIn(false);
+        
+        // Breek sessie af
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        
+        // Schrijf bericht dat uitloggen gelukt is
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesMessage facesMessage = new FacesMessage("U bent uitgelogd.");
+        facesContext.addMessage(null, facesMessage);
+        
+        // Redirect 
+        return "login.xhtml?faces-redirect=true";   
+    }
+    
     public SessionDto getSessionDto() {
         return sessionDto;
     }

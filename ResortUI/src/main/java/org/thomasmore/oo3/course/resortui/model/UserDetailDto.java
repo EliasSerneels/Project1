@@ -16,11 +16,13 @@
  */
 package org.thomasmore.oo3.course.resortui.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author lucs
  */
-public class UserDetailDto {
+public class UserDetailDto implements Serializable{
 
     private String id;
     private String username;

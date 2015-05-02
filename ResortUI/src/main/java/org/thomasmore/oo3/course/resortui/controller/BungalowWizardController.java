@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.primefaces.event.FlowEvent;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
@@ -17,8 +20,9 @@ import org.thomasmore.oo3.course.resortui.model.ParkPageDto;
  * @author Timothy De Groot
  */
 
-@Named(value="BungalowWizardController")
-@RequestScoped
+
+@ManagedBean(name = "BungalowWizardController")
+@ViewScoped
 public class BungalowWizardController implements Serializable {
 
     @EJB
