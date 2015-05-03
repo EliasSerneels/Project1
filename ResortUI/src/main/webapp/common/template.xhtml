@@ -26,7 +26,58 @@
 
     </h:head>
     <h:body>
-  
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+        $(function() {
+          var availableTags = [
+            "Bungalow",
+            "Bungalow Wizard",
+            "Contact",
+            "Event",
+            "Eventbedrijf",
+            "Eventtype",
+            "Event Wizard",
+            "Klant",
+            "Locatie",
+            "Overzicht",
+            "Park",
+            "Reservatie"
+          ];
+          $("#j_idt12\\:search").autocomplete({
+            source: availableTags
+          });
+          $("#j_idt12\\:search").on( "autocompleteselect", function(event, ui){
+            var link;
+            switch (ui.item.value.toLowerCase()) {
+            case "eventbedrijf":
+                link = "eventcompany";
+                break;
+            case "klant":
+                link = "customer";
+                break;
+            case "reservatie":
+                link = "reservation";
+                break;
+            case "bungalow wizard":
+                link = "bungalow_wizard";
+                break;
+            case "locatie":
+                link = "location";
+                break;
+            case "event wizard":
+                link = "event_wizard";
+                break;
+            case "overzicht":
+                link = "overview";
+                break; 
+            default: 
+                link = ui.item.value.toLowerCase();
+            }
+            window.location = link + ".xhtml";  
+          });
+        });
+        </script>
         <script> //facebook plugin
             window.fbAsyncInit = function () {
                 FB.init({
@@ -72,7 +123,7 @@
                         <p:menuitem value="Overzicht" url="overview.xhtml" rendered="${!sessionDto.userDto.loggedIn}" />
                         <p:menuitem value="Contact" url="contact.xhtml" rendered="${!sessionDto.userDto.loggedIn}" />
                         <f:facet name="options">
-                            <p:inputText style="margin-right:10px" placeholder="Search"/>
+                            <p:inputText id="search" style="margin-right:10px" placeholder="Search"/>
                             <p:commandButton rendered="${sessionDto.userDto.loggedIn}" value="Uitloggen" action="${login.logOut()}" icon="ui-icon-extlink" />
                             <p:commandButton rendered="${!sessionDto.userDto.loggedIn}" value="Inloggen" action="${login.goToLogin()}" icon="ui-icon-extlink" />
                         </f:facet>
