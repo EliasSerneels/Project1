@@ -22,9 +22,14 @@
                                     </script>
                                 </ui:fragment>
                 -->
-                <p:panel id="gpn1" header="Parken">
-                    <h:form id="formParks">  
-                        <p:dataTable id="DTparks" var="lsdtP" value="#{park.dto.list}" selectionMode="multiple" selection="#{park.selectedParks}" rowKey="#{lsdtP.id}">
+                
+
+                <p:panel id="gpn1" header="Parken" class="overviewP">
+                    
+                    <h:form id="formParks"> 
+ 
+
+                        <p:dataTable id="DTparks" var="lsdtP" value="#{park.dto.list}" selectionMode="multiple" selection="#{park.selectedParks}" rowKey="#{lsdtP.id}" >
 
                             <p:column headerText="ID">
                                 <h:outputText value="#{lsdtP.id}" />
@@ -57,7 +62,7 @@
                 </p:panel>
                 <p:draggable for="gpn1"/>
 
-                <p:panel id="gpn2" header="Bungalow">
+                <p:panel id="gpn2" header="Bungalows" class="overviewB">
 
                     <h:form id="formBungalows">  
                         <p:dataTable id="DTbungalows" var="lsdtB" value="#{bungalow.dto.list}" selectionMode="multiple" selection="#{bungalow.selectedBungalow}" rowKey="#{lsdtB.id}">
@@ -93,7 +98,7 @@
                     </p:panel>
                     <p:draggable for="gpn2"/>
 
-                    <p:panel id="gpn3" header="Klanten">
+                    <p:panel id="gpn3" header="Klanten" class="overviewC">
 
                         <h:form id="formCustomers">  
                             <p:dataTable id="DTcustomer" var="lsdtC" value="#{customer.dto.list}" selectionMode="multiple" selection="#{customer.selectedCustomer}" rowKey="#{lsdtC.id}">
@@ -127,9 +132,136 @@
                                 </p:outputPanel>
                             </p:dialog>
                         </h:form>
-                    </p:panel>
+                                            </p:panel>
                     <p:draggable for="gpn3"/>
+                    
+                    <p:panel id="gpn4" header="Reservaties" class="overviewR">
 
+                         <h:form id="formReservations">  
+                            <p:dataTable id="DTreservation" var="lsdtR" value="#{reservation.dto.list}" selectionMode="multiple" selection="#{reservation.selectedReservation}" rowKey="#{lsdtR.id}">
+
+                                <p:column headerText="ID">
+                                    <h:outputText value="#{lsdtR.id}" />
+                                </p:column>
+                                <p:column headerText="Bungalownaam">
+                                    <h:outputText value="#{lsdtR.bungalowName}" />
+                                </p:column>
+                                <p:column headerText="Klantnaam">
+                                    <h:outputText value="#{lsdtR.customerName}" />
+                                </p:column>
+                                <p:column headerText="StartDatum">
+                                    <h:outputText value="#{lsdtR.startDate}" />
+                                </p:column>
+                                <p:column headerText="StartTijd">
+                                    <h:outputText value="#{lsdtR.startTime}" />
+                                </p:column>
+                                
+                                <p:column headerText="EindDatum">
+                                    <h:outputText value="#{lsdtR.endDate}" />
+                                </p:column>
+                                <p:column headerText="EindTijd">
+                                    <h:outputText value="#{lsdtR.endTime}" />
+                                </p:column>
+
+                                <f:facet name="footer">
+                                    <p:commandButton process="DTreservation" update=":formReservations:multiReservationDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiReservationDialog').show()" />
+                                </f:facet>
+                            </p:dataTable>
+
+                            <p:dialog header="Selected Reservations" widgetVar="multiReservationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                                <p:outputPanel id="multiReservationDetail" style="text-align:center;">
+                                    <ui:repeat value="#{reservation.selectedReservation}" var="lsdtC">
+                                        <h:outputText value="#{lsdtR.bungalowName} - #{lsdtR.customerName}  #{lsdtR.startDate}" style="display:block"/>
+                                    </ui:repeat>
+                                </p:outputPanel>
+                            </p:dialog>
+                        </h:form>
+                                            </p:panel>
+                    <p:draggable for="gpn4"/>
+
+                     <p:panel id="gpn5" header="Geplande evenementen" class="overviewE">
+
+                         <h:form id="formEvents">  
+                            <p:dataTable id="DTevent" var="lsdtE" value="#{event.dto.list}" selectionMode="multiple" selection="#{event.selectedEvent}" rowKey="#{lsdtE.id}">
+
+                                <p:column headerText="ID">
+                                    <h:outputText value="#{lsdtE.id}" />
+                                </p:column>
+                                <p:column headerText="Event naam">
+                                    <h:outputText value="#{lsdtE.eventname}" />
+                                </p:column>
+                                <p:column headerText="Event bedrijf">
+                                    <h:outputText value="#{lsdtE.eventcompany}" />
+                                </p:column>
+                         
+                                <p:column headerText="Event type">
+                                    <h:outputText value="#{lsdtE.eventtype}" />
+                                </p:column>
+                         
+
+                                <f:facet name="footer">
+                                    <p:commandButton process="DTevent" update=":formEvents:multiEventDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiEventDialog').show()" />
+                                </f:facet>
+                            </p:dataTable>
+
+                            <p:dialog header="Selected Events" widgetVar="multiEventDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                                <p:outputPanel id="multiEventDetail" style="text-align:center;">
+                                    <ui:repeat value="#{event.selectedEvent}" var="lsdtE">
+                                        <h:outputText value="#{lsdtE.eventname} - #{lsdtE.eventcompany}  #{lsdtE.eventtype}" style="display:block"/>
+                                    </ui:repeat>
+                                </p:outputPanel>
+                            </p:dialog>
+                        </h:form>
+                                            </p:panel>
+                    <p:draggable for="gpn5"/>
+                    
+                 <p:panel id="gpn6" header="Eventbedrijven" class="overviewEC">
+
+                         <h:form id="formEventcomp">  
+                            <p:dataTable id="DTeventcompany" var="lsdtEC" value="#{eventcompany.dto.list}" selectionMode="multiple" selection="#{eventCompany.selectedEventCompany}" rowKey="#{lsdtEC.id}">
+
+                                <p:column headerText="ID">
+                                    <h:outputText value="#{lsdtEC.id}" />
+                                </p:column>
+                                <p:column headerText="Eventbedrijf">
+                                    <h:outputText value="#{lsdtEC.name}" />
+                                </p:column>
+                                <p:column headerText="Stad">
+                                    <h:outputText value="#{lsdtEC.city}" />
+                                </p:column>
+                                
+                                 <p:column headerText="Straat">
+                                     <h:outputText value="#{lsdtEC.street}" />
+                                </p:column>
+                                
+                                 <p:column headerText="Telefoonnummer">
+                                     <h:outputText value="#{lsdtEC.phone}" />
+                                </p:column>
+                                
+                                <p:column headerText="Contact">
+                                    <h:outputText value="#{lsdtEC.contact}" />
+                                </p:column>
+                         
+                                <p:column headerText="Event type">
+                                    <h:outputText value="#{lsdtE.eventtype}" />
+                                </p:column>
+                         
+
+                                <f:facet name="footer">
+                                    <p:commandButton process="DTeventcompany" update=":formEventcomp:multiEventcompanyDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiEventDialog').show()" />
+                                </f:facet>
+                            </p:dataTable>
+
+                            <p:dialog header="Selected Event Companies" widgetVar="multiEventcompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                                <p:outputPanel id="multiEventcompanyDetail" style="text-align:center;">
+                                    <ui:repeat value="#{eventCompany.selectedEventCompany}" var="lsdtE">
+                                        <h:outputText value="#{lsdtEC.name} - #{lsdtEC.city}  #{lsdtEC.street} #{lsdtEC.phone}" style="display:block"/>
+                                    </ui:repeat>
+                                </p:outputPanel>
+                            </p:dialog>
+                        </h:form>
+                                            </p:panel>
+                    <p:draggable for="gpn6"/>
 
             </ui:define>
         </ui:composition>
