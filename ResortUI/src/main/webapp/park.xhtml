@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
         <ui:composition template="./common/template.xhtml">
@@ -31,7 +32,7 @@
                             <div class="inputinfo">Naam</div>
                             <h:inputText label="Naam" 
                                          value="${park.dto.detail.name}" class="form-control"
-                                         required="true" validatorMessage="Vul een parknaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" requiredMessage="Vul een parknaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten." validatorMessage="Vul een parknaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                                 </h:inputText>
@@ -40,7 +41,7 @@
                             <div class="inputinfo">Locatie</div>
                             <h:inputText label="Locatie" 
                                          value="${park.dto.detail.location}" class="form-control"
-                                         required="true" validatorMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 200 tekens)"
+                                         required="true" requiredMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten." validatorMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 20 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,20}"/>
                                 </h:inputText>
@@ -49,7 +50,8 @@
                             <div class="inputinfo">Capaciteit</div>
                             <h:inputText label="Capaciteit" 
                                          value="${park.dto.detail.capacity}" class="form-control"
-                                         required="true">
+                                         required="true"  converterMessage="Vul de maximum capaciteit in van het park. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen." validatorMessage="Vul de maximum capaciteit in van het park. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen.">
+                                          <f:validateDoubleRange minimum="1" />
                             </h:inputText>                                 
                         </li>                                                              
                     </ul>
