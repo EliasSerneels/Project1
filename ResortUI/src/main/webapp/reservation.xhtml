@@ -33,11 +33,22 @@
                                 <f:validateRegex pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"/>
 
                             </h:inputText>-->
-                            <p:outputLabel for="popup1" value="" />
-                            <p:calendar id="popup1" value="${reservation.dto.detail.startDate}" />
+
+                            <p:calendar  pattern="dd-MM-yyyy"  id="popup1" value="${reservation.dto.detail.startDate}" required="true" requiredMessage="Gelieve een startdatum in te vullen." />
             
                         </div>
-                    </div>                    
+                    </div>    
+                     <div class="col-md-6-l">
+                        <div class="input-group">
+                            <span class="input-group-addon">Starttijd</span>
+                           <h:inputText label="Starttijd" 
+                                         value="${reservation.dto.detail.startTime}" class="form-control"
+                                         required="true" requiredMessage="Vul een starttijd in. Formaat 23:59" validatorMessage="Vul een starttijd in. Formaat 23:59"
+                                         >
+                                <f:validateRegex pattern="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"/>
+                                </h:inputText>
+                        </div>
+                    </div>          
                     <div class="col-md-6-r"> 
                         <div class="input-group">
                             <span class="input-group-addon">Einddatum</span>
@@ -45,28 +56,40 @@
                                 <f:validateRegex pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"/>
 
                             </h:inputText>-->
-                            <p:outputLabel for="popup2" value="" />
-                            <p:calendar id="popup2" value="${reservation.dto.detail.endDate}" />
+
+                            <p:calendar pattern="dd-MM-yyyy"  id="popup2" value="${reservation.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
                             
+                        </div>
+                    </div>
+                    
+                                        <div class="col-md-6-r"> 
+                        <div class="input-group">
+                            <span class="input-group-addon">Eindtijd</span>
+                           <h:inputText label="Eindtijd" 
+                                         value="${reservation.dto.detail.endTime}" class="form-control"
+                                         required="true" requiredMessage="Vul een eindtijd in. Formaat 23:59" validatorMessage="Vul een eindtijd in. Formaat 23:59"
+                                         >
+                                <f:validateRegex pattern="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"/>
+                                </h:inputText>
                         </div>
                     </div>
                     
                     <div class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Klant</span>
-                            <h:selectOneMenu label="Klant reservatie" value="${reservation.dto.detail.customerName}" class="form-control" required="true" validatorMessage="De inhoud van het veld klant is leeg.">
-                                <f:selectItems value="${reservation.dto.customerList}" var="Klantnaam"
-                                               itemValue="${customerName}" itemLabel="${customerName}"/>
-                            </h:selectOneMenu>
+                    <p:selectOneMenu required="true" id="Klant" value="${reservation.dto.detail.customerName}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een klant toe te kiezen.">
+                    <f:selectItem itemLabel="Kies klant" itemValue="${customerName}" noSelectionOption="true" />
+                    <f:selectItems value="${reservation.dto.customerList}" />
+                     </p:selectOneMenu>
                         </div>
                     </div>
                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Bungalow</span>
-                            <h:selectOneMenu label="Bungalow reservatie" value="${reservation.dto.detail.bungalowName}" class="form-control" required="true" validatorMessage="De inhoud van het veld bungalow is leeg.">
-                                <f:selectItems value="${reservation.dto.bungalowList}" var="Bungalownaam"
-                                               itemValue="${bungalowName}" itemLabel="${bungalowName}"/>
-                            </h:selectOneMenu>
+                    <p:selectOneMenu required="true" id="Bungalow" value="${reservation.dto.detail.bungalowName}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een bungalow toe te wijzen.">
+                    <f:selectItem itemLabel="Kies bungalow" itemValue="${bungalowName}" noSelectionOption="true" />
+                    <f:selectItems value="${reservation.dto.bungalowList}" />
+                     </p:selectOneMenu>
                         </div>
                     </div>
                     <div class="col-md-12">
