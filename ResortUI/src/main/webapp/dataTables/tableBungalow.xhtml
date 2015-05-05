@@ -16,6 +16,7 @@
                     <p:inputText id="globalFilter" onkeyup="PF('bungalowTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
                 </p:outputPanel>
             </f:facet>
+
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
             </p:column>
@@ -51,7 +52,7 @@
                 <h:outputText value="#{listDetail.maxpeople}"/>
             </p:column>
 
-            <p:column>
+            <p:column exportable="false">
                 <a href="bungalow.xhtml?edit=${listDetail.id}" class=" button">edit</a>
                 <a href="bungalow.xhtml?delete=${listDetail.id}" class=" button">delete</a>
             </p:column>
@@ -59,6 +60,11 @@
                 <p:commandButton process="bungalow" update=":bungalowform:multiBungalowDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiBungalowDialog').show()" />
             </f:facet>
         </p:dataTable>
+
+        <h:commandLink>
+            <p:graphicImage name="images/icons/excel.png" />
+            <p:dataExporter type="xls" target="bungalow" fileName="bungalow" />
+        </h:commandLink>
         <p:dialog header="Geselecteerde Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiBungalowDetail" style="text-align:center;" >
                 <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail" rendered="true">
