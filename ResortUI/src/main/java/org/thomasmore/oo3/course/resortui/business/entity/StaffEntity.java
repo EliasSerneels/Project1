@@ -3,15 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.thomasmore.oo3.course.resortui.model;
+package org.thomasmore.oo3.course.resortui.business.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Jeroen
  */
-public class StaffListDetailDto {
+@Entity
+@Table(name = "staff")
+@XmlRootElement
 
-    private String id;
+public class StaffEntity extends BasicEntity{
+    
     private String firstname;
     private String lastname;
     private String birthdate;
@@ -21,13 +28,14 @@ public class StaffListDetailDto {
     private int housenumber;
     private String phonenumber;
     private String email;
+    
 
-    public String getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstname() {
@@ -94,13 +102,5 @@ public class StaffListDetailDto {
         this.phonenumber = phonenumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    
+   
 }
