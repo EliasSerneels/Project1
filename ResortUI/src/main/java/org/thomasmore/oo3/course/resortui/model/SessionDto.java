@@ -30,6 +30,7 @@ import javax.inject.Named;
 public class SessionDto implements Serializable {
 
     private UserDetailDto userDto;
+    private int level;
 
     @PostConstruct
     public void init() {
@@ -44,4 +45,13 @@ public class SessionDto implements Serializable {
     public void setUserDto(UserDetailDto UserDto) {
         this.userDto = UserDto;
     }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+    
 }

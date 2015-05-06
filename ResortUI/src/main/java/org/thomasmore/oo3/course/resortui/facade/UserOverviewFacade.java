@@ -26,7 +26,7 @@ public class UserOverviewFacade {
             ud.setFullName(user.getFullName());
             ud.setId(user.getId());
             ud.setPhone(user.getPhone());
-            ud.setType(user.getType());
+            ud.setLevel(user.getLevel());
             ud.setUsername(user.getUsername());
             dto.getList().add(ud);
         }

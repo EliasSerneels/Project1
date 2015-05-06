@@ -15,6 +15,11 @@
             <ui:define name="navbar"><h1>Useroverzicht</h1></ui:define>
 
             <ui:define name="content">
+                <ui:fragment rendered="${sessionDto.userDto.level != 4}">
+                    <script>
+                        window.location.href = "index.xhtml";
+                    </script>
+                </ui:fragment>
                 <h2>Useroverzicht</h2>
                 <table class="overview">
                     <tr>
@@ -22,7 +27,7 @@
                         <th>Gebruikersnaam</th>
                         <th>Volledige naam</th>
                         <th>Email</th>
-                        <th>Type</th>
+                        <th>Level</th>
                         <th></th>
                     </tr>
                     <ui:repeat value="${useroverview.dto.list}" var="listDetail">                          
@@ -32,7 +37,7 @@
                                 <td>${listDetail.username}</td>
                                 <td>${listDetail.fullName}</td>
                                 <td>${listDetail.email}</td>
-                                <td>${listDetail.type}</td>
+                                <td>${listDetail.level}</td>
                                 <!--<td>
                                     <h:commandButton class="btn btn-primary" action="bungalow.xhtml?edit=${listDetail.id}" value="Wijzig"></h:commandButton>
 

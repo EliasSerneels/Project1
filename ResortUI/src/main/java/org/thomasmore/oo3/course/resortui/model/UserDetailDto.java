@@ -30,7 +30,7 @@ public class UserDetailDto implements Serializable{
     private String fullName;
     private String email;
     private String phone;
-    private String type;
+    private int level;
 
     private boolean loggedIn;
 
@@ -90,13 +90,12 @@ public class UserDetailDto implements Serializable{
         this.phone = phone;
     }
 
-    public String getType() {
-        return type;
+    public int getLevel() {
+        return level;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-    
+    public void setLevel(int level) {
+        this.level = level;
+    }  
     
 }
