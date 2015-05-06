@@ -33,7 +33,7 @@
                             <div class="inputinfo">Naam</div>
                             <h:inputText label="Naam"
                                          value="${eventcompany.dto.detail.name}" class="form-control"
-                                         required="true" validatorMessage="Vul een bedrijfsnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" requiredMessage="Vul een bedrijfsnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een bedrijfsnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
 
@@ -43,7 +43,7 @@
                             <div class="inputinfo">Stad</div>
                             <h:inputText label="Naam"
                                          value="${eventcompany.dto.detail.city}" class="form-control"
-                                         required="true" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" requiredMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
 
@@ -53,7 +53,7 @@
                             <div class="inputinfo">Straat</div>
                             <h:inputText label="Naam"
                                          value="${eventcompany.dto.detail.street}" class="form-control"
-                                         required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
 
@@ -62,16 +62,17 @@
                         </li>
                         <li>
                             <div class="inputinfo">Telefoonnr.</div>
-                            <h:inputText label="Maxpersonen" 
+                            <h:inputText label="Telefoonnr" 
                                          value="${eventcompany.dto.detail.phone}" class="form-control"
-                                         required="true">
+                                         required="true" validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn." requiredMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
+                                <f:validateRegex pattern="([0-9].{6,20})"/>
                             </h:inputText>
                         </li>                                    
 
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">
-                            <h:commandButton class="btn btn-primary" action="${eventcompany.add()}" value="Save"/>
+                            <h:commandButton class="button" action="${eventcompany.add()}" value="Save"/>
                         </div>
                     </div>
 
