@@ -30,7 +30,7 @@ public class EventtypeFacade {
             EventtypeEntity eventtypeEntity = eventtypeDao.findById(editId);
             if (eventtypeEntity != null) {
                 dto.getDetail().setId(eventtypeEntity.getId());
-                dto.getDetail().setEventtypename(eventtypeEntity.getEventname());
+                dto.getDetail().setEventname(eventtypeEntity.getEventname());
 
             }
         }
@@ -63,7 +63,7 @@ public class EventtypeFacade {
             eventtypeEntity = new EventtypeEntity();
         }
         eventtypeEntity.setId(dto.getDetail().getId());
-        eventtypeEntity.setEventname(dto.getDetail().getEventtypename());
+        eventtypeEntity.setEventname(dto.getDetail().getEventname());
         eventtypeDao.save(eventtypeEntity);
         return dto;
 
