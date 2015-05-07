@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+        <ui:composition template="./common/template.xhtml">
+
+            <ui:define name="title">Personeel</ui:define>
+
+            <ui:define name="navbar"><h1>Personeel</h1></ui:define>
+
+            <ui:define name="content">
+<!--
+                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                    <script>
+                        window.location.href = "http:login.xhtml";
+                    </script>
+                </ui:fragment>
+-->
+                <h:form>
+                    <h2>Personeel toevoegen of aanpassen</h2>
+                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+                    <ul class="change-form">
+                        <li>
+                            <h:inputHidden value="${staff.dto.detail.id}"/>
+                            <div class="inputinfo">Voornaam</div>
+                            <h:inputText label="Voornaam" 
+
+                                         value="${staff.dto.detail.firstname}" class="form-control"
+                                         required="true"
+                                         requiredMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
+                            </h:inputText>
+                        </li>
+                        <li>
+                            <div class="inputinfo">Achternaam</div>
+                            <h:inputText label="Achternaam" 
+
+                                         value="${staff.dto.detail.lastname}" class="form-control"
+                                         required="true"
+                                         requiredMessage="Vul uw achternaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                
+                            </h:inputText>
+                        </li>      
+                        <li>
+                            <div class="inputinfo">Geboortedatum</div>
+                             <p:calendar pattern="dd-MM-yyyy" yearRange="c-100:c" navigator="true" id="popup" value="${staff.dto.detail.birthdate}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
+
+                            
+                        </li>
+                        <li>
+                            <div class="inputinfo">Telefoonnr.</div>
+                            <h:inputText label="Telefoonnummer" 
+                                         value="${staff.dto.detail.phonenumber}" class="form-control"
+                                         required="false"
+                                         validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
+                                <f:validateRegex pattern="([0-9].{6,20})"/>
+                            </h:inputText>
+                            
+                        </li>                                                                                                                                                                             
+                        <li>   
+                            <div class="inputinfo">E-mail</div>
+                            <h:inputText label="E-mail" 
+
+                                         value="${staff.dto.detail.email}" class="form-control"
+                                         required="false" validatorMessage="De inhoud van e-mail voldoet niet aan de vereisten.">
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/> 
+                            </h:inputText>
+                        </li>                                                                      
+                        
+                    </ul>
+                    <div class="col-md-12">
+                        <div class="input-group"> 
+                            <h:commandButton class="button" action="${staff.add()}" value="Save" ></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+                <br/><br/>
+                <h2>Personeeloverzicht</h2>
+                
+
+
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>
