@@ -10,16 +10,16 @@
         <p:column headerText="Id" style="display:none" >
             <h:outputText value="#{listDetail.id}"/>
         </p:column>
-        <p:column headerText="Naam" sortBy="#{listDetail.name}" filterBy="#{listDetail.name}">
+        <p:column headerText="Naam" sortBy="#{listDetail.name}" filterBy="#{listDetail.name}" filterMatchMode="contains">
             <h:outputText value="#{listDetail.name}"/>
         </p:column>
-        <p:column headerText="Stad" sortBy="#{listDetail.city}" filterBy="#{listDetail.city}">
+        <p:column headerText="Stad" sortBy="#{listDetail.city}" filterBy="#{listDetail.city}" filterMatchMode="contains">
             <h:outputText value="#{listDetail.city}"/>
         </p:column>
-        <p:column headerText="Straat" sortBy="#{listDetail.street}" filterBy="#{listDetail.street}">
+        <p:column headerText="Straat" sortBy="#{listDetail.street}" filterBy="#{listDetail.street}" filterMatchMode="contains">
             <h:outputText value="#{listDetail.street}"/>
         </p:column>
-        <p:column headerText="TelefoonNr." sortBy="#{listDetail.phone}" filterBy="#{listDetail.phone}">
+        <p:column headerText="TelefoonNr." sortBy="#{listDetail.phone}" filterBy="#{listDetail.phone}" filterMatchMode="contains">
             <h:outputText value="#{listDetail.phone}"/>
         </p:column>
         <p:column headerText="Contact" sortBy="#{listDetail.contact}" filterBy="#{listDetail.contact}">
