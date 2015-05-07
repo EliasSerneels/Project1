@@ -36,7 +36,6 @@ public class BungalowFacade {
         }
         List<ParkEntity> parks = parkDao.listAll();
 
-        
         for (ParkEntity park : parks) {
             dto.getParkList().add(park.getName());
         }
@@ -52,25 +51,25 @@ public class BungalowFacade {
                 dto.getDetail().setImageID(bungalowEntity.getImageID());
             }
         }
-                List<BungalowEntity> bungalows = bungalowDao.listAll();
+        List<BungalowEntity> bungalows = bungalowDao.listAll();
 
-                for (BungalowEntity bungalow : bungalows) {
-                    BungalowListDetailDto listDetail = new BungalowListDetailDto();
-                    listDetail.setId(bungalow.getId());
-                    listDetail.setName(bungalow.getName());
-                    listDetail.setType(bungalow.getType());
-                    listDetail.setPrice(bungalow.getPrice());
-                    listDetail.setPark(bungalow.getPark());
-                    listDetail.setMaxpeople(bungalow.getMaxpeople());
-                    listDetail.setReservations(bungalow.getReservations());
-                    listDetail.setImageID(bungalow.getImageID());
-                    dto.getList().add(listDetail);
-                }
-                return dto;
-            }
+        for (BungalowEntity bungalow : bungalows) {
+            BungalowListDetailDto listDetail = new BungalowListDetailDto();
+            listDetail.setId(bungalow.getId());
+            listDetail.setName(bungalow.getName());
+            listDetail.setType(bungalow.getType());
+            listDetail.setPrice(bungalow.getPrice());
+            listDetail.setPark(bungalow.getPark());
+            listDetail.setMaxpeople(bungalow.getMaxpeople());
+            listDetail.setReservations(bungalow.getReservations());
+            listDetail.setImageID(bungalow.getImageID());
+            dto.getList().add(listDetail);
+        }
+        return dto;
+    }
 
     public BungalowPageDto add(BungalowPageDto dto) {
-        
+
         BungalowEntity bungalowEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
