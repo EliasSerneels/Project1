@@ -28,54 +28,54 @@
     <h:body>
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script>
-        $(function() {
-          var availableTags = [
-            "Bungalow",
-            "Bungalow Wizard",
-            "Contact",
-            "Event",
-            "Eventbedrijf",
-            "Eventtype",
-            "Event Wizard",
-            "Klant",
-            "Locatie",
-            "Overzicht",
-            "Park",
-            "Reservatie"
-          ];
-          $("#j_idt12\\:search").autocomplete({
-            source: availableTags
-          });
-          $("#j_idt12\\:search").on( "autocompleteselect", function(event, ui){
-            var link;
-            switch (ui.item.value.toLowerCase()) {
-            case "eventbedrijf":
-                link = "eventcompany";
-                break;
-            case "klant":
-                link = "customer";
-                break;
-            case "reservatie":
-                link = "reservation";
-                break;
-            case "bungalow wizard":
-                link = "bungalow_wizard";
-                break;
-            case "locatie":
-                link = "location";
-                break;
-            case "event wizard":
-                link = "event_wizard";
-                break;
-            case "overzicht":
-                link = "overview";
-                break; 
-            default: 
-                link = ui.item.value.toLowerCase();
-            }
-            window.location = link + ".xhtml";  
-          });
-        });
+            $(function () {
+                var availableTags = [
+                    "Bungalow",
+                    "Bungalow Wizard",
+                    "Contact",
+                    "Event",
+                    "Eventbedrijf",
+                    "Eventtype",
+                    "Event Wizard",
+                    "Klant",
+                    "Locatie",
+                    "Overzicht",
+                    "Park",
+                    "Reservatie"
+                ];
+                $("#j_idt12\\:search").autocomplete({
+                    source: availableTags
+                });
+                $("#j_idt12\\:search").on("autocompleteselect", function (event, ui) {
+                    var link;
+                    switch (ui.item.value.toLowerCase()) {
+                        case "eventbedrijf":
+                            link = "eventcompany";
+                            break;
+                        case "klant":
+                            link = "customer";
+                            break;
+                        case "reservatie":
+                            link = "reservation";
+                            break;
+                        case "bungalow wizard":
+                            link = "bungalow_wizard";
+                            break;
+                        case "locatie":
+                            link = "location";
+                            break;
+                        case "event wizard":
+                            link = "event_wizard";
+                            break;
+                        case "overzicht":
+                            link = "overview";
+                            break;
+                        default:
+                            link = ui.item.value.toLowerCase();
+                    }
+                    window.location = link + ".xhtml";
+                });
+            });
         </script>
         <script> //facebook plugin
             window.fbAsyncInit = function () {
@@ -129,7 +129,7 @@
                         </f:facet>
                     </p:menubar>
                 </h:form>
-                
+
 
             </div>
         </nav> 
@@ -169,15 +169,15 @@
                 <li><p class="lightColorFooter">© Party Resort - 2015</p></li>
             </ul>         
             <ul id="footernamen">
-                <li>Elias Serneels</li>
-                <li>Olivier Van de Perre</li>
-                <li>Pieter Drijkoningen</li>
-                <li>Timothy De Groot</li>
-                <li>Pepijn Mores</li>
-                <li>Elliot Braekeleire</li>
-                <li>Jeroen De Wolf</li>
-                <li>Nicolas De Rechter</li>
-                <li>Stijn Zwaenepoel</li>
+                <li><a href="https://github.com/EliasSerneels">Elias Serneels</a></li>
+                <li><a href="https://github.com/oliviervdp" >Olivier Van de Perre</a></li>
+                <li><a href="https://github.com/pieterdr" >Pieter Drijkoningen</a></li>
+                <li><a href="https://github.com/t-mo-t" >Timothy De Groot</a></li>
+                <li><a href="https://github.com/PepijnM" >Pepijn Mores</a></li>
+                <li><a href="https://github.com/ElliotBraekeleire">Elliot Braekeleire</a></li>
+                <li><a href="https://github.com/Jeroendw" >Jeroen De Wolf</a></li>
+                <li><a href="https://github.com/Nicholasdr">Nicolas De Rechter</a></li>
+                <li><a href="https://github.com/stijnzwaenepoel">Stijn Zwaenepoel</a></li>
             </ul>
             <br style="font-size:0px"/>
         </footer>

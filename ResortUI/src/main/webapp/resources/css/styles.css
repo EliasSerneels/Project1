@@ -413,6 +413,13 @@ ul{
    margin-right: auto;
    width:70%;
 }
+
+.contactname a li{
+    color: black;
+    margin: 5px;
+}
+
+
 .infoBung{
     margin-left:0px; 
     padding-left:0px;
