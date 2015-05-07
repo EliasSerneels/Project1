@@ -13,6 +13,9 @@ import java.util.List;
  * @author User
  */
 public class UserOverviewPageDto {
+    
+    private UserDetailDto detail = new UserDetailDto();
+    
     private List<UserDetailDto> list = new LinkedList<>();
 
     public List<UserDetailDto> getList() {
@@ -22,6 +25,12 @@ public class UserOverviewPageDto {
     public void setList(List<UserDetailDto> users) {
         this.list = users;
     }
-    
-    
+
+    public UserDetailDto getDetail() {
+        return detail;
+    }
+
+    public void setDetail(UserDetailDto detail) {
+        this.detail = detail;
+    }    
 }

@@ -96,6 +96,5 @@ public class UserDetailDto implements Serializable{
 
     public void setLevel(int level) {
         this.level = level;
-    }  
-    
+    }      
 }
