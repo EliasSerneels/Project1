@@ -35,7 +35,7 @@
                                          value="${eventcompany.dto.detail.name}" class="form-control"
                                          required="true" requiredMessage="Vul een bedrijfsnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een bedrijfsnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç]{1,50}"/>
 
                             </h:inputText>
                         </li>                                    
@@ -69,12 +69,12 @@
                             </h:inputText>
                         </li>     
                         <li>
-                            <div class="inputinfo">Contact</div>
+                            <div class="inputinfo">E-Mail</div>
                             <h:inputText label="Naam"
                                          value="${eventcompany.dto.detail.contact}" class="form-control"
                                          required="true" validatorMessage="Vul een contact in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
 
                             </h:inputText>
 
