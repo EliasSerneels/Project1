@@ -37,7 +37,7 @@ public class EventtypedetailPageDto {
         this.eventcompanyList = eventcompanyList;
     }
 
-    public EventtypeDetailDto getDetail() {
+   public EventtypeDetailDto getDetail() {
         return detail;
     }
 
