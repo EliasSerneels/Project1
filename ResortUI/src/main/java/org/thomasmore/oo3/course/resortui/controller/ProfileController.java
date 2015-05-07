@@ -36,7 +36,6 @@ public class ProfileController {
     public String edit() {
         ue.setEmail(sessionDto.getUserDto().getEmail());
         ue.setFullName(sessionDto.getUserDto().getFullName());
-        ue.setPhone(sessionDto.getUserDto().getPhone());
         ue.setUsername(sessionDto.getUserDto().getUsername());
         dao.save(ue);
         return pageRedirect;

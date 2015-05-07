@@ -20,13 +20,13 @@
             </ui:define>
 
             <ui:define name="content">
-<!--
-                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                    <script>
-                        window.location.href = "http:login.xhtml";
-                    </script>
-                </ui:fragment>
--->
+                <!--
+                                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                                    <script>
+                                        window.location.href = "http:login.xhtml";
+                                    </script>
+                                </ui:fragment>
+                -->
                 <div class="col-md-6-l">
                     <h:form>
                         <h3>Mijn gegevens</h3> 
@@ -34,11 +34,10 @@
                             <tr><td>Gebruikersnaam</td><td>${login.sessionDto.userDto.username}</td></tr>
                             <tr><td>Volledige naam</td><td>${login.sessionDto.userDto.fullName}</td></tr>
                             <tr><td>Email-adres</td><td>${login.sessionDto.userDto.email}</td></tr>
-                            <tr><td>Telefoonnummer</td><td>${login.sessionDto.userDto.phone}</td> </tr>
-                            <tr><td>Type</td><td>${login.sessionDto.userDto.type}</td> </tr>                              
+                            <tr><td>Level</td><td>${login.sessionDto.userDto.level}</td> </tr>                              
                         </table>
                         <a class="button" id="knop" onclick="document.getElementById('inputForm').style.display = 'block';
-                            document.getElementById('knop').setAttribute('disabled', 'disabled');">Wijzig</a>
+                                document.getElementById('knop').setAttribute('disabled', 'disabled');">Wijzig</a>
                     </h:form>
                 </div>                
                 <div style="display:none;" id="inputForm" class="col-md-6-r">
@@ -50,7 +49,7 @@
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="${login.sessionDto.userDto.username}"
                                              required="true" 
-                                         >
+                                             >
                                 </h:inputText>
                             </li>
                             <li>
@@ -58,7 +57,7 @@
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="${login.sessionDto.userDto.fullName}"
                                              required="true" 
-                                         >
+                                             >
                                 </h:inputText>
                             </li>
                             <li>
@@ -68,13 +67,7 @@
                                              required="false" /> 
                             </li>
                             <li>
-                                <div class="inputinfo">Telefoonnummer</div>
-                                <h:inputText label="Telefoonnummer" class="form-control"
-                                             value="${login.sessionDto.userDto.phone}"
-                                             required="false" />
-                                <li>
-                                    <h:commandButton class="button" action="${profile.edit()}" value="Opslaan"/>
-                                </li>
+                                <h:commandButton class="button" action="${profile.edit()}" value="Opslaan"/>
                             </li>
                         </ul>
                     </h:form>

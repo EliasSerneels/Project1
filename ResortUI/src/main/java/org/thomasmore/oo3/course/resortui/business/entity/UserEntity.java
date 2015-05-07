@@ -13,12 +13,14 @@ public class UserEntity extends BasicEntity {
     private String password;
     private String fullName;
     private String email;
-    private String phone;
-    private String type;
+    private int level;
 
-    public UserEntity()
-    {
-        type = "user";
+    public UserEntity() {
+        level = 0;
+    }
+
+    public UserEntity(int level) {
+        this.level = level;
     }
 
     public String getUsername() {
@@ -53,19 +55,11 @@ public class UserEntity extends BasicEntity {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public int getLevel() {
+        return level;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

@@ -15,40 +15,59 @@
             <ui:define name="navbar"><h1>Useroverzicht</h1></ui:define>
 
             <ui:define name="content">
-                <h2>Useroverzicht</h2>
-                <table class="overview">
-                    <tr>
-                        <th>ID</th>
-                        <th>Gebruikersnaam</th>
-                        <th>Volledige naam</th>
-                        <th>Email</th>
-                        <th>Type</th>
-                        <th></th>
-                    </tr>
-                    <ui:repeat value="${useroverview.dto.list}" var="listDetail">                          
-                        <tr>
-                            <h:form>
-                                <td>${listDetail.id}</td>
-                                <td>${listDetail.username}</td>
-                                <td>${listDetail.fullName}</td>
-                                <td>${listDetail.email}</td>
-                                <td>${listDetail.type}</td>
-                                <!--<td>
-                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?edit=${listDetail.id}" value="Wijzig"></h:commandButton>
+                <ui:fragment rendered="${sessionDto.userDto.level != 4}">
+                    <script>
+                        window.location.href = "index.xhtml";
+                    </script>
+                </ui:fragment>
+                <h2>Users aanmaken of wijzigen</h2>
+                <h:form>
+                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+                    <ul class="change-form">
+                        <li>
+                            <h:inputHidden value="${useroverview.dto.detail.id}"/>
+                            <div class="inputinfo">Gebruikersnaam</div>
+                            <h:inputText label="Gebruikersnaam"
+                                         value="${useroverview.dto.detail.username}" class="form-control"
+                                         required="true">
 
-                                    <h:commandButton class="btn btn-primary" action="bungalow.xhtml?delete=${listDetail.id}" value="Verwijder"></h:commandButton>
-                                </td>
-                                <td>
-                                    <a href="bungalow.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
-                                    <a href="bungalow.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
-                                </td>-->
-                            </h:form>
-                        </tr>                          
-                    </ui:repeat>
-                </table>
+                            </h:inputText>
+                        </li>
+                        <li>
+                            <div class="inputinfo">Wachtwoord</div>
+                            <h:inputText label="Wachtwoord"
+                                         value="${useroverview.dto.detail.password}" class="form-control"
+                                         required="true"></h:inputText>
+                        </li>
+                        <li>
+                            <div class="inputinfo">Volledige naam</div>
+                            <h:inputText label="Volledige naam"
+                                         value="${useroverview.dto.detail.fullName}" class="form-control"
+                                         required="false"></h:inputText>
+                        </li>
+                        <li>
+                            <div class="inputinfo">Email</div>
+                            <h:inputText label="Email"
+                                         value="${useroverview.dto.detail.email}" class="form-control"
+                                         required="false"></h:inputText>
+                        </li>
+                        <li>
+                            <div class="inputinfo">Level</div>
+                            <h:inputText label="Level"
+                                         value="${useroverview.dto.detail.level}" class="form-control"
+                                         required="false"></h:inputText>
+                        </li>
+                    </ul>
+                    <div class="col-md-12">
+                        <div class="input-group">   
+                            <h:commandButton class="button" action="${useroverview.add()}" value="User toevoegen"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+                <br/><br/>
+                <h2>Useroverzicht</h2>
+                <ui:include src="dataTables/tableUser.xhtml"></ui:include>
             </ui:define>
         </ui:composition>
-
-
     </body>
 </html>

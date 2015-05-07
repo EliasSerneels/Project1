@@ -65,11 +65,10 @@ public class LoginController implements Serializable {
                 sessionDto.getUserDto().setId(user.getId());
                 sessionDto.getUserDto().setFullName(user.getFullName());
                 sessionDto.getUserDto().setEmail(user.getEmail());
-                sessionDto.getUserDto().setPhone(user.getPhone());
                 sessionDto.getUserDto().setUsername(dbUserName);
                 sessionDto.getUserDto().setPassword(dbPassword);
-                sessionDto.getUserDto().setType(user.getType());
                 sessionDto.getUserDto().setLoggedIn(true);
+                sessionDto.getUserDto().setLevel(user.getLevel());
                 return "profile.xhtml";
             }      
         }

@@ -93,11 +93,10 @@ public class initDbStartup {
         ce2.setPhonenumber("0488992211");
         objectsToSave.add(ce2);
 
-        UserEntity ue1 = new UserEntity();
+        UserEntity ue1 = new UserEntity(4);
         ue1.setId(UUID.randomUUID().toString());
         ue1.setUsername("Pieter");
         ue1.setPassword("Pieter");
-        ue1.setType("admin");
         objectsToSave.add(ue1);
 
         UserEntity ue2 = new UserEntity();
