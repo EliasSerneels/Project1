@@ -24,7 +24,7 @@
                             <span class="input-group-addon">Inloggen</span>
                             <h:inputText label="Gebruikersnaam" p:placeholder="jhon@doe.org"
                                          value="${login.sessionDto.userDto.username}" class="form-control"
-                                         required="true">
+                                         required="true" requiredMessage="Vul uw username in." validatorMessage="Vul uw username in. ">
                             </h:inputText>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                             <span class="input-group-addon">Wachtwoord</span>
                             <h:inputSecret label="Wachtwoord" p:placeholder="******"
                                            value="${login.sessionDto.userDto.password}" class="form-control"
-                                           required="true">
+                                           required="true" requiredMessage="Vul uw paswoord in." validatorMessage="Vul uw paswoord in. ">
                             </h:inputSecret>
                         </div>
                     </div>
