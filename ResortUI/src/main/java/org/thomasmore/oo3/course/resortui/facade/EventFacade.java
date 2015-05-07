@@ -56,12 +56,12 @@ public class EventFacade {
         List<EventtypeEntity> eventtypes = eventtypeDao.listAll();
         
         
-        dto.getEventcompanyList().add("");
+        
         for (EventcompanyEntity eventcompany : eventcompanys) {
             dto.getEventcompanyList().add(eventcompany.getName());
         }
         
-        dto.getEventtypeList().add("");
+        
         for (EventtypeEntity eventtype : eventtypes) {
             dto.getEventtypeList().add(eventtype.getEventname());
         }
