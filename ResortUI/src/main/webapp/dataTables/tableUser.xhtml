@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form id="userform">
+        <p:dataTable id="useroverview" var="detail" value="#{useroverview.dto.list}" widgetVar="userTable" class="overview" selectionMode="multiple" selection="#{useroverview.selectedUser}" rowKey="#{detail.id}" emptyMessage="Geen data gevonden.">                          
+            <p:ajax event="rowSelect" update=":userform:multiUserDetail" />
+            <p:ajax event="rowUnselect" update=":userform:multiUserDetail" />
+            <p:ajax event="rowReorder" update=":userform:multiUserDetail" />
+            <f:facet name="header">
+                <p:outputPanel>
+                    <h:outputText value="Doorzoek alle velden: " />
+                    <p:inputText id="globalFilter" onkeyup="PF('userTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
+                </p:outputPanel>
+            </f:facet>
+            <p:column headerText="Id" sortBy="#{detail.id}" style="display:none">
+                <h:outputText value="#{detail.id}"/>
+            </p:column>
+            <p:column headerText="Gebruikersnaam" sortBy="#{detail.username}" filterBy="#{detail.username}" filterMatchMode="contains">                
+                <h:outputText value="#{detail.username}"/>
+            </p:column>            
+            <p:column headerText="Wachtwoord" sortBy="#{detail.password}" filterBy="#{detail.password}" filterMatchMode="contains">                
+                <h:outputText value="#{detail.password}"/>
+            </p:column>            
+            <p:column headerText="Volledige naam" sortBy="#{detail.fullName}" filterBy="#{detail.fullNname}" filterMatchMode="contains">                
+                <h:outputText value="#{detail.fullName}"/>
+            </p:column>
+            <p:column headerText="Email" sortBy="#{detail.email}" filterBy="#{detail.email}" filterMatchMode="contains">                
+                <h:outputText value="#{detail.email}"/>
+            </p:column>
+            <p:column headerText="Level" sortBy="#{detail.level}" filterBy="#{detail.level}" filterMatchMode="contains">                
+                <h:outputText value="#{detail.level}"/>
+            </p:column>
+            
+             <p:column exportable="false">
+                <a href="useroverview.xhtml?edit=${detail.id}" class=" button">edit</a>
+                <a href="useroverview.xhtml?delete=${detail.id}" class=" button">delete</a>
+            </p:column>
+
+            <f:facet name="footer">
+                <p:commandButton process="useroverview" update=":userform:multiUserDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiUserDialog').show()" />
+            </f:facet>
+        </p:dataTable>
+        
+        <h:commandLink>
+            <p:graphicImage name="images/icons/excel.png" />
+            <p:dataExporter type="xls" target="useroverview" fileName="user" />
+        </h:commandLink>
+        <p:dialog header="Geselecteerde Users" widgetVar="multiUserDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
+            <p:outputPanel id="multiUserDetail" style="text-align:center;" >
+                <ui:repeat value="#{useroverview.selectedUser}" var="detail" rendered="true">
+                    <!--<p:graphicImage value="resources/images/icons/#{detail.imageID}.jpg"/>-->
+                    <h:outputText value="#{detail.username} - #{detail.fullName} - #{detail.email} - #{detail.level}" style="display:block"/>
+                </ui:repeat>
+            </p:outputPanel>
+        </p:dialog>
+    </h:form>
+</ui:composition>
