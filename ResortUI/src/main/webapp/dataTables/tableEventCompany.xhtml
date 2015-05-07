@@ -10,24 +10,22 @@
         <p:column headerText="Id" style="display:none" >
             <h:outputText value="#{listDetail.id}"/>
         </p:column>
-        <p:column headerText="Naam" sortBy="#{listDetail.name}">
+        <p:column headerText="Naam" sortBy="#{listDetail.name}" >
             <h:outputText value="#{listDetail.name}"/>
         </p:column>
-        <p:column headerText="Stad">
+        <p:column headerText="Stad" sortBy="#{listDetail.city}" >
             <h:outputText value="#{listDetail.city}"/>
         </p:column>
-        <p:column headerText="Straat">
+        <p:column headerText="Straat" sortBy="#{listDetail.street}" >
             <h:outputText value="#{listDetail.street}"/>
         </p:column>
-        <p:column headerText="TelefoonNr.">
+        <p:column headerText="TelefoonNr." sortBy="#{listDetail.phone}" >
             <h:outputText value="#{listDetail.phone}"/>
         </p:column>
-        <p:column headerText="Contact">
+        <p:column headerText="Contact" sortBy="#{listDetail.contact}" >
             <h:outputText value="#{listDetail.contact}"/>
         </p:column>
-        <p:column headerText="TESTLIJST">
-            <h:outputText value="#{listDetail.evententity}"/>
-        </p:column>
+        
         <p:column>
             <a href="eventcompany.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
             <a href="eventcompany.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>

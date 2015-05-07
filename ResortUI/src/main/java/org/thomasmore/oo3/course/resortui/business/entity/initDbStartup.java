@@ -5,6 +5,7 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -34,48 +35,54 @@ public class initDbStartup {
         
         BungalowEntity bungalowEntity = new BungalowEntity();
         bungalowEntity.setImageID("b1");
-        bungalowEntity.setName("Bananendoos");
+        bungalowEntity.setName("Doos");
         bungalowEntity.setType("Type 3");
         bungalowEntity.setPrice(500000);
-        bungalowEntity.setPark("Parkje 2");
+        bungalowEntity.setPark("Funpark 1");
         bungalowEntity.setMaxpeople("1");
         objectsToSave.add(bungalowEntity);
 
         BungalowEntity bungalowEntity2 = new BungalowEntity();
         bungalowEntity2.setImageID("b2");
-        bungalowEntity2.setName("Tomattenbak");
+        bungalowEntity2.setName("Standaard");
         bungalowEntity2.setType("Type 2");
         bungalowEntity2.setPrice(10);
-        bungalowEntity2.setPark("Parkje 1");
+        bungalowEntity2.setPark("Funpark 2");
         bungalowEntity2.setMaxpeople("8");
         objectsToSave.add(bungalowEntity2);
 
         BungalowEntity bungalowEntity3 = new BungalowEntity();
         bungalowEntity3.setImageID("b3");
-        bungalowEntity3.setName("Paalwoning");
+        bungalowEntity3.setName("Luxe");
         bungalowEntity3.setType("Type 4");
         bungalowEntity3.setPrice(80);
-        bungalowEntity3.setPark("Parkje 2");
+        bungalowEntity3.setPark("Funpark 3");
         bungalowEntity3.setMaxpeople("5");
         objectsToSave.add(bungalowEntity3);
 
-        ParkEntity parkEntity = new ParkEntity();
-        parkEntity.setName("Parkje 1");
-        parkEntity.setLocation("Antwerpen");
-        parkEntity.setCapacity(165);
-        objectsToSave.add(parkEntity);
+        ParkEntity parkEntity1 = new ParkEntity();
+        parkEntity1.setName("Funpark 1");
+        parkEntity1.setLocation("Antwerpen");
+        parkEntity1.setCapacity(165);
+        objectsToSave.add(parkEntity1);
 
         ParkEntity parkEntity2 = new ParkEntity();
-        parkEntity2.setName("Parkje 2");
+        parkEntity2.setName("Funpark 2");
         parkEntity2.setLocation("Mechelen");
-        parkEntity2.setCapacity(38445);
+        parkEntity2.setCapacity(385);
         objectsToSave.add(parkEntity2);
+        
+        ParkEntity parkEntity3 = new ParkEntity();
+        parkEntity3.setName("Funpark 3");
+        parkEntity3.setLocation("Vilvoorde");
+        parkEntity3.setCapacity(700);
+        objectsToSave.add(parkEntity3);
 
         CustomerEntity ce1 = new CustomerEntity();
         ce1.setFirstname("Jos");
         ce1.setLastname("Janssens");
         ce1.setBirthdate("01/01/1980");
-        ce1.setCountry("Belgium");
+        ce1.setCountry("België");
         ce1.setCity("Vilvoorde");
         ce1.setStreet("Leuvensestraat");
         ce1.setHousenumber(1);
@@ -86,14 +93,25 @@ public class initDbStartup {
         ce2.setFirstname("Piet");
         ce2.setLastname("Uyttebroeck");
         ce2.setBirthdate("01/01/1970");
-        ce2.setCountry("Belgium");
+        ce2.setCountry("België");
         ce2.setCity("Mechelen");
         ce2.setStreet("Kerkstraat");
         ce2.setHousenumber(5);
         ce2.setPhonenumber("0488992211");
         objectsToSave.add(ce2);
+        
+        CustomerEntity ce3 = new CustomerEntity();
+        ce3.setFirstname("Thomas");
+        ce3.setLastname("Coenen");
+        ce3.setBirthdate("13/08/1995");
+        ce3.setCountry("België");
+        ce3.setCity("Peutie");
+        ce3.setStreet("Kerkstraat");
+        ce3.setHousenumber(18);
+        ce3.setPhonenumber("0488992211");
+        objectsToSave.add(ce3);
 
-        UserEntity ue1 = new UserEntity(4);
+        UserEntity ue1 = new UserEntity();
         ue1.setId(UUID.randomUUID().toString());
         ue1.setUsername("Pieter");
         ue1.setPassword("Pieter");
@@ -110,24 +128,91 @@ public class initDbStartup {
         ue3.setUsername("Elias");
         ue3.setPassword("Elias");
         objectsToSave.add(ue3);
+        
+        UserEntity ue4 = new UserEntity();
+        ue4.setId(UUID.randomUUID().toString());
+        ue4.setUsername("Elliot");
+        ue4.setPassword("Elliot");
+        objectsToSave.add(ue4);
+        
+        UserEntity ue5 = new UserEntity();
+        ue5.setId(UUID.randomUUID().toString());
+        ue5.setUsername("Pepijn");
+        ue5.setPassword("Pepijn");
+        objectsToSave.add(ue5);
+        
+        UserEntity ue6 = new UserEntity();
+        ue6.setId(UUID.randomUUID().toString());
+        ue6.setUsername("Jeroen");
+        ue6.setPassword("Jeroen");
+        objectsToSave.add(ue6);
+        
+        UserEntity ue7 = new UserEntity();
+        ue7.setId(UUID.randomUUID().toString());
+        ue7.setUsername("Olivier");
+        ue7.setPassword("Olivier");
+        objectsToSave.add(ue7);
+        
+        UserEntity ue8 = new UserEntity();
+        ue8.setId(UUID.randomUUID().toString());
+        ue8.setUsername("Nicolas");
+        ue8.setPassword("Nicolas");
+        objectsToSave.add(ue8);
+        
+        UserEntity ue9 = new UserEntity();
+        ue9.setId(UUID.randomUUID().toString());
+        ue9.setUsername("Stijn");
+        ue9.setPassword("Stijn");
+        objectsToSave.add(ue9);
 
         EventEntity ee1 = new EventEntity();
         ee1.setId(UUID.randomUUID().toString());
         ee1.setEventtype("Bruiloft");
+        ee1.setEventcompany("Bedrijf1");
+        ee1.setEventname("Bruiloft Thomas en Jana");
         objectsToSave.add(ee1);
 
         EventEntity ee2 = new EventEntity();
         ee2.setId(UUID.randomUUID().toString());
+        ee2.setEventname("BBQ familie coenen");
+        ee2.setEventcompany("Bedrijf 2");
         ee2.setEventtype("BBQ");
         objectsToSave.add(ee2);
+        
+        EventEntity ee3 = new EventEntity();
+        ee3.setId(UUID.randomUUID().toString());
+        ee3.setEventtype("Communie");
+        ee3.setEventcompany("Bedrijf 3");
+        ee3.setEventname("Communie Koen");
+        objectsToSave.add(ee3);
 
         EventcompanyEntity ece1 = new EventcompanyEntity();
         ece1.setId(UUID.randomUUID().toString());
         ece1.setName("Bedrijf 1");
-        ece1.setPhone("0497181245545454");
-        ece1.setContact("dsfdsf");
+        ece1.setPhone("0497145474");
+        ece1.setCity("Mechelen");
+        ece1.setStreet("Hoogstraat");
+        ece1.setContact("Dhr. Maes");
         objectsToSave.add(ece1);
-
+        
+        EventcompanyEntity ece2 = new EventcompanyEntity();
+        ece2.setId(UUID.randomUUID().toString());
+        ece2.setName("Bedrijf 2");
+        ece2.setPhone("0497856236");
+        ece2.setCity("Vilvoorde");
+        ece2.setStreet("Laagstraat");
+        ece2.setContact("Mevr. De Bakker");
+        objectsToSave.add(ece2);
+        
+        EventcompanyEntity ece3 = new EventcompanyEntity();
+        ece3.setId(UUID.randomUUID().toString());
+        ece3.setName("Bedrijf 3");
+        ece3.setPhone("0497713554");
+        ece3.setCity("Antwerpen");
+        ece3.setStreet("Middelstraat");
+        ece3.setContact("Dhr. Thomassen");
+        objectsToSave.add(ece3);
+        
         EventtypeEntity ete1 = new EventtypeEntity();
         ete1.setEventname("Trouw");
         objectsToSave.add(ete1);
@@ -136,6 +221,82 @@ public class initDbStartup {
         ete2.setEventname("BBQ");
         objectsToSave.add(ete2);
         
+        EventtypeEntity ete3 = new EventtypeEntity();
+        ete3.setEventname("Communie");
+        objectsToSave.add(ete3);
+        
+       
+       ReservationEntity re1 = new ReservationEntity();
+       re1.setBungalowName("Doos");
+       re1.setCustomerName("Thomas Coenen");
+       re1.setStartTime("16:55");
+       re1.setEndTime("19:45");
+       objectsToSave.add(re1);
+       
+       ReservationEntity re2 = new ReservationEntity();
+       re2.setBungalowName("Standaard");
+       re2.setCustomerName("Piet Uyttebroeck");
+       re2.setStartTime("09:00");
+       re2.setEndTime("20:00");
+       objectsToSave.add(re2);
+       
+       ReservationEntity re3 = new ReservationEntity();
+       re3.setBungalowName("Luxe");
+       re3.setCustomerName("Jos Janssens");
+       re3.setStartTime("10:00");
+       re3.setEndTime("16:30");
+       objectsToSave.add(re3);
+       
+       LocationEntity le1 = new LocationEntity();
+       le1.setCity("Vilvoorde");
+       le1.setStreet("Leuvensestraat 27");
+       objectsToSave.add(le1);
+       
+       LocationEntity le2 = new LocationEntity();
+       le2.setCity("Antwerpen");
+       le2.setStreet("Stationweg 15");
+       objectsToSave.add(le2);
+       
+       LocationEntity le3 = new LocationEntity();
+       le3.setCity("Vilvoorde");
+       le3.setStreet("Boerenstraat 114");
+       objectsToSave.add(le3);
+       
+        StaffEntity se1 = new StaffEntity();
+        se1.setFirstname("Olivier");
+        se1.setLastname("Ollisen");
+        se1.setBirthdate("17-02-1980");
+        se1.setCountry("België");
+        se1.setCity("Mechelen");
+        se1.setStreet("Kerkstraat 18");
+        se1.setEmail("Olivierollisen@hotmail.com");
+        se1.setPhonenumber("0478523698");
+        objectsToSave.add(se1);
+        
+        StaffEntity se2 = new StaffEntity();
+        se2.setFirstname("Piet");
+        se2.setLastname("Pieters");
+        se2.setBirthdate("10-11-1983");
+        se2.setCountry("België");
+        se2.setCity("Mechelen");
+        se2.setStreet("Schoolstraat 68");
+        se2.setEmail("Pieterspiet@hotmail.com");
+        se2.setPhonenumber("0477423638");
+        objectsToSave.add(se2);
+        
+        StaffEntity se3 = new StaffEntity();
+        se3.setFirstname("Jean");
+        se3.setLastname("Keuleers");
+        se3.setBirthdate("04-04-1974");
+        se3.setCountry("België");
+        se3.setCity("Vilvoorde");
+        se3.setStreet("Stationstraat 91");
+        se3.setEmail("Keuleersjan@hotmail.com");
+        se3.setPhonenumber("0468123874");
+        objectsToSave.add(se3);
+       
+       
+       
         for (Object objectToSave1 : objectsToSave) {
             em.persist(objectToSave1);
         }
