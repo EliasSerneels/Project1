@@ -45,8 +45,8 @@ public class EventFacade {
                 dto.getDetail().setEventname(eventEntity.getEventname());
                 dto.getDetail().setEventtype(eventEntity.getEventtype());
                 dto.getDetail().setEventcompany(eventEntity.getEventcompany());
-                dto.getDetail().setStartDate(eventEntity.getStartTime());
-                dto.getDetail().setEndDate(eventEntity.getEndTime());
+                dto.getDetail().setStartTime(eventEntity.getStartTime());
+                dto.getDetail().setEndTime(eventEntity.getEndTime());
                 dto.getDetail().setStartDate(eventEntity.getStartDate());
                 dto.getDetail().setEndDate(eventEntity.getEndDate());
                 dto.getDetail().setBungalowName(eventEntity.getBungalowName());  
