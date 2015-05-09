@@ -24,8 +24,6 @@ public class EventEntity extends BasicEntity implements Serializable{
     private String endTime;
     private String bungalowName;
     private String customerName;
-    
-    public EventcompanyEntity eventcompanyentity;
 
     public String getStartTime() {
         return startTime;
@@ -97,14 +95,5 @@ public class EventEntity extends BasicEntity implements Serializable{
 
     public void setEventcompany(String eventcompany) {
         this.eventcompany = eventcompany;
-    }
-
-    public EventcompanyEntity getEventcompanyentity() {
-        return eventcompanyentity;
-    }
-
-    public void setEventcompanyentity(EventcompanyEntity eventcompanyentity) {
-        this.eventcompanyentity = eventcompanyentity;
-    }
-    
+    }    
 }

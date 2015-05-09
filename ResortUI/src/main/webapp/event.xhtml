@@ -53,11 +53,10 @@
 
                             </h:inputText>-->
 
-                            <p:calendar  pattern="dd-MM-yyyy"  id="popup1" value="${event.dto.detail.startDate}" required="true" requiredMessage="Gelieve een startdatum in te vullen." />
-            
+                            <p:calendar id="popup1" value="${event.dto.detail.startDate}" pattern="MM/dd/yyyy HH:mm:ss" required="true" requiredMessage="Gelieve een startdatum in te vullen." />
                         </div>
                         </div>    
-                         <div class="col-md-6-l">
+                         <div class="col-md-6-r">
                             <div class="input-group">
                                 <span class="input-group-addon">Starttijd</span>
                                <h:inputText label="Starttijd" 
@@ -68,7 +67,7 @@
                                     </h:inputText>
                             </div>
                         </div>          
-                        <div class="col-md-6-r"> 
+                        <div class="col-md-6-l"> 
                             <div class="input-group">
                                 <span class="input-group-addon">Einddatum</span>
     <!--                            <h:inputText label="Reservatie einddatum" value="${event.dto.detail.endDate}" class="form-control" required="true" validatorMessage="De einddatum moet in het formaat dd/mm/yyyy">
@@ -109,7 +108,7 @@
                                 </p:selectOneMenu>                                 
                             </div>
                         </div>  
-                        <div class="col-md-6-l">
+                        <div class="col-md-6">
                             <div class="input-group">
                                 <span class="input-group-addon">Eventbedrijf</span>
                                 <p:selectOneMenu required="true" id="Eventbedrijf" value="${event.dto.detail.eventcompany}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een bedrijf te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">

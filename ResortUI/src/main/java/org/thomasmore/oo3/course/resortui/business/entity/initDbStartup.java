@@ -207,6 +207,10 @@ public class initDbStartup {
         ee1.setEventtype("Bruiloft");
         ee1.setEventcompany("Bedrijf1");
         ee1.setEventname("Bruiloft Thomas en Jana");
+        ee1.setStartDate("154665");
+        ee1.setEndDate("8888880");
+        ee1.setBungalowName("Bugnalownaamza");
+        ee1.setCustomerName("Luc Steffens");
         objectsToSave.add(ee1);
 
         EventEntity ee2 = new EventEntity();
