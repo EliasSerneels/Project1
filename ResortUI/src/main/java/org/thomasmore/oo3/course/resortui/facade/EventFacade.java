@@ -9,19 +9,19 @@ import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
+import org.thomasmore.oo3.course.resortui.dao.BungalowDao;
+import org.thomasmore.oo3.course.resortui.dao.CustomerDao;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
 import org.thomasmore.oo3.course.resortui.dao.EventcompanyDao;
 import org.thomasmore.oo3.course.resortui.dao.EventtypeDao;
 import org.thomasmore.oo3.course.resortui.model.EventListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 
-/**
- *
- * @author Jeroen
- */
 @Stateless
 public class EventFacade {
 
@@ -31,6 +31,10 @@ public class EventFacade {
     private EventcompanyDao eventcompanyDao;
     @EJB
     private EventtypeDao eventtypeDao;
+    @EJB
+    private BungalowDao bungalowDao;
+    @EJB
+    private CustomerDao customerDao;
 
     public EventPageDto loadEventOverviewPage(String editId, String deleteId) {
         EventPageDto dto = new EventPageDto();
@@ -51,7 +55,17 @@ public class EventFacade {
         List<EventEntity> events = eventDao.listAll();
         List<EventcompanyEntity> eventcompanys = eventcompanyDao.listAll();
         List<EventtypeEntity> eventtypes = eventtypeDao.listAll();
+        List<BungalowEntity> bungalows = bungalowDao.listAll();
+        List<CustomerEntity> customers = customerDao.listAll();
 
+        for (CustomerEntity customer: customers) {
+            dto.getCustomerList().add(customer.getFirstname());
+        }
+        
+        for (BungalowEntity bungalow: bungalows) {
+            dto.getBungalowList().add(bungalow.getName());
+        }
+        
         for (EventcompanyEntity eventcompany : eventcompanys) {
             dto.getEventcompanyList().add(eventcompany.getName());
         }
