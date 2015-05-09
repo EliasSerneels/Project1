@@ -217,28 +217,16 @@ public class initDbStartup {
 
         EventEntity ee2 = new EventEntity();
         ee2.setId(UUID.randomUUID().toString());
-        ee2.setEventname("BBQ familie coenen");
-        ee2.setEventcompany("Bedrijf 2");
-        ee2.setEventtype("BBQ");
-        ee1.setStartDate("18-08-2015");
-        ee1.setStartTime("15:59");
-        ee1.setEndDate("19-08-2015");
-        ee1.setEndTime("16:00");
-        ee1.setBungalowName("Bnaamza");
-        ee1.setCustomerName("qfqsdeffens");
+        ee2.setEventtype("Wedding");
+        ee2.setEventcompany("Bedrijf2");
+        ee2.setEventname("Bruiloft Elias en Julie");
+        ee2.setStartDate("19-08-2015");
+        ee2.setStartTime("16:59");
+        ee2.setEndDate("21-08-2015");
+        ee2.setEndTime("17:00");
+        ee2.setBungalowName("Bungie");
+        ee2.setCustomerName("Tsjakaaa");
         objectsToSave.add(ee2);
-        
-        EventEntity ee3 = new EventEntity();
-        ee3.setId(UUID.randomUUID().toString());
-        ee3.setEventtype("Communie");
-        ee3.setEventcompany("Bedrijf 3");
-        ee1.setStartDate("18-08-2015");
-        ee1.setStartTime("15:59");
-        ee1.setEndDate("19-08-2015");
-        ee1.setEndTime("16:00");
-        ee1.setBungalowName("Bugnalownaamza");
-        ee1.setCustomerName("Luc Steffens");
-        objectsToSave.add(ee3);
 
         EventcompanyEntity ece1 = new EventcompanyEntity();
         ece1.setId(UUID.randomUUID().toString());

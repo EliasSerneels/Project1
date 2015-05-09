@@ -45,6 +45,8 @@ public class EventFacade {
                 dto.getDetail().setEventname(eventEntity.getEventname());
                 dto.getDetail().setEventtype(eventEntity.getEventtype());
                 dto.getDetail().setEventcompany(eventEntity.getEventcompany());
+                dto.getDetail().setStartDate(eventEntity.getStartTime());
+                dto.getDetail().setEndDate(eventEntity.getEndTime());
                 dto.getDetail().setStartDate(eventEntity.getStartDate());
                 dto.getDetail().setEndDate(eventEntity.getEndDate());
                 dto.getDetail().setBungalowName(eventEntity.getBungalowName());  
@@ -83,6 +85,8 @@ public class EventFacade {
             listDetail.setEventname(event.getEventname());
             listDetail.setEventcompany(event.getEventcompany());
             listDetail.setEventtype(event.getEventtype());
+            listDetail.setStartTime(event.getStartTime());
+            listDetail.setEndTime(event.getEndTime());
             listDetail.setStartDate(event.getStartDate());
             listDetail.setEndDate(event.getEndDate());
             listDetail.setBungalowName(event.getBungalowName());  
@@ -109,6 +113,8 @@ public class EventFacade {
         eventEntity.setEventname(dto.getDetail().getEventname());
         eventEntity.setEventcompany(dto.getDetail().getEventcompany());
         eventEntity.setEventtype(dto.getDetail().getEventtype());
+        eventEntity.setStartTime(dto.getDetail().getStartTime());
+        eventEntity.setEndTime(dto.getDetail().getEndTime());
         eventEntity.setStartDate(dto.getDetail().getStartDate());
         eventEntity.setEndDate(dto.getDetail().getEndDate());
         eventEntity.setBungalowName(dto.getDetail().getBungalowName());  
