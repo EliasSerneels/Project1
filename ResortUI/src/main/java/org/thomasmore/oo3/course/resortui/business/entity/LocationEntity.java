@@ -5,6 +5,7 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -16,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "location")
 @XmlRootElement
-public class LocationEntity extends BasicEntity {
+public class LocationEntity extends BasicEntity implements Serializable {
 
 private String city;
 private String street;

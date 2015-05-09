@@ -6,7 +6,13 @@
 package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@Entity
+@Table(name = "event")
+@XmlRootElement
 public class EventEntity extends BasicEntity implements Serializable{
 
     private String eventtype;

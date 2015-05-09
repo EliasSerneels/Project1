@@ -5,6 +5,7 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "eventcompany")
 @XmlRootElement
-public class EventcompanyEntity extends BasicEntity{
+public class EventcompanyEntity extends BasicEntity implements Serializable{
 
 
 private String name;
@@ -33,18 +34,6 @@ private String phone;
 private String contact;
 
 
-
-
-@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="eventcompanyentity")
-    public List<EventEntity> testevent;
-
-    public List<EventEntity> getEvententity() {
-        return testevent;
-    }
-
-    public void setEvententity(List<EventEntity> evententity) {
-        this.testevent = evententity;
-    }
 
     public String getContact() {
         return contact;
