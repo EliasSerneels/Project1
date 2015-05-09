@@ -207,10 +207,12 @@ public class initDbStartup {
         ee1.setEventtype("Bruiloft");
         ee1.setEventcompany("Bedrijf1");
         ee1.setEventname("Bruiloft Thomas en Jana");
-        ee1.setStartDate("154665");
-        ee1.setEndDate("8888880");
-        ee1.setBungalowName("Bugnalownaamza");
-        ee1.setCustomerName("Luc Steffens");
+        ee1.setStartDate("18-08-2015");
+        ee1.setStartTime("15:59");
+        ee1.setEndDate("19-08-2015");
+        ee1.setEndTime("16:00");
+        ee1.setBungalowName("Andere bung");
+        ee1.setCustomerName("Gilbert");
         objectsToSave.add(ee1);
 
         EventEntity ee2 = new EventEntity();
@@ -218,13 +220,24 @@ public class initDbStartup {
         ee2.setEventname("BBQ familie coenen");
         ee2.setEventcompany("Bedrijf 2");
         ee2.setEventtype("BBQ");
+        ee1.setStartDate("18-08-2015");
+        ee1.setStartTime("15:59");
+        ee1.setEndDate("19-08-2015");
+        ee1.setEndTime("16:00");
+        ee1.setBungalowName("Bnaamza");
+        ee1.setCustomerName("qfqsdeffens");
         objectsToSave.add(ee2);
         
         EventEntity ee3 = new EventEntity();
         ee3.setId(UUID.randomUUID().toString());
         ee3.setEventtype("Communie");
         ee3.setEventcompany("Bedrijf 3");
-        ee3.setEventname("Communie Koen");
+        ee1.setStartDate("18-08-2015");
+        ee1.setStartTime("15:59");
+        ee1.setEndDate("19-08-2015");
+        ee1.setEndTime("16:00");
+        ee1.setBungalowName("Bugnalownaamza");
+        ee1.setCustomerName("Luc Steffens");
         objectsToSave.add(ee3);
 
         EventcompanyEntity ece1 = new EventcompanyEntity();
