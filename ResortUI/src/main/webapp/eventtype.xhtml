@@ -9,16 +9,17 @@
 
     <body>
         <ui:composition template="./common/template.xhtml">
+            
             <ui:define name="title">Eventtypes</ui:define>
+            
             <ui:define name="navbar"><h1>Eventtypes</h1></ui:define>
+            
             <ui:define name="content">
-<!--
-                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                    <script>
-                        window.location.href = "http:login.xhtml";
-                    </script>
+
+                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                    <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
--->
+                
                 <h2>Eventtype aanmaken of aanpassen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
@@ -31,7 +32,7 @@
                                          required="true" requiredMessage="Vul een eventtypenaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een eventtypenaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-                                </h:inputText>
+                            </h:inputText>
                         </li>                                                             
                     </ul>
                     <div class="col-md-12">
@@ -42,7 +43,7 @@
                 </h:form> 
 
                 <br/><br/>
-                
+
                 <p:dataTable var="listDetail" value="#{eventtype.dto.list}">
                     <p:column headerText="Id" sortBy="#{listDetail.id}">
                         <h:outputText value="#{listDetail.id}"/>

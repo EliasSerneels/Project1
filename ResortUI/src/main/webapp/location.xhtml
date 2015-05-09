@@ -14,9 +14,14 @@
             <ui:define name="navbar"><h1>Locatie</h1></ui:define>
 
             <ui:define name="content">  
+
+                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                    <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
+                </ui:fragment>
+
                 <h:form>
-                <h2> Locatie aanmaken of aanpassen </h2>
-                
+                    <h2> Locatie aanmaken of aanpassen </h2>
+
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul class="change-form">
                         <li>

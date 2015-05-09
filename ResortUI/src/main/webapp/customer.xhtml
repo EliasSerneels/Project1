@@ -15,13 +15,11 @@
             <ui:define name="navbar"><h1>Klanten</h1></ui:define>
 
             <ui:define name="content">
-<!--
-                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                    <script>
-                        window.location.href = "http:login.xhtml";
-                    </script>
+                
+                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                    <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
--->
+                
                 <h:form>
                     <h2>Klant toevoegen of aanpassen</h2>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
@@ -36,7 +34,7 @@
                                          requiredMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-                                
+
                             </h:inputText>
                         </li>
                         <li>
@@ -47,14 +45,14 @@
                                          required="true"
                                          requiredMessage="Vul uw achternaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-                                
+
                             </h:inputText>
                         </li>      
                         <li>
                             <div class="inputinfo">Geboortedatum</div>
-                             <p:calendar pattern="dd-MM-yyyy" yearRange="c-100:c" navigator="true" id="popup" value="${customer.dto.detail.birthdate}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
+                            <p:calendar pattern="dd-MM-yyyy" yearRange="c-100:c" navigator="true" id="popup" value="${customer.dto.detail.birthdate}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
 
-                            
+
                         </li>
                         <li>
                             <div class="inputinfo">Telefoonnr.</div>
@@ -64,7 +62,7 @@
                                          validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
                                 <f:validateRegex pattern="([0-9].{6,20})"/>
                             </h:inputText>
-                            
+
                         </li>                                                                                                                                                                             
                         <li>   
                             <div class="inputinfo">E-mail</div>
@@ -75,7 +73,7 @@
                                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/> 
                             </h:inputText>
                         </li>  
-                        
+
                         <li class="typelist">
                             <div class="inputinfo">Land</div>
                             <h:inputText label="Land"
@@ -86,7 +84,7 @@
 
                             </h:inputText>
                         </li> 
-                        
+
                         <li class="typelist">
                             <div class="inputinfo">Stad</div>
                             <h:inputText label="Stad"

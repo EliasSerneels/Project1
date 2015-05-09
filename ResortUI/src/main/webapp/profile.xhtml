@@ -20,13 +20,11 @@
             </ui:define>
 
             <ui:define name="content">
-                <!--
-                                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                                    <script>
-                                        window.location.href = "http:login.xhtml";
-                                    </script>
-                                </ui:fragment>
-                -->
+
+                <ui:fragment rendered="${sessionDto.userDto.level &lt; 2}">
+                    <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
+                </ui:fragment>
+
                 <div class="col-md-6-l">
                     <h:form>
                         <h3>Mijn gegevens</h3> 

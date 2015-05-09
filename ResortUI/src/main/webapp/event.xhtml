@@ -5,68 +5,69 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Evenementen</title>
-            </f:facet>
-        </h:head>
+    <body>
+    <ui:composition template="./common/template.xhtml">
+        
+        <ui:define name="title">Reserveren</ui:define>
 
-        <h:body>
-            <ui:composition template="./common/template.xhtml">
+        <ui:define name="navbar"><h1>Reserveren</h1></ui:define>
+        
+        <ui:define name="content">
 
-                <ui:define name="content">
-                    <h:form>
-                        <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+            <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
+            </ui:fragment>
 
-                        <h:inputHidden value="${event.dto.detail.id}"/>
+            <h:form>
+                <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+
+                <h:inputHidden value="${event.dto.detail.id}"/>
 
 
 
-                        <div class="col-md-6-l">
-                            <div class="input-group">
-                                <span class="input-group-addon">Event Naam</span>
-                                <h:inputText label="Locatie" 
-                                             value="${event.dto.detail.eventname}" class="form-control"
-                                             required="true" requiredMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 20 tekens)" validatorMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 20 tekens)"
-                                             >
-                                    <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,20}"/>
-                                </h:inputText>
-                            </div>
-                        </div>  
-                        <div class="col-md-6-l">
-                            <div class="input-group">
-                                <span class="input-group-addon">Eventbedrijf</span>
-                                <p:selectOneMenu required="true" id="Eventbedrijf" value="${event.dto.detail.eventcompany}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een bedrijf te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
-                                    <f:selectItem itemLabel="Kies bedrijf"  noSelectionOption="true" />
-                                    <f:selectItems value="${event.dto.eventcompanyList}" />
-                                </p:selectOneMenu>                                 
-                            </div>
-                        </div>  
-                        <div class="col-md-6-r">
-                            <div class="input-group">
-                                <span class="input-group-addon">Eventtype</span>
-                                <p:selectOneMenu required="true" id="Eventtype" value="${event.dto.detail.eventtype}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een eventtype te kiezen.">
-                                    <f:selectItem itemLabel="Kies eventtype"  noSelectionOption="true" />
-                                    <f:selectItems value="${event.dto.eventtypeList}" />
-                                </p:selectOneMenu>                          
-                            </div>
-                        </div>  
+                <div class="col-md-6-l">
+                    <div class="input-group">
+                        <span class="input-group-addon">Event Naam</span>
+                        <h:inputText label="Locatie" 
+                                     value="${event.dto.detail.eventname}" class="form-control"
+                                     required="true" requiredMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 20 tekens)" validatorMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 20 tekens)"
+                                     >
+                            <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,20}"/>
+                        </h:inputText>
+                    </div>
+                </div>  
+                <div class="col-md-6-l">
+                    <div class="input-group">
+                        <span class="input-group-addon">Eventbedrijf</span>
+                        <p:selectOneMenu required="true" id="Eventbedrijf" value="${event.dto.detail.eventcompany}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een bedrijf te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
+                            <f:selectItem itemLabel="Kies bedrijf"  noSelectionOption="true" />
+                            <f:selectItems value="${event.dto.eventcompanyList}" />
+                        </p:selectOneMenu>                                 
+                    </div>
+                </div>  
+                <div class="col-md-6-r">
+                    <div class="input-group">
+                        <span class="input-group-addon">Eventtype</span>
+                        <p:selectOneMenu required="true" id="Eventtype" value="${event.dto.detail.eventtype}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een eventtype te kiezen.">
+                            <f:selectItem itemLabel="Kies eventtype"  noSelectionOption="true" />
+                            <f:selectItems value="${event.dto.eventtypeList}" />
+                        </p:selectOneMenu>                          
+                    </div>
+                </div>  
 
-                        <div class="col-md-12">
-                            <div class="input-group">  
-                                <h:commandButton class="button" action="${event.add()}" value="Save" ></h:commandButton>
-                            </div> 
-                        </div>
-                    </h:form> 
+                <div class="col-md-12">
+                    <div class="input-group">  
+                        <h:commandButton class="button" action="${event.add()}" value="Save" ></h:commandButton>
+                    </div> 
+                </div>
+            </h:form> 
 
-                    <br/><br/>
-                    <h2>Eventoverzicht</h2>
-                    <ui:include src="dataTables/tableEvent.xhtml"></ui:include>
-                </ui:define>
+            <br/><br/>
+            <h2>Eventoverzicht</h2>
+            <ui:include src="dataTables/tableEvent.xhtml"></ui:include>
+        </ui:define>
 
-            </ui:composition>
-        </h:body>
-    </f:view>
+    </ui:composition>
+</body>
+
 </html>

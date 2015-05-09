@@ -15,11 +15,11 @@
             <ui:define name="navbar"><h1>Useroverzicht</h1></ui:define>
 
             <ui:define name="content">
-                <ui:fragment rendered="${sessionDto.userDto.level != 4}">
-                    <script>
-                        window.location.href = "index.xhtml";
-                    </script>
+
+                <ui:fragment rendered="${sessionDto.userDto.level &lt; 4}">
+                    <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
+
                 <h2>Users aanmaken of wijzigen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>

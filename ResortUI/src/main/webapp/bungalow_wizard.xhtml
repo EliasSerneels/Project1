@@ -15,153 +15,157 @@
 
             <ui:define name="content">
 
+                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                    <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
+                </ui:fragment>
+
                 <h:form>
-                 
-                <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                <p:wizard flowListener="#{BungalowWizardController.onFlowProcess}" >
-                    <p:tab id="park" title="Park">
-                        <p:panel header="Park details">
-                            <p:messages />
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Naam: " style="color:black"/>
-                                <p:inputText value="#{park.dto.detail.name}" label="Parknaam" />
+                    <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                                <h:outputText value="Locatie: " style="color:black"/>
-                                <p:inputText value="#{park.dto.detail.location}" label="Locatie"/>
-
-                                <h:outputText value="Capaciteit: " style="color:black"/>
-                                <p:inputText value="#{park.dto.detail.capacity}" label="Capaciteit"/>
-
-                                <h:outputText value="Sla alles over: " style="color:black"/>
-                                <h:selectBooleanCheckbox value="#{BungalowWizardController.skip}" />
-                            </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
-                    
-                    <p:tab id="bungalow" title="Bungalow">
-                        <p:panel header="Bungalow details">
-                            <p:messages />
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Bungalownaam: " style="color:black"/>
-                                <p:inputText value="#{bungalow.dto.detail.name}" label="Bungalownaam"/>
-
-                                <h:outputText value="Type: " style="color:black"/>
-                                <p:inputText value="#{bungalow.dto.detail.type}" label="Bungalowtype"/>
-
-                                <h:outputText value="Prijs: " style="color:black"/>
-                                <p:inputText value="#{bungalow.dto.detail.price}" label="prijs"/>
-                                
-                                <h:outputText value="Max # pers.: " style="color:black"/>
-                                <p:inputText value="#{bungalow.dto.detail.maxpeople}" label="Max. # pers."/>
-                                
-                                <h:outputText value="Park: " style="color:black"/>
-                                <p:inputText value="#{bungalow.dto.detail.park}" label="Park"/>
-
-                                <h:outputText value="Sla alles over: " />
-                                <h:selectBooleanCheckbox value="#{BungalowWizardController.skip}" />
-                            </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
-
-                    <p:tab id="klant" title="Klant">
-                        <p:panel header="Klant informatie">
-                            <p:messages />
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Voornaam: *" style="color:black"/>
-                                <p:inputText value="#{customer.dto.detail.firstname}" label="Voornaam"/>
-
-                                <h:outputText value="Achternaam: " style="color:black"/>
-                                <p:inputText value="#{customer.dto.detail.lastname}" label="Achternaam"/>
-
-                                <h:outputText value="Geboortedatum: " style="color:black"/>
-                                <p:inputText value="#{customer.dto.detail.birthdate}" label="Geboortedatum"/>
-                                
-                                <h:outputText value="Telefoonnummer: " style="color:black"/>
-                                <p:inputText value="#{customer.dto.detail.phonenumber}" label="Telefoonnummer"/>
-                                
-                                <h:outputText value="Emailadres: " style="color:black"/>
-                                <p:inputText value="#{customer.dto.detail.email}" label="Emailadres"/>
-                                
-                                <h:outputText value="Emailupdates: " style="color:black"/>
-                                
-                                <h:outputText value="Sla alles over: " />
-                                <h:selectBooleanCheckbox value="#{BungalowWizardController.skip}" />
-                            </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
-
-                    <p:tab id="confirm" title="Confirmation">
-                        <p:panel header="Confirmation">
-                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                    <p:wizard flowListener="#{BungalowWizardController.onFlowProcess}" >
+                        <p:tab id="park" title="Park">
+                            <p:panel header="Park details">
+                                <p:messages />
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <h:outputText value="Parknaam: " style="color:black"/>
-                                    <h:outputText value="#{park.dto.detail.name}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Naam: " style="color:black"/>
+                                    <p:inputText value="#{park.dto.detail.name}" label="Parknaam" />
 
-                                    <h:outputText value="Parklocatie: " style="color:black"/>
-                                    <h:outputText value="#{park.dto.detail.location}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Locatie: " style="color:black"/>
+                                    <p:inputText value="#{park.dto.detail.location}" label="Locatie"/>
 
-                                    <h:outputText value="Parkcapaciteit: " style="color:black"/>
-                                    <h:outputText value="#{park.dto.detail.capacity}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Capaciteit: " style="color:black"/>
+                                    <p:inputText value="#{park.dto.detail.capacity}" label="Capaciteit"/>
+
+                                    <h:outputText value="Sla alles over: " style="color:black"/>
+                                    <h:selectBooleanCheckbox value="#{BungalowWizardController.skip}" />
                                 </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
 
+                        <p:tab id="bungalow" title="Bungalow">
+                            <p:panel header="Bungalow details">
+                                <p:messages />
                                 <h:panelGrid columns="2" columnClasses="label, value">
                                     <h:outputText value="Bungalownaam: " style="color:black"/>
-                                    <h:outputText value="#{bungalow.dto.detail.name}" styleClass="outputLabel" style="color:black"/>
+                                    <p:inputText value="#{bungalow.dto.detail.name}" label="Bungalownaam"/>
 
-                                    <h:outputText value="Bungalowtype: " style="color:black"/>
-                                    <h:outputText value="#{bungalow.dto.detail.type}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Type: " style="color:black"/>
+                                    <p:inputText value="#{bungalow.dto.detail.type}" label="Bungalowtype"/>
 
-                                    <h:outputText value="Bungalowprijs: " style="color:black"/>
-                                    <h:outputText value="#{bungalow.dto.detail.price}" styleClass="outputLabel" style="color:black"/>
-                                
-                                    <h:outputText value="Bungalow max. # pers.: " style="color:black"/>
-                                    <h:outputText value="#{bungalow.dto.detail.maxpeople}" styleClass="outputLabel" style="color:black"/>
-                                
+                                    <h:outputText value="Prijs: " style="color:black"/>
+                                    <p:inputText value="#{bungalow.dto.detail.price}" label="prijs"/>
+
+                                    <h:outputText value="Max # pers.: " style="color:black"/>
+                                    <p:inputText value="#{bungalow.dto.detail.maxpeople}" label="Max. # pers."/>
+
                                     <h:outputText value="Park: " style="color:black"/>
-                                    <h:outputText value="#{bungalow.dto.detail.park}" styleClass="outputLabel" style="color:black"/>
-                                </h:panelGrid>
+                                    <p:inputText value="#{bungalow.dto.detail.park}" label="Park"/>
 
+                                    <h:outputText value="Sla alles over: " />
+                                    <h:selectBooleanCheckbox value="#{BungalowWizardController.skip}" />
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
+
+                        <p:tab id="klant" title="Klant">
+                            <p:panel header="Klant informatie">
+                                <p:messages />
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <h:outputText value="Klant voornaam: " style="color:black"/>
-                                    <h:outputText value="#{customer.dto.detail.firstname}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Voornaam: *" style="color:black"/>
+                                    <p:inputText value="#{customer.dto.detail.firstname}" label="Voornaam"/>
 
-                                    <h:outputText value="Klant achternaam "  style="color:black"/>
-                                    <h:outputText value="#{customer.dto.detail.lastname}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Achternaam: " style="color:black"/>
+                                    <p:inputText value="#{customer.dto.detail.lastname}" label="Achternaam"/>
 
-                                    <h:outputText value="Klant geb. datum: " style="color:black"/>
-                                    <h:outputText value="#{customer.dto.detail.birthdate}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Geboortedatum: " style="color:black"/>
+                                    <p:inputText value="#{customer.dto.detail.birthdate}" label="Geboortedatum"/>
 
-                                    <h:outputText value="Klant tel. nr.: " style="color:black"/>
-                                    <h:outputText value="#{customer.dto.detail.phonenumber}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Telefoonnummer: " style="color:black"/>
+                                    <p:inputText value="#{customer.dto.detail.phonenumber}" label="Telefoonnummer"/>
 
-                                    <h:outputText value="Klant emailadres: " style="color:black"/>
-                                    <h:outputText value="#{customer.dto.detail.email}" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Emailadres: " style="color:black"/>
+                                    <p:inputText value="#{customer.dto.detail.email}" label="Emailadres"/>
 
-                                    <h:outputText value="Klant emailupdates: " style="color:black"/>
-                                    <h:outputText value="" styleClass="outputLabel" style="color:black"/>
+                                    <h:outputText value="Emailupdates: " style="color:black"/>
 
-                                    <h:outputText />
-                                    <h:outputText />
+                                    <h:outputText value="Sla alles over: " />
+                                    <h:selectBooleanCheckbox value="#{BungalowWizardController.skip}" />
                                 </h:panelGrid>
-                            </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
 
-                            <p:commandButton value="Submit" actionListener="#{BungalowWizardController.bungalowAdd}" update="growl" process="@this"/>
-                        </p:panel>
-                    </p:tab>
-                </p:wizard>
+                        <p:tab id="confirm" title="Confirmation">
+                            <p:panel header="Confirmation">
+                                <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Parknaam: " style="color:black"/>
+                                        <h:outputText value="#{park.dto.detail.name}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Parklocatie: " style="color:black"/>
+                                        <h:outputText value="#{park.dto.detail.location}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Parkcapaciteit: " style="color:black"/>
+                                        <h:outputText value="#{park.dto.detail.capacity}" styleClass="outputLabel" style="color:black"/>
+                                    </h:panelGrid>
+
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Bungalownaam: " style="color:black"/>
+                                        <h:outputText value="#{bungalow.dto.detail.name}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Bungalowtype: " style="color:black"/>
+                                        <h:outputText value="#{bungalow.dto.detail.type}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Bungalowprijs: " style="color:black"/>
+                                        <h:outputText value="#{bungalow.dto.detail.price}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Bungalow max. # pers.: " style="color:black"/>
+                                        <h:outputText value="#{bungalow.dto.detail.maxpeople}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Park: " style="color:black"/>
+                                        <h:outputText value="#{bungalow.dto.detail.park}" styleClass="outputLabel" style="color:black"/>
+                                    </h:panelGrid>
+
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Klant voornaam: " style="color:black"/>
+                                        <h:outputText value="#{customer.dto.detail.firstname}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Klant achternaam "  style="color:black"/>
+                                        <h:outputText value="#{customer.dto.detail.lastname}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Klant geb. datum: " style="color:black"/>
+                                        <h:outputText value="#{customer.dto.detail.birthdate}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Klant tel. nr.: " style="color:black"/>
+                                        <h:outputText value="#{customer.dto.detail.phonenumber}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Klant emailadres: " style="color:black"/>
+                                        <h:outputText value="#{customer.dto.detail.email}" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText value="Klant emailupdates: " style="color:black"/>
+                                        <h:outputText value="" styleClass="outputLabel" style="color:black"/>
+
+                                        <h:outputText />
+                                        <h:outputText />
+                                    </h:panelGrid>
+                                </h:panelGrid>
+
+                                <p:commandButton value="Submit" actionListener="#{BungalowWizardController.bungalowAdd}" update="growl" process="@this"/>
+                            </p:panel>
+                        </p:tab>
+                    </p:wizard>
 
                 </h:form>
-                               
+
                 <h2>Parkoverzicht</h2>
                 <ui:include src="dataTables/tablePark.xhtml"></ui:include>
-                
+
                 <h2>Bungalowoverzicht</h2>
                 <ui:include src="dataTables/tableBungalow.xhtml"></ui:include>
-                
+
                 <h2>Klantoverzicht</h2>
                 <ui:include src="dataTables/tableCustomer.xhtml"></ui:include>
-  
+
             </ui:define>
         </ui:composition>
     </body>

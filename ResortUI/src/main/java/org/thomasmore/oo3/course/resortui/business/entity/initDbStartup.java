@@ -115,55 +115,92 @@ public class initDbStartup {
         ue1.setId(UUID.randomUUID().toString());
         ue1.setUsername("Pieter");
         ue1.setPassword("Pieter");
+        ue1.setLevel(4);
         objectsToSave.add(ue1);
 
         UserEntity ue2 = new UserEntity();
         ue2.setId(UUID.randomUUID().toString());
         ue2.setUsername("Timothy");
         ue2.setPassword("Timothy");
+        ue2.setLevel(4);
         objectsToSave.add(ue2);
 
         UserEntity ue3 = new UserEntity();
         ue3.setId(UUID.randomUUID().toString());
         ue3.setUsername("Elias");
         ue3.setPassword("Elias");
+        ue3.setLevel(4);
         objectsToSave.add(ue3);
         
         UserEntity ue4 = new UserEntity();
         ue4.setId(UUID.randomUUID().toString());
         ue4.setUsername("Elliot");
         ue4.setPassword("Elliot");
+        ue4.setLevel(4);
         objectsToSave.add(ue4);
         
         UserEntity ue5 = new UserEntity();
         ue5.setId(UUID.randomUUID().toString());
         ue5.setUsername("Pepijn");
         ue5.setPassword("Pepijn");
+        ue5.setLevel(4);
         objectsToSave.add(ue5);
         
         UserEntity ue6 = new UserEntity();
         ue6.setId(UUID.randomUUID().toString());
         ue6.setUsername("Jeroen");
         ue6.setPassword("Jeroen");
+        ue6.setLevel(4);
         objectsToSave.add(ue6);
         
         UserEntity ue7 = new UserEntity();
         ue7.setId(UUID.randomUUID().toString());
         ue7.setUsername("Olivier");
         ue7.setPassword("Olivier");
+        ue7.setLevel(4);
         objectsToSave.add(ue7);
         
         UserEntity ue8 = new UserEntity();
         ue8.setId(UUID.randomUUID().toString());
         ue8.setUsername("Nicolas");
         ue8.setPassword("Nicolas");
+        ue8.setLevel(4);
         objectsToSave.add(ue8);
         
         UserEntity ue9 = new UserEntity();
         ue9.setId(UUID.randomUUID().toString());
         ue9.setUsername("Stijn");
         ue9.setPassword("Stijn");
+        ue9.setLevel(4);
         objectsToSave.add(ue9);
+        
+        UserEntity ue10 = new UserEntity();
+        ue10.setId(UUID.randomUUID().toString());
+        ue10.setUsername("guest");
+        ue10.setPassword("guest");
+        ue10.setLevel(1);
+        objectsToSave.add(ue10);
+        
+        UserEntity ue11 = new UserEntity();
+        ue11.setId(UUID.randomUUID().toString());
+        ue11.setUsername("user");
+        ue11.setPassword("user");
+        ue11.setLevel(2);
+        objectsToSave.add(ue11);
+        
+        UserEntity ue12 = new UserEntity();
+        ue12.setId(UUID.randomUUID().toString());
+        ue12.setUsername("pers");
+        ue12.setPassword("pers");
+        ue12.setLevel(3);
+        objectsToSave.add(ue12);
+        
+        UserEntity ue13 = new UserEntity();
+        ue13.setId(UUID.randomUUID().toString());
+        ue13.setUsername("admin");
+        ue13.setPassword("admin");
+        ue13.setLevel(4);
+        objectsToSave.add(ue13);
 
         EventEntity ee1 = new EventEntity();
         ee1.setId(UUID.randomUUID().toString());

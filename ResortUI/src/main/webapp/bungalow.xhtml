@@ -13,9 +13,13 @@
             <ui:define name="title">Bungalows</ui:define>
 
             <ui:define name="navbar"><h1>Bungalows</h1></ui:define>
-
-            <ui:define name="content">
-
+            
+            <ui:define name="content" >
+                
+                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                    <script type="text/javascript">window.location.href="redirect.xhtml";</script>
+                </ui:fragment>
+                
                 <h2>Bungalows aanmaken of wijzigen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
@@ -76,6 +80,7 @@
                 <h2>Bungalowoverzicht</h2>
 
                 <ui:include src="dataTables/tableBungalow.xhtml"></ui:include>
+               
                 
             </ui:define>
                 

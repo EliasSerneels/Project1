@@ -16,13 +16,11 @@
             <ui:define name="navbar"><h1>Event Companies</h1></ui:define>
 
             <ui:define name="content">
-                <!--
-                                <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
-                                    <script>
-                                        window.location.href = "http:login.xhtml";
-                                    </script>
-                                </ui:fragment>
-                -->
+
+                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                    <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
+                </ui:fragment>
+
                 <h2>Eventbedrijven aanmaken of wijzigen</h2>
 
                 <h:form>
@@ -112,7 +110,7 @@
                     <p:column headerText="Contact">
                         <h:outputText value="#{listDetail.contact}"/>
                     </p:column>
-                    
+
                     <p:column>
                         <a href="eventcompany.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>
                         <a href="eventcompany.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>

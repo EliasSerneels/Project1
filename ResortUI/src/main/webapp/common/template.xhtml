@@ -105,25 +105,33 @@
 
                     <p:menubar>
                         <p:menuitem value="" url="index.xhtml" icon="ui-icon-home"/>
-                        <p:submenu label="Bungalows" rendered="${!sessionDto.userDto.loggedIn}">
+                        <p:submenu label="info">
+                            
+                            <p:menuitem value="bungalowinfo" url="bungalowinfo.xhtml"/>
+                            <p:menuitem value="parkinfo" url="parkinfo.xhtml"/>
+                       
+                        </p:submenu>
+                         <p:submenu label="Bungalows" rendered="${sessionDto.userDto.level &gt;= 3}">
                             <p:menuitem value="Park" url="park.xhtml"  />
                             <p:menuitem value="Bungalow" url="bungalow.xhtml" />
                             <p:menuitem value="Klant" url="customer.xhtml" />
                             <p:menuitem value="Reservatie" url="reservation.xhtml" />
                         </p:submenu>
-                        <p:submenu label="Events" rendered="${!sessionDto.userDto.loggedIn}">
+                        <p:submenu label="Events" rendered="${sessionDto.userDto.level &gt;= 3}">
                             <p:menuitem value="Event" url="event.xhtml" />
                             <p:menuitem value="Eventbedrijf" url="eventcompany.xhtml" />
                             <p:menuitem value="Eventtype" url="eventtype.xhtml" />
                             <p:menuitem value="Locatie" url="location.xhtml"/>
                             <p:menuitem value="Personeel" url="staff.xhtml"/>
                         </p:submenu>
-                        <p:submenu label="Wizards" rendered="${!sessionDto.userDto.loggedIn}">
+                        <p:submenu label="Wizards" rendered="${sessionDto.userDto.level &gt;= 3}">
                             <p:menuitem value="Wizard Event" url="event_wizard.xhtml" />
                             <p:menuitem value="Wizard Bungalow" url="bungalow_wizard.xhtml" />
                         </p:submenu>
-                        <p:menuitem value="Overzicht" url="overview.xhtml" rendered="${!sessionDto.userDto.loggedIn}" />
-                        <p:menuitem value="Contact" url="contact.xhtml" rendered="${!sessionDto.userDto.loggedIn}" />
+                        <p:menuitem value="Overzicht" url="overview.xhtml" rendered="${sessionDto.userDto.level &gt;= 2}"/>
+                        <p:menuitem value="Profiel" url="profile.xhtml" rendered="${sessionDto.userDto.level &gt;= 2}"/>
+                        <p:menuitem value="Useroverzicht" url="useroverview.xhtml" rendered="${sessionDto.userDto.level &gt;= 4}"/>
+                        <p:menuitem value="Contact" url="contact.xhtml" />
                         <f:facet name="options">
                             <p:inputText id="search" style="margin-right:10px" placeholder="Search"/>
                             <p:commandButton rendered="${sessionDto.userDto.loggedIn}" value="Uitloggen" action="${login.logOut()}" icon="ui-icon-extlink" />
