@@ -5,17 +5,68 @@
  */
 package org.thomasmore.oo3.course.resortui.model;
 
-/**
- *
- * @author Jeroen
- */
 public class EventListDetailDto {
 
     private String id;
     private String eventname;
     private String eventcompany;
     private String eventtype;
+    private String startDate;
+    private String endDate;   
+    private String startTime;
+    private String endTime;
+    private String bungalowName;
+    private String customerName;
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String beginDate) {
+        this.endDate = beginDate;
+    }
+
+    public String getBungalowName() {
+        return bungalowName;
+    }
+
+    public void setBungalowName(String bungalowName) {
+        this.bungalowName = bungalowName;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+    
     public String getId() {
         return id;
     }
@@ -46,9 +97,5 @@ public class EventListDetailDto {
 
     public void setEventtype(String eventtype) {
         this.eventtype = eventtype;
-    }
-
-    
-    
-    
+    }   
 }

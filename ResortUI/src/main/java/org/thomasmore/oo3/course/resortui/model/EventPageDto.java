@@ -8,10 +8,6 @@ package org.thomasmore.oo3.course.resortui.model;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- *
- * @author Jeroen
- */
 public class EventPageDto {
     
     private EventDetailDto detail = new EventDetailDto();
@@ -21,6 +17,26 @@ public class EventPageDto {
     private List<String> eventcompanyList = new LinkedList<>();
     
     private List<String> eventtypeList = new LinkedList<>();
+    
+    private List<String> bungalowList = new LinkedList<>();
+    
+    private List<String> customerList = new LinkedList<>();
+
+    public List<String> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<String> customerList) {
+        this.customerList = customerList;
+    }
+
+    public List<String> getBungalowList() {
+        return bungalowList;
+    }
+
+    public void setBungalowList(List<String> bungalowList) {
+        this.bungalowList = bungalowList;
+    }
 
     public List<String> getEventcompanyList() {
         return eventcompanyList;
@@ -52,7 +68,5 @@ public class EventPageDto {
 
     public void setList(List<EventListDetailDto> list) {
         this.list = list;
-
-    
     }
 }

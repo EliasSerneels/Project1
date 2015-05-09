@@ -6,31 +6,69 @@
 package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Jeroen
- */
-@Entity
-@Table(name = "event")
-@XmlRootElement
 public class EventEntity extends BasicEntity implements Serializable{
 
     private String eventtype;
     private String eventname;
     private String eventcompany;
-  
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="eventid")
+    private String startDate;
+    private String endDate;
+    private String startTime;
+    private String endTime;
+    private String bungalowName;
+    private String customerName;
+    
     public EventcompanyEntity eventcompanyentity;
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+    
+    public String getBungalowName() {
+        return bungalowName;
+    }
+
+    public void setBungalowName(String bungalowName) {
+        this.bungalowName = bungalowName;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String beginDate) {
+        this.endDate = beginDate;
+    }
+  
     public String getEventtype() {
         return eventtype;
     }
@@ -62,8 +100,5 @@ public class EventEntity extends BasicEntity implements Serializable{
     public void setEventcompanyentity(EventcompanyEntity eventcompanyentity) {
         this.eventcompanyentity = eventcompanyentity;
     }
-    
-    
-    
     
 }

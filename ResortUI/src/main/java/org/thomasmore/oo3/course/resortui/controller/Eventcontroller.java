@@ -16,10 +16,6 @@ import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.facade.EventFacade;
 import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 
-/**
- *
- * @author Jeroen
- */
 @Named(value = "event")
 @RequestScoped
 public class Eventcontroller {
