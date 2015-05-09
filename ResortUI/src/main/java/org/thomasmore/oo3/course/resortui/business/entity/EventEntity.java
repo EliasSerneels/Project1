@@ -6,6 +6,7 @@
 package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -18,8 +19,8 @@ public class EventEntity extends BasicEntity implements Serializable{
     private String eventtype;
     private String eventname;
     private String eventcompany;
-    private String startDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
     private String startTime;
     private String endTime;
     private String bungalowName;
@@ -57,20 +58,20 @@ public class EventEntity extends BasicEntity implements Serializable{
         this.customerName = customerName;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String beginDate) {
-        this.endDate = beginDate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
   
     public String getEventtype() {

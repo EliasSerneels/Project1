@@ -207,9 +207,7 @@ public class initDbStartup {
         ee1.setEventtype("Bruiloft");
         ee1.setEventcompany("Bedrijf1");
         ee1.setEventname("Bruiloft Thomas en Jana");
-        ee1.setStartDate("18-08-2015");
         ee1.setStartTime("15:59");
-        ee1.setEndDate("19-08-2015");
         ee1.setEndTime("16:00");
         ee1.setBungalowName("Andere bung");
         ee1.setCustomerName("Gilbert");
@@ -217,13 +215,10 @@ public class initDbStartup {
 
         EventEntity ee2 = new EventEntity();
         ee2.setId(UUID.randomUUID().toString());
-        ee2.setEventtype("Wedding");
+        ee2.setEventtype("Bruiloft");
         ee2.setEventcompany("Bedrijf2");
         ee2.setEventname("Bruiloft Elias en Julie");
-        ee2.setStartDate("19-08-2015");
-        ee2.setStartTime("16:59");
-        ee2.setEndDate("21-08-2015");
-        ee2.setEndTime("17:00");
+        
         ee2.setBungalowName("Bungie");
         ee2.setCustomerName("Tsjakaaa");
         objectsToSave.add(ee2);
@@ -336,9 +331,7 @@ public class initDbStartup {
         se3.setEmail("Keuleersjan@hotmail.com");
         se3.setPhonenumber("0468123874");
         objectsToSave.add(se3);
-       
-       
-       
+  
         for (Object objectToSave1 : objectsToSave) {
             em.persist(objectToSave1);
         }

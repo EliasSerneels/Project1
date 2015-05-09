@@ -5,6 +5,7 @@
  */
 package org.thomasmore.oo3.course.resortui.facade;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
@@ -99,16 +100,36 @@ public class EventFacade {
     public EventPageDto add(EventPageDto dto) {
 
         EventEntity eventEntity = null;
+        
+        // Check voor dubbele boeking
+        List<EventEntity> events = eventDao.listAll();
+        for (EventEntity event : events) {
+            EventListDetailDto listDetail = new EventListDetailDto();
+            System.out.println(event.getEndDate());
+
+        }
+        
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
             dto.getDetail().setId(UUID.randomUUID().toString());
         } else {
             eventEntity = eventDao.findById(dto.getDetail().getId());
         }
+        
+        
+        
+       
+        // Check of begintijd na eindtijd is
+        if(dto.getDetail().getStartDate().after(dto.getDetail().getEndDate())){
+            System.out.println("Begintijd is na eindtijd");
+        }
+        
+        
 
         if (eventEntity == null) {
             eventEntity = new EventEntity();
         }
+        
         eventEntity.setId(dto.getDetail().getId());
         eventEntity.setEventname(dto.getDetail().getEventname());
         eventEntity.setEventcompany(dto.getDetail().getEventcompany());
@@ -119,6 +140,9 @@ public class EventFacade {
         eventEntity.setEndDate(dto.getDetail().getEndDate());
         eventEntity.setBungalowName(dto.getDetail().getBungalowName());  
         eventEntity.setCustomerName(dto.getDetail().getCustomerName());
+        
+        
+        
 
         eventDao.save(eventEntity);
         return dto;

@@ -5,14 +5,16 @@
  */
 package org.thomasmore.oo3.course.resortui.model;
 
+import java.util.Date;
+
 public class EventListDetailDto {
 
     private String id;
     private String eventname;
     private String eventcompany;
     private String eventtype;
-    private String startDate;
-    private String endDate;   
+    private Date startDate;
+    private Date endDate;   
     private String startTime;
     private String endTime;
     private String bungalowName;
@@ -34,21 +36,20 @@ public class EventListDetailDto {
         this.endTime = endTime;
     }
 
-
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String beginDate) {
-        this.endDate = beginDate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public String getBungalowName() {
