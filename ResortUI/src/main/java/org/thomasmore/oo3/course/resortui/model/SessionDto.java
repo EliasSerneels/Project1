@@ -36,6 +36,7 @@ public class SessionDto implements Serializable {
     public void init() {
         System.out.println("SessionDto - init");
         userDto = new UserDetailDto();
+        userDto.setLevel(4);
     }
 
     public UserDetailDto getUserDto() {
