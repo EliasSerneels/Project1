@@ -33,15 +33,13 @@
                             <p:column headerText="Naam">
                                 <h:outputText value="#{lsdtP.name}" />
                             </p:column>
-                            <p:column headerText="Type">
+                            <p:column headerText="Locatie">
                                 <h:outputText value="#{lsdtP.location}" />
                             </p:column>
-                            <p:column headerText="Prijs">
+                            <p:column headerText="Capaciteit">
                                 <h:outputText value="#{lsdtP.capacity}" />
                             </p:column>
-                            <p:column headerText="Reservaties">
-                                <h:outputText value="#{lsdtP.bungalowName}" />
-                            </p:column>
+                            
                             <f:facet name="footer">
                                 <p:commandButton process="DTparks" update=":formParks:multiParkDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiParkDialog').show()" />
                             </f:facet>
