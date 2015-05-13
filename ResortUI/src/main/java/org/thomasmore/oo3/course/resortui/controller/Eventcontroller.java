@@ -9,6 +9,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +40,24 @@ public class Eventcontroller {
     
     public String add() {
         
+        
+        
+        // Voorlopige oplossing
         eventFacade.add(dto);
+           
+        // Werkt nog niet
+        if(eventFacade.isStartAfterEnd()){
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage("De startdatum/tijd komt na de gekozen einddatum/tijd.");
+            facesContext.addMessage(null, facesMessage);
+            
+        }else if(eventFacade.isDoubleBooking()){
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage("De gekozen bungalow is die datum reeds bezet. Gelieve een andere datum te selecteren.");
+            facesContext.addMessage(null, facesMessage);
+            
+        }   
+
         
         return pageRedirect;
     }
@@ -58,6 +76,6 @@ public class Eventcontroller {
 
     public void setSelectedEvent(List<EventEntity> selectedEvent) {
         this.selectedEvent = selectedEvent;
-    }
+    }    
     
 }

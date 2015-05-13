@@ -5,7 +5,6 @@
  */
 package org.thomasmore.oo3.course.resortui.facade;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
@@ -36,6 +35,8 @@ public class EventFacade {
     private BungalowDao bungalowDao;
     @EJB
     private CustomerDao customerDao;
+    
+    private boolean startAfterEnd,doubleBooking;
 
     public EventPageDto loadEventOverviewPage(String editId, String deleteId) {
         EventPageDto dto = new EventPageDto();
@@ -100,15 +101,7 @@ public class EventFacade {
     public EventPageDto add(EventPageDto dto) {
 
         EventEntity eventEntity = null;
-        
-        // Check voor dubbele boeking
-        List<EventEntity> events = eventDao.listAll();
-        for (EventEntity event : events) {
-            EventListDetailDto listDetail = new EventListDetailDto();
-            System.out.println(event.getEndDate());
 
-        }
-        
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
             dto.getDetail().setId(UUID.randomUUID().toString());
@@ -116,16 +109,25 @@ public class EventFacade {
             eventEntity = eventDao.findById(dto.getDetail().getId());
         }
         
-        
-        
+        // Dubbele boeking nagaan
+        List<EventEntity> eventsdc = eventDao.listAll();
+        for (EventEntity evnt : eventsdc) {
+                // Checkt of datum en tijd tussen een reeds geboekte tijd ligt voor een bepaalde locatie
+                // OPGELET! De !=null moet aanwezig zijn want anders wordt een nullpointer gegeven wanneer vergeleken wordt met een lege waarde
+                if(evnt.getStartDate()!=null && evnt.getEndDate()!=null && dto.getDetail().getEndDate().before(evnt.getEndDate()) && dto.getDetail().getStartDate().after(evnt.getStartDate()) && dto.getDetail().getEndTime().before(evnt.getEndTime()) && dto.getDetail().getStartTime().after(evnt.getStartTime()) &&  dto.getDetail().getBungalowName().equals(evnt.getBungalowName()) ){
+                    System.out.println("** DUBBELE BOEKING...");
+                    this.setDoubleBooking(startAfterEnd);
+                    return null;
+                }
+        }
        
-        // Check of begintijd na eindtijd is
+        // Check of begintijd na eindtijd komt
         if(dto.getDetail().getStartDate().after(dto.getDetail().getEndDate())){
-            System.out.println("Begintijd is na eindtijd");
+            this.setStartAfterEnd(startAfterEnd);
+            System.out.println("** begindatum > einddatum");
+            return null;
         }
         
-        
-
         if (eventEntity == null) {
             eventEntity = new EventEntity();
         }
@@ -141,11 +143,25 @@ public class EventFacade {
         eventEntity.setBungalowName(dto.getDetail().getBungalowName());  
         eventEntity.setCustomerName(dto.getDetail().getCustomerName());
         
-        
-        
-
         eventDao.save(eventEntity);
         return dto;
     }
+    
+    public boolean isStartAfterEnd() {
+        return startAfterEnd;
+    }
+
+    public void setStartAfterEnd(boolean startAfterEnd) {
+        this.startAfterEnd = startAfterEnd;
+    }
+
+    public boolean isDoubleBooking() {
+        return doubleBooking;
+    }
+
+    public void setDoubleBooking(boolean doubleBooking) {
+        this.doubleBooking = doubleBooking;
+    }
+    
 
 }
