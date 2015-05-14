@@ -31,17 +31,11 @@
             <p:column id="eventstartdate" headerText="Event startdatum" sortBy="#{listDetail.startDate}" filterBy="#{listDetail.startDate}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.startDate}"/>
             </p:column>
-            <p:column id="eventstarttime" headerText="Event starttijd" sortBy="#{listDetail.startTime}" filterBy="#{listDetail.startTime}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.startTime}"/>
-            </p:column>
-            <p:column id="eventendtime" headerText="Event eindtijd" sortBy="#{listDetail.endTime}" filterBy="#{listDetail.endTime}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.endTime}"/>
-            </p:column>
             <p:column id="eventenddate" headerText="Event einddatum" sortBy="#{listDetail.endDate}" filterBy="#{listDetail.endDate}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.endDate}"/>
             </p:column>
-            <p:column id="eventbungalow" headerText="Bungalow" sortBy="#{listDetail.bungalowName}" filterBy="#{listDetail.bungalowName}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.bungalowName}"/>
+            <p:column id="eventlocatie" headerText="Event Locatie" sortBy="#{listDetail.locationName}" filterBy="#{listDetail.locationName}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.locationName}"/>
             </p:column>
             <p:column id="eventcustomer" headerText="Customer" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>

@@ -5,10 +5,13 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -25,6 +28,7 @@ public class initDbStartup {
 
     @PersistenceContext(unitName = "RESORTPU")
     private EntityManager em;
+    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd-MM-yyyy");
 
     @PostConstruct
     public void init() {
@@ -207,7 +211,15 @@ public class initDbStartup {
         ee1.setEventtype("Bruiloft");
         ee1.setEventcompany("Bedrijf1");
         ee1.setEventname("Bruiloft Thomas en Jana");
-        ee1.setBungalowName("Andere bung");
+        String e1disStartDate = "22-05-2015";
+        String e1disEndDate = "27-05-2015";
+        try {
+            ee1.setStartDate(dateSimple.parse(e1disStartDate));
+            ee1.setEndDate(dateSimple.parse(e1disEndDate ));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ee1.setLocationName("Andere bung");
         ee1.setCustomerName("Gilbert");
         objectsToSave.add(ee1);
 
@@ -215,9 +227,16 @@ public class initDbStartup {
         ee2.setId(UUID.randomUUID().toString());
         ee2.setEventtype("Bruiloft");
         ee2.setEventcompany("Bedrijf2");
-        ee2.setEventname("Bruiloft Elias en Julie");
-        
-        ee2.setBungalowName("Bungie");
+        String e2disStartDate = "14-05-2015";
+        String e2disEndDate = "16-05-2015";
+        try {
+            ee2.setStartDate(dateSimple.parse(e2disStartDate));
+            ee2.setEndDate(dateSimple.parse(e2disEndDate ));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ee2.setEventname("Bruiloft Elias en Marjolein");
+        ee2.setLocationName("Bungie");
         ee2.setCustomerName("Tsjakaaa");
         objectsToSave.add(ee2);
 
@@ -283,16 +302,19 @@ public class initDbStartup {
        objectsToSave.add(re3);
        
        LocationEntity le1 = new LocationEntity();
+       le1.setLocationName("Zaal 1");
        le1.setCity("Vilvoorde");
        le1.setStreet("Leuvensestraat 27");
        objectsToSave.add(le1);
        
        LocationEntity le2 = new LocationEntity();
+       le2.setLocationName("Antwerpse feestzaal");
        le2.setCity("Antwerpen");
        le2.setStreet("Stationweg 15");
        objectsToSave.add(le2);
        
        LocationEntity le3 = new LocationEntity();
+       le3.setLocationName("Elias' thuis");
        le3.setCity("Vilvoorde");
        le3.setStreet("Boerenstraat 114");
        objectsToSave.add(le3);

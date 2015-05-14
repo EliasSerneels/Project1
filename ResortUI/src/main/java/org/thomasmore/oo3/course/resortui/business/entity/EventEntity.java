@@ -23,8 +23,9 @@ public class EventEntity extends BasicEntity implements Serializable{
     private Date endDate;
     private Date startTime;
     private Date endTime;
-    private String bungalowName;
+    private String locationName;
     private String customerName;
+    private Date currentDate;
 
     public Date getStartTime() {
         return startTime;
@@ -42,12 +43,12 @@ public class EventEntity extends BasicEntity implements Serializable{
         this.endTime = endTime;
     }
     
-    public String getBungalowName() {
-        return bungalowName;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setBungalowName(String bungalowName) {
-        this.bungalowName = bungalowName;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     public String getCustomerName() {
@@ -96,5 +97,8 @@ public class EventEntity extends BasicEntity implements Serializable{
 
     public void setEventcompany(String eventcompany) {
         this.eventcompany = eventcompany;
-    }    
+    }  
+    public Date getCurrentDate() {
+        return currentDate;
+    }
 }

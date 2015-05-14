@@ -17,8 +17,9 @@ public class EventListDetailDto {
     private Date endDate;   
     private Date startTime;
     private Date endTime;
-    private String bungalowName;
+    private String locationName;
     private String customerName;
+    private Date currentDate;
 
     public Date getStartTime() {
         return startTime;
@@ -52,12 +53,12 @@ public class EventListDetailDto {
         this.endDate = endDate;
     }
 
-    public String getBungalowName() {
-        return bungalowName;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setBungalowName(String bungalowName) {
-        this.bungalowName = bungalowName;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     public String getCustomerName() {
@@ -98,5 +99,8 @@ public class EventListDetailDto {
 
     public void setEventtype(String eventtype) {
         this.eventtype = eventtype;
-    }   
+    }  
+    public Date getCurrentDate() {
+        return currentDate;
+    }
 }

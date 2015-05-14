@@ -5,25 +5,41 @@
  */
 package org.thomasmore.oo3.course.resortui.facade;
 
+import java.awt.event.ActionEvent;
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
+import org.primefaces.event.ScheduleEntryMoveEvent;
+import org.primefaces.event.ScheduleEntryResizeEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.DefaultScheduleEvent;
+import org.primefaces.model.DefaultScheduleModel;
+import org.primefaces.model.ScheduleEvent;
+import org.primefaces.model.ScheduleModel;
 import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
-import org.thomasmore.oo3.course.resortui.dao.BungalowDao;
+import org.thomasmore.oo3.course.resortui.business.entity.LocationEntity;
 import org.thomasmore.oo3.course.resortui.dao.CustomerDao;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
 import org.thomasmore.oo3.course.resortui.dao.EventcompanyDao;
 import org.thomasmore.oo3.course.resortui.dao.EventtypeDao;
+import org.thomasmore.oo3.course.resortui.dao.LocationDao;
 import org.thomasmore.oo3.course.resortui.model.EventListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 
+@Named(value = "eventFacade")
 @Stateless
-public class EventFacade {
+public class EventFacade implements Serializable{
 
     @EJB
     private EventDao eventDao;
@@ -32,13 +48,27 @@ public class EventFacade {
     @EJB
     private EventtypeDao eventtypeDao;
     @EJB
-    private BungalowDao bungalowDao;
+    private LocationDao locationDao;
     @EJB
     private CustomerDao customerDao;
     
+    private ScheduleModel eventModel;
+    private ScheduleEvent event = new DefaultScheduleEvent();
+    
     private boolean startAfterEnd,doubleBooking;
 
+    @PostConstruct
+    public void init() {
+        eventModel = new DefaultScheduleModel();
+        // Dubbele boeking nagaan
+        List<EventEntity> eventschedule = eventDao.listAll();
+        for (EventEntity evnt : eventschedule) {
+            eventModel.addEvent(new DefaultScheduleEvent(evnt.getEventname(),evnt.getStartDate(),evnt.getEndDate()));
+        }
+    }
+    
     public EventPageDto loadEventOverviewPage(String editId, String deleteId) {
+        
         EventPageDto dto = new EventPageDto();
         if (editId != null) {
             EventEntity eventEntity = eventDao.findById(editId);
@@ -51,7 +81,7 @@ public class EventFacade {
                 dto.getDetail().setEndTime(eventEntity.getEndTime());
                 dto.getDetail().setStartDate(eventEntity.getStartDate());
                 dto.getDetail().setEndDate(eventEntity.getEndDate());
-                dto.getDetail().setBungalowName(eventEntity.getBungalowName());  
+                dto.getDetail().setLocationName(eventEntity.getLocationName());  
                 dto.getDetail().setCustomerName(eventEntity.getCustomerName());
             }
         }
@@ -62,15 +92,15 @@ public class EventFacade {
         List<EventEntity> events = eventDao.listAll();
         List<EventcompanyEntity> eventcompanys = eventcompanyDao.listAll();
         List<EventtypeEntity> eventtypes = eventtypeDao.listAll();
-        List<BungalowEntity> bungalows = bungalowDao.listAll();
+        List<LocationEntity> locations = locationDao.listAll();
         List<CustomerEntity> customers = customerDao.listAll();
 
         for (CustomerEntity customer: customers) {
             dto.getCustomerList().add(customer.getFirstname());
         }
         
-        for (BungalowEntity bungalow: bungalows) {
-            dto.getBungalowList().add(bungalow.getName());
+        for (LocationEntity location: locations) {
+            dto.getLocationList().add(location.getLocationName());
         }
         
         for (EventcompanyEntity eventcompany : eventcompanys) {
@@ -91,7 +121,7 @@ public class EventFacade {
             listDetail.setEndTime(event.getEndTime());
             listDetail.setStartDate(event.getStartDate());
             listDetail.setEndDate(event.getEndDate());
-            listDetail.setBungalowName(event.getBungalowName());  
+            listDetail.setLocationName(event.getLocationName());  
             listDetail.setCustomerName(event.getCustomerName());
             dto.getList().add(listDetail);
         }
@@ -114,7 +144,7 @@ public class EventFacade {
         for (EventEntity evnt : eventsdc) {
                 // Checkt of datum en tijd tussen een reeds geboekte tijd ligt voor een bepaalde locatie
                 // OPGELET! De !=null moet aanwezig zijn want anders wordt een nullpointer gegeven wanneer vergeleken wordt met een lege waarde
-                if(evnt.getStartDate()!=null && evnt.getEndDate()!=null && dto.getDetail().getEndDate().before(evnt.getEndDate()) && dto.getDetail().getStartDate().after(evnt.getStartDate()) && dto.getDetail().getEndTime().before(evnt.getEndTime()) && dto.getDetail().getStartTime().after(evnt.getStartTime()) &&  dto.getDetail().getBungalowName().equals(evnt.getBungalowName()) ){
+                if(evnt.getStartDate()!=null && evnt.getEndDate()!=null && dto.getDetail().getEndDate().before(evnt.getEndDate()) && dto.getDetail().getStartDate().after(evnt.getStartDate()) && dto.getDetail().getEndTime().before(evnt.getEndTime()) && dto.getDetail().getStartTime().after(evnt.getStartTime()) &&  dto.getDetail().getLocationName().equals(evnt.getLocationName()) ){
                     System.out.println("** DUBBELE BOEKING...");
                     this.setDoubleBooking(startAfterEnd);
                     return null;
@@ -136,11 +166,16 @@ public class EventFacade {
         eventEntity.setEventname(dto.getDetail().getEventname());
         eventEntity.setEventcompany(dto.getDetail().getEventcompany());
         eventEntity.setEventtype(dto.getDetail().getEventtype());
+        
         eventEntity.setStartTime(dto.getDetail().getStartTime());
-        eventEntity.setEndTime(dto.getDetail().getEndTime());
         eventEntity.setStartDate(dto.getDetail().getStartDate());
+        
+        eventEntity.setEndTime(dto.getDetail().getEndTime());
         eventEntity.setEndDate(dto.getDetail().getEndDate());
-        eventEntity.setBungalowName(dto.getDetail().getBungalowName());  
+        
+        dateTime(dto.getDetail().getStartDate(), dto.getDetail().getStartTime());
+        
+        eventEntity.setLocationName(dto.getDetail().getLocationName());  
         eventEntity.setCustomerName(dto.getDetail().getCustomerName());
         
         eventDao.save(eventEntity);
@@ -163,5 +198,75 @@ public class EventFacade {
         this.doubleBooking = doubleBooking;
     }
     
-
+    // VANAF HIER ALLE METHODEN VAN SCHEDULE
+     
+    public Date getInitialDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(calendar.get(Calendar.YEAR), Calendar.FEBRUARY, calendar.get(Calendar.DATE), 0, 0, 0);
+         
+        return calendar.getTime();
+    }
+     
+    public ScheduleModel getEventModel() {
+        return eventModel;
+    }
+ 
+    private Calendar today() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
+ 
+        return calendar;
+    }
+     
+    public ScheduleEvent getEvent() {
+        return event;
+    }
+ 
+    public void setEvent(ScheduleEvent event) {
+        this.event = event;
+    }
+     
+    public void addEvent(ActionEvent actionEvent) {
+        if(event.getId() == null)
+            eventModel.addEvent(event);
+        else
+            eventModel.updateEvent(event);
+         
+        event = new DefaultScheduleEvent();
+    }
+     
+    public void onEventSelect(SelectEvent selectEvent) {
+        event = (ScheduleEvent) selectEvent.getObject();
+    }
+     
+    public void onDateSelect(SelectEvent selectEvent) {
+        event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
+    }
+     
+    public void onEventMove(ScheduleEntryMoveEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+         
+        addMessage(message);
+    }
+     
+    public void onEventResize(ScheduleEntryResizeEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+         
+        addMessage(message);
+    }
+     
+    private void addMessage(FacesMessage message) {
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+    
+    public Date dateTime(Date date, Date time) {
+        System.out.println(date);
+        System.out.println(time);
+        System.out.println(date.getYear()+" jaar. "+date.getMonth()+" maand."+date.getDay()+" dag."+ 
+            time.getHours()+" uur."+time.getMinutes()+" minuten"+time.getSeconds());
+        return new Date(
+            date.getYear(), date.getMonth(), date.getDay(), 
+            time.getHours(), time.getMinutes(), time.getSeconds()
+        );
+    }
 }

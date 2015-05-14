@@ -18,7 +18,7 @@ public class EventPageDto {
     
     private List<String> eventtypeList = new LinkedList<>();
     
-    private List<String> bungalowList = new LinkedList<>();
+    private List<String> locationList = new LinkedList<>();
     
     private List<String> customerList = new LinkedList<>();
 
@@ -30,12 +30,12 @@ public class EventPageDto {
         this.customerList = customerList;
     }
 
-    public List<String> getBungalowList() {
-        return bungalowList;
+    public List<String> getLocationList() {
+        return locationList;
     }
 
     public void setBungalowList(List<String> bungalowList) {
-        this.bungalowList = bungalowList;
+        this.locationList = bungalowList;
     }
 
     public List<String> getEventcompanyList() {

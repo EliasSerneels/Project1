@@ -21,6 +21,15 @@ public class LocationEntity extends BasicEntity implements Serializable {
 
 private String city;
 private String street;
+private String locationName;
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
 
     public String getCity() {
         return city;
