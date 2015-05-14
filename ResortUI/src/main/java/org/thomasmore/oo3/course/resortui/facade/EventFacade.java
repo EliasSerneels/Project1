@@ -5,8 +5,12 @@
  */
 package org.thomasmore.oo3.course.resortui.facade;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
@@ -35,6 +39,10 @@ public class EventFacade {
     private BungalowDao bungalowDao;
     @EJB
     private CustomerDao customerDao;
+    
+    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+    private final SimpleDateFormat dateDate = new SimpleDateFormat("dd-MM-yyyy");
+    private final SimpleDateFormat dateTime = new SimpleDateFormat("hh:mm:ss");
     
     private boolean startAfterEnd,doubleBooking;
 
@@ -87,10 +95,21 @@ public class EventFacade {
             listDetail.setEventname(event.getEventname());
             listDetail.setEventcompany(event.getEventcompany());
             listDetail.setEventtype(event.getEventtype());
+
             listDetail.setStartTime(event.getStartTime());
             listDetail.setEndTime(event.getEndTime());
-            listDetail.setStartDate(event.getStartDate());
-            listDetail.setEndDate(event.getEndDate());
+            String dateStart = dateDate.format(event.getStartDate()) + " " + dateTime.format(event.getStartTime());
+            String dateEnd = dateDate.format(event.getEndDate()) + " " + dateTime.format(event.getEndTime());
+            listDetail.setStartDateFormatted(dateStart);
+            listDetail.setEndDateFormatted(dateEnd);
+            try {
+                listDetail.setStartDate(dateSimple.parse(dateStart));
+                listDetail.setEndDate(dateSimple.parse(dateEnd));
+            } catch (ParseException ex) {
+                Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+
             listDetail.setBungalowName(event.getBungalowName());  
             listDetail.setCustomerName(event.getCustomerName());
             dto.getList().add(listDetail);

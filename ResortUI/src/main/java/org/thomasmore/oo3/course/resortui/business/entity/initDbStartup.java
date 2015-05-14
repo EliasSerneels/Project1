@@ -5,10 +5,13 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -25,6 +28,8 @@ public class initDbStartup {
 
     @PersistenceContext(unitName = "RESORTPU")
     private EntityManager em;
+    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd-MM-yyyy");
+    private final SimpleDateFormat timeSimple = new SimpleDateFormat("hh:mm:ss");
 
     @PostConstruct
     public void init() {
@@ -207,8 +212,21 @@ public class initDbStartup {
         ee1.setEventtype("Bruiloft");
         ee1.setEventcompany("Bedrijf1");
         ee1.setEventname("Bruiloft Thomas en Jana");
+        String startDateInString = "02-02-2002";
+        String startTimeInString = "15:14:13";
+        String endDateInString = "04-02-2002";
+        String endTimeInString = "15:14:13";
+        try {
+            ee1.setStartDate(dateSimple.parse(startDateInString));
+            ee1.setStartTime(timeSimple.parse(startTimeInString));
+            ee1.setEndDate(dateSimple.parse(endDateInString));
+            ee1.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ee1.setBungalowName("Andere bung");
         ee1.setCustomerName("Gilbert");
+        
         objectsToSave.add(ee1);
 
         EventEntity ee2 = new EventEntity();
@@ -216,7 +234,19 @@ public class initDbStartup {
         ee2.setEventtype("Bruiloft");
         ee2.setEventcompany("Bedrijf2");
         ee2.setEventname("Bruiloft Elias en Julie");
-        
+        //Heel belangrijk, datums moeten voor standaardevenementen worden aangemaakt, anders krijg je EJB exceptions.
+        startDateInString = "03-03-2003";
+        startTimeInString = "16:15:14";
+        endDateInString = "04-03-2002";
+        endTimeInString = "16:15:14";
+        try {
+            ee2.setStartDate(dateSimple.parse(startDateInString));
+            ee2.setStartTime(timeSimple.parse(startTimeInString));
+            ee2.setEndDate(dateSimple.parse(endDateInString));
+            ee2.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ee2.setBungalowName("Bungie");
         ee2.setCustomerName("Tsjakaaa");
         objectsToSave.add(ee2);

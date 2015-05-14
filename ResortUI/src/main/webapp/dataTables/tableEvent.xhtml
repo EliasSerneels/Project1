@@ -28,17 +28,11 @@
             <p:column id="eventtype" headerText="Event Type" sortBy="#{listDetail.eventtype}" filterBy="#{listDetail.eventtype}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.eventtype}"/>
             </p:column>
-            <p:column id="eventstartdate" headerText="Event startdatum" sortBy="#{listDetail.startDate}" filterBy="#{listDetail.startDate}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.startDate}"/>
+            <p:column id="eventstartdate" headerText="Event startdatum" sortBy="#{listDetail.startDateFormatted}" filterBy="#{listDetail.startDateFormatted}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.startDateFormatted}"/>
             </p:column>
-            <p:column id="eventstarttime" headerText="Event starttijd" sortBy="#{listDetail.startTime}" filterBy="#{listDetail.startTime}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.startTime}"/>
-            </p:column>
-            <p:column id="eventendtime" headerText="Event eindtijd" sortBy="#{listDetail.endTime}" filterBy="#{listDetail.endTime}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.endTime}"/>
-            </p:column>
-            <p:column id="eventenddate" headerText="Event einddatum" sortBy="#{listDetail.endDate}" filterBy="#{listDetail.endDate}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.endDate}"/>
+            <p:column id="eventenddate" headerText="Event einddatum" sortBy="#{listDetail.endDateFormatted}" filterBy="#{listDetail.endDateFormatted}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.endDateFormatted}"/>
             </p:column>
             <p:column id="eventbungalow" headerText="Bungalow" sortBy="#{listDetail.bungalowName}" filterBy="#{listDetail.bungalowName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.bungalowName}"/>
