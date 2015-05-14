@@ -5,12 +5,14 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import org.thomasmore.oo3.course.resortui.business.entity.LocationEntity;
 import org.thomasmore.oo3.course.resortui.facade.LocationFacade;
 import org.thomasmore.oo3.course.resortui.model.LocationPageDto;
 
@@ -25,6 +27,8 @@ public class LocationController {
 
     private LocationPageDto dto;
     private String pageRedirect = "location.xhtml??faces-redirect=true";
+    private List<LocationEntity> selectedLocation;
+
 
     @EJB
     private LocationFacade locationFacade;
@@ -52,4 +56,13 @@ public class LocationController {
     public void setDto(LocationPageDto dto) {
         this.dto = dto;
     }
+    
+     public List<LocationEntity> getSelectedLocation() {
+        return selectedLocation;
+    }
+
+    public void setSelectedLocation(List<LocationEntity> selectedLocation) {
+        this.selectedLocation = selectedLocation;
+    }    
+    
 }

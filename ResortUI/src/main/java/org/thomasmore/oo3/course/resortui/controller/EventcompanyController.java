@@ -5,12 +5,14 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
 import org.thomasmore.oo3.course.resortui.facade.EventcompanyFacade;
 import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
 
@@ -24,6 +26,8 @@ public class EventcompanyController {
     
     private EventcompanyPageDto dto;
     private String pageRedirect="eventcompany.xhtml?faces-redirect=true";
+    private List<EventcompanyEntity> selectedEventcompany;
+
 
     @EJB
     private EventcompanyFacade eventcompanyFacade;
@@ -53,4 +57,12 @@ public class EventcompanyController {
     public void setDto(EventcompanyPageDto dto) {
         this.dto = dto;
     }
+    
+         public List<EventcompanyEntity> getSelectedEventcompany() {
+        return selectedEventcompany;
+    }
+
+    public void setSelectedEventcompany(List<EventcompanyEntity> selectedEventcompany) {
+        this.selectedEventcompany = selectedEventcompany;
+    }  
 }
