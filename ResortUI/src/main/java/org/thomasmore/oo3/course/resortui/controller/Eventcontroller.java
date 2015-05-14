@@ -13,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import org.primefaces.context.RequestContext;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.facade.EventFacade;
 import org.thomasmore.oo3.course.resortui.model.EventPageDto;
@@ -39,8 +40,6 @@ public class Eventcontroller {
     }
     
     public String add() {
-        
-        
         
         // Voorlopige oplossing
         eventFacade.add(dto);

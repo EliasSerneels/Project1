@@ -31,7 +31,7 @@
                         <p:ajax event="eventSelect" listener="#{eventFacade.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventMove" listener="#{eventFacade.onEventMove}" update="messages" />
                         <p:ajax event="eventResize" listener="#{eventFacade.onEventResize}" update="messages" />
-
+                        <p:remoteCommand name="onadd" action="#{eventFacade.add}" update=":eventform:event" />
                     </p:schedule>
                 </h:panelGrid>
  

@@ -28,9 +28,9 @@ public class initDbStartup {
 
     @PersistenceContext(unitName = "RESORTPU")
     private EntityManager em;
-    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd-MM-yyyy");
+    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final SimpleDateFormat timeSimple = new SimpleDateFormat("hh:mm:ss");
+    private final SimpleDateFormat timeSimple = new SimpleDateFormat("hh:mm");
 
     @PostConstruct
     public void init() {
@@ -213,10 +213,10 @@ public class initDbStartup {
         ee1.setEventtype("Bruiloft");
         ee1.setEventcompany("Bedrijf1");
         ee1.setEventname("Bruiloft Thomas en Jana");
-        String startDateInString = "02-02-2002";
-        String startTimeInString = "15:14:13";
-        String endDateInString = "04-02-2002";
-        String endTimeInString = "15:14:13";
+        String startDateInString = "05/05/2015";
+        String startTimeInString = "15:14";
+        String endDateInString = "10/05/2015";
+        String endTimeInString = "16:14";
         try {
             ee1.setStartDate(dateSimple.parse(startDateInString));
             ee1.setStartTime(timeSimple.parse(startTimeInString));
@@ -236,10 +236,10 @@ public class initDbStartup {
         ee2.setEventcompany("Bedrijf2");
         ee2.setEventname("Bruiloft Elias en Julie");
         //Heel belangrijk, datums moeten voor standaardevenementen worden aangemaakt, anders krijg je EJB exceptions.
-        startDateInString = "03-03-2003";
-        startTimeInString = "16:15:14";
-        endDateInString = "04-03-2002";
-        endTimeInString = "16:15:14";
+        startDateInString = "03/05/2015";
+        startTimeInString = "16:15";
+        endDateInString = "05/05/2015";
+        endTimeInString = "17:14";
         try {
             ee2.setStartDate(dateSimple.parse(startDateInString));
             ee2.setStartTime(timeSimple.parse(startTimeInString));

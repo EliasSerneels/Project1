@@ -22,6 +22,7 @@ import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -60,20 +61,15 @@ public class EventFacade implements Serializable{
     private ScheduleModel eventModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
 
-    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-    private final SimpleDateFormat dateDate = new SimpleDateFormat("dd-MM-yyyy");
+    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    private final SimpleDateFormat dateDate = new SimpleDateFormat("dd/MM/yyyy");
     private final SimpleDateFormat dateTime = new SimpleDateFormat("hh:mm");
     
     private boolean startAfterEnd,doubleBooking;
 
     @PostConstruct
     public void init() {
-        eventModel = new DefaultScheduleModel();
-        // Dubbele boeking nagaan
-        List<EventEntity> eventschedule = eventDao.listAll();
-        for (EventEntity evnt : eventschedule) {
-            eventModel.addEvent(new DefaultScheduleEvent(evnt.getEventname(),evnt.getStartDate(),evnt.getEndDate()));
-        }
+        LoadSchedule();
     }
     
     public EventPageDto loadEventOverviewPage(String editId, String deleteId) {
@@ -142,7 +138,6 @@ public class EventFacade implements Serializable{
             } catch (ParseException ex) {
                 Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(DateAndTime(event.getStartDate(), event.getStartTime()));
             
             listDetail.setStartDate(event.getStartTime());
             listDetail.setEndDate(event.getEndTime());
@@ -181,6 +176,8 @@ public class EventFacade implements Serializable{
         if(dto.getDetail().getStartDate().after(dto.getDetail().getEndDate())){
             this.setStartAfterEnd(startAfterEnd);
             System.out.println("** begindatum > einddatum");
+
+
             return null;
         }
         
@@ -203,6 +200,9 @@ public class EventFacade implements Serializable{
         eventEntity.setCustomerName(dto.getDetail().getCustomerName());
         
         eventDao.save(eventEntity);
+        
+        LoadSchedule();
+        
         return dto;
     }
     
@@ -289,6 +289,16 @@ public class EventFacade implements Serializable{
         String convertedDate = dateDate.format(date) + " " + dateTime.format(adjustedTime);
            
         return convertedDate;
+    }
+
+    public void LoadSchedule(){
+        eventModel = new DefaultScheduleModel();
+        // Dubbele boeking nagaan
+        List<EventEntity> eventschedule = eventDao.listAll();
+        for (EventEntity evnt : eventschedule) {
+            
+            eventModel.addEvent(new DefaultScheduleEvent(evnt.getEventname(),evnt.getStartDate(),evnt.getEndDate()));
+        }
     }
     
 }
