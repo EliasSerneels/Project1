@@ -29,10 +29,8 @@ public class initDbStartup {
     @PersistenceContext(unitName = "RESORTPU")
     private EntityManager em;
     private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd-MM-yyyy");
-<<<<<<< HEAD
-=======
+
     private final SimpleDateFormat timeSimple = new SimpleDateFormat("hh:mm:ss");
->>>>>>> origin/master
 
     @PostConstruct
     public void init() {
@@ -215,17 +213,6 @@ public class initDbStartup {
         ee1.setEventtype("Bruiloft");
         ee1.setEventcompany("Bedrijf1");
         ee1.setEventname("Bruiloft Thomas en Jana");
-<<<<<<< HEAD
-        String e1disStartDate = "22-05-2015";
-        String e1disEndDate = "27-05-2015";
-        try {
-            ee1.setStartDate(dateSimple.parse(e1disStartDate));
-            ee1.setEndDate(dateSimple.parse(e1disEndDate ));
-        } catch (ParseException ex) {
-            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ee1.setLocationName("Andere bung");
-=======
         String startDateInString = "02-02-2002";
         String startTimeInString = "15:14:13";
         String endDateInString = "04-02-2002";
@@ -238,8 +225,7 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ee1.setBungalowName("Andere bung");
->>>>>>> origin/master
+        ee1.setLocationName("Andere bung");
         ee1.setCustomerName("Gilbert");
         
         objectsToSave.add(ee1);
@@ -248,18 +234,6 @@ public class initDbStartup {
         ee2.setId(UUID.randomUUID().toString());
         ee2.setEventtype("Bruiloft");
         ee2.setEventcompany("Bedrijf2");
-<<<<<<< HEAD
-        String e2disStartDate = "14-05-2015";
-        String e2disEndDate = "16-05-2015";
-        try {
-            ee2.setStartDate(dateSimple.parse(e2disStartDate));
-            ee2.setEndDate(dateSimple.parse(e2disEndDate ));
-        } catch (ParseException ex) {
-            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ee2.setEventname("Bruiloft Elias en Marjolein");
-        ee2.setLocationName("Bungie");
-=======
         ee2.setEventname("Bruiloft Elias en Julie");
         //Heel belangrijk, datums moeten voor standaardevenementen worden aangemaakt, anders krijg je EJB exceptions.
         startDateInString = "03-03-2003";
@@ -274,8 +248,7 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ee2.setBungalowName("Bungie");
->>>>>>> origin/master
+        ee2.setLocationName("Bungie");
         ee2.setCustomerName("Tsjakaaa");
         objectsToSave.add(ee2);
 

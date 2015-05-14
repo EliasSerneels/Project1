@@ -28,17 +28,15 @@
             <p:column id="eventtype" headerText="Event Type" sortBy="#{listDetail.eventtype}" filterBy="#{listDetail.eventtype}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.eventtype}"/>
             </p:column>
+            
             <p:column id="eventstartdate" headerText="Event startdatum" sortBy="#{listDetail.startDateFormatted}" filterBy="#{listDetail.startDateFormatted}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.startDateFormatted}"/>
             </p:column>
-<<<<<<< HEAD
-            <p:column id="eventenddate" headerText="Event einddatum" sortBy="#{listDetail.endDate}" filterBy="#{listDetail.endDate}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.endDate}"/>
-=======
+
             <p:column id="eventenddate" headerText="Event einddatum" sortBy="#{listDetail.endDateFormatted}" filterBy="#{listDetail.endDateFormatted}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.endDateFormatted}"/>
->>>>>>> origin/master
             </p:column>
+            
             <p:column id="eventlocatie" headerText="Event Locatie" sortBy="#{listDetail.locationName}" filterBy="#{listDetail.locationName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.locationName}"/>
             </p:column>

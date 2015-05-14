@@ -61,7 +61,7 @@
                         <p:row>
                                 <p:calendar pattern="dd/MM/yyyy" id="popup1"  locale="nl" value="${event.dto.detail.startDate}" required="true" requiredMessage="Gelieve een startdatum in te vullen."/>
                                 <p:inputMask id="Begintijd" placeholder="Starttijd"  value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
-                                    <f:convertDateTime pattern="HH:mm" timeZone="GMT+2"/>
+                                    <f:convertDateTime pattern="HH:mm" />
                                 </p:inputMask>
                         </p:row>
 
@@ -71,7 +71,7 @@
                         <p:row>
                                 <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" value="${event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
                                 <p:inputMask id="Eindtijd" placeholder="Eindtijd"  value="#{event.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
-                                    <f:convertDateTime pattern="HH:mm" timeZone="GMT+2"/>
+                                    <f:convertDateTime pattern="HH:mm" />
                                 </p:inputMask>
                         </p:row>
                         

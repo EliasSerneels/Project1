@@ -5,22 +5,18 @@
  */
 package org.thomasmore.oo3.course.resortui.facade;
 
-<<<<<<< HEAD
+
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 import javax.annotation.PostConstruct;
-=======
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
->>>>>>> origin/master
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
@@ -61,14 +57,12 @@ public class EventFacade implements Serializable{
     @EJB
     private CustomerDao customerDao;
     
-<<<<<<< HEAD
     private ScheduleModel eventModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
-=======
-    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+
+    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd-MM-yyyy hh:mm");
     private final SimpleDateFormat dateDate = new SimpleDateFormat("dd-MM-yyyy");
-    private final SimpleDateFormat dateTime = new SimpleDateFormat("hh:mm:ss");
->>>>>>> origin/master
+    private final SimpleDateFormat dateTime = new SimpleDateFormat("hh:mm");
     
     private boolean startAfterEnd,doubleBooking;
 
@@ -135,11 +129,9 @@ public class EventFacade implements Serializable{
 
             listDetail.setStartTime(event.getStartTime());
             listDetail.setEndTime(event.getEndTime());
-<<<<<<< HEAD
-            listDetail.setStartDate(event.getStartDate());
-            listDetail.setEndDate(event.getEndDate());
+
             listDetail.setLocationName(event.getLocationName());  
-=======
+
             String dateStart = dateDate.format(event.getStartDate()) + " " + dateTime.format(event.getStartTime());
             String dateEnd = dateDate.format(event.getEndDate()) + " " + dateTime.format(event.getEndTime());
             listDetail.setStartDateFormatted(dateStart);
@@ -151,9 +143,6 @@ public class EventFacade implements Serializable{
                 Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-
-            listDetail.setBungalowName(event.getBungalowName());  
->>>>>>> origin/master
             listDetail.setCustomerName(event.getCustomerName());
             dto.getList().add(listDetail);
         }
@@ -204,8 +193,6 @@ public class EventFacade implements Serializable{
         
         eventEntity.setEndTime(dto.getDetail().getEndTime());
         eventEntity.setEndDate(dto.getDetail().getEndDate());
-        
-        dateTime(dto.getDetail().getStartDate(), dto.getDetail().getStartTime());
         
         eventEntity.setLocationName(dto.getDetail().getLocationName());  
         eventEntity.setCustomerName(dto.getDetail().getCustomerName());
@@ -291,14 +278,4 @@ public class EventFacade implements Serializable{
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
     
-    public Date dateTime(Date date, Date time) {
-        System.out.println(date);
-        System.out.println(time);
-        System.out.println(date.getYear()+" jaar. "+date.getMonth()+" maand."+date.getDay()+" dag."+ 
-            time.getHours()+" uur."+time.getMinutes()+" minuten"+time.getSeconds());
-        return new Date(
-            date.getYear(), date.getMonth(), date.getDay(), 
-            time.getHours(), time.getMinutes(), time.getSeconds()
-        );
-    }
 }
