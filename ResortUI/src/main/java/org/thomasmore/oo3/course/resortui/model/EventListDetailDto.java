@@ -13,6 +13,8 @@ public class EventListDetailDto {
     private String eventname;
     private String eventcompany;
     private String eventtype;
+    private String startDateFormatted;
+    private String endDateFormatted;
     private Date startDate;
     private Date endDate;   
     private Date startTime;
@@ -20,6 +22,22 @@ public class EventListDetailDto {
     private String locationName;
     private String customerName;
     private Date currentDate;
+
+    public String getStartDateFormatted() {
+        return startDateFormatted;
+    }
+
+    public void setStartDateFormatted(String startDateFormatted) {
+        this.startDateFormatted = startDateFormatted;
+    }
+
+    public String getEndDateFormatted() {
+        return endDateFormatted;
+    }
+
+    public void setEndDateFormatted(String endDateFormatted) {
+        this.endDateFormatted = endDateFormatted;
+    }
 
     public Date getStartTime() {
         return startTime;
