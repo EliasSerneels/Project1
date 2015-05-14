@@ -132,16 +132,21 @@ public class EventFacade implements Serializable{
 
             listDetail.setLocationName(event.getLocationName());  
 
-            String dateStart = dateDate.format(event.getStartDate()) + " " + dateTime.format(event.getStartTime());
-            String dateEnd = dateDate.format(event.getEndDate()) + " " + dateTime.format(event.getEndTime());
-            listDetail.setStartDateFormatted(dateStart);
-            listDetail.setEndDateFormatted(dateEnd);
+            // Datum formateren
+            listDetail.setStartDateFormatted(DateAndTime(event.getStartDate(), event.getStartTime()));
+            listDetail.setEndDateFormatted(DateAndTime(event.getEndDate(), event.getEndTime()));
+
             try {
-                listDetail.setStartDate(dateSimple.parse(dateStart));
-                listDetail.setEndDate(dateSimple.parse(dateEnd));
+                listDetail.setStartDate(dateSimple.parse(listDetail.getStartDateFormatted()));
+                listDetail.setEndDate(dateSimple.parse(listDetail.getEndDateFormatted()));
             } catch (ParseException ex) {
                 Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
+            System.out.println(DateAndTime(event.getStartDate(), event.getStartTime()));
+            
+            listDetail.setStartDate(event.getStartTime());
+            listDetail.setEndDate(event.getEndTime());
+            // Tot hier wordt datum geformateerd
             
             listDetail.setCustomerName(event.getCustomerName());
             dto.getList().add(listDetail);
@@ -276,6 +281,14 @@ public class EventFacade implements Serializable{
      
     private void addMessage(FacesMessage message) {
         FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+    
+    private String DateAndTime(Date date, Date time){
+        
+        Date adjustedTime = time;
+        String convertedDate = dateDate.format(date) + " " + dateTime.format(adjustedTime);
+           
+        return convertedDate;
     }
     
 }
