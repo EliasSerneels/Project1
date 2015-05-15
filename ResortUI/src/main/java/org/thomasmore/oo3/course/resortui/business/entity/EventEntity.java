@@ -26,7 +26,7 @@ public class EventEntity extends BasicEntity implements Serializable{
     private String locationName;
     private String customerName;
     private Date currentDate;
-<<<<<<< HEAD
+
     private String startDateFormatted;
     private String endDateFormatted;
 
@@ -45,7 +45,7 @@ public class EventEntity extends BasicEntity implements Serializable{
     public void setEndDateFormatted(String endDateFormatted) {
         this.endDateFormatted = endDateFormatted;
     }
-=======
+
     private String imageID;
 
     public String getImageID() {
@@ -55,9 +55,6 @@ public class EventEntity extends BasicEntity implements Serializable{
     public void setImageID(String imageID) {
         this.imageID = imageID;
     }
-
-    
->>>>>>> origin/master
 
     public Date getStartTime() {
         return startTime;
