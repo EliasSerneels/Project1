@@ -31,8 +31,6 @@ public class EventListDetailDto {
     public void setImageID(String imageID) {
         this.imageID = imageID;
     }
-    
-    
 
     public String getStartDateFormatted() {
         return startDateFormatted;

@@ -179,8 +179,11 @@ public class EventFacade implements Serializable{
         if(dto.getDetail().getStartDate().after(dto.getDetail().getEndDate())){
             this.setStartAfterEnd(startAfterEnd);
             System.out.println("** begindatum > einddatum");
-
-
+            
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage("Dubbele boeking");
+            facesContext.addMessage(null, facesMessage);
+            
             return null;
         }
         
