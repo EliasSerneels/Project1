@@ -124,6 +124,7 @@ public class initDbStartup {
         ue1.setId(UUID.randomUUID().toString());
         ue1.setUsername("Pieter");
         ue1.setPassword("Pieter");
+        ue1.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue1.setLevel(4);
         objectsToSave.add(ue1);
 
@@ -131,6 +132,7 @@ public class initDbStartup {
         ue2.setId(UUID.randomUUID().toString());
         ue2.setUsername("Timothy");
         ue2.setPassword("Timothy");
+        ue2.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue2.setLevel(4);
         objectsToSave.add(ue2);
 
@@ -138,6 +140,7 @@ public class initDbStartup {
         ue3.setId(UUID.randomUUID().toString());
         ue3.setUsername("Elias");
         ue3.setPassword("Elias");
+        ue3.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue3.setLevel(4);
         objectsToSave.add(ue3);
         
@@ -145,6 +148,7 @@ public class initDbStartup {
         ue4.setId(UUID.randomUUID().toString());
         ue4.setUsername("Elliot");
         ue4.setPassword("Elliot");
+        ue4.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue4.setLevel(4);
         objectsToSave.add(ue4);
         
@@ -152,6 +156,7 @@ public class initDbStartup {
         ue5.setId(UUID.randomUUID().toString());
         ue5.setUsername("Pepijn");
         ue5.setPassword("Pepijn");
+        ue5.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue5.setLevel(4);
         objectsToSave.add(ue5);
         
@@ -160,11 +165,13 @@ public class initDbStartup {
         ue6.setUsername("Jeroen");
         ue6.setPassword("Jeroen");
         ue6.setLevel(4);
+        ue6.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         objectsToSave.add(ue6);
         
         UserEntity ue7 = new UserEntity();
         ue7.setId(UUID.randomUUID().toString());
         ue7.setUsername("Olivier");
+        ue7.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue7.setPassword("Olivier");
         ue7.setLevel(4);
         objectsToSave.add(ue7);
@@ -172,6 +179,7 @@ public class initDbStartup {
         UserEntity ue8 = new UserEntity();
         ue8.setId(UUID.randomUUID().toString());
         ue8.setUsername("Nicolas");
+        ue8.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue8.setPassword("Nicolas");
         ue8.setLevel(4);
         objectsToSave.add(ue8);
@@ -180,6 +188,7 @@ public class initDbStartup {
         ue9.setId(UUID.randomUUID().toString());
         ue9.setUsername("Stijn");
         ue9.setPassword("Stijn");
+        ue9.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue9.setLevel(4);
         objectsToSave.add(ue9);
         
@@ -187,6 +196,7 @@ public class initDbStartup {
         ue10.setId(UUID.randomUUID().toString());
         ue10.setUsername("guest");
         ue10.setPassword("guest");
+        ue10.setImageID("http://www.progarchives.com/forum/uploads/18319/Mr_Blonde_BandW_300.jpeg");
         ue10.setLevel(1);
         objectsToSave.add(ue10);
         
@@ -194,6 +204,7 @@ public class initDbStartup {
         ue11.setId(UUID.randomUUID().toString());
         ue11.setUsername("user");
         ue11.setPassword("user");
+        ue11.setImageID("http://www.progarchives.com/forum/uploads/18319/Mr_Blonde_BandW_300.jpeg");
         ue11.setLevel(2);
         objectsToSave.add(ue11);
         
@@ -201,12 +212,14 @@ public class initDbStartup {
         ue12.setId(UUID.randomUUID().toString());
         ue12.setUsername("pers");
         ue12.setPassword("pers");
+        ue12.setImageID("http://www.progarchives.com/forum/uploads/18319/Mr_Blonde_BandW_300.jpeg");
         ue12.setLevel(3);
         objectsToSave.add(ue12);
         
         UserEntity ue13 = new UserEntity();
         ue13.setId(UUID.randomUUID().toString());
         ue13.setUsername("admin");
+        ue13.setImageID("http://www.progarchives.com/forum/uploads/18319/Mr_Blonde_BandW_300.jpeg");
         ue13.setPassword("admin");
         ue13.setLevel(4);
         objectsToSave.add(ue13);

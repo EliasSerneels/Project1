@@ -26,6 +26,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.thomasmore.oo3.course.resortui.business.entity.UserEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.UserEntity;
+
 import org.thomasmore.oo3.course.resortui.dao.UserDao;
 import org.thomasmore.oo3.course.resortui.model.SessionDto;
 
@@ -69,6 +71,7 @@ public class LoginController implements Serializable {
                 sessionDto.getUserDto().setPassword(dbPassword);
                 sessionDto.getUserDto().setLoggedIn(true);
                 sessionDto.getUserDto().setLevel(user.getLevel());
+                sessionDto.getUserDto().setImageID(user.getImageID());
                 return "profile.xhtml";
             }      
         }

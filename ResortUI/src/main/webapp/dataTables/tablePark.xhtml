@@ -43,7 +43,7 @@
         <p:dialog header="Geselecteerde Parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                 <ui:repeat value="#{park.selectedParks}" var="listDetail">
-                    <img src="resources/images/icons/#{listDetail.name}.jpg"/>
+                    <h:graphicImage height="300" width="500" value="#{listDetail.imageID}"/>
                     <h:outputText value="#{listDetail.name} - #{listDetail.capacity} - #{listDetail.location} - #{listDetail.bungalowName}" style="display:block"/>
                 </ui:repeat>
             </p:outputPanel>

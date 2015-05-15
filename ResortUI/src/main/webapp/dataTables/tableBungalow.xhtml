@@ -77,7 +77,7 @@
         <p:dialog header="Geselecteerde Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiBungalowDetail" style="text-align:center;" >
                 <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail" rendered="true">
-                    <p:graphicImage value="resources/images/icons/#{listDetail.imageID}.jpg"/>
+                    <h:graphicImage height="300" width="500" value="#{listDetail.imageID}"/>
                     <h:outputText value="#{listDetail.name} - #{listDetail.type} - #{listDetail.price} - #{listDetail.park} - #{listDetail.maxpeople}" style="display:block"/>
                 </ui:repeat>
             </p:outputPanel>
