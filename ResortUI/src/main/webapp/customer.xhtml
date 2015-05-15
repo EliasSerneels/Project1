@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
         <ui:composition template="./common/template.xhtml">
@@ -23,7 +24,7 @@
                 <h:form>
                     <h2>Klant toevoegen of aanpassen</h2>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-                    <ul class="change-form">
+                    <ul id="lstCustomerChange" class="change-form">
                         <li>
                             <h:inputHidden value="${customer.dto.detail.id}"/>
                             <div class="inputinfo">Voornaam</div>
@@ -121,8 +122,9 @@
                 </h:form>
                 <br/><br/>
                 <h2>Klantoverzicht</h2>
+                <div id="tblCustomerContainer">
                 <ui:include src="dataTables/tableCustomer.xhtml"></ui:include>
-
+                </div>
 
             </ui:define>
 
