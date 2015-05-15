@@ -84,6 +84,7 @@
                         <p:dialog header="Geselecteerde bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
                             <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
                                 <ui:repeat value="#{bungalow.selectedBungalow}" var="lsdtB">
+                                    <h:graphicImage value="#{lsdtB.imageID}"/>
                                     <h:outputText value="#{lsdtB.name} - #{lsdtB.park} - #{lsdtB.maxpeople} - #{lsdtB.price}" style="display:block"/>
                                 </ui:repeat>
                             </p:outputPanel>

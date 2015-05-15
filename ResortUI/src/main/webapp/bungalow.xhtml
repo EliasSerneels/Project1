@@ -60,7 +60,17 @@
                                          required="true"  requiredMessage="Vul de maxicapaciteit in van deze bungalow. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen." validatorMessage="Vul de maxicapaciteit in van deze bungalow. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen.">
                                           <f:validateDoubleRange minimum="1" />
                             </h:inputText>
-                        </li>                                    
+                        </li>  
+                        
+                        <div class="inputinfo">Bungalow afbeelding</div>
+                            <h:inputText label="URL" 
+                                         value="${bungalow.dto.detail.imageID}" class="form-control"
+                                         required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
+                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))$"/>
+
+                                      
+                            </h:inputText>
+                        
                         <li>                                
                    <div class="inputinfo">Park</div>
                     <p:selectOneMenu required="true" id="Bungalow" value="${bungalow.dto.detail.park}" style="width:419px;" requiredMessage="Gelieve de bungalow toe te wijzen aan een park.">
@@ -68,6 +78,7 @@
                     <f:selectItems value="${bungalow.dto.parkList}" />
                      </p:selectOneMenu>
                         </li>
+                        
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">   

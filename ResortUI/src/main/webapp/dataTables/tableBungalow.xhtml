@@ -51,6 +51,15 @@
             <p:column headerText="Maximum capaciteit" sortBy="#{listDetail.maxpeople}" filterBy="#{listDetail.maxpeople}" filterMatchMode="exact">
                 <h:outputText value="#{listDetail.maxpeople}"/>
             </p:column>
+            
+             <p:column headerText="Afbeelding">
+                <p:lightBox styleClass="imagebox" id="lighbox1">
+                    <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.name}">  
+                <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
+                    </h:outputLink>
+                </p:lightBox>
+            </p:column>
+            
 
             <p:column exportable="false">
                 <a href="bungalow.xhtml?edit=${listDetail.id}" class=" button">edit</a>

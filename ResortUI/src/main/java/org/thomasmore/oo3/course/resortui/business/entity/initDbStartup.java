@@ -39,29 +39,29 @@ public class initDbStartup {
         System.out.println("********************************");
         List<Object> objectsToSave = new LinkedList<>();
         
-        BungalowEntity bungalowEntity = new BungalowEntity();
-        bungalowEntity.setImageID("b1");
-        bungalowEntity.setName("Doos");
-        bungalowEntity.setType("Type 3");
-        bungalowEntity.setPrice(500000);
+      BungalowEntity bungalowEntity = new BungalowEntity();
+        bungalowEntity.setImageID("http://d3dn52uk7d1eh.cloudfront.net/asset/imagecache/accohead/jungalow-fotogallerij.jpg");
+        bungalowEntity.setName("Zebra");
+        bungalowEntity.setType("Comfort");
+        bungalowEntity.setPrice(50);
         bungalowEntity.setPark("Funpark 1");
         bungalowEntity.setMaxpeople("1");
         objectsToSave.add(bungalowEntity);
 
         BungalowEntity bungalowEntity2 = new BungalowEntity();
-        bungalowEntity2.setImageID("b2");
-        bungalowEntity2.setName("Standaard");
-        bungalowEntity2.setType("Type 2");
-        bungalowEntity2.setPrice(10);
+        bungalowEntity2.setImageID("http://d3dn52uk7d1eh.cloudfront.net/asset/imagecache/accohead/acco-head_jungalow_gezin_2013.jpg");
+        bungalowEntity2.setName("Leeuw");
+        bungalowEntity2.setType("Premium");
+        bungalowEntity2.setPrice(100);
         bungalowEntity2.setPark("Funpark 2");
         bungalowEntity2.setMaxpeople("8");
         objectsToSave.add(bungalowEntity2);
 
         BungalowEntity bungalowEntity3 = new BungalowEntity();
-        bungalowEntity3.setImageID("b3");
-        bungalowEntity3.setName("Luxe");
-        bungalowEntity3.setType("Type 4");
-        bungalowEntity3.setPrice(80);
+        bungalowEntity3.setImageID("http://www.vakantiesvoorgrotegezinnen.nl/wp-content/uploads/Vakantiepark-Dierenbos-luxe-bungalow-damhert-6persoons-vakantiehuis-vakantiesvoorgrotegezinnen-3-600x300.jpg");
+        bungalowEntity3.setName("Walrus");
+        bungalowEntity3.setType("Luxe");
+        bungalowEntity3.setPrice(150);
         bungalowEntity3.setPark("Funpark 3");
         bungalowEntity3.setMaxpeople("5");
         objectsToSave.add(bungalowEntity3);
