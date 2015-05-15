@@ -88,6 +88,7 @@ public class StaffFacade {
         staffEntity.setHousenumber(dto.getDetail().getHousenumber());
         staffEntity.setPhonenumber(dto.getDetail().getPhonenumber());
         staffEntity.setEmail(dto.getDetail().getEmail());
+        staffEntity.setImageID(dto.getDetail().getImageID());
         staffDao.save(staffEntity);
         return dto;
     }}
