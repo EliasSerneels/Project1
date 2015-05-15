@@ -45,6 +45,15 @@
             <p:column id="staffphone" headerText="TelefoonNr." sortBy="#{listDetail.phonenumber}" filterBy="#{listDetail.phonenumber}" filterMatchMode="contains" style="width:11%">
                 <h:outputText value="#{listDetail.phonenumber}"/>
             </p:column>
+            
+            <p:column headerText="Afbeelding">
+                <p:lightBox styleClass="imagebox" id="lighbox1">
+                    <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.firstname}">  
+                <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
+                    </h:outputLink>
+                </p:lightBox>
+            </p:column>
+            
             <p:column>
                 <a href="staff.xhtml?edit=${listDetail.id}" class=" button">edit</a>
                 <a href="staff.xhtml?delete=${listDetail.id}" class=" button" style="clear:both">delete</a>

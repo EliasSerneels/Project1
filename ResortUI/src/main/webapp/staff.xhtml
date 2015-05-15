@@ -107,6 +107,17 @@
 
                         </li>
 
+                        <li>
+                            <div class="inputinfo">Bungalow afbeelding</div>
+                            <h:inputText label="URL" 
+                                         value="${staff.dto.detail.imageID}" class="form-control"
+                                         required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
+                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))$"/>
+
+                                      
+                            </h:inputText>
+                        </li>
+                        
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group"> 

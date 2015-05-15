@@ -356,6 +356,7 @@ public class initDbStartup {
         se1.setStreet("Kerkstraat 18");
         se1.setEmail("Olivierollisen@hotmail.com");
         se1.setPhonenumber("0478523698");
+        se1.setImageID("http://38.media.tumblr.com/tumblr_md46rdywDo1rx6bzyo2_500.jpg");
         objectsToSave.add(se1);
         
         StaffEntity se2 = new StaffEntity();
@@ -367,6 +368,7 @@ public class initDbStartup {
         se2.setStreet("Schoolstraat 68");
         se2.setEmail("Pieterspiet@hotmail.com");
         se2.setPhonenumber("0477423638");
+        se2.setImageID("https://oost.deondernemer.nl/content/files/Images/Header_members/Profielfoto_Ronald.jpg");
         objectsToSave.add(se2);
         
         StaffEntity se3 = new StaffEntity();
@@ -378,6 +380,7 @@ public class initDbStartup {
         se3.setStreet("Stationstraat 91");
         se3.setEmail("Keuleersjan@hotmail.com");
         se3.setPhonenumber("0468123874");
+        se3.setImageID("http://www.blog.edwinvandegraaf.nl/wp-content/uploads/2013/05/profielfotograaf-edwinvandegraaf-4.jpg");
         objectsToSave.add(se3);
   
         for (Object objectToSave1 : objectsToSave) {
