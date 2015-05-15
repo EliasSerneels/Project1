@@ -30,7 +30,18 @@ public class CustomerListDetailDto {
     private String phonenumber;
     private String email;
     private boolean receiveupdate;
+    private String imageID;
 
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+
+    
+    
     public boolean isReceiveupdate() {
         return receiveupdate;
     }

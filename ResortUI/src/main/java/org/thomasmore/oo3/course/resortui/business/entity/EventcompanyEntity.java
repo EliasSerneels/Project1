@@ -32,6 +32,16 @@ private String city;
 private String street;
 private String phone;
 private String contact;
+private String imageID;
+
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+
 
 
 

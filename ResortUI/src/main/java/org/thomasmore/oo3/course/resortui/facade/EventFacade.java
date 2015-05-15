@@ -88,6 +88,7 @@ public class EventFacade implements Serializable{
                 dto.getDetail().setEndDate(eventEntity.getEndDate());
                 dto.getDetail().setLocationName(eventEntity.getLocationName());  
                 dto.getDetail().setCustomerName(eventEntity.getCustomerName());
+                dto.getDetail().setImageID(eventEntity.getImageID());
             }
         }
 
@@ -144,6 +145,7 @@ public class EventFacade implements Serializable{
             // Tot hier wordt datum geformateerd
             
             listDetail.setCustomerName(event.getCustomerName());
+            listDetail.setImageID(event.getImageID());
             dto.getList().add(listDetail);
         }
         return dto;

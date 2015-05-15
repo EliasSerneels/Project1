@@ -37,6 +37,7 @@ public class EventcompanyFacade {
                 dto.getDetail().setStreet(eventcompanyEntity.getStreet());
                 dto.getDetail().setPhone(eventcompanyEntity.getPhone());
                 dto.getDetail().setContact(eventcompanyEntity.getContact());
+                dto.getDetail().setImageID(eventcompanyEntity.getImageID());
             }
         }
         
@@ -56,6 +57,7 @@ public class EventcompanyFacade {
             listDetail.setStreet(eventcompany.getStreet());
             listDetail.setPhone(eventcompany.getPhone());
             listDetail.setContact(eventcompany.getContact());
+            listDetail.setImageID(eventcompany.getImageID());
             dto.getList().add(listDetail);
         }
         return dto;

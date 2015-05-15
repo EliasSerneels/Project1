@@ -22,6 +22,17 @@ public class EventListDetailDto {
     private String locationName;
     private String customerName;
     private Date currentDate;
+    private String imageID;
+
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+    
+    
 
     public String getStartDateFormatted() {
         return startDateFormatted;

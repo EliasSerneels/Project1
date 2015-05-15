@@ -21,6 +21,7 @@ public class StaffListDetailDto {
     private int housenumber;
     private String phonenumber;
     private String email;
+    private String imageID;
 
     public String getId() {
         return id;
@@ -100,6 +101,14 @@ public class StaffListDetailDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
     }
     
     

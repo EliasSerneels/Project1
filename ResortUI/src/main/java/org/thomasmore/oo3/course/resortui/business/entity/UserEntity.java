@@ -14,6 +14,7 @@ public class UserEntity extends BasicEntity {
     private String fullName;
     private String email;
     private int level;
+    private String imageID;
 
     public UserEntity() {
         level = 0;
@@ -62,4 +63,13 @@ public class UserEntity extends BasicEntity {
     public void setLevel(int level) {
         this.level = level;
     }
+
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+     
 }

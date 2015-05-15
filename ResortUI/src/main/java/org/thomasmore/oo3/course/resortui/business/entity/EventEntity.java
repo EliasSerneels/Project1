@@ -26,6 +26,17 @@ public class EventEntity extends BasicEntity implements Serializable{
     private String locationName;
     private String customerName;
     private Date currentDate;
+    private String imageID;
+
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+
+    
 
     public Date getStartTime() {
         return startTime;

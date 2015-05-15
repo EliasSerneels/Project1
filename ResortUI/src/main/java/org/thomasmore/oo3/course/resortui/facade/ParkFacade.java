@@ -41,6 +41,8 @@ public class ParkFacade {
                 dto.getDetail().setName(parkEntity.getName());
                 dto.getDetail().setLocation(parkEntity.getLocation());
                 dto.getDetail().setCapacity(parkEntity.getCapacity());
+                dto.getDetail().setImageID(parkEntity.getImageID());
+
 
             }
         }
@@ -52,6 +54,7 @@ public class ParkFacade {
             listDetail.setLocation(park.getLocation());
             listDetail.setCapacity(park.getCapacity());
             listDetail.setBungalowName(park.getBungalowName());
+            listDetail.setImageID(park.getImageID());
             dto.getList().add(listDetail);
         }
         

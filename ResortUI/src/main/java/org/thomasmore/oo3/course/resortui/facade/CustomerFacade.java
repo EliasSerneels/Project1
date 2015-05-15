@@ -39,6 +39,7 @@ public class CustomerFacade {
                 dto.getDetail().setHousenumber(customerEntity.getHousenumber());
                 dto.getDetail().setPhonenumber(customerEntity.getPhonenumber());
                 dto.getDetail().setEmail(customerEntity.getEmail());
+                dto.getDetail().setImageID(customerEntity.getImageID());
             }
         }
         if (deleteId != null) {
@@ -58,6 +59,7 @@ public class CustomerFacade {
             listDetail.setHousenumber(customer.getHousenumber());
             listDetail.setPhonenumber(customer.getPhonenumber());
             listDetail.setEmail(customer.getEmail());
+            listDetail.setImageID(customer.getImageID());
             dto.getList().add(listDetail);
 
         }

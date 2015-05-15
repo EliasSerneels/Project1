@@ -31,6 +31,8 @@ public class UserDetailDto implements Serializable{
     private String email;
     private String phone;
     private int level;
+    private String imageID;
+    
 
     private boolean loggedIn;
 
@@ -96,5 +98,15 @@ public class UserDetailDto implements Serializable{
 
     public void setLevel(int level) {
         this.level = level;
-    }      
+    }   
+
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+    
+    
 }

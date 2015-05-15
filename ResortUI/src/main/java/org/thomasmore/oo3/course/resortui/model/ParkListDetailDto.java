@@ -28,6 +28,16 @@ public class ParkListDetailDto {
     private String location;
     private int capacity;
     private String bungalowName;
+    private String imageID;
+
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+    
 
     public String getBungalowName() {
         return bungalowName;

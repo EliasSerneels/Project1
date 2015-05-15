@@ -28,8 +28,17 @@ public class StaffEntity extends BasicEntity{
     private int housenumber;
     private String phonenumber;
     private String email;
-    
+        private String imageID;
 
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }   
+        
+        
     public String getEmail() {
         return email;
     }

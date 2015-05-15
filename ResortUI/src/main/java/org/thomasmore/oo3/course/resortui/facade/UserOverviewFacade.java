@@ -28,6 +28,8 @@ public class UserOverviewFacade {
                 dto.getDetail().setPassword(ue.getPassword());
                 dto.getDetail().setEmail(ue.getEmail());
                 dto.getDetail().setLevel(ue.getLevel());
+                dto.getDetail().setImageID(ue.getImageID());
+
             }
         }
         List<UserEntity> users = dao.listAll();
@@ -38,6 +40,7 @@ public class UserOverviewFacade {
             ud.setId(user.getId());
             ud.setLevel(user.getLevel());
             ud.setUsername(user.getUsername());
+            ud.setImageID(user.getImageID());
             dto.getList().add(ud);
         }
         return dto;
