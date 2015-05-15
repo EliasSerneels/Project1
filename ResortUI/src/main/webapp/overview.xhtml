@@ -45,7 +45,7 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Selected Parks" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
+                        <p:dialog header="Geselecteerde parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
                             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                                 <ui:repeat value="#{park.selectedParks}" var="lsdtP">
                                     <h:outputText value="#{lsdtP.name} - #{lsdtP.location} - #{lsdtP.capacity}" style="display:block"/>
@@ -81,7 +81,7 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Selected Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
+                        <p:dialog header="Geselecteerde bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
                             <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
                                 <ui:repeat value="#{bungalow.selectedBungalow}" var="lsdtB">
                                     <h:outputText value="#{lsdtB.name} - #{lsdtB.park} - #{lsdtB.maxpeople} - #{lsdtB.price}" style="display:block"/>
@@ -97,6 +97,10 @@
                     <h:form id="formCustomers">  
                         <p:dataTable id="DTcustomer" var="lsdtC" value="#{customer.dto.list}" selectionMode="multiple" selection="#{customer.selectedCustomer}" rowKey="#{lsdtC.id}">
 
+                            <p:column headerText="ID">
+                                <h:outputText value="#{lsdtC.id}" />
+                            </p:column>
+                            
                             <p:column headerText="Naam">
                                 <h:outputText value="#{lsdtC.lastname}" />
                             </p:column>
@@ -118,7 +122,7 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Selected Customers" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde klanten" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
                             <p:outputPanel id="multiCustomerDetail" style="text-align:center;">
                                 <ui:repeat value="#{customer.selectedCustomer}" var="lsdtC">
                                     <h:outputText value="#{lsdtC.lastname} - #{lsdtC.firstname}  #{lsdtC.phonenumber}" style="display:block"/>
@@ -162,9 +166,9 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Selected Reservations" widgetVar="multiReservationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde reservaties" widgetVar="multiReservationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
                             <p:outputPanel id="multiReservationDetail" style="text-align:center;">
-                                <ui:repeat value="#{reservation.selectedReservation}" var="lsdtC">
+                                <ui:repeat value="#{reservation.selectedReservation}" var="lsdtR">
                                     <h:outputText value="#{lsdtR.bungalowName} - #{lsdtR.customerName}  #{lsdtR.startDate}" style="display:block"/>
                                 </ui:repeat>
                             </p:outputPanel>
@@ -198,7 +202,7 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Selected Events" widgetVar="multiEventDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde evenementen" widgetVar="multiEventDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
                             <p:outputPanel id="multiEventDetail" style="text-align:center;">
                                 <ui:repeat value="#{event.selectedEvent}" var="lsdtE">
                                     <h:outputText value="#{lsdtE.eventname} - #{lsdtE.eventcompany}  #{lsdtE.eventtype}" style="display:block"/>
@@ -212,7 +216,7 @@
                 <p:panel id="gpn6" header="Eventbedrijven" class="overviewEC">
 
                     <h:form id="formEventcomp">  
-                        <p:dataTable id="DTeventcompany" var="lsdtEC" value="#{eventcompany.dto.list}" selectionMode="multiple" selection="#{eventCompany.selectedEventCompany}" rowKey="#{lsdtEC.id}">
+                        <p:dataTable id="DTeventcompany" var="lsdtEC" value="#{eventcompany.dto.list}" selectionMode="multiple" selection="#{eventcompany.selectedEventcompany}" rowKey="#{lsdtEC.id}">
 
                             <p:column headerText="ID">
                                 <h:outputText value="#{lsdtEC.id}" />
@@ -242,13 +246,13 @@
 
 
                             <f:facet name="footer">
-                                <p:commandButton process="DTeventcompany" update=":formEventcomp:multiEventcompanyDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiEventDialog').show()" />
+                                <p:commandButton process="DTeventcompany" update=":formEventcomp:multiEventcompanyDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiEventcompanyDialog').show()" />
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Selected Event Companies" widgetVar="multiEventcompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde eventbedrijven" widgetVar="multiEventcompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
                             <p:outputPanel id="multiEventcompanyDetail" style="text-align:center;">
-                                <ui:repeat value="#{eventCompany.selectedEventCompany}" var="lsdtE">
+                                <ui:repeat value="#{eventcompany.selectedEventcompany}" var="lsdtEC">
                                     <h:outputText value="#{lsdtEC.name} - #{lsdtEC.city}  #{lsdtEC.street} #{lsdtEC.phone}" style="display:block"/>
                                 </ui:repeat>
                             </p:outputPanel>
@@ -256,7 +260,127 @@
                     </h:form>
                 </p:panel>
                 <p:draggable for="gpn6"/>
+                
+                <p:panel id="gpn7" header="Event Types" class="overviewEC">
 
+                    <h:form id="formEventTypes">  
+                        <p:dataTable id="DTeventtype" var="lsdtET" value="#{eventtype.dto.list}" selectionMode="multiple" selection="#{eventtype.selectedEventtype}" rowKey="#{lsdtET.id}">
+
+                            <p:column headerText="ID">
+                                <h:outputText value="#{lsdtET.id}" />
+                            </p:column>
+                            <p:column headerText="Eventype naam">
+                                <h:outputText value="#{lsdtET.eventname}" />
+                            </p:column>
+
+
+
+                            <f:facet name="footer">
+                                <p:commandButton process="DTeventtype" update=":formEventTypes:multiEventTypeDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiEventTypeDialog').show()" />
+                            </f:facet>
+                        </p:dataTable>
+
+                        <p:dialog header="Geselecteerde eventtypes" widgetVar="multiEventTypeDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                            <p:outputPanel id="multiEventTypeDetail" style="text-align:center;">
+                                <ui:repeat value="#{eventtype.selectedEventtype}" var="lsdtET">
+                                    <h:outputText value="#{lsdtET.id} - #{lsdtET.eventname}" style="display:block"/>
+                                </ui:repeat>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+                </p:panel>
+                <p:draggable for="gpn7"/>
+
+                 <p:panel id="gpn8" header="Locaties" class="overviewEC">
+
+                    <h:form id="formLocations">  
+                        <p:dataTable id="DTlocation" var="lsdtL" value="#{location.dto.list}" selectionMode="multiple" selection="#{location.selectedLocation}" rowKey="#{lsdtL.id}">
+
+                            <p:column headerText="ID">
+                                <h:outputText value="#{lsdtL.id}" />
+                            </p:column>
+                            <p:column headerText="Stad">
+                                <h:outputText value="#{lsdtL.city}" />
+                            </p:column>
+
+                            <p:column headerText="Straat">
+                                <h:outputText value="#{lsdtL.street}" />
+                            </p:column>
+
+
+                            <f:facet name="footer">
+                                <p:commandButton process="DTlocation" update=":formLocations:multiLocationDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiLocationDialog').show()" />
+                            </f:facet>
+                        </p:dataTable>
+
+                        <p:dialog header="Geselecteerde locaties" widgetVar="multiLocationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                            <p:outputPanel id="multiLocationDetail" style="text-align:center;">
+                                <ui:repeat value="#{location.selectedLocation}" var="lsdtL">
+                                    <h:outputText value=" #{lsdtL.city}  #{lsdtL.street}" style="display:block"/>
+                                </ui:repeat>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+                </p:panel>
+                <p:draggable for="gpn8"/>
+                
+                  <p:panel id="gpn9" header="Personeel" class="overviewEC">
+
+                    <h:form id="formStaff">  
+                        <p:dataTable id="DTstaff" var="lsdtS" value="#{staff.dto.list}" selectionMode="multiple" selection="#{staff.selectedStaff}" rowKey="#{lsdtS.id}">
+
+                            <p:column headerText="ID">
+                                <h:outputText value="#{lsdtS.id}" />
+                            </p:column>
+                            <p:column headerText="Voornaam">
+                                <h:outputText value="#{lsdtS.firstname}" />
+                            </p:column>
+
+                            <p:column headerText="Achternaam">
+                                <h:outputText value="#{lsdtS.lastname}" />
+                            </p:column>
+                            
+                            <p:column headerText="Geboortedatum">
+                                <h:outputText value="#{lsdtS.birthdate}" />
+                            </p:column>
+                            
+                            <p:column headerText="Telefoonnummer">
+                                <h:outputText value="#{lsdtS.phonenumber}" />
+                            </p:column>
+                            
+                            <p:column headerText="Email">
+                                <h:outputText value="#{lsdtS.email}" />
+                            </p:column>
+                            
+                            <p:column headerText="Land">
+                                <h:outputText value="#{lsdtS.country}" />
+                            </p:column>
+                            
+                            <p:column headerText="Stad">
+                                <h:outputText value="#{lsdtS.city}" />
+                            </p:column>
+                            
+                            <p:column headerText="Straat">
+                                <h:outputText value="#{lsdtS.street}" />
+                            </p:column>
+
+
+                            <f:facet name="footer">
+                                <p:commandButton process="DTstaff" update=":formStaff:multiStaffDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiStaffDialog').show()" />
+                            </f:facet>
+                        </p:dataTable>
+
+                        <p:dialog header="Geselecteerd personeel " widgetVar="multiStaffDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                            <p:outputPanel id="multiStaffDetail" style="text-align:center;">
+                                <ui:repeat value="#{staff.selectedStaff}" var="lsdtL">
+                                    <h:outputText value="#{lsdtL.firstname} - #{lsdtL.lastname}- #{lsdtEC.birthdate} - #{lsdtL.phonenumber}- #{lsdtEC.country} - #{lsdtL.city} - #{lsdtL.street}" style="display:block"/>
+                                </ui:repeat>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+                </p:panel>
+                <p:draggable for="gpn9"/>
+                
             </ui:define>
         </ui:composition>
     </body>

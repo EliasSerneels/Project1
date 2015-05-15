@@ -33,7 +33,17 @@ public class ParkEntity extends BasicEntity {
     private int capacity;
     private String name;
     private String bungalowName;
+    private String imageID;
 
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
+    
+    
     public String getBungalowName() {
         return bungalowName;
     }

@@ -38,6 +38,7 @@ public class StaffFacade {
                 dto.getDetail().setHousenumber(staffEntity.getHousenumber());
                 dto.getDetail().setPhonenumber(staffEntity.getPhonenumber());
                 dto.getDetail().setEmail(staffEntity.getEmail());
+                dto.getDetail().setImageID(staffEntity.getImageID());
             }
         }
         if (deleteId != null) {
@@ -57,6 +58,7 @@ public class StaffFacade {
             listDetail.setHousenumber(staff.getHousenumber());
             listDetail.setPhonenumber(staff.getPhonenumber());
             listDetail.setEmail(staff.getEmail());
+            listDetail.setImageID(staff.getImageID());
             dto.getList().add(listDetail);
 
         }

@@ -5,12 +5,15 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+
+import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
 import org.thomasmore.oo3.course.resortui.facade.EventtypeFacade;
 import org.thomasmore.oo3.course.resortui.model.EventtypePageDto;
 
@@ -24,6 +27,8 @@ public class EventtypeController {
 
     private EventtypePageDto dto;
     private final String pageRedirect="eventtype.xhtml?faces-redirect=true";
+    private List<EventtypeEntity> selectedEventtype;
+
 
     @EJB
     private EventtypeFacade eventtypeFacade;
@@ -53,6 +58,14 @@ public class EventtypeController {
     public void setDto(EventtypePageDto dto) {
         this.dto = dto;
     }
+    
+      public List<EventtypeEntity> getSelectedEventtype() {
+        return selectedEventtype;
+    }
+
+    public void setSelectedEventtype(List<EventtypeEntity> selectedEventtype) {
+        this.selectedEventtype = selectedEventtype;
+    }   
 
 }
 
