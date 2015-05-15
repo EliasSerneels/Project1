@@ -67,18 +67,21 @@ public class initDbStartup {
         objectsToSave.add(bungalowEntity3);
 
         ParkEntity parkEntity1 = new ParkEntity();
+        parkEntity1.setImageID("http://www.bungalows-duitsland.nl/UserFiles/Image/Nedersaksen/Roompot%20Fintel%20bungalowpark%20nedersaksen.jpg");
         parkEntity1.setName("Funpark 1");
         parkEntity1.setLocation("Antwerpen");
         parkEntity1.setCapacity(165);
         objectsToSave.add(parkEntity1);
 
         ParkEntity parkEntity2 = new ParkEntity();
+        parkEntity2.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/TDE/01/TDE_01_30947_770x260px_JPG_26238.ashx");
         parkEntity2.setName("Funpark 2");
         parkEntity2.setLocation("Mechelen");
         parkEntity2.setCapacity(385);
         objectsToSave.add(parkEntity2);
         
         ParkEntity parkEntity3 = new ParkEntity();
+        parkEntity3.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/SBG/02/SBG_02_24096_770x260_jpg_20058.ashx");
         parkEntity3.setName("Funpark 3");
         parkEntity3.setLocation("Vilvoorde");
         parkEntity3.setCapacity(700);

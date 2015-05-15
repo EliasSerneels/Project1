@@ -24,6 +24,14 @@
                 <h:outputText value="#{listDetail.bungalowName}"/>
             </p:column>
 
+            <p:column headerText="Afbeelding">
+                <p:lightBox styleClass="imagebox" id="lighbox1">
+                    <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.name}">  
+                <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
+                    </h:outputLink>
+                </p:lightBox>
+            </p:column>
+            
             <p:column>
                 <a href="park.xhtml?edit=${listDetail.id}" class=" button">edit</a>
                 <a href="park.xhtml?delete=${listDetail.id}" class=" button">delete</a>

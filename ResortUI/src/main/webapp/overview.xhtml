@@ -48,6 +48,7 @@
                         <p:dialog header="Geselecteerde parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
                             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                                 <ui:repeat value="#{park.selectedParks}" var="lsdtP">
+                                    <h:graphicImage value="#{lsdtP.imageID}"/>
                                     <h:outputText value="#{lsdtP.name} - #{lsdtP.location} - #{lsdtP.capacity}" style="display:block"/>
                                 </ui:repeat>
                             </p:outputPanel>
