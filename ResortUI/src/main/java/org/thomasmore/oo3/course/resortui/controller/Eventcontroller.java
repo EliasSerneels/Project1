@@ -20,10 +20,11 @@ import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 
 @Named(value = "event")
 @RequestScoped
-public class Eventcontroller {
+public class EventController {
 
     private EventPageDto dto;
     private String pageRedirect="event.xhtml?faces-redirect=true";
+    private String pageEdit="event.xhtml?edit=${listDetail.id}";
     private List<EventEntity> selectedEvent;
 
     @EJB
@@ -75,6 +76,10 @@ public class Eventcontroller {
 
     public void setSelectedEvent(List<EventEntity> selectedEvent) {
         this.selectedEvent = selectedEvent;
+    }
+
+    public String getPageEdit() {
+        return pageEdit;
     }    
     
 }
