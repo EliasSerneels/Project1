@@ -489,3 +489,17 @@ footer p{
 #javax_faces_developmentstage_messages li{
     color:blue;
 }
+
+#bungalowstyle li{
+    height: 566px !important;
+}
+
+footer #footerbuttons li a{
+  margin-bottom: 0px;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+footer #footerbuttons li h3 {
+  margin-top: 25px;
+}
