@@ -24,7 +24,7 @@
                 <h2>Park aanmaken of aanpassen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
-                    <ul class="change-form">
+                    <ul id="lstParkChange" class="change-form">
                         <li>
                             <h:inputHidden value="${park.dto.detail.id}"/>
                             <div class="inputinfo">Naam</div>
@@ -62,7 +62,9 @@
 
                 <br/><br/>
                 <h2>Parkoverzicht</h2>
+                <div id="tblParkContainer">
                 <ui:include src="dataTables/tablePark.xhtml"></ui:include>
+                </div>
             </ui:define>
         </ui:composition>
     </body>
