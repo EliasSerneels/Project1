@@ -44,7 +44,7 @@ public class EventController {
         
         // Voorlopige oplossing
         eventFacade.add(dto);
-           
+
         // Werkt nog niet
         if(eventFacade.isStartAfterEnd()){
             FacesContext facesContext = FacesContext.getCurrentInstance();

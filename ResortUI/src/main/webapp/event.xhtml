@@ -27,7 +27,7 @@
                     <p:schedule id="schedule" value="#{eventFacade.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+1" timeFormat="HH:mm">
 
                         <p:ajax event="dateSelect" listener="#{eventFacade.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-                        <p:ajax event="eventSelect" listener="#{eventFacade.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                        <p:ajax event="eventSelect" listener="#{event.add}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventMove" listener="#{eventFacade.onEventMove}" update="messages" />
                         <p:ajax event="eventResize" listener="#{eventFacade.onEventResize}" update="messages" />
                     </p:schedule>

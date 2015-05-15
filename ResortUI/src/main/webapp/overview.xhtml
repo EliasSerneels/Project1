@@ -45,10 +45,10 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
+                        <p:dialog header="Geselecteerde parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="700">
                             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                                 <ui:repeat value="#{park.selectedParks}" var="lsdtP">
-                                    <h:graphicImage value="#{lsdtP.imageID}"/>
+                                    <h:graphicImage width="440" height="300" value="#{lsdtP.imageID}"/>
                                     <h:outputText value="#{lsdtP.name} - #{lsdtP.location} - #{lsdtP.capacity}" style="display:block"/>
                                 </ui:repeat>
                             </p:outputPanel>
@@ -82,10 +82,10 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="200">
+                        <p:dialog header="Geselecteerde bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="700">
                             <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
                                 <ui:repeat value="#{bungalow.selectedBungalow}" var="lsdtB">
-                                    <h:graphicImage value="#{lsdtB.imageID}"/>
+                                    <h:graphicImage width="440" height="300" value="#{lsdtB.imageID}"/>
                                     <h:outputText value="#{lsdtB.name} - #{lsdtB.park} - #{lsdtB.maxpeople} - #{lsdtB.price}" style="display:block"/>
                                 </ui:repeat>
                             </p:outputPanel>
@@ -124,7 +124,7 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde klanten" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde klanten" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="700">
                             <p:outputPanel id="multiCustomerDetail" style="text-align:center;">
                                 <ui:repeat value="#{customer.selectedCustomer}" var="lsdtC">
                                     <h:outputText value="#{lsdtC.lastname} - #{lsdtC.firstname}  #{lsdtC.phonenumber}" style="display:block"/>
@@ -375,7 +375,53 @@
                         <p:dialog header="Geselecteerd personeel " widgetVar="multiStaffDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
                             <p:outputPanel id="multiStaffDetail" style="text-align:center;">
                                 <ui:repeat value="#{staff.selectedStaff}" var="lsdtL">
-                                    <h:outputText value="#{lsdtL.firstname} - #{lsdtL.lastname}- #{lsdtEC.birthdate} - #{lsdtL.phonenumber}- #{lsdtEC.country} - #{lsdtL.city} - #{lsdtL.street}" style="display:block"/>
+                                  <h:graphicImage height="300" width="300" value="#{lsdtL.imageID}"/>
+                                    <h:outputText value="#{lsdtL.firstname} - #{lsdtL.lastname}- #{lsdtL.birthdate} - #{lsdtL.phonenumber}- #{lsdtL.country} - #{lsdtL.city} - #{lsdtL.street}" style="display:block"/>
+                                </ui:repeat>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+                </p:panel>
+                <p:draggable for="gpn9"/>
+                
+                  <p:panel id="gpn10" header="Gebruikers" class="overviewEC">
+
+                    <h:form id="formUsers">  
+                        <p:dataTable id="DTusers" var="lsdtUS" value="#{useroverview.dto.list}" selectionMode="multiple" selection="#{useroverview.selectedUser}" rowKey="#{lsdtUS.id}">
+
+                            <p:column headerText="ID">
+                                <h:outputText value="#{lsdtUS.id}" />
+                            </p:column>
+                            <p:column headerText="Voornaam">
+                                <h:outputText value="#{lsdtUS.username}" />
+                            </p:column>
+
+                            <p:column headerText="Paswoord">
+                                <h:outputText value="#{lsdtUS.password}" />
+                            </p:column>
+                            
+                            <p:column headerText="Geboortedatum">
+                                <h:outputText value="#{lsdtUS.fullName}" />
+                            </p:column>
+                            
+                            <p:column headerText="Telefoonnummer">
+                                <h:outputText value="#{lsdtUS.email}" />
+                            </p:column>
+                            
+                            <p:column headerText="Telefoonnummer">
+                                <h:outputText value="#{lsdtUS.level}" />
+                            </p:column>
+                          
+                            <f:facet name="footer">
+                                <p:commandButton process="DTusers" update=":formUsers:multiUsersDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiUsersDialog').show()" />
+                            </f:facet>
+                        </p:dataTable>
+
+                        <p:dialog header="Geselecteerde gebruikers " widgetVar="multiUsersDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                            <p:outputPanel id="multiUsersDetail" style="text-align:center;">
+                                <ui:repeat value="#{useroverview.selectedUser}" var="lsdtUS">
+                                  <h:graphicImage height="300" width="300" value="#{lsdtUS.imageID}"/>
+                                  <h:outputText value="#{lsdtUS.username} - #{lsdtUS.fullName}- #{lsdtUS.email} - #{lsdtUS.level}" style="display:block"/>
                                 </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
