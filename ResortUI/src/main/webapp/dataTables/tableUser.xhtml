@@ -33,6 +33,14 @@
                 <h:outputText value="#{detail.level}"/>
             </p:column>
             
+             <p:column headerText="Afbeelding">
+                <p:lightBox styleClass="imagebox" id="lighbox1">
+                    <h:outputLink value="#{detail.imageID}" title="#{detail.username}">  
+                <h:graphicImage height="50" width="70" value="#{detail.imageID}"/>
+                    </h:outputLink>
+                </p:lightBox>
+            </p:column>
+            
              <p:column exportable="false">
                 <a href="useroverview.xhtml?edit=${detail.id}" class=" button">edit</a>
                 <a href="useroverview.xhtml?delete=${detail.id}" class=" button">delete</a>

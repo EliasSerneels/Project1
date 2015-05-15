@@ -57,6 +57,17 @@
                                          value="${useroverview.dto.detail.level}" class="form-control"
                                          required="false"></h:inputText>
                         </li>
+                        <li>
+                        <div class="inputinfo">Gebruiker afbeelding</div>
+                            <h:inputText label="URL" 
+                                         value="${useroverview.dto.detail.imageID}" class="form-control"
+                                         required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
+                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))$"/>
+
+                                      
+                            </h:inputText>
+                        </li>
+                        
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">   

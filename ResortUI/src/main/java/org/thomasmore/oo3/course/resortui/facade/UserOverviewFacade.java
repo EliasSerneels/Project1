@@ -63,6 +63,7 @@ public class UserOverviewFacade {
         ue.setFullName(dto.getDetail().getFullName());
         ue.setEmail(dto.getDetail().getEmail());
         ue.setLevel(dto.getDetail().getLevel());
+        ue.setImageID(dto.getDetail().getImageID());
         dao.save(ue);
         return dto;
     }
