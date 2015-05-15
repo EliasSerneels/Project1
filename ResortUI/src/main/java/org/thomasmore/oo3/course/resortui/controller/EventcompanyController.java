@@ -22,7 +22,7 @@ import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
  */
 @Named(value = "eventcompany")
 @RequestScoped
-public class EventcompanyController {
+public class EventCompanyController {
     
     private EventcompanyPageDto dto;
     private String pageRedirect="eventcompany.xhtml?faces-redirect=true";
