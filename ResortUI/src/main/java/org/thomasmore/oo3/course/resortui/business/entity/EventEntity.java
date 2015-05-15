@@ -26,6 +26,24 @@ public class EventEntity extends BasicEntity implements Serializable{
     private String locationName;
     private String customerName;
     private Date currentDate;
+    private String startDateFormatted;
+    private String endDateFormatted;
+
+    public String getStartDateFormatted() {
+        return startDateFormatted;
+    }
+
+    public void setStartDateFormatted(String startDateFormatted) {
+        this.startDateFormatted = startDateFormatted;
+    }
+
+    public String getEndDateFormatted() {
+        return endDateFormatted;
+    }
+
+    public void setEndDateFormatted(String endDateFormatted) {
+        this.endDateFormatted = endDateFormatted;
+    }
 
     public Date getStartTime() {
         return startTime;

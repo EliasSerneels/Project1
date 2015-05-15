@@ -13,6 +13,7 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -61,9 +62,9 @@ public class EventFacade implements Serializable{
     private ScheduleModel eventModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
 
-    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     private final SimpleDateFormat dateDate = new SimpleDateFormat("dd/MM/yyyy");
-    private final SimpleDateFormat dateTime = new SimpleDateFormat("hh:mm");
+    private final SimpleDateFormat dateTime = new SimpleDateFormat("HH:mm");
     
     private boolean startAfterEnd,doubleBooking;
 
@@ -202,7 +203,7 @@ public class EventFacade implements Serializable{
         eventDao.save(eventEntity);
         
         LoadSchedule();
-        
+   
         return dto;
     }
     
@@ -233,13 +234,6 @@ public class EventFacade implements Serializable{
      
     public ScheduleModel getEventModel() {
         return eventModel;
-    }
- 
-    private Calendar today() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
- 
-        return calendar;
     }
      
     public ScheduleEvent getEvent() {
@@ -295,10 +289,43 @@ public class EventFacade implements Serializable{
         eventModel = new DefaultScheduleModel();
         // Dubbele boeking nagaan
         List<EventEntity> eventschedule = eventDao.listAll();
-        for (EventEntity evnt : eventschedule) {
+        
+        // Deze waarden en list zijn nodig voor de kleuren te veranderen per locatie
+        String loc;
+        ArrayList<String> locList = new ArrayList<String>();
+
+        for (EventEntity evnt : eventschedule) { 
+            // Check of de locatie al in de lijst zit
+            if(!locList.contains(evnt.getLocationName()) ) {
+                locList.add(evnt.getLocationName());
+             }
             
-            eventModel.addEvent(new DefaultScheduleEvent(evnt.getEventname(),evnt.getStartDate(),evnt.getEndDate()));
+            // Datum formateren
+            evnt.setStartDateFormatted(DateAndTime(evnt.getStartDate(), evnt.getStartTime()));
+            evnt.setEndDateFormatted(DateAndTime(evnt.getEndDate(), evnt.getEndTime()));
+            
+            // Geformateerde datum in event steken
+            try {
+                Date startDate = dateSimple.parse(evnt.getStartDateFormatted());
+                Date endDate = dateSimple.parse(evnt.getEndDateFormatted());
+                
+                loc = "loc"+String.valueOf(locList.indexOf(evnt.getLocationName()));
+                DefaultScheduleEvent evento = new DefaultScheduleEvent (evnt.getEventname(),startDate,endDate,loc);
+                eventModel.addEvent(evento);
+            } catch (ParseException ex) {
+                Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+
         }
+    }
+    
+    public Date dateTime(Date date, Date time) {
+        return new Date(
+                     date.getYear(), date.getMonth(), date.getDay(), 
+                     time.getHours(), time.getMinutes(), time.getSeconds()
+                   );
     }
     
 }

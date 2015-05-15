@@ -210,8 +210,8 @@ public class initDbStartup {
 
         EventEntity ee1 = new EventEntity();
         ee1.setId(UUID.randomUUID().toString());
-        ee1.setEventtype("Bruiloft");
-        ee1.setEventcompany("Bedrijf1");
+        ee1.setEventtype("Trouw");
+        ee1.setEventcompany("Bedrijf 1");
         ee1.setEventname("Bruiloft Thomas en Jana");
         String startDateInString = "05/05/2015";
         String startTimeInString = "15:14";
@@ -225,16 +225,16 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ee1.setLocationName("Andere bung");
-        ee1.setCustomerName("Gilbert");
+        ee1.setLocationName("Zaal 1");
+        ee1.setCustomerName("Jos");
         
         objectsToSave.add(ee1);
 
         EventEntity ee2 = new EventEntity();
         ee2.setId(UUID.randomUUID().toString());
-        ee2.setEventtype("Bruiloft");
-        ee2.setEventcompany("Bedrijf2");
-        ee2.setEventname("Bruiloft Elias en Julie");
+        ee2.setEventtype("Trouw");
+        ee2.setEventcompany("Bedrijf 2");
+        ee2.setEventname("Bruiloft Elias en Marjolein");
         //Heel belangrijk, datums moeten voor standaardevenementen worden aangemaakt, anders krijg je EJB exceptions.
         startDateInString = "03/05/2015";
         startTimeInString = "16:15";
@@ -248,8 +248,8 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ee2.setLocationName("Bungie");
-        ee2.setCustomerName("Tsjakaaa");
+        ee2.setLocationName("Elias' thuis");
+        ee2.setCustomerName("Piet");
         objectsToSave.add(ee2);
 
         EventcompanyEntity ece1 = new EventcompanyEntity();
