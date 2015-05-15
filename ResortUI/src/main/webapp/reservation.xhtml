@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
         <ui:composition template="./common/template.xhtml">
@@ -21,9 +22,10 @@
                 </ui:fragment>
                 
                 <h2>Reservatie boeken of aanpassen</h2>
-                <h:form class="input-form">
+                <h:form id="frmReservation" class="input-form">
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
                     <h:inputHidden value="${reservation.dto.detail.id}"/>
+                    
                     <div class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Startdatum</span>
@@ -36,7 +38,8 @@
             
                         </div>
                     </div>    
-                     <div class="col-md-6-l">
+                    
+                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Starttijd</span>
                            <h:inputText label="Starttijd" 
@@ -47,7 +50,7 @@
                                 </h:inputText>
                         </div>
                     </div>          
-                    <div class="col-md-6-r"> 
+                    <div class="col-md-6-l"> 
                         <div class="input-group">
                             <span class="input-group-addon">Einddatum</span>
 <!--                            <h:inputText label="Reservatie einddatum" value="${reservation.dto.detail.endDate}" class="form-control" required="true" validatorMessage="De einddatum moet in het formaat dd/mm/yyyy">
@@ -75,7 +78,7 @@
                     <div class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Klant</span>
-                    <p:selectOneMenu required="true" id="Klant" value="${reservation.dto.detail.customerName}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een klant toe te kiezen.">
+                    <p:selectOneMenu required="true" id="Klant" value="${reservation.dto.detail.customerName}" requiredMessage="Gelieve een klant toe te kiezen.">
                     <f:selectItem itemLabel="Kies klant" itemValue="${customerName}" noSelectionOption="true" />
                     <f:selectItems value="${reservation.dto.customerList}" />
                      </p:selectOneMenu>
@@ -84,7 +87,7 @@
                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Bungalow</span>
-                    <p:selectOneMenu required="true" id="Bungalow" value="${reservation.dto.detail.bungalowName}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een bungalow toe te wijzen.">
+                    <p:selectOneMenu required="true" id="Bungalow" value="${reservation.dto.detail.bungalowName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
                     <f:selectItem itemLabel="Kies bungalow" itemValue="${bungalowName}" noSelectionOption="true" />
                     <f:selectItems value="${reservation.dto.bungalowList}" />
                      </p:selectOneMenu>
@@ -98,8 +101,9 @@
                 </h:form> 
                 <br/><br/>
                 <h2>Reservatieoverzicht</h2>
+                <div id="tblReservationContainer">
                 <ui:include src="dataTables/tableReservation.xhtml"></ui:include>
-
+                </div>
             </ui:define>
 
         </ui:composition>
