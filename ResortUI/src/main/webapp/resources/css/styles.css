@@ -387,33 +387,6 @@ ul{
    width:72%;
 }
 
-#bungalowstyle li{
-   text-align: center;
-   float:left;
-   width:49%;
-   background-color: rgba(255,255,255,0.55);
-   margin-bottom:25px;
-   margin-left:0px;
-}
-#bungalowstyle li:nth-child(2n) {
-    margin-left:2%;
-}
-
-#bungalowstyle li h3{
-    padding-bottom:10px;
-}
-#bungalowstyle li img{
-   width:400px;
-   height:300px;
-}
-#bungalowstyle li p{
-   padding-top:10px;
-   text-align:left;
-   margin-left:auto;
-   margin-right: auto;
-   width:70%;
-}
-
 .contactname a li{
     color: black;
     margin: 5px;
@@ -490,8 +463,32 @@ footer p{
     color:blue;
 }
 
-#bungalowstyle li{
-    height: 566px !important;
+#bungalowtypes li{
+   text-align: center;
+   float:left;
+   width:49%;
+   background-color: rgba(255,255,255,0.55);
+   margin-bottom:25px;
+   margin-left:0px;
+   height: 566px;
+}
+#bungalowtypes li:nth-child(2n) {
+    margin-left:2%;
+}
+
+#bungalowtypes li h3{
+    padding-bottom:10px;
+}
+#bungalowtypes li img{
+   width:400px;
+   height:300px;
+}
+#bungalowtypes li p{
+   padding-top:10px;
+   text-align:left;
+   margin-left:auto;
+   margin-right: auto;
+   width:70%;
 }
 
 footer #footerbuttons li a{
@@ -504,19 +501,86 @@ footer #footerbuttons li h3 {
   margin-top: 25px;
 }
 
-.overview li{
+#parktypes li{
     float: none;
     padding-bottom: 20px;
 }
 
-.overview li h3 {
+#parktypes li h3 {
     padding-top: 40px;
 }
 
-.overview li p {
+#parktypes li p {
   padding-top: 30px;
   padding-bottom: 25px;
   text-align: left;
   width: 800px;
   margin: 0 auto;
+}
+
+#contactstyle li{
+    float: left;
+}
+
+#contactstyle li:nth-child(1n){
+    width: 48.5%;
+}
+
+#contactstyle li:nth-child(1n) img{
+    width: 72%;
+    height: auto;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+#contactstyle li:nth-child(2n){
+    padding-bottom: 35px;
+}
+
+#contactstyle li:nth-child(2n),#contactstyle li:nth-child(3n){
+    width: 48.5%;
+    margin-left: 3%;
+}
+
+#contact{
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+#contact .control-group{
+    margin-bottom: 10px;
+}
+
+#contactnames{
+    width: 72%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+#contactstyle #contactnames li{
+    float: left;
+    width: 48.5%;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+#contactstyle #contactnames li:nth-child(2n),#contactstyle #contactnames li:nth-child(4n),#contactstyle #contactnames li:nth-child(6n),#contactstyle #contactnames li:nth-child(8n){
+    margin-left: 3%;
+}
+
+#contactstyle #contactnames li a{
+    color: black;
+    width: 100%;
+    display: inline-block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+#contactstyle #contactnames li a:hover{
+    background-color: #1584DE;
+    color: white;
+    text-decoration: none;
 }
