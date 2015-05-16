@@ -11,6 +11,8 @@ public class ReservationListDetailDto {
     private String endTime;
     private String bungalowName;
     private String customerName;
+    private String parkName;
+    
     public String getId() {
         return id;
     }
@@ -66,4 +68,14 @@ public class ReservationListDetailDto {
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }    
+
+    public String getParkName() {
+        return parkName;
+    }
+
+    public void setParkName(String parkName) {
+        this.parkName = parkName;
+    }
+    
+    
 }

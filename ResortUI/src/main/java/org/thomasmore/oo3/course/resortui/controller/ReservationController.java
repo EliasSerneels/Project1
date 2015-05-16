@@ -14,8 +14,10 @@ import org.primefaces.event.SelectEvent;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.ReservationEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
 import org.thomasmore.oo3.course.resortui.dao.BungalowDao;
 import org.thomasmore.oo3.course.resortui.dao.CustomerDao;
+import org.thomasmore.oo3.course.resortui.dao.ParkDao;
 import org.thomasmore.oo3.course.resortui.dao.ReservationDao;
 import org.thomasmore.oo3.course.resortui.model.ReservationDetailDto;
 import org.thomasmore.oo3.course.resortui.model.ReservationListDetailDto;
@@ -32,6 +34,8 @@ public class ReservationController {
     private BungalowDao bungalowsDao;
     @EJB
     private CustomerDao customersDao;
+        @EJB
+   private ParkDao parkDao;
 
     private List<BungalowEntity> bungalows;
     private List<ReservationEntity> selectedReservation;
@@ -53,7 +57,16 @@ public class ReservationController {
         }
 
         for (BungalowEntity bungalow : bungalows) {
+            
             dto.getBungalowList().add(bungalow.getName());
+        }
+        
+          List<ParkEntity> parks = parkDao.listAll();
+
+        
+           for (ParkEntity park : parks) {
+               
+            dto.getParkList().add(park.getName());
         }
 
         for (ReservationEntity reservation : reservations) {
@@ -65,6 +78,9 @@ public class ReservationController {
             listDetail.setEndTime(reservation.getEndTime());
             listDetail.setCustomerName(reservation.getCustomerName());
             listDetail.setBungalowName(reservation.getBungalowName());
+            listDetail.setParkName(reservation.getParkName());
+
+        
             dto.getList().add(listDetail);
         }
     }
@@ -80,6 +96,8 @@ public class ReservationController {
         reservationEntity.setEndTime(dto.getDetail().getEndTime());
         reservationEntity.setCustomerName(dto.getDetail().getCustomerName());
         reservationEntity.setBungalowName(dto.getDetail().getBungalowName());
+        reservationEntity.setParkName(dto.getDetail().getParkName());
+
         reservationsDao.save(reservationEntity);
         BungalowEntity be = null;
         for (BungalowEntity bungalow : bungalows) {
