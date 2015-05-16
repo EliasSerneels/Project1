@@ -23,6 +23,11 @@
             <p:column id="bungalowname" headerText="Bungalownaam" sortBy="#{listDetail.bungalowName}" filterBy="#{listDetail.bungalowName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.bungalowName}"/>
             </p:column>
+            
+            <p:column id="parkname" headerText="Parknaam" sortBy="#{listDetail.parkName}" filterBy="#{listDetail.parkName}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.parkName}"/>
+            </p:column>
+            
             <p:column id="customername" headerText="Klantnaam" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>

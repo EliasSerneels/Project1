@@ -23,7 +23,7 @@ import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import org.primefaces.context.RequestContext;
+
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -65,8 +65,6 @@ public class EventFacade implements Serializable{
     private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     private final SimpleDateFormat dateDate = new SimpleDateFormat("dd/MM/yyyy");
     private final SimpleDateFormat dateTime = new SimpleDateFormat("HH:mm");
-    
-    private boolean startAfterEnd,doubleBooking;
 
     @PostConstruct
     public void init() {
@@ -151,7 +149,29 @@ public class EventFacade implements Serializable{
         }
         return dto;
     }
+    
+    public String checkBooking(EventPageDto dto){
+        
+        // Check of begintijd na eindtijd komt
+        if(dto.getDetail().getStartDate().after(dto.getDetail().getEndDate())){  
+            return "begindateAfterEnddate";
+        }
+        
+        // Dubbele boeking nagaan
+        List<EventEntity> eventsdc = eventDao.listAll();
+        for (EventEntity evnt : eventsdc) {
+                System.out.println(dto.getDetail().getEndDate().before(evnt.getEndDate()) + ", " + dto.getDetail().getStartDate().after(evnt.getStartDate()) + ", " +  dto.getDetail().getLocationName().equals(evnt.getLocationName()));
+                // Checkt of datum en tijd tussen een reeds geboekte tijd ligt voor een bepaalde locatie
+                // OPGELET! De !=null moet aanwezig zijn want anders wordt een nullpointer gegeven wanneer vergeleken wordt met een lege waarde
+                if(evnt.getStartDate()!=null && evnt.getEndDate()!=null && dto.getDetail().getEndDate().before(evnt.getEndDate()) && dto.getDetail().getStartDate().after(evnt.getStartDate()) &&  dto.getDetail().getLocationName().equals(evnt.getLocationName()) ){
+                    return "doubleBooking";
+                }
+        }
 
+        add(dto);
+        return "";
+    }
+    
     public EventPageDto add(EventPageDto dto) {
 
         EventEntity eventEntity = null;
@@ -161,30 +181,6 @@ public class EventFacade implements Serializable{
             dto.getDetail().setId(UUID.randomUUID().toString());
         } else {
             eventEntity = eventDao.findById(dto.getDetail().getId());
-        }
-        
-        // Dubbele boeking nagaan
-        List<EventEntity> eventsdc = eventDao.listAll();
-        for (EventEntity evnt : eventsdc) {
-                // Checkt of datum en tijd tussen een reeds geboekte tijd ligt voor een bepaalde locatie
-                // OPGELET! De !=null moet aanwezig zijn want anders wordt een nullpointer gegeven wanneer vergeleken wordt met een lege waarde
-                if(evnt.getStartDate()!=null && evnt.getEndDate()!=null && dto.getDetail().getEndDate().before(evnt.getEndDate()) && dto.getDetail().getStartDate().after(evnt.getStartDate()) && dto.getDetail().getEndTime().before(evnt.getEndTime()) && dto.getDetail().getStartTime().after(evnt.getStartTime()) &&  dto.getDetail().getLocationName().equals(evnt.getLocationName()) ){
-                    System.out.println("** DUBBELE BOEKING...");
-                    this.setDoubleBooking(startAfterEnd);
-                    return null;
-                }
-        }
-       
-        // Check of begintijd na eindtijd komt
-        if(dto.getDetail().getStartDate().after(dto.getDetail().getEndDate())){
-            this.setStartAfterEnd(startAfterEnd);
-            System.out.println("** begindatum > einddatum");
-            
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            FacesMessage facesMessage = new FacesMessage("Dubbele boeking");
-            facesContext.addMessage(null, facesMessage);
-            
-            return null;
         }
         
         if (eventEntity == null) {
@@ -210,22 +206,6 @@ public class EventFacade implements Serializable{
         LoadSchedule();
    
         return dto;
-    }
-    
-    public boolean isStartAfterEnd() {
-        return startAfterEnd;
-    }
-
-    public void setStartAfterEnd(boolean startAfterEnd) {
-        this.startAfterEnd = startAfterEnd;
-    }
-
-    public boolean isDoubleBooking() {
-        return doubleBooking;
-    }
-
-    public void setDoubleBooking(boolean doubleBooking) {
-        this.doubleBooking = doubleBooking;
     }
     
     // VANAF HIER ALLE METHODEN VAN SCHEDULE

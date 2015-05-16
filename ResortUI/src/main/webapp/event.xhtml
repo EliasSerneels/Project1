@@ -20,10 +20,10 @@
             </ui:fragment>
             
             <h:form>  
-                <p:growl id="messages" showDetail="true" />
+                <p:growl id="messages" showDetail="false" />
  
-                <h:panelGrid columnClasses="value">
-                    <h3 style="margin-top: 0">Aanpasbare kalender</h3>                        
+                <h2>Aanpasbare kalender</h2>   
+                                
                     <p:schedule id="schedule" value="#{eventFacade.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+1" timeFormat="HH:mm">
 
                         <p:ajax event="dateSelect" listener="#{eventFacade.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
@@ -52,7 +52,7 @@
                     
                     </style>
 
-                </h:panelGrid>
+               
  
                 <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
@@ -89,7 +89,7 @@
                                 <h:outputLabel for="Einddatum" value="Einddatum:" />
                         </p:row>
                         <p:row>
-                                <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" value="${event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
+                                <p:calendar pattern="dd/MM/yyyy" id="popup2" locale="nl" value="${event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
                                 <p:inputMask id="Eindtijd" placeholder="Eindtijd"  value="#{event.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
                                     <f:convertDateTime pattern="HH:mm" timeZone="GMT+0"/>
                                 </p:inputMask>

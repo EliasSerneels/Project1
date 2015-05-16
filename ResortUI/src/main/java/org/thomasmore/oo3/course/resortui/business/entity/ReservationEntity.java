@@ -21,6 +21,17 @@ public class ReservationEntity extends BasicEntity {
     private String endTime;
     private String bungalowName;
     private String customerName;
+    private String parkName;
+
+    public String getParkName() {
+        return parkName;
+    }
+
+    public void setParkName(String parkName) {
+        this.parkName = parkName;
+    }
+    
+    
 
     public Date getStartDate() {
         return startDate;

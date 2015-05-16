@@ -14,6 +14,18 @@ public class ReservationPageDto {
     private List<ReservationListDetailDto> list = new LinkedList<>();
     private List<String> customerList = new LinkedList<>();
     private List<String> bungalowList = new LinkedList<>();
+   private List<String> parkList = new LinkedList<>();
+
+    public List<String> getParkList() {
+        return parkList;
+    }
+
+    public void setParkList(List<String> parkList) {
+        this.parkList = parkList;
+    }
+
+   
+   
 
     public ReservationDetailDto getDetail() {
         return detail;

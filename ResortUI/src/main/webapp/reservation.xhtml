@@ -83,7 +83,19 @@
                     <f:selectItems value="${reservation.dto.customerList}" />
                      </p:selectOneMenu>
                         </div>
-                    </div>
+                                         </div>
+   
+                     <div class="col-md-6-r">
+                        <div class="input-group">
+                            <span class="input-group-addon">Park</span>
+                            <p:selectOneMenu required="true" id="Park" value="${reservation.dto.detail.parkName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
+                    <f:selectItem itemLabel="Kies park" itemValue="${parkName}" noSelectionOption="true" />
+                    <f:selectItems value="${reservation.dto.parkList}" />
+                     </p:selectOneMenu>
+                        </div>
+                </div>
+                         
+                  
                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Bungalow</span>
