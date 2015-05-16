@@ -5,37 +5,23 @@
  */
 package org.thomasmore.oo3.course.resortui.facade;
 
-
-import java.awt.event.ActionEvent;
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
 import javax.annotation.PostConstruct;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import org.primefaces.event.ScheduleEntryMoveEvent;
-import org.primefaces.event.ScheduleEntryResizeEvent;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.model.DefaultScheduleEvent;
-import org.primefaces.model.DefaultScheduleModel;
-import org.primefaces.model.ScheduleEvent;
-import org.primefaces.model.ScheduleModel;
 import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.LocationEntity;
+import org.thomasmore.oo3.course.resortui.controller.ScheduleController;
 import org.thomasmore.oo3.course.resortui.dao.CustomerDao;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
 import org.thomasmore.oo3.course.resortui.dao.EventcompanyDao;
@@ -49,6 +35,8 @@ import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 public class EventFacade implements Serializable{
 
     @EJB
+    private ScheduleController schedulecontroller;
+    @EJB
     private EventDao eventDao;
     @EJB
     private EventcompanyDao eventcompanyDao;
@@ -59,16 +47,9 @@ public class EventFacade implements Serializable{
     @EJB
     private CustomerDao customerDao;
     
-    private ScheduleModel eventModel;
-    private ScheduleEvent event = new DefaultScheduleEvent();
-
-    private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-    private final SimpleDateFormat dateDate = new SimpleDateFormat("dd/MM/yyyy");
-    private final SimpleDateFormat dateTime = new SimpleDateFormat("HH:mm");
-
     @PostConstruct
     public void init() {
-        LoadSchedule();
+        schedulecontroller.LoadEventSchedule();
     }
     
     public EventPageDto loadEventOverviewPage(String editId, String deleteId) {
@@ -129,16 +110,16 @@ public class EventFacade implements Serializable{
             listDetail.setLocationName(event.getLocationName());  
 
             // Datum formateren
-            listDetail.setStartDateFormatted(DateAndTime(event.getStartDate(), event.getStartTime()));
-            listDetail.setEndDateFormatted(DateAndTime(event.getEndDate(), event.getEndTime()));
+            listDetail.setStartDateFormatted(schedulecontroller.DateAndTime(event.getStartDate(), event.getStartTime()));
+            listDetail.setEndDateFormatted(schedulecontroller.DateAndTime(event.getEndDate(), event.getEndTime()));
 
             try {
-                listDetail.setStartDate(dateSimple.parse(listDetail.getStartDateFormatted()));
-                listDetail.setEndDate(dateSimple.parse(listDetail.getEndDateFormatted()));
+                listDetail.setStartDate(schedulecontroller.parseDate(listDetail.getStartDateFormatted()));
+                listDetail.setStartDate(schedulecontroller.parseDate(listDetail.getEndDateFormatted()));
             } catch (ParseException ex) {
                 Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             listDetail.setStartDate(event.getStartTime());
             listDetail.setEndDate(event.getEndTime());
             // Tot hier wordt datum geformateerd
@@ -203,114 +184,8 @@ public class EventFacade implements Serializable{
         
         eventDao.save(eventEntity);
         
-        LoadSchedule();
+        schedulecontroller.LoadEventSchedule();
    
         return dto;
     }
-    
-    // VANAF HIER ALLE METHODEN VAN SCHEDULE
-     
-    public Date getInitialDate() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR), Calendar.FEBRUARY, calendar.get(Calendar.DATE), 0, 0, 0);
-         
-        return calendar.getTime();
-    }
-     
-    public ScheduleModel getEventModel() {
-        return eventModel;
-    }
-     
-    public ScheduleEvent getEvent() {
-        return event;
-    }
- 
-    public void setEvent(ScheduleEvent event) {
-        this.event = event;
-    }
-     
-    public void addEvent(ActionEvent actionEvent) {
-        if(event.getId() == null)
-            eventModel.addEvent(event);
-        else
-            eventModel.updateEvent(event);
-         
-        event = new DefaultScheduleEvent();
-    }
-     
-    public void onEventSelect(SelectEvent selectEvent) {
-        event = (ScheduleEvent) selectEvent.getObject();
-    }
-     
-    public void onDateSelect(SelectEvent selectEvent) {
-        event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
-    }
-     
-    public void onEventMove(ScheduleEntryMoveEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
-         
-        addMessage(message);
-    }
-     
-    public void onEventResize(ScheduleEntryResizeEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
-         
-        addMessage(message);
-    }
-     
-    private void addMessage(FacesMessage message) {
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-    
-    private String DateAndTime(Date date, Date time){
-        
-        Date adjustedTime = time;
-        String convertedDate = dateDate.format(date) + " " + dateTime.format(adjustedTime);
-           
-        return convertedDate;
-    }
-
-    public void LoadSchedule(){
-        eventModel = new DefaultScheduleModel();
-        // Dubbele boeking nagaan
-        List<EventEntity> eventschedule = eventDao.listAll();
-        
-        // Deze waarden en list zijn nodig voor de kleuren te veranderen per locatie
-        String loc;
-        ArrayList<String> locList = new ArrayList<String>();
-
-        for (EventEntity evnt : eventschedule) { 
-            // Check of de locatie al in de lijst zit
-            if(!locList.contains(evnt.getLocationName()) ) {
-                locList.add(evnt.getLocationName());
-             }
-            
-            // Datum formateren
-            evnt.setStartDateFormatted(DateAndTime(evnt.getStartDate(), evnt.getStartTime()));
-            evnt.setEndDateFormatted(DateAndTime(evnt.getEndDate(), evnt.getEndTime()));
-            
-            // Geformateerde datum in event steken
-            try {
-                Date startDate = dateSimple.parse(evnt.getStartDateFormatted());
-                Date endDate = dateSimple.parse(evnt.getEndDateFormatted());
-                
-                loc = "loc"+String.valueOf(locList.indexOf(evnt.getLocationName()));
-                DefaultScheduleEvent evento = new DefaultScheduleEvent (evnt.getEventname(),startDate,endDate,loc);
-                eventModel.addEvent(evento);
-            } catch (ParseException ex) {
-                Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-
-        }
-    }
-    
-    public Date dateTime(Date date, Date time) {
-        return new Date(
-                     date.getYear(), date.getMonth(), date.getDay(), 
-                     time.getHours(), time.getMinutes(), time.getSeconds()
-                   );
-    }
-    
 }
