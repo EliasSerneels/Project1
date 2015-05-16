@@ -22,7 +22,7 @@
             <h:form>  
                 <p:growl id="messages" showDetail="false" />
  
-                <h2>Aanpasbare kalender</h2>   
+                <h2>Kalender</h2>   
                                 
                     <p:schedule id="schedule" value="#{scheduler.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+1" timeFormat="HH:mm">
 
@@ -50,9 +50,7 @@
                     .loc14, .loc14 .fc-event-skin, .loc14 a{background-color:#9966FF; border:0px;}
                     .loc15, .loc15 .fc-event-skin, .loc15 a{background-color:#CC3333; border:0px;}
                     
-                    </style>
-
-               
+                    </style>  
  
                 <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
@@ -61,7 +59,7 @@
                                 <h:outputLabel for="Evenementnaam" value="Evenementnaam:" />
                         </p:row>
                         <p:row>                                 
-                                                                <!--eventFacade.event.startDate-->
+                                                                eventFacade.event.startDate
                                 <p:inputText id="Evenementnaam" value="#{event.dto.detail.eventname}" required="true" />
                         </p:row>
                                               
@@ -79,9 +77,9 @@
                                 <h:outputLabel for="Startdatum" value="Startdatum:" />
                         </p:row>
                         <p:row>
-                                <p:calendar pattern="dd/MM/yyyy" id="popup1"  locale="nl" value="${event.dto.detail.startDate}" required="true" requiredMessage="Gelieve een startdatum in te vullen."/>
-                                <p:inputMask id="Begintijd" placeholder="Starttijd"  value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
-                                    <f:convertDateTime pattern="HH:mm" timeZone="GMT+0" />
+                                <p:calendar pattern="dd/MM/yyyy" id="startdatum" locale="nl" value="${event.dto.detail.startDate}" required="true" requiredMessage="Gelieve een startdatum in te vullen."/>
+                                <p:inputMask id="Starttijd" placeholder="Starttijd"  value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
+                                    <f:convertDateTime pattern="HH:mm" timeZone="GMT+0"/>
                                 </p:inputMask>
                         </p:row>
 
@@ -165,7 +163,7 @@
                         <div id="frmEventStartdatum" class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Startdatum</span>
-                            <p:calendar id="date" value="#{event.dto.detail.startDate}"  pattern="dd/MM/yyyy" />
+                            <p:calendar id="date" value="#{event.dto.detail.startDate}" locale="nl" pattern="dd/MM/yyyy" />
                                 <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
                                     <f:convertDateTime pattern="HH:mm" />
                                 </p:inputMask>

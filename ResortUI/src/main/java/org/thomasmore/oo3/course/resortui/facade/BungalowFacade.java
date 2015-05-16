@@ -7,27 +7,33 @@ package org.thomasmore.oo3.course.resortui.facade;
 
 import java.util.List;
 import java.util.UUID;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
+import org.thomasmore.oo3.course.resortui.controller.ScheduleController;
 import org.thomasmore.oo3.course.resortui.dao.BungalowDao;
 import org.thomasmore.oo3.course.resortui.dao.ParkDao;
 import org.thomasmore.oo3.course.resortui.model.BungalowListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
 
-/**
- *
- * @author Elias Serneels
- */
+
 @Stateless
 public class BungalowFacade {
-
+    
+    @EJB
+    private ScheduleController schedulecontroller;
     @EJB
     private BungalowDao bungalowDao;
     @EJB
     private ParkDao parkDao;
 
+    @PostConstruct
+    public void init() {
+        schedulecontroller.LoadBungalowSchedule();
+    }
+    
     public BungalowPageDto loadBungalowOverviewPage(String editId, String deleteId) {
         BungalowPageDto dto = new BungalowPageDto();
 

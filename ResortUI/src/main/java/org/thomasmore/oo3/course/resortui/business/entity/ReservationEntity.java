@@ -15,14 +15,48 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ReservationEntity extends BasicEntity {
 
-    private Date startDate;
-    private String startTime;
-    private Date endDate;
-    private String endTime;
     private String bungalowName;
     private String customerName;
     private String parkName;
+    private Date startDate;
+    private Date endDate;
+    private Date startTime;
+    private Date endTime;
+    private String startDateFormatted;
+    private String endDateFormatted;
 
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public String getStartDateFormatted() {
+        return startDateFormatted;
+    }
+
+    public void setStartDateFormatted(String startDateFormatted) {
+        this.startDateFormatted = startDateFormatted;
+    }
+
+    public String getEndDateFormatted() {
+        return endDateFormatted;
+    }
+
+    public void setEndDateFormatted(String endDateFormatted) {
+        this.endDateFormatted = endDateFormatted;
+    }
+    
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+    
     public String getParkName() {
         return parkName;
     }
@@ -30,8 +64,6 @@ public class ReservationEntity extends BasicEntity {
     public void setParkName(String parkName) {
         this.parkName = parkName;
     }
-    
-    
 
     public Date getStartDate() {
         return startDate;
@@ -41,28 +73,12 @@ public class ReservationEntity extends BasicEntity {
         this.startDate = startDate;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
     public Date getEndDate() {
         return endDate;
     }
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
     }
 
     public String getBungalowName() {

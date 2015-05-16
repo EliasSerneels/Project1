@@ -311,22 +311,52 @@ public class initDbStartup {
        ReservationEntity re1 = new ReservationEntity();
        re1.setBungalowName("Doos");
        re1.setCustomerName("Thomas Coenen");
-       re1.setStartTime("16:55");
-       re1.setEndTime("19:45");
+       startDateInString = "05/05/2015";
+       startTimeInString = "15:14";
+       endDateInString = "10/05/2015";
+       endTimeInString = "16:14";
+        try {
+            re1.setStartDate(dateSimple.parse(startDateInString));
+            re1.setStartTime(timeSimple.parse(startTimeInString));
+            re1.setEndDate(dateSimple.parse(endDateInString));
+            re1.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
        objectsToSave.add(re1);
        
        ReservationEntity re2 = new ReservationEntity();
        re2.setBungalowName("Standaard");
        re2.setCustomerName("Piet Uyttebroeck");
-       re2.setStartTime("09:00");
-       re2.setEndTime("20:00");
+       startDateInString = "03/05/2015";
+        startTimeInString = "16:15";
+        endDateInString = "05/05/2015";
+        endTimeInString = "17:14";
+        try {
+            re2.setStartDate(dateSimple.parse(startDateInString));
+            re2.setStartTime(timeSimple.parse(startTimeInString));
+            re2.setEndDate(dateSimple.parse(endDateInString));
+            re2.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
        objectsToSave.add(re2);
        
        ReservationEntity re3 = new ReservationEntity();
        re3.setBungalowName("Luxe");
        re3.setCustomerName("Jos Janssens");
-       re3.setStartTime("10:00");
-       re3.setEndTime("16:30");
+       startDateInString = "13/05/2015";
+        startTimeInString = "16:15";
+        endDateInString = "15/05/2015";
+        endTimeInString = "17:14";
+        try {
+            re3.setStartDate(dateSimple.parse(startDateInString));
+            re3.setStartTime(timeSimple.parse(startTimeInString));
+            re3.setEndDate(dateSimple.parse(endDateInString));
+            re3.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
        objectsToSave.add(re3);
        
        LocationEntity le1 = new LocationEntity();

@@ -6,15 +6,49 @@ import java.util.Date;
 public class ReservationListDetailDto {
     private String id;
     private Date startDate;
-    private String startTime;
+    private Date startTime;
     private Date endDate;
-    private String endTime;
+    private Date endTime;
     private String bungalowName;
     private String customerName;
     private String parkName;
+    private String startDateFormatted;
+    private String endDateFormatted;
     
     public String getId() {
         return id;
+    }
+
+    public String getStartDateFormatted() {
+        return startDateFormatted;
+    }
+
+    public void setStartDateFormatted(String startDateFormatted) {
+        this.startDateFormatted = startDateFormatted;
+    }
+
+    public String getEndDateFormatted() {
+        return endDateFormatted;
+    }
+
+    public void setEndDateFormatted(String endDateFormatted) {
+        this.endDateFormatted = endDateFormatted;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public void setId(String id) {
@@ -29,28 +63,12 @@ public class ReservationListDetailDto {
         this.startDate = startDate;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
     public Date getEndDate() {
         return endDate;
     }
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
     }
 
     public String getBungalowName() {

@@ -27,8 +27,9 @@ import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.ReservationEntity;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
-import org.thomasmore.oo3.course.resortui.facade.EventFacade;
+import org.thomasmore.oo3.course.resortui.dao.ReservationDao;
 
 @Named(value = "scheduler")
 @Stateless
@@ -36,12 +37,15 @@ public class ScheduleController {
         
     @EJB
     private EventDao eventDao;
+    @EJB
+    private ReservationDao reservationDao;
     
     private final SimpleDateFormat dateSimple = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     private final SimpleDateFormat dateDate = new SimpleDateFormat("dd/MM/yyyy");
     private final SimpleDateFormat dateTime = new SimpleDateFormat("HH:mm");
 
     private ScheduleModel eventModel;
+    private ScheduleModel reservationModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
     
     public Date getInitialDate() {
@@ -50,7 +54,15 @@ public class ScheduleController {
          
         return calendar.getTime();
     }
-     
+
+    public ScheduleModel getReservationModel() {
+        return reservationModel;
+    }
+
+    public void setReservationModel(ScheduleModel reservationModel) {
+        this.reservationModel = reservationModel;
+    }
+    
     public ScheduleModel getEventModel() {
         return eventModel;
     }
@@ -135,6 +147,7 @@ public class ScheduleController {
             evnt.setEndDateFormatted(DateAndTime(evnt.getEndDate(), evnt.getEndTime()));
             
             // Geformateerde datum in event steken
+
             try {
                 Date startDate = dateSimple.parse(evnt.getStartDateFormatted());
                 Date endDate = dateSimple.parse(evnt.getEndDateFormatted());
@@ -143,9 +156,44 @@ public class ScheduleController {
                 DefaultScheduleEvent evento = new DefaultScheduleEvent (evnt.getEventname(),startDate,endDate,loc);
                 eventModel.addEvent(evento);
             } catch (ParseException ex) {
-                Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
             }
+               
+        }
+    }
+    
+    public void LoadBungalowSchedule(){
+        reservationModel = new DefaultScheduleModel();
+        // Dubbele boeking nagaan
+        List<ReservationEntity> reservationschedule = reservationDao.listAll();
+        
+        // Deze waarden en list zijn nodig voor de kleuren te veranderen per locatie
+        String loc;
+        ArrayList<String> locList = new ArrayList<String>();
 
+        for (ReservationEntity res : reservationschedule) { 
+            // Check of de locatie al in de lijst zit
+            if(!locList.contains(res.getBungalowName()) ) {
+                locList.add(res.getBungalowName());
+             }
+            
+            // Datum formateren
+            res.setStartDateFormatted(DateAndTime(res.getStartDate(), res.getStartTime()));
+            res.setEndDateFormatted(DateAndTime(res.getEndDate(), res.getEndTime()));
+            
+            // Geformateerde datum in event steken
+        
+                Date startDate;
+            try {
+                startDate = dateSimple.parse(res.getStartDateFormatted());
+                Date endDate = dateSimple.parse(res.getEndDateFormatted());
+                loc = "loc"+String.valueOf(locList.indexOf(res.getBungalowName()));
+                DefaultScheduleEvent evento = new DefaultScheduleEvent (res.getBungalowName(),startDate,endDate,loc);
+                reservationModel.addEvent(evento);
+
+            } catch (ParseException ex) {
+                Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }
