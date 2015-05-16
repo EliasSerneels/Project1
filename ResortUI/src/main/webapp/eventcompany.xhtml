@@ -25,7 +25,7 @@
 
                 <h:form>
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
-                    <ul class="change-form">
+                    <ul id="lstEventcompanyChange" class="change-form">
                         <li>
                             <h:inputHidden value="${eventcompany.dto.detail.id}"/>
                             <div class="inputinfo">Naam</div>
@@ -89,10 +89,11 @@
                 </h:form>
                 <br/><br/>
                 <h1>Eventcompany</h1>
+                <div id="tblEventcompanyContainer">
                 <p:dataTable var="listDetail" value="#{eventcompany.dto.list}" class="overview">                          
 
 
-                    <p:column headerText="Id" sortBy="#{listDetail.id}">
+                    <p:column headerText="Id" class="eventcompanyIds" sortBy="#{listDetail.id}">
                         <h:outputText value="#{listDetail.id}"/>
                     </p:column>
                     <p:column headerText="Naam" sortBy="#{listDetail.name}">
@@ -116,7 +117,7 @@
                         <a href="eventcompany.xhtml?delete=${listDetail.id}" class=" btn btn-primary">delete</a>
                     </p:column> 
                 </p:dataTable>   
-
+                </div>        
             </ui:define>
 
         </ui:composition>
