@@ -13,7 +13,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.primefaces.context.RequestContext;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.facade.EventFacade;
 import org.thomasmore.oo3.course.resortui.model.EventPageDto;
@@ -23,7 +22,6 @@ import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 public class EventController {
 
     private EventPageDto dto;
-    private String pageRedirect="event.xhtml?faces-redirect=true";
     private String pageEdit="event.xhtml?edit=${listDetail.id}";
     private List<EventEntity> selectedEvent;
 
@@ -36,30 +34,31 @@ public class EventController {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
-        dto = eventFacade.loadEventOverviewPage(editId, deleteId);
         
+        dto = eventFacade.loadEventOverviewPage(editId, deleteId);  
     }
     
     public String add() {
         
-        // Voorlopige oplossing
-        eventFacade.add(dto);
-
-        // Werkt nog niet
-        if(eventFacade.isStartAfterEnd()){
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            FacesMessage facesMessage = new FacesMessage("De startdatum/tijd komt na de gekozen einddatum/tijd.");
-            facesContext.addMessage(null, facesMessage);
-            
-        }else if(eventFacade.isDoubleBooking()){
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            FacesMessage facesMessage = new FacesMessage("De gekozen bungalow is die datum reeds bezet. Gelieve een andere datum te selecteren.");
-            facesContext.addMessage(null, facesMessage);
-            
-        }   
-
-        
-        return pageRedirect;
+        String check = eventFacade.checkBooking(dto);
+        switch (check) {
+            case "begindateAfterEnddate":
+            {
+                FacesContext facesContext = FacesContext.getCurrentInstance();
+                FacesMessage facesMessage = new FacesMessage("De gekozen begindatum is later dan de gekozen einddatum.");
+                facesContext.addMessage(null, facesMessage);
+                return null;
+            }
+            case "doubleBooking":
+                {
+                    FacesContext facesContext = FacesContext.getCurrentInstance();
+                    FacesMessage facesMessage = new FacesMessage("De gekozen locatie is reeds bezet voor deze datum. Gelieve een andere datum te kiezen.");
+                    facesContext.addMessage(null, facesMessage);
+                    return null;
+                }
+            default:
+                return "event.xhtml?faces-redirect=true";
+        }
     }
     
     public EventPageDto getDto() {
