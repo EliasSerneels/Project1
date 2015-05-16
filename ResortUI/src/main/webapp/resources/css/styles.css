@@ -603,6 +603,19 @@ footer #footerbuttons li h3 {
     font-size: 12px;
 }
 
+#tblParkContainer td:last-child a{
+    box-shadow: 0 1px 0 #53BCFF inset, 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid #168DD9;
+    text-transform: capitalize;
+    font-weight: bold;
+    border-radius: 4px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#27ABFF), color-stop(100%,#059EFF));
+    background: -webkit-linear-gradient(top, #27ABFF 0%,#059EFF 100%);
+    background: -o-linear-gradient(top, #27abff 0%,#059eff 100%);
+    background: -ms-linear-gradient(top, #27abff 0%,#059eff 100%);
+    background: linear-gradient(top, #27abff 0%,#059eff 100%);
+}
+
 #tblParkContainer tr th,#tblBungalowContainer tr th,#tblCustomerContainer tr th,#tblReservationContainer tr th,
 #tblEventContainer tr th{
     height: 45px;
