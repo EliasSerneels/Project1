@@ -169,16 +169,17 @@
                         </div>
                                          </div>
    
-                     <div class="col-md-6-r">
+                    <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Park</span>
                             <p:selectOneMenu required="true" id="Park" value="${reservation.dto.detail.parkName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
                     <f:selectItem itemLabel="Kies park" itemValue="${parkName}" noSelectionOption="true" />
                     <f:selectItems value="${reservation.dto.parkList}" />
+                    <p:ajax listener="${reservation.update(reservation.dto.detail.parkName)}" update="Bungalow" event="change" />
                      </p:selectOneMenu>
                         </div>
                 </div>
-                         
+                    
                   
                     <div class="col-md-6-r">
                         <div class="input-group">
@@ -189,6 +190,9 @@
                      </p:selectOneMenu>
                         </div>
                     </div>
+                    
+                    
+                    
                     <div class="col-md-12">
                         <div class="input-group">
                             <h:commandButton class="button" action="${reservation.add()}" value="Save" ></h:commandButton>
