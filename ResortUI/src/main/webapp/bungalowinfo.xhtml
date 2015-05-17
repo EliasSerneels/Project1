@@ -1,12 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      >
-
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./common/template.xhtml">
     <body>
         <div id="customerbody">
-            <ui:composition template="./common/template.xhtml">
 
                 <ui:define name="title">Info over onze Bungalows</ui:define>
                 <ui:define name="navbar">
@@ -16,46 +17,34 @@
 
                     <div class="overview" id="bungalowtypes">
 
-                        <ul class="infoBung">
-                            <li>
-                                <h3>Type 1</h3>
-                                <img src= "http://media-cdn.tripadvisor.com/media/photo-s/01/27/9a/f7/manta-bungalows.jpg" alt="Type 1" />
+                        
+                        
+                                 <h:form> 
+    <p:dataScroller id="bungalow" value="#{bungalow.dto.list}" class="overview" var="listDetail" chunkSize="10"  scrollHeight="500">
 
+        <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+           
+ 
+            <p:outputPanel>
+                <h:panelGrid class="overview" columns="1" cellpadding="5">
+                    <h:outputText value="#{listDetail.name} - #{listDetail.park}" style="font-weight: bold"/>
+ 
+                    <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.name}">  
+                <h:graphicImage class="overview" height="50" width="70" value="#{listDetail.imageID}"/>
+                    </h:outputLink>
+                    
+                    <h:outputText value="#{listDetail.description}"/>
 
-                                <p>Onze dakbungalow. De architecten waren te lui om een bungalow met zowel muren als dak te ontwerpen dus ze hebben de muren weggelaten. Daaruit is dus deze ingenieuse bungalowvorm ontstaan.</p>
-
-                            </li>
-
-                            <li>
-                                <h3>Type 2</h3>
-                                <img src="http://edventureproject.com/wp-content/uploads/2013/01/Bara-Beach-Bungalows-19.jpg" alt="Type 2" />
-
-                                <p>Dit is onze normale dagdagelijkse bungalow. Niets aan te zien. Als je goed kijkt misschien wel maar hoogstwaarschijnlijk niet, zelfs niet als je inzoomt. Tenzij je misschien een bovennatuurlijke gave hebt.</p>
-
-
-                            </li>
-
-                            <li>
-                                <h3>Type 3</h3>
-                                <img src="http://blog.sndimg.com/diy/maderemade/Ellen-Foord/Rust-OleumNeverWet/Step-One-Cardboard-Box.jpg" alt="Type 3" />
-
-                                <p>Onze kartonnendoos-bungalow is de crème de la crème van de kartonnen dozen. Dit type was sinds kort enkel beschikbaar in ons Type 2 park maar vanwege overwelmende populariteit hebben we ons aanbod aangepast naar alle parken!</p>
-
-
-                            </li>
-
-                            <li>
-                                <h3>Type 4</h3>
-                                <img src="http://media-cdn.tripadvisor.com/media/photo-s/02/62/56/8d/zimmer-seaview.jpg" alt="Type 4" />
-
-                                <p>Deze paalwoning-bungalow is ideaal in gebieden die vaak te kampen hebben met wateroverlast. Spijtig genoeg bevinden deze bungalows zich vanwege een planningsfout altijd boven op een berg.</p>
-
-                            </li>
-
-                        </ul>
+  
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+    </p:dataScroller>
+</h:form>
+                        
                     </div>	
                 </ui:define>
-            </ui:composition>
         </div>
     </body>
-</html>
+</ui:composition>
+

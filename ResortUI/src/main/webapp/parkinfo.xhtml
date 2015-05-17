@@ -1,11 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./common/template.xhtml">
+
 
     <body>
 
-        <ui:composition template="./common/template.xhtml">
 
             <ui:define name="title">Info over onze parken</ui:define>
             <ui:define name="navbar">
@@ -13,32 +17,32 @@
             </ui:define>
             <ui:define name="content">
                 <div class="overview" id="parktypes">	
-                    <ul class="infoBung">
-                        <li>
-                            <h3>Type 1</h3>
-                            <img src= "http://www.mrwallpaper.com/wallpapers/resort-bungalow-1600x900.jpg" alt="Type 1" />
+  
+                       <h:form> 
+    <p:dataScroller id="park" value="#{park.dto.list}" class="overview" var="listDetail" chunkSize="10"  scrollHeight="500">
 
+        <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+           
+ 
+            <p:outputPanel>
+                <h:panelGrid class="overview" columns="1" cellpadding="5">
+                    <h:outputText value="#{listDetail.name}" style="font-weight: bold"/>
+ 
+                    <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.name}">  
+                <h:graphicImage class="overview" height="50" width="70" value="#{listDetail.imageID}"/>
+                    </h:outputLink>
+                    
+                    <h:outputText value="#{listDetail.description}"/>
 
-                            <p>Ons park voor de rijkere mensen. Een verblijf in dit park is al mogelijk vanaf €68745 per persoon voor 1 nacht! Geniet van de ultieme luxe (zolang er geen orkaan langs komt)!
-                            </p>
-
-                        </li>
-
-                        <li>
-                            <h3>Type 2</h3>
-                            <img src="http://i.huffpost.com/gen/1441072/thumbs/o-GARBAGE-DUMP-facebook.jpg" alt="Type 2" />
-
-                            <p>Ons tweede park is nog maar net open en biedt een ongeëvenaard groepsgevoel voor al onze klanten. Iedereen slaapt in een kartonnen doos, zonder extra beschutting, buiten bij weer en wind. Ideaal voor teambuilding!
-                            </p>
-
-                        </li>
-
-
-                    </ul>
-
+  
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+    </p:dataScroller>
+</h:form>
 
                 </div>	
             </ui:define>
-        </ui:composition>
     </body>
-</html>
+            </ui:composition>
+
