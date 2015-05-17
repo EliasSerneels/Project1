@@ -18,8 +18,11 @@
                 <p:imageSwitch effect="fade" widgetVar="switcher" id="manuelSwitcher"
                                slideshowAuto="true">
 
-                    <ui:repeat value="#{index.images}" var="image" id="manuelSwitcherImages">
-                        <p:graphicImage value="resources/images/#{image}" id="image" height="460" width="860"/>
+                    <ui:repeat value="#{bungalow.dto.list}" var="listDetail" id="manuelSwitcherImages">
+                        <p:graphicImage value="#{listDetail.imageID}" id="image" height="460" width="860"/>
+                        
+                        
+
                     </ui:repeat>
                 </p:imageSwitch>
             </div>
