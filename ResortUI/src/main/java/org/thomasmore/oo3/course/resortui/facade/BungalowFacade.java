@@ -93,6 +93,7 @@ public class BungalowFacade {
         bungalowEntity.setType(dto.getDetail().getType());
         bungalowEntity.setPark(dto.getDetail().getPark());
         bungalowEntity.setMaxpeople(dto.getDetail().getMaxpeople());
+        bungalowEntity.setImageID(dto.getDetail().getImageID());
         bungalowDao.save(bungalowEntity);
         return dto;
     }
