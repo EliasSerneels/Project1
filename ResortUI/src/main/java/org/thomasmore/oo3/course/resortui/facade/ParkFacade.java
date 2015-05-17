@@ -81,6 +81,7 @@ public class ParkFacade {
         parkEntity.setLocation(dto.getDetail().getLocation());
         parkEntity.setCapacity(dto.getDetail().getCapacity());
         parkEntity.setBungalowName(dto.getDetail().getBungalowName());
+        parkEntity.setImageID(dto.getDetail().getImageID());
         parkDao.save(parkEntity);
         return dto;
     }
