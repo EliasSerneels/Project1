@@ -34,6 +34,16 @@ public class ParkEntity extends BasicEntity {
     private String name;
     private String bungalowName;
     private String imageID;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
 
     public String getImageID() {
         return imageID;

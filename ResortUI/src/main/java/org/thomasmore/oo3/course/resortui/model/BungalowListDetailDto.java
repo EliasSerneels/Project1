@@ -30,7 +30,17 @@ public class BungalowListDetailDto {
     private String park;
     private String maxpeople;
     private int reservations;
+    private String description;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
     public String getImageID() {
         return imageID;
     }

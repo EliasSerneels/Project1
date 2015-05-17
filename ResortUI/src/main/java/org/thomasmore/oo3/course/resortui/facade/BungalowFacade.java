@@ -55,6 +55,7 @@ public class BungalowFacade {
                 dto.getDetail().setPark(bungalowEntity.getPark());
                 dto.getDetail().setMaxpeople(bungalowEntity.getMaxpeople());
                 dto.getDetail().setImageID(bungalowEntity.getImageID());
+                dto.getDetail().setDescription(bungalowEntity.getDescription());
             }
         }
         List<BungalowEntity> bungalows = bungalowDao.listAll();
@@ -69,6 +70,7 @@ public class BungalowFacade {
             listDetail.setMaxpeople(bungalow.getMaxpeople());
             listDetail.setReservations(bungalow.getReservations());
             listDetail.setImageID(bungalow.getImageID());
+            listDetail.setDescription(bungalow.getDescription());
             dto.getList().add(listDetail);
         }
         return dto;
@@ -94,6 +96,7 @@ public class BungalowFacade {
         bungalowEntity.setPark(dto.getDetail().getPark());
         bungalowEntity.setMaxpeople(dto.getDetail().getMaxpeople());
         bungalowEntity.setImageID(dto.getDetail().getImageID());
+        bungalowEntity.setDescription(dto.getDetail().getDescription());
         bungalowDao.save(bungalowEntity);
         return dto;
     }

@@ -42,6 +42,7 @@ public class ParkFacade {
                 dto.getDetail().setLocation(parkEntity.getLocation());
                 dto.getDetail().setCapacity(parkEntity.getCapacity());
                 dto.getDetail().setImageID(parkEntity.getImageID());
+                dto.getDetail().setDescription(parkEntity.getDescription());
 
 
             }
@@ -55,6 +56,7 @@ public class ParkFacade {
             listDetail.setCapacity(park.getCapacity());
             listDetail.setBungalowName(park.getBungalowName());
             listDetail.setImageID(park.getImageID());
+            listDetail.setDescription(park.getDescription());
             dto.getList().add(listDetail);
         }
         
@@ -82,6 +84,7 @@ public class ParkFacade {
         parkEntity.setCapacity(dto.getDetail().getCapacity());
         parkEntity.setBungalowName(dto.getDetail().getBungalowName());
         parkEntity.setImageID(dto.getDetail().getImageID());
+        parkEntity.setDescription(dto.getDetail().getDescription());
         parkDao.save(parkEntity);
         return dto;
     }

@@ -60,10 +60,15 @@
                                          value="${park.dto.detail.imageID}" class="form-control"
                                          required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
                                        <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))$"/>
-
-                                      
                             </h:inputText>
-                            
+
+                        </li>
+                        
+                        <li>
+                                      
+                             <div class="inputinfo">Beschrijving Park</div>
+
+                             <p:inputTextarea class="form-control" value="${park.dto.detail.description}" rows="6" cols="33" />
                         </li>
                         
                     </ul>
