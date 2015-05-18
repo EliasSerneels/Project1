@@ -599,7 +599,7 @@ footer #footerbuttons li h3 {
 }
 
 #tblParkContainer a, #tblBungalowContainer a,#tblCustomerContainer a,#tblReservationContainer a,#tblEventContainer a,
-#tblLocationContainer a{
+#tblLocationContainer a,#tblBWParkContainer a,#tblBWBungalowContainer a{
     padding: 8px !important;
     padding-left: 15px !important;
     padding-right: 15px !important;
@@ -609,7 +609,9 @@ footer #footerbuttons li h3 {
 #tblParkContainer td:last-child a,#tblBungalowContainer td:last-child a,
 #tblCustomerContainer td:last-child a,#tblReservationContainer td:last-child a,
 #tblEventContainer td:last-child a,#tblEventtypeContainer td:last-child a,
-#tblLocationContainer td:last-child a,#tblStaffContainer td:last-child a,.col-md-12 input[type=submit]{
+#tblLocationContainer td:last-child a,#tblStaffContainer td:last-child a,
+#tblBWParkContainer td:last-child a,#tblBWBungalowContainer td:last-child a,
+#tblBWCustomerContainer td:last-child a,.col-md-12 input[type=submit]{
     box-shadow: 0 1px 0 #53BCFF inset, 0 1px 2px rgba(0, 0, 0, 0.2) !important;
     border: 1px solid #168DD9;
     text-transform: capitalize;
@@ -623,7 +625,7 @@ footer #footerbuttons li h3 {
     color:white;
 }
 
-#tblCustomerContainer a,#tblEventtypeContainer td:last-child a{
+#tblCustomerContainer a,#tblEventtypeContainer td:last-child a,#tblBWCustomerContainer td:last-child a{
     padding: 8px !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
@@ -655,7 +657,8 @@ footer #footerbuttons li h3 {
 }
 
 #tblParkContainer tr td,#tblBungalowContainer tr td,#tblCustomerContainer tr td,#tblReservationContainer tr td,
-#tblEventContainer tr td,#tblEventtypeContainer tr td,#tblLocationContainer tr td{
+#tblEventContainer tr td,#tblEventtypeContainer tr td,#tblLocationContainer tr td,
+#tblBWCustomerContainer tr td{
     height: 45px;
 }
 
@@ -832,4 +835,31 @@ table tr:last-child td:last-child{
 
 .staffEmail{
     word-wrap: break-word;
+}
+
+#frmBungalowWizard .ui-panel .ui-panel-content, #frmBungalowWizard .ui-panel .ui-panel-titlebar{
+    background: none !important;
+    border: none;
+}
+
+#frmBungalowWizard table tr td span{
+    color: #000;
+    font-size: 15px;
+    display: block;
+    text-align: left;
+    margin-left: 15px;
+}
+
+#frmBungalowWizard .ui-panel-title{
+    margin-left: 15px;
+    margin-top: 18px;
+    display: block;
+}
+
+#frmBungalowWizard{
+    margin-bottom: 25px;
+}
+
+#frmBungalowWizard button:focus{
+    outline: none;
 }

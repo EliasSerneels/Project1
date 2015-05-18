@@ -19,7 +19,7 @@
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
 
-                <h:form>
+                <h:form id="frmBungalowWizard">
 
                     <p:growl id="growl" sticky="true" showDetail="true"/>
 
@@ -62,7 +62,7 @@
                                     <h:outputText value="Park: " style="color:black"/>
                                     <p:inputText value="#{bungalow.dto.detail.park}" label="Park"/>
 
-                                    <h:outputText value="Sla alles over: " />
+                                    <h:outputText value="Sla alles over: " style="color:black"/>
                                     <h:selectBooleanCheckbox value="#{BungalowWizardController.skip}" />
                                 </h:panelGrid>
                             </p:panel>
@@ -88,8 +88,9 @@
                                     <p:inputText value="#{customer.dto.detail.email}" label="Emailadres"/>
 
                                     <h:outputText value="Emailupdates: " style="color:black"/>
-
-                                    <h:outputText value="Sla alles over: " />
+                                    <h:selectBooleanCheckbox/>
+                                    
+                                    <h:outputText value="Sla alles over: " style="color:black"/>
                                     <h:selectBooleanCheckbox value="#{BungalowWizardController.skip}" />
                                 </h:panelGrid>
                             </p:panel>
@@ -158,14 +159,20 @@
                 </h:form>
 
                 <h2>Parkoverzicht</h2>
+                
+                <div id="tblBWParkContainer">
                 <ui:include src="dataTables/tablePark.xhtml"></ui:include>
-
+                </div>
+                
                 <h2>Bungalowoverzicht</h2>
+                <div id="tblBWBungalowContainer">
                 <ui:include src="dataTables/tableBungalow.xhtml"></ui:include>
-
+                </div>
+                
                 <h2>Klantoverzicht</h2>
+                <div id="tblBWCustomerContainer">
                 <ui:include src="dataTables/tableCustomer.xhtml"></ui:include>
-
+                </div>
             </ui:define>
         </ui:composition>
     </body>
