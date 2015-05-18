@@ -67,12 +67,28 @@
                 <p:commandButton process="staff" update=":staffform:multiStaffDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiStaffDialog').show()" />
             </f:facet>
         </p:dataTable>
-        <p:dialog header="Geselecteerde Staffs" widgetVar="multiStaffDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
+        <p:dialog header="Geselecteerde Staffs" widgetVar="multiStaffDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="700" height="500">
             <p:outputPanel id="multiStaffDetail" style="text-align:center;" >
                 <ui:repeat value="#{staff.selectedStaff}" var="listDetail" rendered="true">
 
-                    <h:outputText value="#{listDetail.firstname} - #{listDetail.lastname} - #{listDetail.birthdate} - #{listDetail.country} - #{listDetail.city} - #{listDetail.street} #{listDetail.housenumber} - #{listDetail.email} - #{listDetail.phonenumber}" style="display:block"/>
-                </ui:repeat>
+  <p:outputPanel>
+                      <h:outputText value="#{listDetail.firstname} #{listDetail.lastname}" style="font-weight: bold; font-size: 20px;"/>
+                <h:graphicImage class="overview" height="100" width="50" value="#{listDetail.imageID}"/>
+ 
+                <h:panelGrid  columns="4" cellpadding="5">
+                     <h:outputText value="Stad" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.city}"/>
+                    <h:outputText value="Land" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.country}"/>
+                    <h:outputText value="Straat" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.street}"/>
+                    <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.phonenumber}"/>
+                     <h:outputText value="Email" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.email}"/>
+ 
+                </h:panelGrid>
+            </p:outputPanel>                </ui:repeat>
             </p:outputPanel>
         </p:dialog>
     </h:form>

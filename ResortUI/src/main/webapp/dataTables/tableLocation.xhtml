@@ -42,7 +42,18 @@
         <p:dialog header="Geselecteerde Locaties" widgetVar="multiLocationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiLocationDetail" style="text-align:center;" >
                 <ui:repeat value="#{location.selectedLocation}" var="listDetail" rendered="true">
-                    <h:outputText value="#{listDetail.id} - #{listDetail.locationName} - #{listDetail.locationName}" style="display:block" />
+      <p:outputPanel>
+                          <h:outputText value="Locatie: " style="font-weight: bold"/>
+                          <h:outputText value="#{listDetail.locationName}" style="font-weight: bold"/>
+ 
+                <h:panelGrid  columns="4" cellpadding="5">
+                     <h:outputText value="Stad" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.city}"/>
+                     <h:outputText value="Straat" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.street}"/>
+ 
+                </h:panelGrid>
+            </p:outputPanel>                
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

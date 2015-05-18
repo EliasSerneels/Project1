@@ -54,7 +54,25 @@
         <p:dialog header="Geselecteerde Eventbedrijven" widgetVar="multiEventCompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiEventCompanyDetail" style="text-align:center;" >
                 <ui:repeat value="#{eventcompany.selectedEventcompany}" var="listDetail" rendered="true">
-                    <h:outputText value="#{listDetail.name} - #{listDetail.city} - #{listDetail.street} - #{listDetail.phone} - #{listDetail.contact}  - #{listDetail.totalnumberevents}" style="display:block" />
+                            <p:outputPanel>
+                          <h:outputText value="Eventbedrijf " style="font-weight: bold"/>
+                          <h:outputText value="#{listDetail.name}" style="font-weight: bold"/>
+ 
+                <h:panelGrid  columns="4" cellpadding="5">
+                     <h:outputText value="Stad" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.city}"/>
+                     <h:outputText value="Straat" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.street}"/>
+                    <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.phone}"/>
+                    <h:outputText value="Contact" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.contact}"/>
+                    <h:outputText value="Aantal gegeven evenementen" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.totalnumberevents}"/>
+                   
+ 
+                </h:panelGrid>
+            </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

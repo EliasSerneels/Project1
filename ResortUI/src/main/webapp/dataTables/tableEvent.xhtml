@@ -79,8 +79,41 @@
         <p:dialog header="Geselecteerde Events" widgetVar="multiEventDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiEventDetail" style="text-align:center;" >
                 <ui:repeat value="#{event.selectedEvent}" var="listDetail" rendered="true">
+                    <p:outputPanel>
+                          <h:outputText value="Evenement " style="font-weight: bold"/>
+                          <h:outputText value="#{listDetail.eventname}" style="font-weight: bold"/>
+ 
+                <h:panelGrid  columns="4" cellpadding="5">
+                     <h:outputText value="Klant" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.customerName}"/>
+                     <h:outputText value="Eventbedrijf" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.eventcompany}"/>
+                    <h:outputText value="Eventtype" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.eventtype}"/>
+                    <h:outputText value="Startdatum" style="font-weight: bold"/>     
+                    <h:outputText value="#{listDetail.startDate}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+                     <h:outputText value="Startuur" style="font-weight: bold"/>     
+                     <h:outputText value="#{listDetail.startTime}">
+                        <f:convertDateTime pattern="HH:mm" />
+            </h:outputText>
+                    <h:outputText value="Einddatum" style="font-weight: bold"/>
+                      <h:outputText value="#{listDetail.endDate}">
+                         <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+                     <h:outputText value="Einduur" style="font-weight: bold"/>     
+                     <h:outputText value="#{listDetail.endTime}">
+                        <f:convertDateTime pattern="HH:mm" />
+            </h:outputText>
+                    <h:outputText value="Locatie" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.locationName}"/>
 
-                    <h:outputText value="#{listDetail.eventname} - #{listDetail.eventtype} - #{listDetail.eventcompany}" style="display:block" />
+                   
+ 
+                </h:panelGrid>
+            </p:outputPanel>
+ 
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

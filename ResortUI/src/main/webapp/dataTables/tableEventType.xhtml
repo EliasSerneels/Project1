@@ -40,8 +40,21 @@
         <p:dialog header="Geselecteerde Eventtypes" widgetVar="multiEventTypeDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiEventTypeDetail" style="text-align:center;" >
                 <ui:repeat value="#{eventtype.selectedEventtype}" var="listDetail" rendered="true">
-                    <h:outputText value="#{listDetail.id} - #{listDetail.eventname}" style="display:block" />
-                </ui:repeat>
+ <p:outputPanel>
+                          <h:outputText value="Eventtype: " style="font-weight: bold"/>
+                          <h:outputText value="#{listDetail.eventname}" style="font-weight: bold"/>
+ 
+                <h:panelGrid  columns="2" cellpadding="5">
+                     <h:outputText value="ID" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.id}"/>
+                     <h:outputText value="Eventnaam" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.eventname}"/>
+
+                   
+ 
+                </h:panelGrid>
+            </p:outputPanel>  
+                    </ui:repeat>
             </p:outputPanel>
         </p:dialog>
     </h:form>
