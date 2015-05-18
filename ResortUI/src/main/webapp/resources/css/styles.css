@@ -605,7 +605,7 @@ footer #footerbuttons li h3 {
 
 #tblParkContainer td:last-child a,#tblBungalowContainer td:last-child a,
 #tblCustomerContainer td:last-child a,#tblReservationContainer td:last-child a,
-#tblEventContainer td:last-child a,.col-md-12 input[type=submit]{
+#tblEventContainer td:last-child a,#tblEventtypeContainer td:last-child a,.col-md-12 input[type=submit]{
     box-shadow: 0 1px 0 #53BCFF inset, 0 1px 2px rgba(0, 0, 0, 0.2) !important;
     border: 1px solid #168DD9;
     text-transform: capitalize;
@@ -619,7 +619,7 @@ footer #footerbuttons li h3 {
     color:white;
 }
 
-#tblCustomerContainer a{
+#tblCustomerContainer a,#tblEventtypeContainer td:last-child a{
     padding: 8px !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
@@ -639,7 +639,7 @@ footer #footerbuttons li h3 {
 }
 
 #tblParkContainer tr td,#tblBungalowContainer tr td,#tblCustomerContainer tr td,#tblReservationContainer tr td,
-#tblEventContainer tr td{
+#tblEventContainer tr td,#tblEventtypeContainer tr td{
     height: 45px;
 }
 

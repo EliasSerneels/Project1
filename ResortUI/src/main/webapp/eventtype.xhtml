@@ -43,7 +43,7 @@
                 </h:form> 
 
                 <br/><br/>
-
+                <div id="tblEventtypeContainer">
                 <p:dataTable var="listDetail" value="#{eventtype.dto.list}">
                     <p:column headerText="Id" sortBy="#{listDetail.id}">
                         <h:outputText value="#{listDetail.id}"/>
@@ -56,6 +56,7 @@
                         <a href="eventtype.xhtml?delete=${listDetail.id}" class=" button">delete</a>
                     </p:column> 
                 </p:dataTable>
+                </div>
             </ui:define>
         </ui:composition>
     </body>
