@@ -23,7 +23,7 @@
                     <h2> Locatie aanmaken of aanpassen </h2>
 
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-                    <ul class="change-form">
+                    <ul id="lstLocatieChange" class="change-form">
                         <li>
                             <h:inputHidden value="${location.dto.detail.id}"/>
                             <div class="inputinfo">Stad</div>
@@ -56,7 +56,9 @@
                 </h:form>
                 <br/><br/>
                 <h2>Locatie overzicht</h2>
+                <div id="tblLocationContainer">
                 <ui:include src="dataTables/tableLocation.xhtml"></ui:include>
+                </div>
             </ui:define>
         </ui:composition>
     </body>
