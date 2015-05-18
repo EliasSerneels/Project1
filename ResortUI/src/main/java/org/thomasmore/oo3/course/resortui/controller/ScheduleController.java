@@ -6,6 +6,7 @@
 package org.thomasmore.oo3.course.resortui.controller;
 
 import java.awt.event.ActionEvent;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -182,18 +183,26 @@ public class ScheduleController {
             res.setEndDateFormatted(DateAndTime(res.getEndDate(), res.getEndTime()));
             
             // Geformateerde datum in event steken
-        
-                Date startDate;
             try {
-                startDate = dateSimple.parse(res.getStartDateFormatted());
+                Date startDate = dateSimple.parse(res.getStartDateFormatted());
                 Date endDate = dateSimple.parse(res.getEndDateFormatted());
                 loc = "loc"+String.valueOf(locList.indexOf(res.getBungalowName()));
                 DefaultScheduleEvent evento = new DefaultScheduleEvent (res.getBungalowName(),startDate,endDate,loc);
                 reservationModel.addEvent(evento);
-
             } catch (ParseException ex) {
                 Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    public String todayString(){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+    
+    public Date today(){
+        Date date = new Date();
+        return date;
     }
 }

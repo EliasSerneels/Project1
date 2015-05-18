@@ -13,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+import org.primefaces.context.RequestContext;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.facade.EventFacade;
 import org.thomasmore.oo3.course.resortui.model.EventPageDto;
@@ -38,9 +39,18 @@ public class EventController {
         dto = eventFacade.loadEventOverviewPage(editId, deleteId);  
     }
     
+
     public String add() {
         
         String check = eventFacade.checkBooking(dto);
+        
+        // Check of dubbele boeking in string staat. Zo ja moet string opgespslits worden om suggestie te krijgen.
+        String suggestion="";
+        if(check.contains("doubleBooking:")){
+            suggestion = check.replace("doubleBooking: ","");
+            check = "doubleBooking";
+        }
+        
         switch (check) {
             case "begindateAfterEnddate":
             {
@@ -50,12 +60,25 @@ public class EventController {
                 return null;
             }
             case "doubleBooking":
-                {
+            {
                     FacesContext facesContext = FacesContext.getCurrentInstance();
                     FacesMessage facesMessage = new FacesMessage("De gekozen locatie is reeds bezet voor deze datum. Gelieve een andere datum te kiezen.");
                     facesContext.addMessage(null, facesMessage);
+                    // Roept de dialogbox op
+                    FacesMessage message = new FacesMessage("Deze locatie is reeds volzet.", suggestion+".</p>");
+                    RequestContext.getCurrentInstance().showMessageInDialog(message);
+
+                    //RequestContext context = RequestContext.getCurrentInstance();
+                    //context.execute("PF('suggestieDubbeleBoeking').show();");
                     return null;
-                }
+            }
+            case "beginDateBeforeToday":
+            {
+                    FacesContext facesContext = FacesContext.getCurrentInstance();
+                    FacesMessage facesMessage = new FacesMessage("De datum die u gekozen hebt ligt in het verleden.");
+                    facesContext.addMessage(null, facesMessage);
+                    return null;
+            }
             default:
                 return "event.xhtml?faces-redirect=true";
         }

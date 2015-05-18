@@ -14,18 +14,24 @@
         <ui:define name="navbar"><h1>Event reserveren</h1></ui:define>
         
         <ui:define name="content">
-
+            
             <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
                 <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
             </ui:fragment>
-            
             <h:form>  
+                
                 <p:growl id="messages" showDetail="false" />
- 
+
+                <p:dialog widgetVar="suggestieDubbeleBoeking" header="Suggestie tot het boeken van een andere datum." showEffect="clip" hideEffect="clip">
+                    <p>Jammer! De datum die u voor deze locatie hebt opgegeven is reeds ingenomen.</p>
+                    <p>Het is uiteraard mogelijk om een andere datum te kiezen.</p>
+                    <p>Om het u gemakkelijk te maken stellen wij u hieronder een aantal andere data voor:</p>
+                        
+                </p:dialog>
                 <h2>Kalender</h2>   
                                 
-                    <p:schedule id="schedule" value="#{scheduler.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+1" timeFormat="HH:mm">
-
+                    <p:schedule id="schedule" value="#{scheduler.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+2" timeFormat="HH:mm">
+                        
                         <p:ajax event="dateSelect" listener="#{scheduler.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventSelect" listener="#{event.add}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventMove" listener="#{scheduler.onEventMove}" update="messages" />
@@ -53,13 +59,14 @@
                     </style>  
  
                 <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                    
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <h:panelGrid id="eventDetails" columns="4">
                         <p:row>
                                 <h:outputLabel for="Evenementnaam" value="Evenementnaam:" />
                         </p:row>
                         <p:row>                                 
-                                                                eventFacade.event.startDate
+                                                                
                                 <p:inputText id="Evenementnaam" value="#{event.dto.detail.eventname}" required="true" />
                         </p:row>
                                               
@@ -77,7 +84,7 @@
                                 <h:outputLabel for="Startdatum" value="Startdatum:" />
                         </p:row>
                         <p:row>
-                                <p:calendar pattern="dd/MM/yyyy" id="startdatum" locale="nl" value="${event.dto.detail.startDate}" required="true" requiredMessage="Gelieve een startdatum in te vullen."/>
+                            <p:calendar pattern="dd/MM/yyyy" id="startdatum" locale="nl" value="#{event.dto.detail.startDate}" required="true"  requiredMessage="Gelieve een startdatum in te vullen."/>
                                 <p:inputMask id="Starttijd" placeholder="Starttijd"  value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
                                     <f:convertDateTime pattern="HH:mm" timeZone="GMT+0"/>
                                 </p:inputMask>
@@ -163,7 +170,7 @@
                         <div id="frmEventStartdatum" class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Startdatum</span>
-                            <p:calendar id="date" value="#{event.dto.detail.startDate}" locale="nl" pattern="dd/MM/yyyy" />
+                            <p:calendar id="date" value="#{event.dto.detail.startDate}" locale="nl" mindate="${scheduler.todayString()}" pattern="dd/MM/yyyy"  />
                                 <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
                                     <f:convertDateTime pattern="HH:mm" />
                                 </p:inputMask>
@@ -172,7 +179,7 @@
                         <div id="frmEventEinddatum" class="col-md-6-r"> 
                             <div class="input-group">
                                 <span class="input-group-addon">Einddatum</span>
-                                <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" value="${event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
+                                <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" mindate="${scheduler.todayString()}" value="${event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
                                 <p:inputMask id="Eindtijd" placeholder="Eindtijd" style="width:40%;" value="#{event.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
                                     <f:convertDateTime pattern="HH:mm" />
                                 </p:inputMask>
