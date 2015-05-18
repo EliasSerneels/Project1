@@ -583,7 +583,8 @@ footer #footerbuttons li h3 {
     text-decoration: none;
 }
 
-#lstParkChange li,#lstBungalowChange li,#lstCustomerChange li,#lstEventcompanyChange li,#lstLocatieChange li{
+#lstParkChange li,#lstBungalowChange li,#lstCustomerChange li,#lstEventcompanyChange li,#lstLocatieChange li,
+#lstStaffChange li{
     width: 49.5%;
     margin-right: 1%;
     border-radius: 5px;
@@ -592,7 +593,8 @@ footer #footerbuttons li h3 {
 #lstParkChange li:nth-child(2n),#lstBungalowChange li:nth-child(2n),#lstBungalowChange li:nth-child(4n),
 #lstCustomerChange li:nth-child(2n),#lstCustomerChange li:nth-child(4n),#lstCustomerChange li:nth-child(6n),
 #lstCustomerChange li:nth-child(8n),#lstEventcompanyChange li:nth-child(2n),#lstEventcompanyChange li:nth-child(4n),
-#lstEventcompanyChange li:nth-child(6n),#lstLocatieChange li:nth-child(2n){
+#lstEventcompanyChange li:nth-child(6n),#lstLocatieChange li:nth-child(2n),#lstStaffChange li:nth-child(2n),
+#lstStaffChange li:nth-child(4n),#lstStaffChange li:nth-child(6n),#lstStaffChange li:nth-child(8n){
     margin-right: 0%;
 }
 
@@ -607,7 +609,7 @@ footer #footerbuttons li h3 {
 #tblParkContainer td:last-child a,#tblBungalowContainer td:last-child a,
 #tblCustomerContainer td:last-child a,#tblReservationContainer td:last-child a,
 #tblEventContainer td:last-child a,#tblEventtypeContainer td:last-child a,
-#tblLocationContainer td:last-child a,.col-md-12 input[type=submit]{
+#tblLocationContainer td:last-child a,#tblStaffContainer td:last-child a,.col-md-12 input[type=submit]{
     box-shadow: 0 1px 0 #53BCFF inset, 0 1px 2px rgba(0, 0, 0, 0.2) !important;
     border: 1px solid #168DD9;
     text-transform: capitalize;
@@ -626,6 +628,18 @@ footer #footerbuttons li h3 {
     padding-left: 10px !important;
     padding-right: 10px !important;
     font-size: 12px;
+}
+
+#tblStaffContainer td:last-child a{
+    padding: 4px !important;
+    margin-bottom: 1px !important;
+    display: inline-block;
+    font-size: 12px;
+}
+
+#tblStaffContainer img{
+    width: 100%;
+    height: auto;
 }
 
 #tblParkContainer tr th,#tblBungalowContainer tr th,#tblCustomerContainer tr th,#tblReservationContainer tr th,
@@ -680,7 +694,7 @@ footer #footerbuttons li h3 {
     text-indent: 3px !important;
 }
 
-#lstCustomerChange li:nth-child(3n) input{
+#lstCustomerChange li:nth-child(3n) input,#lstStaffChange li:nth-child(3n) input{
     box-shadow: none;
     padding-top: 6px;
     padding-bottom: 5px;
@@ -813,5 +827,9 @@ table tr:last-child td:last-child{
 .ui-datatable tr.ui-state-highlight {
   cursor: pointer;
   background-color: #14A4FF !important;
-  color: #000;
+  color: white;
+}
+
+.staffEmail{
+    word-wrap: break-word;
 }

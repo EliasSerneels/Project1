@@ -23,7 +23,7 @@
                 <h:form>
                     <h2>Personeel toevoegen of aanpassen</h2>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-                    <ul class="change-form">
+                    <ul id="lstStaffChange" class="change-form">
                         <li>
                             <h:inputHidden value="${staff.dto.detail.id}"/>
                             <div class="inputinfo">Voornaam</div>
@@ -127,8 +127,9 @@
                 </h:form>
                 <br/><br/>
                 <h2>Personeeloverzicht</h2>
+                <div id="tblStaffContainer">
                 <ui:include src="dataTables/tableStaff.xhtml"></ui:include>
-
+                </div>
 
 
             </ui:define>
