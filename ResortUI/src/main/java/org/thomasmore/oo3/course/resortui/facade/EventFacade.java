@@ -103,7 +103,7 @@ public class EventFacade implements Serializable{
                      for (EventcompanyEntity eventcompany : eventcompanys){
                             if(eventcompany.getName().equals(event.getEventcompany())){
                                 ReservationCount ++;
-                                eventcompany.setAantaleventsgegeven(ReservationCount);
+                                eventcompany.setTotalnumberevents(ReservationCount);
                             }
                         }
             EventListDetailDto listDetail = new EventListDetailDto();

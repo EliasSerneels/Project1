@@ -33,14 +33,14 @@ private String street;
 private String phone;
 private String contact;
 private String imageID;
-private int aantaleventsgegeven;
+private int totalnumberevents;
 
-    public int getAantaleventsgegeven() {
-        return aantaleventsgegeven;
+    public int getTotalnumberevents() {
+        return totalnumberevents;
     }
 
-    public void setAantaleventsgegeven(int aantaleventsgegeven) {
-        this.aantaleventsgegeven = aantaleventsgegeven;
+    public void setTotalnumberevents(int totalnumberevents) {
+        this.totalnumberevents = totalnumberevents;
     }
 
 
