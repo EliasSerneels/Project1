@@ -62,7 +62,28 @@
             <p:outputPanel id="multiCustomerDetail" style="text-align:center;" >
                 <ui:repeat value="#{customer.selectedCustomer}" var="listDetail" rendered="true">
                     
-                    <h:outputText value="#{listDetail.firstname} - #{listDetail.lastname} - #{listDetail.birthdate} - #{listDetail.country} - #{listDetail.city} - #{listDetail.street} #{listDetail.housenumber} - #{listDetail.email} - #{listDetail.phonenumber}" style="display:block"/>
+                    <p:outputPanel>
+                           <h:outputText value="#{listDetail.firstname} - #{listDetail.lastname}" style="font-weight: bold"/>
+ 
+                <h:panelGrid  columns="4" cellpadding="5">
+                     <h:outputText value="Land" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.country}"/>
+                    <h:outputText value="Stad" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.city}"/>
+                    <h:outputText value="Straat" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.street}"/>
+                    <h:outputText value="Huisnummer" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.housenumber}"/>
+                    <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.phonenumber}"/>
+                    <h:outputText value="Email" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.email}"/>
+                   
+ 
+                </h:panelGrid>
+            </p:outputPanel>
+ 
+                    
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>
