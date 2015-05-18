@@ -32,8 +32,8 @@
             </p:column>
 
             <p:column exportable="false">
-                <a href="location.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-                <a href="location.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+                <a href="location.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
+                <a href="location.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
             </p:column> 
             <f:facet name="footer">
                 <p:commandButton process="location" update=":locationform:multiLocationDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiLocationDialog').show()" />

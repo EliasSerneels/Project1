@@ -15,19 +15,19 @@
             </ui:define>
 
             <ui:define name="navbar">
-                <h1>Welkom op je profiel, ${login.sessionDto.userDto.username}</h1>
+                <h1>Welkom op je profiel, #{login.sessionDto.userDto.username}</h1>
                 <h4>Je kan je gegevens hier nu verder aanvullen, of dit later doen door op Profiel te klikken in de menubar.</h4>
             </ui:define>
 
             <ui:define name="content">
 
-                <ui:fragment rendered="${sessionDto.userDto.level &lt; 2}">
+                <ui:fragment rendered="#{sessionDto.userDto.level &lt; 2}">
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
 
                 <div style="float:right; width: 200px;">
                    <h:form >
-                        <h:graphicImage height="300" width="300" value="${login.sessionDto.userDto.imageID}"/>
+                        <h:graphicImage height="300" width="300" value="#{login.sessionDto.userDto.imageID}"/>
                     </h:form>
                     
           
@@ -39,10 +39,10 @@
                     <h:form >
                         <h3>Mijn gegevens</h3> 
                         <table class="profileTable">
-                            <tr><td>Gebruikersnaam</td><td>${login.sessionDto.userDto.username}</td></tr>
-                            <tr><td>Volledige naam</td><td>${login.sessionDto.userDto.fullName}</td></tr>
-                            <tr><td>Email-adres</td><td>${login.sessionDto.userDto.email}</td></tr>
-                            <tr><td>Level</td><td>${login.sessionDto.userDto.level}</td> </tr> 
+                            <tr><td>Gebruikersnaam</td><td>#{login.sessionDto.userDto.username}</td></tr>
+                            <tr><td>Volledige naam</td><td>#{login.sessionDto.userDto.fullName}</td></tr>
+                            <tr><td>Email-adres</td><td>#{login.sessionDto.userDto.email}</td></tr>
+                            <tr><td>Level</td><td>#{login.sessionDto.userDto.level}</td> </tr> 
                         </table>
                         <a class="button" id="knop" onclick="document.getElementById('inputForm').style.display = 'block';
                                 document.getElementById('knop').setAttribute('disabled', 'disabled');">Wijzig</a>
@@ -55,7 +55,7 @@
                             <li>
                                 <div class="inputinfo">Gebruikersnaam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
-                                             value="${login.sessionDto.userDto.username}"
+                                             value="#{login.sessionDto.userDto.username}"
                                              required="true" 
                                              >
                                 </h:inputText>
@@ -63,7 +63,7 @@
                             <li>
                                 <div class="inputinfo">Volledige naam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
-                                             value="${login.sessionDto.userDto.fullName}"
+                                             value="#{login.sessionDto.userDto.fullName}"
                                              required="false" 
                                              >
                                 </h:inputText>
@@ -71,7 +71,7 @@
                             <li>
                                 <div class="inputinfo">Email-adres</div>
                                 <h:inputText label="Email-adres" class="form-control"
-                                             value="${login.sessionDto.userDto.email}"
+                                             value="#{login.sessionDto.userDto.email}"
                                              required="false" /> 
                             </li>
                             
@@ -79,9 +79,9 @@
                             
                             <div class="inputinfo">Gebruiker afbeelding</div>
                             <h:inputText label="URL" 
-                                         value="${login.sessionDto.userDto.imageID}" class="form-control"
+                                         value="#{login.sessionDto.userDto.imageID}" class="form-control"
                                          required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
-                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))$"/>
+                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))#"/>
 
                                       
                             </h:inputText>
@@ -89,7 +89,7 @@
                         </li>
                             
                             <li>
-                                <h:commandButton class="button" action="${profile.edit()}" value="Opslaan"/>
+                                <h:commandButton class="button" action="#{profile.edit()}" value="Opslaan"/>
                             </li>
                         </ul>
                     </h:form>

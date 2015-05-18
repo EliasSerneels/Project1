@@ -54,7 +54,7 @@ public class initDbStartup {
         bungalowEntity2.setName("Leeuw");
         bungalowEntity2.setType("Premium");
         bungalowEntity2.setPrice(100);
-        bungalowEntity2.setPark("Dierenpark");
+        bungalowEntity2.setPark("Dinopark");
         bungalowEntity2.setDescription("Onze dakbungalow. De architecten waren te lui om een bungalow met zowel muren als dak te ontwerpen dus ze hebben de muren weggelaten. Daaruit is dus deze ingenieuse bungalowvorm ontstaan.");
         bungalowEntity2.setMaxpeople("8");
         objectsToSave.add(bungalowEntity2);
@@ -370,17 +370,17 @@ public class initDbStartup {
        
        LocationEntity le1 = new LocationEntity();
        le1.setLocationName("Zaal 1");
-       le1.setPark("Park 1");
+       le1.setPark("Safaripark");
        objectsToSave.add(le1);
        
        LocationEntity le2 = new LocationEntity();
        le2.setLocationName("Antwerpse feestzaal");
-       le2.setPark("Park 2");
+       le2.setPark("Dinopark");
        objectsToSave.add(le2);
        
        LocationEntity le3 = new LocationEntity();
        le3.setLocationName("Elias' thuis");
-       le3.setPark("Park 3");
+       le3.setPark("Olifantenpark");
        objectsToSave.add(le3);
        
         StaffEntity se1 = new StaffEntity();

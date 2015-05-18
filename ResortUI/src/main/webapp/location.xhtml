@@ -15,7 +15,7 @@
 
             <ui:define name="content">  
 
-                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
 
@@ -25,17 +25,17 @@
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul id="lstLocatieChange" class="change-form">
                         <li>
-                            <h:inputHidden value="${location.dto.detail.id}"/>
+                            <h:inputHidden value="#{location.dto.detail.id}"/>
                             <div class="inputinfo">Park</div>
-                            <p:selectOneMenu required="true" id="parklist" value="${location.dto.detail.park}" style="width:419px;" requiredMessage="Gelieve een park te kiezen.">
-                                <f:selectItem itemLabel="Kies park" itemValue="${null}" noSelectionOption="true" />
-                                <f:selectItems value="${location.dto.locationList}" />
+                            <p:selectOneMenu required="true" id="parklist" value="#{location.dto.detail.park}" style="width:419px;" requiredMessage="Gelieve een park te kiezen.">
+                                <f:selectItem itemLabel="Kies park" itemValue="#{null}" noSelectionOption="true" />
+                                <f:selectItems value="#{location.dto.locationList}" />
                             </p:selectOneMenu>
                         </li>
                         <li>
                             <div class="inputinfo">Naam Locatie</div>
                             <h:inputText label="Naam locatie"
-                                         value="${location.dto.detail.locationName}" class="form-control"
+                                         value="#{location.dto.detail.locationName}" class="form-control"
                                          required="true" 
                                          requiredMessage="Vul een geldige naam in voor deze locatie. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          validatorMessage="Vul een geldige naam in voor deze locatie. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
@@ -46,7 +46,7 @@
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group"> 
-                            <h:commandButton class="button" action="${location.add()}" value="Save" ></h:commandButton>
+                            <h:commandButton class="button" action="#{location.add()}" value="Save" ></h:commandButton>
                         </div>
                     </div>
                 </h:form>

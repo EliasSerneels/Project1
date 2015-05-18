@@ -23,7 +23,7 @@
                         <div class="input-group">
                             <span class="input-group-addon">Inloggen</span>
                             <h:inputText label="Gebruikersnaam" p:placeholder="jhon@doe.org"
-                                         value="${login.sessionDto.userDto.username}" class="form-control"
+                                         value="#{login.sessionDto.userDto.username}" class="form-control"
                                          required="true" requiredMessage="Vul uw username in." validatorMessage="Vul uw username in. ">
                             </h:inputText>
                         </div>
@@ -32,7 +32,7 @@
                         <div class="input-group">
                             <span class="input-group-addon">Wachtwoord</span>
                             <h:inputSecret label="Wachtwoord" p:placeholder="******"
-                                           value="${login.sessionDto.userDto.password}" class="form-control"
+                                           value="#{login.sessionDto.userDto.password}" class="form-control"
                                            required="true" requiredMessage="Vul uw paswoord in." validatorMessage="Vul uw paswoord in. ">
                             </h:inputSecret>
                         </div>
@@ -41,7 +41,7 @@
                         <div class="input-group">U kan zich <a href="registration.xhtml" style="width:auto;">hier registreren.</a></div>
                     </div>
                     <div class="col-md-12" style="margin-top:0px;">
-                        <h:commandButton class="button" action="${login.login()}" value="Inloggen"></h:commandButton>						
+                        <h:commandButton class="button" action="#{login.login()}" value="Inloggen"></h:commandButton>						
                     </div>
                 </h:form>
             </ui:define>

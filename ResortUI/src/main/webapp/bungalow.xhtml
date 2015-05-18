@@ -16,7 +16,7 @@
             
             <ui:define name="content" >
                 
-                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
                     <script type="text/javascript">window.location.href="redirect.xhtml";</script>
                 </ui:fragment>
                 
@@ -25,10 +25,10 @@
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul id="lstBungalowChange" class="change-form">
                         <li>
-                            <h:inputHidden value="${bungalow.dto.detail.id}"/>
+                            <h:inputHidden value="#{bungalow.dto.detail.id}"/>
                             <div class="inputinfo">Naam</div>
                             <h:inputText label="Naam"
-                                         value="${bungalow.dto.detail.name}" class="form-control"
+                                         value="#{bungalow.dto.detail.name}" class="form-control"
                                          required="true" validatorMessage="Vul een bungalownaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een bungalownaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
@@ -37,7 +37,7 @@
                         </li>                                    
                         <li class="typelist">
                             <div class="inputinfo">Type</div>
-                            <p:selectOneMenu required="true" id="Type" value="${bungalow.dto.detail.type}" style="width:419px;" requiredMessage="Gelieve een type in te vullen">
+                            <p:selectOneMenu required="true" id="Type" value="#{bungalow.dto.detail.type}" style="width:419px;" requiredMessage="Gelieve een type in te vullen">
                                 <f:selectItem itemValue="Comfort" itemLabel="Comfort"/>
                                 <f:selectItem itemValue="Premium" itemLabel="Premium"/>
                                 <f:selectItem itemValue="Luxe" itemLabel="Luxe"/>
@@ -46,7 +46,7 @@
                         <li>
                             <div class="inputinfo">Prijs</div>
                             <h:inputText label="Prijs" 
-                                         value="${bungalow.dto.detail.price}" class="form-control"
+                                         value="#{bungalow.dto.detail.price}" class="form-control"
                                          required="true"  converterMessage="Vul een prijs in voor de bungalow. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen." validatorMessage="Vul een prijs in voor de bungalow. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen.">
                                           <f:validateDoubleRange minimum="1" />
                          </h:inputText>                                     
@@ -55,7 +55,7 @@
                         <li>
                             <div class="inputinfo">Max. # pers.</div>
                             <h:inputText label="Maxpersonen" 
-                                         value="${bungalow.dto.detail.maxpeople}" class="form-control"
+                                         value="#{bungalow.dto.detail.maxpeople}" class="form-control"
                                          required="true"  requiredMessage="Vul de maxicapaciteit in van deze bungalow. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen." validatorMessage="Vul de maxicapaciteit in van deze bungalow. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen.">
                                           <f:validateDoubleRange minimum="1" />
                             </h:inputText>
@@ -64,31 +64,31 @@
                         <li>
                         <div class="inputinfo">Bungalow afb.</div>
                             <h:inputText label="URL" 
-                                         value="${bungalow.dto.detail.imageID}" class="form-control"
+                                         value="#{bungalow.dto.detail.imageID}" class="form-control"
                                          required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
-                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))$"/>
+                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))#"/>
 
                                       
                             </h:inputText>
                         </li>
                         <li>                                
                    <div class="inputinfo">Park</div>
-                    <p:selectOneMenu required="true" id="Bungalow" value="${bungalow.dto.detail.park}" style="width:419px;" requiredMessage="Gelieve de bungalow toe te wijzen aan een park.">
-                    <f:selectItem itemLabel="Kies park" itemValue="${bungalowName}" noSelectionOption="true" />
-                    <f:selectItems value="${bungalow.dto.parkList}" />
+                    <p:selectOneMenu required="true" id="Bungalow" value="#{bungalow.dto.detail.park}" style="width:419px;" requiredMessage="Gelieve de bungalow toe te wijzen aan een park.">
+                    <f:selectItem itemLabel="Kies park" itemValue="#{bungalowName}" noSelectionOption="true" />
+                    <f:selectItems value="#{bungalow.dto.parkList}" />
                      </p:selectOneMenu>
                         </li>
                         
                         <li>
                          <div class="inputinfo">Beschrijving bungalow</div>
 
-                             <p:inputTextarea class="form-control" value="${bungalow.dto.detail.description}" rows="6" cols="33" />
+                             <p:inputTextarea class="form-control" value="#{bungalow.dto.detail.description}" rows="6" cols="33" />
                              </li>
 
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">   
-                            <h:commandButton class="button" action="${bungalow.add()}" value="Bungalow toevoegen"></h:commandButton>
+                            <h:commandButton class="button" action="#{bungalow.add()}" value="Bungalow toevoegen"></h:commandButton>
                         </div>
                     </div>
                 </h:form>

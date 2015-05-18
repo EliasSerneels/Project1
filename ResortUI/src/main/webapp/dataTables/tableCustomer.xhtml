@@ -51,8 +51,8 @@
                 <h:outputText value="#{listDetail.phonenumber}"/>
             </p:column>
             <p:column exportable="false">
-                <a href="customer.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-                <a href="customer.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+                <a href="customer.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
+                <a href="customer.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
             </p:column>
             <f:facet name="footer">
                 <p:commandButton process="customer" update=":customerform:multiCustomerDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiCustomerDialog').show()" />
