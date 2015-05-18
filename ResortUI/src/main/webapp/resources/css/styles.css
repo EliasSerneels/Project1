@@ -603,7 +603,8 @@ footer #footerbuttons li h3 {
     font-size: 12px;
 }
 
-#tblParkContainer td:last-child a,.col-md-12 input[type=submit]{
+#tblParkContainer td:last-child a,#tblBungalowContainer td:last-child a,
+#tblCustomerContainer td:last-child a,#tblReservationContainer td:last-child a,.col-md-12 input[type=submit]{
     box-shadow: 0 1px 0 #53BCFF inset, 0 1px 2px rgba(0, 0, 0, 0.2) !important;
     border: 1px solid #168DD9;
     text-transform: capitalize;
@@ -616,9 +617,23 @@ footer #footerbuttons li h3 {
     background: linear-gradient(top, #27abff 0%,#059eff 100%);
 }
 
+#tblCustomerContainer a{
+    padding: 8px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 12px;
+}
+
 #tblParkContainer tr th,#tblBungalowContainer tr th,#tblCustomerContainer tr th,#tblReservationContainer tr th,
 #tblEventContainer tr th{
     height: 45px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+#tblParkContainer tr th input,#tblBungalowContainer tr th input,#tblCustomerContainer tr th input,
+#tblReservationContainer tr th input,#tblEventContainer tr th input{
+    margin-top: 5px;
 }
 
 #tblParkContainer tr td,#tblBungalowContainer tr td,#tblCustomerContainer tr td,#tblReservationContainer tr td,
@@ -776,4 +791,13 @@ footer #footerbuttons li h3 {
 
 table tr:last-child td:last-child{
   border-radius: 0;
+}
+
+#frmReservationStartdatum input,#frmReservationEinddatum input{
+    width: 40% !important;
+}
+
+#lstParkChange li:last-child div{
+    width: 100%;
+    border-radius: 4px;
 }
