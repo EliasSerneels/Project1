@@ -24,7 +24,7 @@
 
                     <h:form id="formParks"> 
 
-
+                        <div>
                         <p:dataTable id="DTparks" var="lsdtP" value="#{park.dto.list}" selectionMode="multiple" selection="#{park.selectedParks}" rowKey="#{lsdtP.id}" >
 
                             <p:column headerText="ID">
@@ -44,7 +44,8 @@
                                 <p:commandButton process="DTparks" update=":formParks:multiParkDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiParkDialog').show()" />
                             </f:facet>
                         </p:dataTable>
-
+                        </div>
+                        
                         <p:dialog header="Geselecteerde parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="700">
                             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                                 <ui:repeat value="#{park.selectedParks}" var="lsdtP">
@@ -350,7 +351,7 @@
                                 <h:outputText value="#{lsdtS.phonenumber}" />
                             </p:column>
                             
-                            <p:column headerText="Email">
+                            <p:column headerText="Email" class="gpn9Email">
                                 <h:outputText value="#{lsdtS.email}" />
                             </p:column>
                             

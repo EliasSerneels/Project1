@@ -40,7 +40,7 @@ public class EventcompanyFacade {
                 dto.getDetail().setPhone(eventcompanyEntity.getPhone());
                 dto.getDetail().setContact(eventcompanyEntity.getContact());
                 dto.getDetail().setImageID(eventcompanyEntity.getImageID());
-                dto.getDetail().setAantaleventsgegeven(eventcompanyEntity.getAantaleventsgegeven());
+                dto.getDetail().setTotalnumberevents(eventcompanyEntity.getTotalnumberevents());
             }
         }
         
@@ -62,7 +62,7 @@ public class EventcompanyFacade {
                      for (EventEntity event : events) {
                             if(eventcompany.getName().equals(event.getEventcompany())){
                                 ReservationCount ++;
-                                eventcompany.setAantaleventsgegeven(ReservationCount);
+                                eventcompany.setTotalnumberevents(ReservationCount);
                             }
                         }
             EventcompanyListDetailDto listDetail = new EventcompanyListDetailDto();
@@ -73,7 +73,7 @@ public class EventcompanyFacade {
             listDetail.setPhone(eventcompany.getPhone());
             listDetail.setContact(eventcompany.getContact());
             listDetail.setImageID(eventcompany.getImageID());
-            listDetail.setAantaleventsgegeven(eventcompany.getAantaleventsgegeven());
+            listDetail.setTotalnumberevents(eventcompany.getTotalnumberevents());
             dto.getList().add(listDetail);
         }
         return dto;

@@ -38,8 +38,8 @@
             <p:column headerText="Contact" sortBy="#{listDetail.contact}" filterBy="#{listDetail.contact}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.contact}"/>
             </p:column>
-            <p:column headerText="Aantal events" sortBy="#{listDetail.aantaleventsgegeven}" filterBy="#{listDetail.aantaleventsgegeven}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.aantaleventsgegeven}"/>
+            <p:column headerText="Aantal events" sortBy="#{listDetail.totalnumberevents}" filterBy="#{listDetail.totalnumberevents}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.totalnumberevents}"/>
             </p:column>
 
 
@@ -54,7 +54,7 @@
         <p:dialog header="Geselecteerde Eventbedrijven" widgetVar="multiEventCompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiEventCompanyDetail" style="text-align:center;" >
                 <ui:repeat value="#{eventcompany.selectedEventcompany}" var="listDetail" rendered="true">
-                    <h:outputText value="#{listDetail.name} - #{listDetail.city} - #{listDetail.street} - #{listDetail.phone} - #{listDetail.contact}  - #{listDetail.aantaleventsgegeven}" style="display:block" />
+                    <h:outputText value="#{listDetail.name} - #{listDetail.city} - #{listDetail.street} - #{listDetail.phone} - #{listDetail.contact}  - #{listDetail.totalnumberevents}" style="display:block" />
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>
