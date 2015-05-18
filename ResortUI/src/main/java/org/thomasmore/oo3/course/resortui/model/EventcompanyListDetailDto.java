@@ -22,6 +22,16 @@ private String phone;
 private String contact;
 private String imageID;
 public List<EventEntity> evententity;
+private int aantaleventsgegeven;
+
+    public int getAantaleventsgegeven() {
+        return aantaleventsgegeven;
+    }
+
+    public void setAantaleventsgegeven(int aantaleventsgegeven) {
+        this.aantaleventsgegeven = aantaleventsgegeven;
+    }
+
 
     public List<EventEntity> getEvententity() {
         return evententity;

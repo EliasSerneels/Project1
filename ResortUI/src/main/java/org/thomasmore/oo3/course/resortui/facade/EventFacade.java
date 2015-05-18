@@ -74,6 +74,7 @@ public class EventFacade implements Serializable{
 
         if (deleteId != null) {
             eventDao.deleteById(deleteId);
+            
         }
         List<EventEntity> events = eventDao.listAll();
         List<EventcompanyEntity> eventcompanys = eventcompanyDao.listAll();
@@ -98,6 +99,13 @@ public class EventFacade implements Serializable{
         }
 
         for (EventEntity event : events) {
+           int ReservationCount = 0;            
+                     for (EventcompanyEntity eventcompany : eventcompanys){
+                            if(eventcompany.getName().equals(event.getEventcompany())){
+                                ReservationCount ++;
+                                eventcompany.setAantaleventsgegeven(ReservationCount);
+                            }
+                        }
             EventListDetailDto listDetail = new EventListDetailDto();
             listDetail.setId(event.getId());
             listDetail.setEventname(event.getEventname());

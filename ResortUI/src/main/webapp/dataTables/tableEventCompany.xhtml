@@ -7,9 +7,6 @@
     <p:dataTable var="listDetail" value="#{eventcompany.dto.list}" class="overview" >                          
 
 
-        <p:column headerText="Id" style="display:none" >
-            <h:outputText value="#{listDetail.id}"/>
-        </p:column>
         <p:column headerText="Naam" sortBy="#{listDetail.name}" >
             <h:outputText value="#{listDetail.name}"/>
         </p:column>
@@ -25,6 +22,10 @@
         <p:column headerText="Contact" sortBy="#{listDetail.contact}" >
             <h:outputText value="#{listDetail.contact}"/>
         </p:column>
+        <p:column headerText="Aantal events" sortBy="#{listDetail.aantaleventsgegeven}" >
+            <h:outputText value="#{listDetail.aantaleventsgegeven}"/>
+        </p:column>
+        
         
         <p:column>
             <a href="eventcompany.xhtml?edit=${listDetail.id}" class=" btn btn-primary">edit</a>

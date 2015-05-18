@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
+import org.thomasmore.oo3.course.resortui.dao.EventDao;
 import org.thomasmore.oo3.course.resortui.dao.EventcompanyDao;
 import org.thomasmore.oo3.course.resortui.model.EventcompanyListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
@@ -20,8 +22,8 @@ import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
  */
 @Stateless
 public class EventcompanyFacade {
-
-
+    @EJB
+ private EventDao eventDao;
     @EJB
     private EventcompanyDao eventcompanyDao;
     
@@ -38,6 +40,7 @@ public class EventcompanyFacade {
                 dto.getDetail().setPhone(eventcompanyEntity.getPhone());
                 dto.getDetail().setContact(eventcompanyEntity.getContact());
                 dto.getDetail().setImageID(eventcompanyEntity.getImageID());
+                dto.getDetail().setAantaleventsgegeven(eventcompanyEntity.getAantaleventsgegeven());
             }
         }
         
@@ -47,9 +50,21 @@ public class EventcompanyFacade {
         }
         List<EventcompanyEntity> eventcompanies = eventcompanyDao.listAll();
         
-        
+
         
         for (EventcompanyEntity eventcompany : eventcompanies) {
+            
+            
+                    List<EventEntity> events = eventDao.listAll();
+
+            
+            int ReservationCount = 0;            
+                     for (EventEntity event : events) {
+                            if(eventcompany.getName().equals(event.getEventcompany())){
+                                ReservationCount ++;
+                                eventcompany.setAantaleventsgegeven(ReservationCount);
+                            }
+                        }
             EventcompanyListDetailDto listDetail = new EventcompanyListDetailDto();
             listDetail.setId(eventcompany.getId());
             listDetail.setName(eventcompany.getName());
@@ -58,6 +73,7 @@ public class EventcompanyFacade {
             listDetail.setPhone(eventcompany.getPhone());
             listDetail.setContact(eventcompany.getContact());
             listDetail.setImageID(eventcompany.getImageID());
+            listDetail.setAantaleventsgegeven(eventcompany.getAantaleventsgegeven());
             dto.getList().add(listDetail);
         }
         return dto;

@@ -33,6 +33,16 @@ private String street;
 private String phone;
 private String contact;
 private String imageID;
+private int aantaleventsgegeven;
+
+    public int getAantaleventsgegeven() {
+        return aantaleventsgegeven;
+    }
+
+    public void setAantaleventsgegeven(int aantaleventsgegeven) {
+        this.aantaleventsgegeven = aantaleventsgegeven;
+    }
+
 
     public String getImageID() {
         return imageID;
