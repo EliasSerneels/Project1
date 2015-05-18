@@ -906,12 +906,12 @@ table tr:last-child td:last-child{
     word-wrap: break-word;
 }
 
-#bungalowtypes .ui-datascroller-content{
+#bungalowtypes .ui-datascroller-content,#parktypes .ui-datascroller-content{
     background: none !important;
     border:none;
 }
 
-#bungalowtypes tbody tr{
+#bungalowtypes tbody tr,#parktypes tbody tr{
     background: none;
 }
 
@@ -919,7 +919,7 @@ table tr:last-child td:last-child{
     padding: 0;
 }
 
-#bungalowtypes li img{
+#bungalowtypes li img,#parktypes li img{
     border-radius: 5px;
     width: 85%;
     height: 250px;
@@ -927,7 +927,11 @@ table tr:last-child td:last-child{
     display: block;
 }
 
-#bungalowtypes tbody tr:nth-child(3n){
+#parktypes li img{
+    height: 350px;
+}
+
+#bungalowtypes tbody tr:nth-child(3n),#parktypes tbody tr:nth-child(3n){
     width: 85%;
     margin: 0 auto;
     display: block;
