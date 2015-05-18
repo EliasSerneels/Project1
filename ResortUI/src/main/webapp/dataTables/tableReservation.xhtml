@@ -37,16 +37,24 @@
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>
             <p:column id="reservationstartdate" headerText="Startdatum" sortBy="#{listDetail.startDate}" filterBy="#{listDetail.startDate}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.startDate}"/>
+                <h:outputText value="#{listDetail.startDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+ </h:outputText>
             </p:column>
             <p:column id="reservationstarttime" headerText="Starttijd" sortBy="#{listDetail.startTime}" filterBy="#{listDetail.startTime}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.startTime}"/>
+                <h:outputText value="#{listDetail.startTime}">
+                 <f:convertDateTime pattern="HH:mm" />
+                </h:outputText>
             </p:column>
             <p:column id="reservationenddate" headerText="Einddatum" sortBy="#{listDetail.endDate}" filterBy="#{listDetail.endDate}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.endDate}"/>
+                <h:outputText value="#{listDetail.endDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+ </h:outputText>
             </p:column>
             <p:column id="reservationendtime" headerText="Eindtijd" sortBy="#{listDetail.endTime}" filterBy="#{listDetail.endTime}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.endTime}"/>
+                <h:outputText value="#{listDetail.endTime}">
+                  <f:convertDateTime pattern="HH:mm" />
+                </h:outputText>
             </p:column>
             
 
@@ -62,7 +70,36 @@
             <p:outputPanel id="multiReservationDetail" style="text-align:center;" >
                 <ui:repeat value="#{reservation.selectedReservation}" var="listDetail" rendered="true">
 
-                    <h:outputText value="#{listDetail.bungalowName} - #{listDetail.customerName} - #{listDetail.startDate} - #{listDetail.startTime} - #{listDetail.endDate} - #{listDetail.endTime}" style="display:block"/>
+                    <p:outputPanel>
+                            <h:outputText value="Reservatie voor:" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.customerName}" style="font-weight: bold"/>
+ 
+                <h:panelGrid  columns="2" cellpadding="5">
+                     <h:outputText value="Geserveerde bungalow" style="font-weight: bold"/>
+                     <h:outputText value="#{listDetail.bungalowName}"/>
+                    <h:outputText value="Park:" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.parkName}"/>
+                    <h:outputText value="Aankomstdatum" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.startDate}">
+                           <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+                    <h:outputText value="Vertrekdatum" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.endDate}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+                    <h:outputText value="Aankomstuur" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.startTime}">
+              <f:convertDateTime pattern="HH:mm" />
+            </h:outputText>
+                    <h:outputText value="Vertrekuur" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.endTime}">
+                        <f:convertDateTime pattern="HH:mm" />
+                </h:outputText>
+                   
+ 
+                </h:panelGrid>
+            </p:outputPanel>
+                    
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

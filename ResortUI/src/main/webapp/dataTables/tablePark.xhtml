@@ -40,11 +40,25 @@
                 <p:commandButton process="park" update=":parkform:multiParkDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiParkDialog').show()" />
             </f:facet>
         </p:dataTable>
-        <p:dialog header="Geselecteerde Parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
+        <p:dialog header="Geselecteerde Parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="900" height="700">
             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                 <ui:repeat value="#{park.selectedParks}" var="listDetail">
-                    <h:graphicImage height="300" width="500" value="#{listDetail.imageID}"/>
-                    <h:outputText value="#{listDetail.name} - #{listDetail.capacity} - #{listDetail.location} - #{listDetail.bungalowName}" style="display:block"/>
+                    
+                                    <h:panelGrid columns="1" style="width:100%">
+                        <h:outputText value="#{listDetail.name}" style="font-weight: bold; font-size: 20px;"/>
+ 
+                <h:graphicImage class="overview" height="500" width="300" value="#{listDetail.imageID}"/>
+            <p:outputPanel>
+                <h:panelGrid  columns="2" cellpadding="5">
+                   
+                    <h:outputText value="Beschrijving" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.description}"/>
+                    <h:outputText value="Capaciteit" style="font-weight: bold"/>
+                    <h:outputText value="#{listDetail.capacity}"/>
+ 
+ 
+                </h:panelGrid>
+            </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>
