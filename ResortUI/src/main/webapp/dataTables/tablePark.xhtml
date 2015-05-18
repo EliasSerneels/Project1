@@ -33,8 +33,8 @@
             </p:column>
             
             <p:column exportable="false">
-                <a href="park.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-                <a href="park.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+                <a href="park.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
+                <a href="park.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
             </p:column> 
             <f:facet name="footer">
                 <p:commandButton process="park" update=":parkform:multiParkDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiParkDialog').show()" />
@@ -44,7 +44,7 @@
             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                 <ui:repeat value="#{park.selectedParks}" var="listDetail">
                     
-                                    <h:panelGrid columns="1" style="width:100%">
+                            
                         <h:outputText value="#{listDetail.name}" style="font-weight: bold; font-size: 20px;"/>
  
                 <h:graphicImage class="overview" height="500" width="300" value="#{listDetail.imageID}"/>

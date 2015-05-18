@@ -16,7 +16,7 @@
 
             <ui:define name="content">
 
-                <ui:fragment rendered="${sessionDto.userDto.level &lt; 2}">
+                <ui:fragment rendered="#{sessionDto.userDto.level &lt; 2}">
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment> 
 

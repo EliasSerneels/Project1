@@ -16,7 +16,7 @@
 
             <ui:define name="content">
 
-                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
 
@@ -25,11 +25,11 @@
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul id="lstStaffChange" class="change-form">
                         <li>
-                            <h:inputHidden value="${staff.dto.detail.id}"/>
+                            <h:inputHidden value="#{staff.dto.detail.id}"/>
                             <div class="inputinfo">Voornaam</div>
                             <h:inputText label="Voornaam" 
 
-                                         value="${staff.dto.detail.firstname}" class="form-control"
+                                         value="#{staff.dto.detail.firstname}" class="form-control"
                                          required="true"
                                          requiredMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
@@ -41,7 +41,7 @@
                             <div class="inputinfo">Achternaam</div>
                             <h:inputText label="Achternaam" 
 
-                                         value="${staff.dto.detail.lastname}" class="form-control"
+                                         value="#{staff.dto.detail.lastname}" class="form-control"
                                          required="true"
                                          requiredMessage="Vul uw achternaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
@@ -50,14 +50,14 @@
                         </li>      
                         <li>
                             <div class="inputinfo">Geboortedatum</div>
-                            <p:calendar pattern="dd-MM-yyyy" yearRange="c-100:c" navigator="true" id="popup" value="${staff.dto.detail.birthdate}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
+                            <p:calendar pattern="dd-MM-yyyy" yearRange="c-100:c" navigator="true" id="popup" value="#{staff.dto.detail.birthdate}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
 
 
                         </li>
                         <li>
                             <div class="inputinfo">Telefoonnr.</div>
                             <h:inputText label="Telefoonnummer" 
-                                         value="${staff.dto.detail.phonenumber}" class="form-control"
+                                         value="#{staff.dto.detail.phonenumber}" class="form-control"
                                          required="false"
                                          validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
                                 <f:validateRegex pattern="([0-9].{6,20})"/>
@@ -68,16 +68,16 @@
                             <div class="inputinfo">E-mail</div>
                             <h:inputText label="E-mail" 
 
-                                         value="${staff.dto.detail.email}" class="form-control"
+                                         value="#{staff.dto.detail.email}" class="form-control"
                                          required="false" validatorMessage="De inhoud van e-mail voldoet niet aan de vereisten.">
-                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/> 
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})#"/> 
                             </h:inputText>
                         </li>
 
                         <li class="typelist">
                             <div class="inputinfo">Land</div>
                             <h:inputText label="Land"
-                                         value="${staff.dto.detail.country}" class="form-control"
+                                         value="#{staff.dto.detail.country}" class="form-control"
                                          required="true" requiredMessage="Vul een land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
@@ -88,7 +88,7 @@
                         <li class="typelist">
                             <div class="inputinfo">Stad</div>
                             <h:inputText label="Stad"
-                                         value="${staff.dto.detail.city}" class="form-control"
+                                         value="#{staff.dto.detail.city}" class="form-control"
                                          required="true" requiredMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
@@ -98,7 +98,7 @@
                         <li>
                             <div class="inputinfo">Straat</div>
                             <h:inputText label="Straat"
-                                         value="${staff.dto.detail.street}" class="form-control"
+                                         value="#{staff.dto.detail.street}" class="form-control"
                                          required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
@@ -110,9 +110,9 @@
                         <li>
                             <div class="inputinfo">Personeelsfoto</div>
                             <h:inputText label="URL" 
-                                         value="${staff.dto.detail.imageID}" class="form-control"
+                                         value="#{staff.dto.detail.imageID}" class="form-control"
                                          required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
-                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))$"/>
+                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))#"/>
 
                                       
                             </h:inputText>
@@ -121,7 +121,7 @@
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group"> 
-                            <h:commandButton class="button" action="${staff.add()}" value="Save" ></h:commandButton>
+                            <h:commandButton class="button" action="#{staff.add()}" value="Save" ></h:commandButton>
                         </div>
                     </div>
                 </h:form>

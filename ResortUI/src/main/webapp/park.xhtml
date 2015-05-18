@@ -17,7 +17,7 @@
 
             <ui:define name="content">
 
-                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
                     <script type="text/javascript">window.location.href="redirect.xhtml";</script>
                 </ui:fragment>
 
@@ -26,10 +26,10 @@
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
                     <ul id="lstParkChange" class="change-form">
                         <li>
-                            <h:inputHidden value="${park.dto.detail.id}"/>
+                            <h:inputHidden value="#{park.dto.detail.id}"/>
                             <div class="inputinfo">Naam</div>
                             <h:inputText label="Naam" 
-                                         value="${park.dto.detail.name}" class="form-control"
+                                         value="#{park.dto.detail.name}" class="form-control"
                                          required="true" requiredMessage="Vul een parknaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten." validatorMessage="Vul een parknaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç]{1,50}"/>
@@ -38,7 +38,7 @@
                         <li>
                             <div class="inputinfo">Locatie</div>
                             <h:inputText label="Locatie" 
-                                         value="${park.dto.detail.location}" class="form-control"
+                                         value="#{park.dto.detail.location}" class="form-control"
                                          required="true" requiredMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten." validatorMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 20 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,20}"/>
@@ -47,7 +47,7 @@
                         <li>
                             <div class="inputinfo">Capaciteit</div>
                             <h:inputText label="Capaciteit" 
-                                         value="${park.dto.detail.capacity}" class="form-control"
+                                         value="#{park.dto.detail.capacity}" class="form-control"
                                          required="true"  converterMessage="Vul de maximum capaciteit in van het park. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen." validatorMessage="Vul de maximum capaciteit in van het park. Dit veld kan enkel cijfers bevatten en moet meer dan 1 bedragen.">
                                           <f:validateDoubleRange minimum="1" />
                             </h:inputText>                                 
@@ -57,9 +57,9 @@
                             
                             <div class="inputinfo">Park afbeelding</div>
                             <h:inputText label="URL" 
-                                         value="${park.dto.detail.imageID}" class="form-control"
+                                         value="#{park.dto.detail.imageID}" class="form-control"
                                          required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
-                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))$"/>
+                                       <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))#"/>
                             </h:inputText>
 
                         </li>
@@ -68,13 +68,13 @@
                                       
                              <div class="inputinfo">Beschrijving Park</div>
 
-                             <p:inputTextarea class="form-control" value="${park.dto.detail.description}" rows="6" cols="33" />
+                             <p:inputTextarea class="form-control" value="#{park.dto.detail.description}" rows="6" cols="33" />
                         </li>
                         
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">  
-                            <h:commandButton class="button" action="${park.add()}" value="Save" ></h:commandButton>
+                            <h:commandButton class="button" action="#{park.add()}" value="Save" ></h:commandButton>
                         </div> 
                     </div>
                 </h:form> 

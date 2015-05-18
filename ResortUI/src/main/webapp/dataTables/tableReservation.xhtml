@@ -59,8 +59,8 @@
             
 
             <p:column exportable="false">
-                <a href="reservation.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-                <a href="reservation.xhtml?delete=${listDetail.id}" class=" button">delete</a>
+                <a href="reservation.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
+                <a href="reservation.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
             </p:column>
             <f:facet name="footer">
                 <p:commandButton process="reservation" update=":reservationform:multiReservationDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiReservationDialog').show()" />

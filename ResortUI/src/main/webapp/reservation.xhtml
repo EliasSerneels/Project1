@@ -17,7 +17,7 @@
 
             <ui:define name="content">
 
-                <ui:fragment rendered="${sessionDto.userDto.level &lt; 3}">
+                <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
                     <script type="text/javascript">window.location.href="redirect.xhtml";</script>
                 </ui:fragment>
                 
@@ -69,9 +69,9 @@
                                 <h:outputLabel for="Locatie" value="Locatie:" />
                         </p:row>
                         <p:row>
-                                <p:selectOneMenu required="true" id="Locatie" value="${event.dto.detail.locationName}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een eventtype te kiezen.">
+                                <p:selectOneMenu required="true" id="Locatie" value="#{event.dto.detail.locationName}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een eventtype te kiezen.">
                                     <f:selectItem itemLabel="Kies locatie"  noSelectionOption="true" />
-                                    <f:selectItems value="${event.dto.locationList}" />
+                                    <f:selectItems value="#{event.dto.locationList}" />
                                 </p:selectOneMenu>      
                         </p:row>
                         
@@ -79,7 +79,7 @@
                                 <h:outputLabel for="Startdatum" value="Startdatum:" />
                         </p:row>
                         <p:row>
-                                <p:calendar pattern="dd/MM/yyyy" id="startdatum" locale="nl" value="${event.dto.detail.startDate}" required="true" requiredMessage="Gelieve een startdatum in te vullen."/>
+                                <p:calendar pattern="dd/MM/yyyy" id="startdatum" locale="nl" value="#{event.dto.detail.startDate}" required="true" requiredMessage="Gelieve een startdatum in te vullen."/>
                                 <p:inputMask id="Starttijd" placeholder="Starttijd"  value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
                                     <f:convertDateTime pattern="HH:mm" timeZone="GMT+0"/>
                                 </p:inputMask>
@@ -89,7 +89,7 @@
                                 <h:outputLabel for="Einddatum" value="Einddatum:" />
                         </p:row>
                         <p:row>
-                                <p:calendar pattern="dd/MM/yyyy" id="popup2" locale="nl" value="${event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
+                                <p:calendar pattern="dd/MM/yyyy" id="popup2" locale="nl" value="#{event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
                                 <p:inputMask id="Eindtijd" placeholder="Eindtijd"  value="#{event.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
                                     <f:convertDateTime pattern="HH:mm" timeZone="GMT+0"/>
                                 </p:inputMask>
@@ -99,9 +99,9 @@
                                 <h:outputLabel for="Klantnaam" value="Klantnaam:" />
                         </p:row>
                         <p:row>
-                                <p:selectOneMenu required="true" id="Klant" value="${event.dto.detail.customerName}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een klant te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
+                                <p:selectOneMenu required="true" id="Klant" value="#{event.dto.detail.customerName}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een klant te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
                                     <f:selectItem itemLabel="Kies klant"  noSelectionOption="true" />
-                                    <f:selectItems value="${event.dto.customerList}" />
+                                    <f:selectItems value="#{event.dto.customerList}" />
                                 </p:selectOneMenu> 
                         </p:row>
                         
@@ -109,9 +109,9 @@
                                 <h:outputLabel for="Bedrijf" value="Bedrijf:" />
                         </p:row>
                         <p:row>
-                                <p:selectOneMenu required="true" id="Eventbedrijf" value="${event.dto.detail.eventcompany}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een bedrijf te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
+                                <p:selectOneMenu required="true" id="Eventbedrijf" value="#{event.dto.detail.eventcompany}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een bedrijf te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
                                     <f:selectItem itemLabel="Kies bedrijf"  noSelectionOption="true" />
-                                    <f:selectItems value="${event.dto.eventcompanyList}" />
+                                    <f:selectItems value="#{event.dto.eventcompanyList}" />
                                 </p:selectOneMenu>   
                         </p:row>
                         
@@ -119,9 +119,9 @@
                                 <h:outputLabel for="Eventtype" value="Eventtype:" />
                         </p:row>
                         <p:row>
-                                <p:selectOneMenu required="true" id="Eventtype" value="${event.dto.detail.eventtype}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een eventtype te kiezen.">
+                                <p:selectOneMenu required="true" id="Eventtype" value="#{event.dto.detail.eventtype}" style="width:415px; margin-left: 5px;" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een eventtype te kiezen.">
                                     <f:selectItem itemLabel="Kies eventtype"  noSelectionOption="true" />
-                                    <f:selectItems value="${event.dto.eventtypeList}" />
+                                    <f:selectItems value="#{event.dto.eventtypeList}" />
                                 </p:selectOneMenu> 
                         </p:row>
                         
@@ -130,7 +130,7 @@
                         <p:row>
                             <p:commandButton type="reset" value="Reset" />
                             <p:commandButton id="addButton" value="Toevoegen" actionListener="#{event.add()}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
-                            <a href="event.xhtml?delete=${event.dto.detail.id}" class=" button">delete</a>
+                            <a href="event.xhtml?delete=#{event.dto.detail.id}" class=" button">delete</a>
                         </p:row>
                     </h:panelGrid>
                 </p:dialog>    
@@ -139,7 +139,7 @@
                 <h2>Reservatie boeken of aanpassen</h2>
                 <h:form id="frmReservation" class="input-form">
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
-                    <h:inputHidden value="${reservation.dto.detail.id}"/>
+                    <h:inputHidden value="#{reservation.dto.detail.id}"/>
                     
                     <div id="frmReservationStartdatum" class="col-md-6-l">
                         <div class="input-group">
@@ -153,7 +153,7 @@
                     <div id="frmReservationEinddatum" class="col-md-6-r"> 
                             <div class="input-group">
                                 <span class="input-group-addon">Einddatum</span>
-                                <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" value="${reservation.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
+                                <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" value="#{reservation.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
                                 <p:inputMask id="Eindtijd" placeholder="Eindtijd" style="width:40%;" value="#{reservation.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
                                     <f:convertDateTime pattern="HH:mm" />
                                 </p:inputMask>
@@ -162,9 +162,9 @@
                     <div class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Klant</span>
-                    <p:selectOneMenu required="true" id="Klant" value="${reservation.dto.detail.customerName}" requiredMessage="Gelieve een klant toe te kiezen.">
-                    <f:selectItem itemLabel="Kies klant" itemValue="${customerName}" noSelectionOption="true" />
-                    <f:selectItems value="${reservation.dto.customerList}" />
+                    <p:selectOneMenu required="true" id="Klant" value="#{reservation.dto.detail.customerName}" requiredMessage="Gelieve een klant toe te kiezen.">
+                    <f:selectItem itemLabel="Kies klant" itemValue="#{customerName}" noSelectionOption="true" />
+                    <f:selectItems value="#{reservation.dto.customerList}" />
                      </p:selectOneMenu>
                         </div>
                                          </div>
@@ -172,10 +172,10 @@
                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Park</span>
-                            <p:selectOneMenu required="true" id="Park" value="${reservation.dto.detail.parkName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
-                    <f:selectItem itemLabel="Kies park" itemValue="${parkName}" noSelectionOption="true" />
-                    <f:selectItems value="${reservation.dto.parkList}" />
-                    <p:ajax listener="${reservation.update(reservation.dto.detail.parkName)}" update="Bungalow" event="change" />
+                            <p:selectOneMenu required="true" id="Park" value="#{reservation.dto.detail.parkName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
+                    <f:selectItem itemLabel="Kies park" itemValue="#{parkName}" noSelectionOption="true" />
+                    <f:selectItems value="#{reservation.dto.parkList}" />
+                    <p:ajax listener="#{reservation.update(reservation.dto.detail.parkName)}" update="Bungalow" event="change" />
                      </p:selectOneMenu>
                         </div>
                 </div>
@@ -184,9 +184,9 @@
                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Bungalow</span>
-                    <p:selectOneMenu required="true" id="Bungalow" value="${reservation.dto.detail.bungalowName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
-                    <f:selectItem itemLabel="Kies bungalow" itemValue="${bungalowName}" noSelectionOption="true" />
-                    <f:selectItems value="${reservation.dto.bungalowList}" />
+                    <p:selectOneMenu required="true" id="Bungalow" value="#{reservation.dto.detail.bungalowName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
+                    <f:selectItem itemLabel="Kies bungalow" itemValue="#{bungalowName}" noSelectionOption="true" />
+                    <f:selectItems value="#{reservation.dto.bungalowList}" />
                      </p:selectOneMenu>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                     
                     <div class="col-md-12">
                         <div class="input-group">
-                            <h:commandButton class="button" action="${reservation.add()}" value="Save" ></h:commandButton>
+                            <h:commandButton class="button" action="#{reservation.add()}" value="Save" ></h:commandButton>
                         </div>
                     </div>
                 </h:form> 
