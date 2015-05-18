@@ -23,7 +23,7 @@
                 <h2>Users aanmaken of wijzigen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-                    <ul class="change-form">
+                    <ul id="lstUseroverviewChange" class="change-form">
                         <li>
                             <h:inputHidden value="${useroverview.dto.detail.id}"/>
                             <div class="inputinfo">Gebruikersnaam</div>
@@ -58,7 +58,7 @@
                                          required="false"></h:inputText>
                         </li>
                         <li>
-                        <div class="inputinfo">Gebruiker afbeelding</div>
+                        <div class="inputinfo">Afbeelding</div>
                             <h:inputText label="URL" 
                                          value="${useroverview.dto.detail.imageID}" class="form-control"
                                          required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
@@ -77,7 +77,9 @@
                 </h:form>
                 <br/><br/>
                 <h2>Useroverzicht</h2>
+                <div id="tblUseroverviewContainer">
                 <ui:include src="dataTables/tableUser.xhtml"></ui:include>
+                </div>
             </ui:define>
         </ui:composition>
     </body>
