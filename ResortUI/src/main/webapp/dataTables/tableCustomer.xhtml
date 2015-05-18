@@ -16,6 +16,11 @@
                     <h:outputText value="Doorzoek alle velden: " />
                     <p:inputText id="globalFilter" onkeyup="PF('customerTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
                 </p:outputPanel>
+                <h:outputText value="Exporteren naar Excel: "/>
+                <h:commandLink>
+                    <p:graphicImage name="images/icons/excel.png" />
+                    <p:dataExporter type="xls" target="customer" fileName="customer" />
+                </h:commandLink>
             </f:facet>
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
@@ -45,7 +50,7 @@
             <p:column id="customerphone" headerText="TelefoonNr." sortBy="#{listDetail.phonenumber}" filterBy="#{listDetail.phonenumber}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.phonenumber}"/>
             </p:column>
-            <p:column>
+            <p:column exportable="false">
                 <a href="customer.xhtml?edit=${listDetail.id}" class=" button">edit</a>
                 <a href="customer.xhtml?delete=${listDetail.id}" class=" button">delete</a>
             </p:column>

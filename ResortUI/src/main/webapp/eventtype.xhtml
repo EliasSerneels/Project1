@@ -44,18 +44,7 @@
 
                 <br/><br/>
                 <div id="tblEventtypeContainer">
-                <p:dataTable var="listDetail" value="#{eventtype.dto.list}">
-                    <p:column headerText="Id" sortBy="#{listDetail.id}">
-                        <h:outputText value="#{listDetail.id}"/>
-                    </p:column>
-                    <p:column headerText="Naam">
-                        <h:outputText value="#{listDetail.eventname}"/>
-                    </p:column>
-                    <p:column>
-                        <a href="eventtype.xhtml?edit=${listDetail.id}" class=" button">edit</a>
-                        <a href="eventtype.xhtml?delete=${listDetail.id}" class=" button">delete</a>
-                    </p:column> 
-                </p:dataTable>
+                    <ui:include src="dataTables/tableEventType.xhtml"></ui:include>
                 </div>
             </ui:define>
         </ui:composition>

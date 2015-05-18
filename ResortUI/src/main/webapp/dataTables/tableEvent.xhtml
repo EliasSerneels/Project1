@@ -15,6 +15,11 @@
                     <h:outputText value="Doorzoek alle velden: " />
                     <p:inputText id="globalFilter" onkeyup="PF('eventTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
                 </p:outputPanel>
+                <h:outputText value="Exporteren naar Excel: "/>
+                <h:commandLink>
+                    <p:graphicImage name="images/icons/excel.png" />
+                    <p:dataExporter type="xls" target="event" fileName="event" />
+                </h:commandLink>
             </f:facet>
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
@@ -23,9 +28,21 @@
                 <h:outputText value="#{listDetail.eventname}"/>
             </p:column>
             <p:column id="eventcompany" headerText="Event Bedrijf" sortBy="#{listDetail.eventcompany}" filterBy="#{listDetail.eventcompany}" filterMatchMode="contains">
+                <f:facet name="filter"> 
+                    <p:selectOneMenu onchange="PF('eventTable').filter()">
+                        <f:selectItem itemLabel="Alle bedrijven" itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItems itemLabel="#{listDetail.eventcompany}" value="#{event.dto.eventcompanyList}" /> 
+                    </p:selectOneMenu>
+                </f:facet>
                 <h:outputText value="#{listDetail.eventcompany}"/>
             </p:column>
             <p:column id="eventtype" headerText="Event Type" sortBy="#{listDetail.eventtype}" filterBy="#{listDetail.eventtype}" filterMatchMode="contains">
+                <f:facet name="filter"> 
+                    <p:selectOneMenu onchange="PF('eventTable').filter()">
+                        <f:selectItem itemLabel="Alle types" itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItems itemLabel="#{listDetail.eventtype}" value="#{event.dto.eventtypeList}" /> 
+                    </p:selectOneMenu>
+                </f:facet>
                 <h:outputText value="#{listDetail.eventtype}"/>
             </p:column>
             
@@ -38,13 +55,19 @@
             </p:column>
             
             <p:column id="eventlocatie" headerText="Locatie" sortBy="#{listDetail.locationName}" filterBy="#{listDetail.locationName}" filterMatchMode="contains">
+                <f:facet name="filter"> 
+                    <p:selectOneMenu onchange="PF('eventTable').filter()">
+                        <f:selectItem itemLabel="Alle locaties" itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItems itemLabel="#{listDetail.locationName}" value="#{event.dto.locationList}" /> 
+                    </p:selectOneMenu>
+                </f:facet>
                 <h:outputText value="#{listDetail.locationName}"/>
             </p:column>
             <p:column id="eventcustomer" headerText="Klant" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>
             
-            <p:column>
+            <p:column exportable="false">
                 <a href="event.xhtml?edit=${listDetail.id}" class=" button">edit</a>
 
                 <a href="event.xhtml?delete=${listDetail.id}" class=" button">delete</a>

@@ -1,10 +1,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-        <h:form id="staffform">
+    <h:form id="staffform">
 
         <p:dataTable id="staff" var="listDetail" value="#{staff.dto.list}" widgetVar="staffTable" class="overview" selectionMode="multiple" selection="#{staff.selectedStaff}" rowKey="#{listDetail.id}" emptyMessage="Geen data gevonden.">                          
             <p:ajax event="rowSelect" update=":staffform:multiStaffDetail" />
@@ -16,6 +16,11 @@
                     <h:outputText value="Doorzoek alle velden: " />
                     <p:inputText id="globalFilter" onkeyup="PF('staffTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
                 </p:outputPanel>
+                <h:outputText value="Exporteren naar Excel: "/>
+                <h:commandLink>
+                    <p:graphicImage name="images/icons/excel.png" />
+                    <p:dataExporter type="xls" target="staff" fileName="personeel" />
+                </h:commandLink>
             </f:facet>
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
@@ -38,23 +43,23 @@
             <p:column id="staffstreet" headerText="Straat" sortBy="#{listDetail.street}" filterBy="#{listDetail.street}" filterMatchMode="contains" style="width:11%">
                 <h:outputText value="#{listDetail.street}"/>
             </p:column>
-            
+
             <p:column id="staffemail" class="staffEmail" headerText="Email" sortBy="#{listDetail.email}" filterBy="#{listDetail.email}" filterMatchMode="contains" style="width:11%">
                 <h:outputText value="#{listDetail.email}"/>
             </p:column>
             <p:column id="staffphone" headerText="TelefoonNr." sortBy="#{listDetail.phonenumber}" filterBy="#{listDetail.phonenumber}" filterMatchMode="contains" style="width:11%">
                 <h:outputText value="#{listDetail.phonenumber}"/>
             </p:column>
-            
-            <p:column headerText="Foto">
+
+            <p:column headerText="Foto" exportable="false">
                 <p:lightBox styleClass="imagebox" id="lighbox1">
                     <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.firstname}">  
-                <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
+                        <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
                     </h:outputLink>
                 </p:lightBox>
             </p:column>
-            
-            <p:column>
+
+            <p:column exportable="false">
                 <a href="staff.xhtml?edit=${listDetail.id}" class=" button">edit</a>
                 <a href="staff.xhtml?delete=${listDetail.id}" class=" button" style="clear:both">delete</a>
             </p:column>
@@ -65,7 +70,7 @@
         <p:dialog header="Geselecteerde Staffs" widgetVar="multiStaffDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiStaffDetail" style="text-align:center;" >
                 <ui:repeat value="#{staff.selectedStaff}" var="listDetail" rendered="true">
-                    
+
                     <h:outputText value="#{listDetail.firstname} - #{listDetail.lastname} - #{listDetail.birthdate} - #{listDetail.country} - #{listDetail.city} - #{listDetail.street} #{listDetail.housenumber} - #{listDetail.email} - #{listDetail.phonenumber}" style="display:block"/>
                 </ui:repeat>
             </p:outputPanel>
