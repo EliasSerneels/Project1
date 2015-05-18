@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
         <ui:composition template="./common/template.xhtml">
@@ -26,25 +26,21 @@
                     <ul id="lstLocatieChange" class="change-form">
                         <li>
                             <h:inputHidden value="${location.dto.detail.id}"/>
-                            <div class="inputinfo">Stad</div>
-                            <h:inputText label="Stad" 
-                                         value="${location.dto.detail.city}" class="form-control"
-                                         required="true"
-                                         requiredMessage="Vul de naam van een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
-                                         validatorMessage="Vul de naam van een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
-                                         >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-                            </h:inputText>
+                            <div class="inputinfo">Park</div>
+                            <p:selectOneMenu required="true" id="parklist" value="${location.dto.detail.park}" style="width:419px;" requiredMessage="Gelieve een park te kiezen.">
+                                <f:selectItem itemLabel="Kies park" itemValue="${null}" noSelectionOption="true" />
+                                <f:selectItems value="${location.dto.locationList}" />
+                            </p:selectOneMenu>
                         </li>
                         <li>
-                            <div class="inputinfo">Straat</div>
-                            <h:inputText label="Straat"
-                                         value="${location.dto.detail.street}" class="form-control"
+                            <div class="inputinfo">Naam Locatie</div>
+                            <h:inputText label="Naam locatie"
+                                         value="${location.dto.detail.locationName}" class="form-control"
                                          required="true" 
-                                         requiredMessage="Vul een straatnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
-                                         validatorMessage="Vul een straatnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         requiredMessage="Vul een geldige naam in voor deze locatie. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         validatorMessage="Vul een geldige naam in voor deze locatie. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç0-9]{1,50}"/>
                             </h:inputText>
                         </li>   
                     </ul>
@@ -57,7 +53,7 @@
                 <br/><br/>
                 <h2>Locatie overzicht</h2>
                 <div id="tblLocationContainer">
-                <ui:include src="dataTables/tableLocation.xhtml"></ui:include>
+                    <ui:include src="dataTables/tableLocation.xhtml"></ui:include>
                 </div>
             </ui:define>
         </ui:composition>

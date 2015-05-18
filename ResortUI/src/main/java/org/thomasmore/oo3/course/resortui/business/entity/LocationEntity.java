@@ -19,8 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class LocationEntity extends BasicEntity implements Serializable {
 
-private String city;
-private String street;
+private String park;
 private String locationName;
 
     public String getLocationName() {
@@ -31,20 +30,11 @@ private String locationName;
         this.locationName = locationName;
     }
 
-    public String getCity() {
-        return city;
+    public String getPark() {
+        return park;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setPark(String park) {
+        this.park = park;
     }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
 }

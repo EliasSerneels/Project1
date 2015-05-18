@@ -30,8 +30,8 @@ public class LocationFacade {
             LocationEntity locationEntity = locationDao.findById(editId);
             if (locationEntity != null) {
                 dto.getDetail().setId(locationEntity.getId());
-                dto.getDetail().setCity(locationEntity.getCity());
-                dto.getDetail().setStreet(locationEntity.getStreet());
+                dto.getDetail().setPark(locationEntity.getPark());
+                dto.getDetail().setLocationName(locationEntity.getLocationName());
 
             }
 
@@ -41,10 +41,13 @@ public class LocationFacade {
         }
         List<LocationEntity> locations = locationDao.listAll();
         for (LocationEntity location : locations) {
+            dto.getLocationList().add(location.getLocationName());
+        }
+        for (LocationEntity location : locations) {
             LocationListDetailDto listDetail = new LocationListDetailDto();
             listDetail.setId(location.getId());
-            listDetail.setCity(location.getCity());
-            listDetail.setStreet(location.getStreet());
+            listDetail.setPark(location.getPark());
+            listDetail.setLocationName(location.getLocationName());
             dto.getList().add(listDetail);
 
         }
@@ -64,8 +67,8 @@ public class LocationFacade {
                                                                                                                                                               locationEntity = new LocationEntity();
         }
         locationEntity.setId(dto.getDetail().getId());
-        locationEntity.setCity(dto.getDetail().getCity());
-        locationEntity.setStreet(dto.getDetail().getStreet());
+        locationEntity.setPark(dto.getDetail().getPark());
+        locationEntity.setLocationName(dto.getDetail().getLocationName());
 
         locationDao.save(locationEntity);
         return dto;

@@ -370,20 +370,17 @@ public class initDbStartup {
        
        LocationEntity le1 = new LocationEntity();
        le1.setLocationName("Zaal 1");
-       le1.setCity("Vilvoorde");
-       le1.setStreet("Leuvensestraat 27");
+       le1.setPark("Park 1");
        objectsToSave.add(le1);
        
        LocationEntity le2 = new LocationEntity();
        le2.setLocationName("Antwerpse feestzaal");
-       le2.setCity("Antwerpen");
-       le2.setStreet("Stationweg 15");
+       le2.setPark("Park 2");
        objectsToSave.add(le2);
        
        LocationEntity le3 = new LocationEntity();
        le3.setLocationName("Elias' thuis");
-       le3.setCity("Vilvoorde");
-       le3.setStreet("Boerenstraat 114");
+       le3.setPark("Park 3");
        objectsToSave.add(le3);
        
         StaffEntity se1 = new StaffEntity();

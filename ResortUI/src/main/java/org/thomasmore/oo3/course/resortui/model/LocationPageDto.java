@@ -16,6 +16,16 @@ public class LocationPageDto {
     private LocationDetailDto detail = new LocationDetailDto();
     private List<LocationListDetailDto> list = new LinkedList<>();
 
+    private List<String> locationList = new LinkedList<>();
+
+    public List<String> getLocationList() {
+        return locationList;
+    }
+
+    public void setLocationList(List<String> locationList) {
+        this.locationList = locationList;
+    }
+    
     public LocationDetailDto getDetail() {
         return detail;
     }

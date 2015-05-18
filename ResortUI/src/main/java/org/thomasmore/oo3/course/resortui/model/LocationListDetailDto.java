@@ -11,8 +11,8 @@ package org.thomasmore.oo3.course.resortui.model;
  */
 public class LocationListDetailDto {
     private String id;
-    private String city;
-    private String street;
+    private String park;
+    private String locationName;
 
     public String getId() {
         return id;
@@ -22,20 +22,20 @@ public class LocationListDetailDto {
         this.id = id;
     }
 
-    public String getCity() {
-        return city;
+    public String getPark() {
+        return park;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setPark(String park) {
+        this.park = park;
     }
 
-    public String getStreet() {
-        return street;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
     
 }
