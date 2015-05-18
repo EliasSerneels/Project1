@@ -905,3 +905,31 @@ table tr:last-child td:last-child{
 .gpn9Email{
     word-wrap: break-word;
 }
+
+#bungalowtypes .ui-datascroller-content{
+    background: none !important;
+    border:none;
+}
+
+#bungalowtypes tbody tr{
+    background: none;
+}
+
+#bungalowtypes .logo{
+    padding: 0;
+}
+
+#bungalowtypes li img{
+    border-radius: 5px;
+    width: 85%;
+    height: 250px;
+    margin: 0 auto;
+    display: block;
+}
+
+#bungalowtypes tbody tr:nth-child(3n){
+    width: 85%;
+    margin: 0 auto;
+    display: block;
+    text-align: left;
+}
