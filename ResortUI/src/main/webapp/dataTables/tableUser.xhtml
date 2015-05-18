@@ -13,6 +13,11 @@
                     <h:outputText value="Doorzoek alle velden: " />
                     <p:inputText id="globalFilter" onkeyup="PF('userTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
                 </p:outputPanel>
+                <h:outputText value="Exporteren naar Excel: "/>
+                <h:commandLink>
+                    <p:graphicImage name="images/icons/excel.png" />
+                    <p:dataExporter type="xls" target="useroverview" fileName="gebruiker" />
+                </h:commandLink>
             </f:facet>
             <p:column headerText="Id" sortBy="#{detail.id}" style="display:none">
                 <h:outputText value="#{detail.id}"/>
@@ -33,7 +38,7 @@
                 <h:outputText value="#{detail.level}"/>
             </p:column>
             
-             <p:column headerText="Afbeelding">
+            <p:column headerText="Afbeelding" exportable="false">
                 <p:lightBox styleClass="imagebox" id="lighbox1">
                     <h:outputLink value="#{detail.imageID}" title="#{detail.username}">  
                 <h:graphicImage height="50" width="70" value="#{detail.imageID}"/>
@@ -50,11 +55,6 @@
                 <p:commandButton process="useroverview" update=":userform:multiUserDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiUserDialog').show()" />
             </f:facet>
         </p:dataTable>
-        
-        <h:commandLink>
-            <p:graphicImage name="images/icons/excel.png" />
-            <p:dataExporter type="xls" target="useroverview" fileName="user" />
-        </h:commandLink>
         <p:dialog header="Geselecteerde Users" widgetVar="multiUserDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiUserDetail" style="text-align:center;" >
                 <ui:repeat value="#{useroverview.selectedUser}" var="detail" rendered="true">

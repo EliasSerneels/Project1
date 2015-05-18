@@ -15,6 +15,11 @@
                     <h:outputText value="Doorzoek alle velden: " />
                     <p:inputText id="globalFilter" onkeyup="PF('bungalowTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
                 </p:outputPanel>
+                <h:outputText value="Exporteren naar Excel: "/>
+                <h:commandLink>
+                    <p:graphicImage name="images/icons/excel.png" />
+                    <p:dataExporter type="xls" target="bungalow" fileName="bungalow" />
+                </h:commandLink>
             </f:facet>
 
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
@@ -51,15 +56,15 @@
             <p:column headerText="Maximum capaciteit" sortBy="#{listDetail.maxpeople}" filterBy="#{listDetail.maxpeople}" filterMatchMode="exact">
                 <h:outputText value="#{listDetail.maxpeople}"/>
             </p:column>
-            
-             <p:column headerText="Afbeelding">
+
+            <p:column headerText="Afbeelding" exportable="false">
                 <p:lightBox styleClass="imagebox" id="lighbox1">
                     <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.name}">  
-                <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
+                        <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
                     </h:outputLink>
                 </p:lightBox>
             </p:column>
-            
+
 
             <p:column exportable="false">
                 <a href="bungalow.xhtml?edit=${listDetail.id}" class=" button">edit</a>
@@ -68,12 +73,10 @@
             <f:facet name="footer">
                 <p:commandButton process="bungalow" update=":bungalowform:multiBungalowDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiBungalowDialog').show()" />
             </f:facet>
+
         </p:dataTable>
 
-        <h:commandLink>
-            <p:graphicImage name="images/icons/excel.png" />
-            <p:dataExporter type="xls" target="bungalow" fileName="bungalow" />
-        </h:commandLink>
+
         <p:dialog header="Geselecteerde Bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiBungalowDetail" style="text-align:center;" >
                 <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail" rendered="true">

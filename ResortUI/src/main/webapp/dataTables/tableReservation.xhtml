@@ -16,6 +16,11 @@
                     <h:outputText value="Doorzoek alle velden: " />
                     <p:inputText id="globalFilter" onkeyup="PF('reservationTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
                 </p:outputPanel>
+                <h:outputText value="Exporteren naar Excel: "/>
+                <h:commandLink>
+                    <p:graphicImage name="images/icons/excel.png" />
+                    <p:dataExporter type="xls" target="reservation" fileName="reservatie" />
+                </h:commandLink>
             </f:facet>
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
@@ -45,7 +50,7 @@
             </p:column>
             
 
-            <p:column>
+            <p:column exportable="false">
                 <a href="reservation.xhtml?edit=${listDetail.id}" class=" button">edit</a>
                 <a href="reservation.xhtml?delete=${listDetail.id}" class=" button">delete</a>
             </p:column>
