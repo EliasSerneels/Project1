@@ -19,14 +19,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 public class StaffEntity extends BasicEntity{
     
-    private String firstName;
-    private String lastName;
-    private String birthDate;
+    private String firstname;
+    private String lastname;
+    private String birthdate;
     private String country;
     private String city;
     private String street;
-    private int houseNumber;
-    private String phoneNumber;
+    private int housenumber;
+    private String phonenumber;
     private String email;
         private String imageID;
 
@@ -48,27 +48,27 @@ public class StaffEntity extends BasicEntity{
     }
 
     public String getFirstname() {
-        return firstName;
+        return firstname;
     }
 
-    public void setFirstname(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getLastname() {
-        return lastName;
+        return lastname;
     }
 
-    public void setLastname(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getBirthdate() {
-        return birthDate;
+        return birthdate;
     }
 
-    public void setBirthdate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getCountry() {
@@ -96,19 +96,19 @@ public class StaffEntity extends BasicEntity{
     }
 
     public int getHousenumber() {
-        return houseNumber;
+        return housenumber;
     }
 
-    public void setHousenumber(int houseNumber) {
-        this.houseNumber = houseNumber;
+    public void setHousenumber(int housenumber) {
+        this.housenumber = housenumber;
     }
 
     public String getPhonenumber() {
-        return phoneNumber;
+        return phonenumber;
     }
 
-    public void setPhonenumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
    

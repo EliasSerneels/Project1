@@ -12,9 +12,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.thomasmore.oo3.course.resortui.business.entity.EventCompanyEntity;
-import org.thomasmore.oo3.course.resortui.facade.EventCompanyFacade;
-import org.thomasmore.oo3.course.resortui.model.EventCompanyPageDto;
+import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
+import org.thomasmore.oo3.course.resortui.facade.EventcompanyFacade;
+import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
 
 /**
  *
@@ -24,18 +24,18 @@ import org.thomasmore.oo3.course.resortui.model.EventCompanyPageDto;
 @RequestScoped
 public class EventCompanyController {
     
-    private EventCompanyPageDto dto;
+    private EventcompanyPageDto dto;
     private String pageRedirect="eventcompany.xhtml?faces-redirect=true";
-    private List<EventCompanyEntity> selectedEventcompany;
+    private List<EventcompanyEntity> selectedEventcompany;
 
 
     @EJB
-    private EventCompanyFacade eventcompanyFacade;
+    private EventcompanyFacade eventcompanyFacade;
 
     @PostConstruct
     public void init() {
 
-        dto = new EventCompanyPageDto();
+        dto = new EventcompanyPageDto();
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
@@ -52,19 +52,19 @@ public class EventCompanyController {
         return pageRedirect;
     }
     
-    public EventCompanyPageDto getDto() {
+    public EventcompanyPageDto getDto() {
         return dto;
     }
 
-    public void setDto(EventCompanyPageDto dto) {
+    public void setDto(EventcompanyPageDto dto) {
         this.dto = dto;
     }
     
-         public List<EventCompanyEntity> getSelectedEventcompany() {
+         public List<EventcompanyEntity> getSelectedEventcompany() {
         return selectedEventcompany;
     }
 
-    public void setSelectedEventcompany(List<EventCompanyEntity> selectedEventcompany) {
+    public void setSelectedEventcompany(List<EventcompanyEntity> selectedEventcompany) {
         this.selectedEventcompany = selectedEventcompany;
     }  
 }
