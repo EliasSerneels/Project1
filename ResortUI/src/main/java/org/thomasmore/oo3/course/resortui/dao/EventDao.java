@@ -14,10 +14,6 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 
-/**
- *
- * @author Jeroen
- */
 @Stateless
 public class EventDao implements Serializable {
     

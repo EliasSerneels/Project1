@@ -328,7 +328,7 @@ public class initDbStartup {
 
         objectsToSave.add(ee3);
 
-        EventcompanyEntity ece1 = new EventcompanyEntity();
+        EventCompanyEntity ece1 = new EventCompanyEntity();
         ece1.setId(UUID.randomUUID().toString());
         ece1.setName("Bedrijf 1");
         ece1.setPhone("0497145474");
@@ -337,7 +337,7 @@ public class initDbStartup {
         ece1.setContact("Dhr. Maes");
         objectsToSave.add(ece1);
 
-        EventcompanyEntity ece2 = new EventcompanyEntity();
+        EventCompanyEntity ece2 = new EventCompanyEntity();
         ece2.setId(UUID.randomUUID().toString());
         ece2.setName("Bedrijf 2");
         ece2.setPhone("0497856236");
@@ -346,7 +346,7 @@ public class initDbStartup {
         ece2.setContact("Mevr. De Bakker");
         objectsToSave.add(ece2);
 
-        EventcompanyEntity ece3 = new EventcompanyEntity();
+        EventCompanyEntity ece3 = new EventCompanyEntity();
         ece3.setId(UUID.randomUUID().toString());
         ece3.setName("Bedrijf 3");
         ece3.setPhone("0497713554");
@@ -355,15 +355,15 @@ public class initDbStartup {
         ece3.setContact("Dhr. Thomassen");
         objectsToSave.add(ece3);
 
-        EventtypeEntity ete1 = new EventtypeEntity();
+        EventTypeEntity ete1 = new EventTypeEntity();
         ete1.setEventname("Trouw");
         objectsToSave.add(ete1);
 
-        EventtypeEntity ete2 = new EventtypeEntity();
+        EventTypeEntity ete2 = new EventTypeEntity();
         ete2.setEventname("BBQ");
         objectsToSave.add(ete2);
 
-        EventtypeEntity ete3 = new EventtypeEntity();
+        EventTypeEntity ete3 = new EventTypeEntity();
         ete3.setEventname("Communie");
         objectsToSave.add(ete3);
 

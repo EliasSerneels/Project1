@@ -20,6 +20,7 @@ import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -31,6 +32,7 @@ import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.ReservationEntity;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
 import org.thomasmore.oo3.course.resortui.dao.ReservationDao;
+import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 
 @Named(value = "scheduler")
 @Stateless
@@ -85,8 +87,28 @@ public class ScheduleController {
         event = new DefaultScheduleEvent();
     }
      
-    public void onEventSelect(SelectEvent selectEvent) {
+    public EventPageDto onEventSelect(SelectEvent selectEvent) {
         event = (ScheduleEvent) selectEvent.getObject();
+         
+
+        EventPageDto dto = new EventPageDto();
+        // Zoeken naar event met waarden die we verkrijgen uit de onselecteventmethode
+        List<EventEntity> eventschedule = eventDao.listAll();
+        for (EventEntity evnt : eventschedule) { 
+           String eventName = evnt.getEventname();
+           
+           if(eventName.equals(event.getTitle())){
+               dto.getDetail().setLocationName(evnt.getLocationName());
+               dto.getDetail().setEventtype(evnt.getEventtype());
+               dto.getDetail().setCustomerName(evnt.getCustomerName());
+               dto.getDetail().setEventcompany(evnt.getEventcompany());
+               dto.getDetail().setEventname(evnt.getEventname());
+               
+               RequestContext.getCurrentInstance().update("eventDialog");
+           }
+           
+        }
+        return dto;
     }
      
     public void onDateSelect(SelectEvent selectEvent) {
@@ -204,5 +226,14 @@ public class ScheduleController {
     public Date today(){
         Date date = new Date();
         return date;
+    }
+    
+    public Date yesterday(){
+        Date now = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(now);
+        cal.add(Calendar.DAY_OF_YEAR, -1); 
+        Date yesterday = cal.getTime();
+        return yesterday;
     }
 }
