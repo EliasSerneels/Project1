@@ -152,7 +152,7 @@
                                 <span class="input-group-addon">Event Naam</span>
                                 <h:inputText label="eventnaam" 
                                              value="#{event.dto.detail.eventname}" class="form-control"
-                                             required="true" requiredMessage="Vul een eventnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 20 tekens)" validatorMessage="Vul een eventnaam in. Dit veld kan letters, hoofdletters, cijfers en spaties bevatten. (Max. 100 tekens)"
+                                             required="true" requiredMessage="Vul een eventnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 100 tekens)" validatorMessage="Vul een eventnaam in. Dit veld kan letters, hoofdletters, cijfers en spaties bevatten. (Max. 100 tekens)"
                                              >
                                     <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç0-9]{1,100}"/>
                                 </h:inputText>
@@ -161,7 +161,7 @@
                          <div class="col-md-6-r">
                             <div class="input-group">
                                 <span class="input-group-addon">Locatie</span>
-                                <p:selectOneMenu required="true" id="Locatie" value="#{event.dto.detail.locationName}" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een locatie te kiezen.">
+                                <p:selectOneMenu required="true" id="Locatie" value="#{event.dto.detail.locationName}" requiredMessage="Gelieve een locatie te kiezen." validatorMessage="Gelieve een locatie te kiezen.">
                                     <f:selectItem itemLabel="Kies locatie"  noSelectionOption="true" />
                                     <f:selectItems value="#{event.dto.locationList}" />
                                 </p:selectOneMenu>                          
@@ -188,7 +188,7 @@
                         <div class="col-md-6-l">
                             <div class="input-group">
                                 <span class="input-group-addon">Klant</span>
-                                <p:selectOneMenu required="true" id="Klant" value="#{event.dto.detail.customerName}" requiredMessage="Gelieve een bedrijf te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
+                                <p:selectOneMenu required="true" id="Klant" value="#{event.dto.detail.customerName}" requiredMessage="Gelieve een klantnaam te kiezen." validatorMessage="Gelieve een klantnaam te kiezen.">
                                     <f:selectItem itemLabel="Kies klant"  noSelectionOption="true" />
                                     <f:selectItems value="#{event.dto.customerList}" />
                                 </p:selectOneMenu>                                 

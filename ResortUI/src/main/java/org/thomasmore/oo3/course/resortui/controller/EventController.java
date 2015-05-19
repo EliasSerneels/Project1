@@ -51,33 +51,34 @@ public class EventController {
             check = "doubleBooking";
         }
         
+        // Zak hoe dan ook naar het formulier wanneer één van deze meldingen getoond wordt
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.scrollTo("frmEvent");
+        
+        // check of er meldingen getoond moeten worden
         switch (check) {
             case "begindateAfterEnddate":
             {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
                 FacesMessage facesMessage = new FacesMessage("De gekozen begindatum is later dan de gekozen einddatum.");
-                facesContext.addMessage(null, facesMessage);
                 return null;
             }
             case "doubleBooking":
             {
-                    FacesContext facesContext = FacesContext.getCurrentInstance();
-                    FacesMessage facesMessage = new FacesMessage("De gekozen locatie is reeds bezet voor deze datum. Gelieve een andere datum te kiezen.");
-                    facesContext.addMessage(null, facesMessage);
-                    // Roept de dialogbox op
-                    FacesMessage message = new FacesMessage("Deze locatie is reeds volzet.", suggestion+".</p>");
-                    RequestContext.getCurrentInstance().showMessageInDialog(message);
-
-                    //RequestContext context = RequestContext.getCurrentInstance();
-                    //context.execute("PF('suggestieDubbeleBoeking').show();");
-                    return null;
+                FacesContext facesContext = FacesContext.getCurrentInstance();
+                FacesMessage facesMessage = new FacesMessage("De gekozen locatie is reeds bezet voor deze datum. Gelieve een andere datum te kiezen.");
+                facesContext.addMessage(null, facesMessage);
+                // Roept de dialogbox op
+                FacesMessage message = new FacesMessage("Deze locatie is reeds volzet.", suggestion);
+                RequestContext.getCurrentInstance().showMessageInDialog(message);
+                return null;
             }
             case "beginDateBeforeToday":
             {
-                    FacesContext facesContext = FacesContext.getCurrentInstance();
-                    FacesMessage facesMessage = new FacesMessage("De datum die u gekozen hebt ligt in het verleden.");
-                    facesContext.addMessage(null, facesMessage);
-                    return null;
+                FacesContext facesContext = FacesContext.getCurrentInstance();
+                FacesMessage facesMessage = new FacesMessage("De datum die u gekozen hebt ligt in het verleden.");
+                facesContext.addMessage(null, facesMessage);
+                return null;
             }
             default:
                 return "event.xhtml?faces-redirect=true";
