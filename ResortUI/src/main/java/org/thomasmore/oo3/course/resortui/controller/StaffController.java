@@ -5,6 +5,7 @@
  */
 package org.thomasmore.oo3.course.resortui.controller;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -25,39 +26,26 @@ import org.thomasmore.oo3.course.resortui.model.StaffPageDto;
  */
 @Named(value = "staff")
 @RequestScoped
+public class StaffController implements Serializable {
 
-public class StaffController {
     private StaffPageDto dto;
-    private String pageRedirect="staff.xhtml??faces-redirect=true";
+    private final String pageRedirect = "staff.xhtml?faces-redirect=true";
     private List<StaffEntity> selectedStaff;
-    
+
     @EJB
     private StaffFacade staffFacade;
-    
+
     @PostConstruct
     public void init() {
-        
-        dto = new StaffPageDto();
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
         dto = staffFacade.loadStaffOverviewPage(editId, deleteId);
     }
 
-    public String add(){
+    public String add() {
         staffFacade.add(dto);
         return pageRedirect;
-        
-        }
-    
-      public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Staff Selected", ((StaffEntity) event.getObject()).getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
- 
-    public void onRowUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage("Staff Unselected", ((StaffEntity) event.getObject()).getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public StaffPageDto getDto() {
@@ -75,7 +63,4 @@ public class StaffController {
     public void setSelectedStaff(List<StaffEntity> selectedStaff) {
         this.selectedStaff = selectedStaff;
     }
-    
-    
-    
-    }
+}
