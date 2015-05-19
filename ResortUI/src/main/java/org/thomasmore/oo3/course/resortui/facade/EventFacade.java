@@ -89,7 +89,7 @@ public class EventFacade implements Serializable{
         List<CustomerEntity> customers = customerDao.listAll();
 
         for (CustomerEntity customer: customers) {
-            dto.getCustomerList().add(customer.getFirstname());
+            dto.getCustomerList().add(customer.getFirstname()+" "+customer.getLastname());
         }
         
         for (LocationEntity location: locations) {
