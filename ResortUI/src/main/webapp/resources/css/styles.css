@@ -957,10 +957,15 @@ table tr:last-child td:last-child{
 }
 
 #tblBungalowContainer .ui-outputpanel,#tblCustomerContainer .ui-outputpanel,
-#tblReservationContainer .ui-outputpanel,#tblEventContainer .ui-outputpanel{
+#tblReservationContainer .ui-outputpanel,#tblEventContainer .ui-outputpanel,
+#tblEventtypeContainer .ui-outputpanel,#tblLocationContainer .ui-outputpanel{
     padding-bottom: 15px;
 }
 
 #tblEventContainer .ui-selectonemenu{
     width: 100% !important;
+}
+
+#tblLocationContainer th{
+    height: 75px;
 }
