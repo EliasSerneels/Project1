@@ -938,11 +938,12 @@ table tr:last-child td:last-child{
     text-align: left;
 }
 
-#tblBungalowContainer th:nth-child(3n) .ui-button{
+#tblBungalowContainer th:nth-child(3n) .ui-button,#tblBWBungalowContainer th:nth-child(3n) .ui-button{
     border-radius: 4px;
 }
 
-#tblBungalowContainer .ui-selectonemenu-label,#tblEventContainer .ui-selectonemenu-label{
+#tblBungalowContainer .ui-selectonemenu-label,#tblEventContainer .ui-selectonemenu-label,
+#tblBWBungalowContainer .ui-selectonemenu-label{
     font-size: 11px;
 }
 
@@ -951,7 +952,8 @@ table tr:last-child td:last-child{
     margin-top: 6px !important;
 }
 
-#tblBungalowContainer .ui-column-customfilter,#tblEventContainer .ui-column-customfilter{
+#tblBungalowContainer .ui-column-customfilter,#tblEventContainer .ui-column-customfilter,
+#tblBWBungalowContainer .ui-column-customfilter{
     padding-top: 7px;
     max-width: 100%;
 }
@@ -959,7 +961,8 @@ table tr:last-child td:last-child{
 #tblBungalowContainer .ui-outputpanel,#tblCustomerContainer .ui-outputpanel,
 #tblReservationContainer .ui-outputpanel,#tblEventContainer .ui-outputpanel,
 #tblEventtypeContainer .ui-outputpanel,#tblLocationContainer .ui-outputpanel,
-#tblStaffContainer .ui-outputpanel,#tblUseroverviewContainer .ui-outputpanel{
+#tblStaffContainer .ui-outputpanel,#tblUseroverviewContainer .ui-outputpanel,
+#tblBWBungalowContainer .ui-outputpanel,#tblBWCustomerContainer .ui-outputpanel{
     padding-bottom: 15px;
 }
 
@@ -967,7 +970,8 @@ table tr:last-child td:last-child{
     width: 100% !important;
 }
 
-#tblLocationContainer th,#tblStaffContainer th,#tblUseroverviewContainer th{
+#tblLocationContainer th,#tblStaffContainer th,#tblUseroverviewContainer th,
+#tblBWCustomerContainer th{
     height: 75px;
 }
 
