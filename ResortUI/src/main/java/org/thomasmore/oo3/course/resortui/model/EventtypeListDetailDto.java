@@ -9,7 +9,7 @@ package org.thomasmore.oo3.course.resortui.model;
  *
  * @author Jeroen
  */
-public class EventTypeListDetailDto {
+public class EventtypeListDetailDto {
 
 private String id;
 

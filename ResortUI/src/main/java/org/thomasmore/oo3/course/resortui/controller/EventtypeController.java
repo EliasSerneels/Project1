@@ -13,9 +13,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
-import org.thomasmore.oo3.course.resortui.business.entity.EventTypeEntity;
-import org.thomasmore.oo3.course.resortui.facade.EventTypeFacade;
-import org.thomasmore.oo3.course.resortui.model.EventTypePageDto;
+import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
+import org.thomasmore.oo3.course.resortui.facade.EventtypeFacade;
+import org.thomasmore.oo3.course.resortui.model.EventtypePageDto;
 
 /**
  *
@@ -23,20 +23,20 @@ import org.thomasmore.oo3.course.resortui.model.EventTypePageDto;
  */
 @Named(value = "eventtype")
 @RequestScoped
-public class EventTypeController {
+public class EventtypeController {
 
-    private EventTypePageDto dto;
+    private EventtypePageDto dto;
     private final String pageRedirect="eventtype.xhtml?faces-redirect=true";
-    private List<EventTypeEntity> selectedEventtype;
+    private List<EventtypeEntity> selectedEventtype;
 
 
     @EJB
-    private EventTypeFacade eventtypeFacade;
+    private EventtypeFacade eventtypeFacade;
 
     @PostConstruct
     public void init() {
 
-        dto = new EventTypePageDto();
+        dto = new EventtypePageDto();
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
@@ -51,19 +51,19 @@ public class EventTypeController {
         return pageRedirect;
     }
     
-    public EventTypePageDto getDto() {
+    public EventtypePageDto getDto() {
         return dto;
     }
 
-    public void setDto(EventTypePageDto dto) {
+    public void setDto(EventtypePageDto dto) {
         this.dto = dto;
     }
     
-      public List<EventTypeEntity> getSelectedEventtype() {
+      public List<EventtypeEntity> getSelectedEventtype() {
         return selectedEventtype;
     }
 
-    public void setSelectedEventtype(List<EventTypeEntity> selectedEventtype) {
+    public void setSelectedEventtype(List<EventtypeEntity> selectedEventtype) {
         this.selectedEventtype = selectedEventtype;
     }   
 

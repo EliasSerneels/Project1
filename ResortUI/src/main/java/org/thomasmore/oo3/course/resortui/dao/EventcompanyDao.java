@@ -12,31 +12,31 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
-import org.thomasmore.oo3.course.resortui.business.entity.EventCompanyEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
 
 /**
  *
  * @author Jeroen
  */
 @Stateless
-public class EventCompanyDao implements Serializable {
+public class EventcompanyDao implements Serializable {
     
     @PersistenceContext
     private EntityManager em;
 
-    public void save(EventCompanyEntity eventcompanyEntity) {
+    public void save(EventcompanyEntity eventcompanyEntity) {
         em.merge(eventcompanyEntity);
     }
 
-    public List<EventCompanyEntity> listAll() {
+    public List<EventcompanyEntity> listAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-        cq.select(cq.from(EventCompanyEntity.class));
+        cq.select(cq.from(EventcompanyEntity.class));
         Query q = em.createQuery(cq);
         return q.getResultList();
     }
 
-    public EventCompanyEntity findById(String id) {
-        return em.find(EventCompanyEntity.class, id);
+    public EventcompanyEntity findById(String id) {
+        return em.find(EventcompanyEntity.class, id);
     }
 
     public void deleteById(String id) {

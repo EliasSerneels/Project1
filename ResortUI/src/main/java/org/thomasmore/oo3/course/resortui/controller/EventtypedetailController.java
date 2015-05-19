@@ -11,7 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.thomasmore.oo3.course.resortui.facade.EventTypeDetailFacade;
+import org.thomasmore.oo3.course.resortui.facade.EventtypedetailFacade;
 import org.thomasmore.oo3.course.resortui.model.EventtypedetailPageDto;
 
 /**
@@ -20,7 +20,7 @@ import org.thomasmore.oo3.course.resortui.model.EventtypedetailPageDto;
  */
 @Named(value = "eventtypedetail")
 @RequestScoped
-public class EventTypeDetailController {
+public class EventtypedetailController {
 
 
 
@@ -29,7 +29,7 @@ public class EventTypeDetailController {
     private String pageRedirect="eventtypedetail.xhtml?faces-redirect=true";
 
     @EJB
-    private EventTypeDetailFacade eventtypedetailFacade;
+    private EventtypedetailFacade eventtypedetailFacade;
 
     @PostConstruct
     public void init() {

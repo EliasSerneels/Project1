@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "eventtypedetail")
 @XmlRootElement
-public class EventTypeDetailEntity extends BasicEntity implements Serializable {
+public class EventtypedetailEntity extends BasicEntity implements Serializable {
 
     private String Eventtypename;
     private String Eventcompany;

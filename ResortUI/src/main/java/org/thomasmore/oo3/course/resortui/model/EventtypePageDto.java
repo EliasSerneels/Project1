@@ -12,25 +12,25 @@ import java.util.List;
  *
  * @author Jeroen
  */
-public class EventTypePageDto {
+public class EventtypePageDto {
 
-    private EventTypeDetailDto detail = new EventTypeDetailDto();
+    private EventtypeDetailDto detail = new EventtypeDetailDto();
 
-    private List<EventTypeListDetailDto> list = new LinkedList<>();
+    private List<EventtypeListDetailDto> list = new LinkedList<>();
     
     
-     public EventTypeDetailDto getDetail() {
+     public EventtypeDetailDto getDetail() {
         return detail;
     }
 
-    public void setDetail(EventTypeDetailDto detail) {
+    public void setDetail(EventtypeDetailDto detail) {
         this.detail = detail;
     }
 
-    public List<EventTypeListDetailDto> getList() {
+    public List<EventtypeListDetailDto> getList() {
         return list;
     }
 
-    public void setList(List<EventTypeListDetailDto> list) {
+    public void setList(List<EventtypeListDetailDto> list) {
         this.list = list;
 }}

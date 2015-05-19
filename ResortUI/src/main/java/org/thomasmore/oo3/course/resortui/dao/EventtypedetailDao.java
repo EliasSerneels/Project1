@@ -12,29 +12,33 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
-import org.thomasmore.oo3.course.resortui.business.entity.EventTypeDetailEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.EventtypedetailEntity;
 
-
+/**
+ *
+ * @author Jeroen
+ */
+ 
 
     @Stateless
-public class EventTypeDetailDao implements Serializable {
+public class EventtypedetailDao implements Serializable {
 
     @PersistenceContext
     private EntityManager em;
 
-    public void save(EventTypeDetailEntity eventtypedetailEntity) {
+    public void save(EventtypedetailEntity eventtypedetailEntity) {
         em.merge(eventtypedetailEntity);
     }
 
-    public List<EventTypeDetailEntity> listAll() {
+    public List<EventtypedetailEntity> listAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-        cq.select(cq.from(EventTypeDetailEntity.class));
+        cq.select(cq.from(EventtypedetailEntity.class));
         Query q = em.createQuery(cq);
         return q.getResultList();
     }
 
-    public EventTypeDetailEntity findById(String id) {
-        return em.find(EventTypeDetailEntity.class, id);
+    public EventtypedetailEntity findById(String id) {
+        return em.find(EventtypedetailEntity.class, id);
     }
 
     public void deleteById(String id) {

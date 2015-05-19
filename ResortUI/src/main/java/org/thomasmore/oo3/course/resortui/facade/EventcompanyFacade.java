@@ -10,28 +10,28 @@ import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
-import org.thomasmore.oo3.course.resortui.business.entity.EventCompanyEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
-import org.thomasmore.oo3.course.resortui.dao.EventCompanyDao;
-import org.thomasmore.oo3.course.resortui.model.EventCompanyListDetailDto;
-import org.thomasmore.oo3.course.resortui.model.EventCompanyPageDto;
+import org.thomasmore.oo3.course.resortui.dao.EventcompanyDao;
+import org.thomasmore.oo3.course.resortui.model.EventcompanyListDetailDto;
+import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
 
 /**
  *
  * @author Jeroen
  */
 @Stateless
-public class EventCompanyFacade {
+public class EventcompanyFacade {
     @EJB
  private EventDao eventDao;
     @EJB
-    private EventCompanyDao eventcompanyDao;
+    private EventcompanyDao eventcompanyDao;
     
 
-    public EventCompanyPageDto loadEventcompanyOverviewPage(String editId, String deleteId) {
-    EventCompanyPageDto dto = new EventCompanyPageDto();
+    public EventcompanyPageDto loadEventcompanyOverviewPage(String editId, String deleteId) {
+    EventcompanyPageDto dto = new EventcompanyPageDto();
         if (editId != null) {
-            EventCompanyEntity eventcompanyEntity = eventcompanyDao.findById(editId);
+            EventcompanyEntity eventcompanyEntity = eventcompanyDao.findById(editId);
             if (eventcompanyEntity != null) {
                 dto.getDetail().setId(eventcompanyEntity.getId());
                 dto.getDetail().setName(eventcompanyEntity.getName());
@@ -48,11 +48,11 @@ public class EventCompanyFacade {
         if (deleteId != null) {
             eventcompanyDao.deleteById(deleteId);
         }
-        List<EventCompanyEntity> eventcompanies = eventcompanyDao.listAll();
+        List<EventcompanyEntity> eventcompanies = eventcompanyDao.listAll();
         
 
         
-        for (EventCompanyEntity eventcompany : eventcompanies) {
+        for (EventcompanyEntity eventcompany : eventcompanies) {
             
             
                     List<EventEntity> events = eventDao.listAll();
@@ -65,7 +65,7 @@ public class EventCompanyFacade {
                                 eventcompany.setTotalnumberevents(ReservationCount);
                             }
                         }
-            EventCompanyListDetailDto listDetail = new EventCompanyListDetailDto();
+            EventcompanyListDetailDto listDetail = new EventcompanyListDetailDto();
             listDetail.setId(eventcompany.getId());
             listDetail.setName(eventcompany.getName());
             listDetail.setCity(eventcompany.getCity());
@@ -79,9 +79,9 @@ public class EventCompanyFacade {
         return dto;
     }
 
-    public EventCompanyPageDto add(EventCompanyPageDto dto) {
+    public EventcompanyPageDto add(EventcompanyPageDto dto) {
         
-EventCompanyEntity eventcompanyEntity = null;
+EventcompanyEntity eventcompanyEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
             dto.getDetail().setId(UUID.randomUUID().toString());
@@ -90,7 +90,7 @@ EventCompanyEntity eventcompanyEntity = null;
         }
 
         if (eventcompanyEntity == null) {
-            eventcompanyEntity = new EventCompanyEntity();            
+            eventcompanyEntity = new EventcompanyEntity();            
         }       
         eventcompanyEntity.setId(dto.getDetail().getId());
         eventcompanyEntity.setName(dto.getDetail().getName());

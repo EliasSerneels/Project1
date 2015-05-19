@@ -12,26 +12,26 @@ import java.util.List;
  *
  * @author Jeroen
  */
-public class EventCompanyPageDto {
+public class EventcompanyPageDto {
     
     
-    private EventCompanyDetailDto detail = new EventCompanyDetailDto();
+    private EventcompanyDetailDto detail = new EventcompanyDetailDto();
 
-    private List<EventCompanyListDetailDto> list = new LinkedList<>();
+    private List<EventcompanyListDetailDto> list = new LinkedList<>();
     
     
-     public EventCompanyDetailDto getDetail() {
+     public EventcompanyDetailDto getDetail() {
         return detail;
     }
 
-    public void setDetail(EventCompanyDetailDto detail) {
+    public void setDetail(EventcompanyDetailDto detail) {
         this.detail = detail;
     }
 
-    public List<EventCompanyListDetailDto> getList() {
+    public List<EventcompanyListDetailDto> getList() {
         return list;
     }
 
-    public void setList(List<EventCompanyListDetailDto> list) {
+    public void setList(List<EventcompanyListDetailDto> list) {
         this.list = list;
 }}

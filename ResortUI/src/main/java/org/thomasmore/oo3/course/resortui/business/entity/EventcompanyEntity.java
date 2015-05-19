@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "eventcompany")
 @XmlRootElement
-public class EventCompanyEntity extends BasicEntity implements Serializable{
+public class EventcompanyEntity extends BasicEntity implements Serializable{
 
 
 private String name;

@@ -9,6 +9,6 @@ package org.thomasmore.oo3.course.resortui.model;
  *
  * @author Jeroen
  */
-public class EventCompanyDetailDto extends EventCompanyListDetailDto {
+public class EventcompanyDetailDto extends EventcompanyListDetailDto {
     
 }

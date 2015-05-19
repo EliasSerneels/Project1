@@ -12,7 +12,7 @@ import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
  *
  * @author Jeroen
  */
-public class EventCompanyListDetailDto {
+public class EventcompanyListDetailDto {
 
 private String id;
 private String name;

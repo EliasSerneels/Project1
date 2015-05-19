@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "eventtype")
 @XmlRootElement
-public class EventTypeEntity extends BasicEntity {
+public class EventtypeEntity extends BasicEntity {
 
     private String eventname;
 
