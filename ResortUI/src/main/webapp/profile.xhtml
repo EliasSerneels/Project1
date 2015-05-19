@@ -24,19 +24,9 @@
                 <ui:fragment rendered="#{sessionDto.userDto.level &lt; 2}">
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
-
-                <div style="float:right; width: 200px;">
-                   <h:form >
-                        <h:graphicImage height="300" width="300" value="#{login.sessionDto.userDto.imageID}"/>
-                    </h:form>
-                    
-          
-                </div>
-                
-                <div style="float:left; width: 500px;" class="col-md-6-l">
-                    
  
-                    <h:form >
+                <div style="float:left; width: 500px;border-radius:4px;" class="col-md-6-l">
+                    <h:form>
                         <h3>Mijn gegevens</h3> 
                         <table class="profileTable">
                             <tr><td>Gebruikersnaam</td><td>#{login.sessionDto.userDto.username}</td></tr>
@@ -44,10 +34,17 @@
                             <tr><td>Email-adres</td><td>#{login.sessionDto.userDto.email}</td></tr>
                             <tr><td>Level</td><td>#{login.sessionDto.userDto.level}</td> </tr> 
                         </table>
-                        <a class="button" id="knop" onclick="document.getElementById('inputForm').style.display = 'block';
+                        <a class="button" id="profileWijzigKnop" onclick="document.getElementById('inputForm').style.display = 'block';
                                 document.getElementById('knop').setAttribute('disabled', 'disabled');">Wijzig</a>
                     </h:form>
-                </div>                
+                </div>   
+                
+                <div style="float:left;margin-top:5px;margin-left: 20px;border-radius:4px;">
+                   <h:form >
+                        <h:graphicImage height="300" width="300" value="#{login.sessionDto.userDto.imageID}"/>
+                    </h:form>
+                </div>
+                
                 <div style="display:none; float:left; width: 600px; margin-top: 90px;" id="inputForm" class="col-md-6-r">
                     <h:form>
                         <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
