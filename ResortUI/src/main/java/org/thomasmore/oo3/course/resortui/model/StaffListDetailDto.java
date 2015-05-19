@@ -12,14 +12,14 @@ package org.thomasmore.oo3.course.resortui.model;
 public class StaffListDetailDto {
 
     private String id;
-    private String firstname;
-    private String lastname;
-    private String birthdate;
+    private String firstName;
+    private String lastName;
+    private String birthDate;
     private String country;
     private String city;
     private String street;
-    private int housenumber;
-    private String phonenumber;
+    private int houseNumber;
+    private String phoneNumber;
     private String email;
     private String imageID;
 
@@ -32,27 +32,27 @@ public class StaffListDetailDto {
     }
 
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstname(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastname(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getBirthdate() {
-        return birthdate;
+        return birthDate;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthdate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getCountry() {
@@ -80,19 +80,19 @@ public class StaffListDetailDto {
     }
 
     public int getHousenumber() {
-        return housenumber;
+        return houseNumber;
     }
 
-    public void setHousenumber(int housenumber) {
-        this.housenumber = housenumber;
+    public void setHousenumber(int houseNumber) {
+        this.houseNumber = houseNumber;
     }
 
     public String getPhonenumber() {
-        return phonenumber;
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhonenumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
