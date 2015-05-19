@@ -942,18 +942,25 @@ table tr:last-child td:last-child{
     border-radius: 4px;
 }
 
-#tblBungalowContainer .ui-selectonemenu-label{
-    font-size: 12px;
+#tblBungalowContainer .ui-selectonemenu-label,#tblEventContainer .ui-selectonemenu-label{
+    font-size: 11px;
 }
 
-#tblBungalowContainer .ui-selectonemenu .ui-selectonemenu-trigger .ui-icon{
+#tblBungalowContainer .ui-selectonemenu .ui-selectonemenu-trigger .ui-icon,
+#tblEventContainer .ui-selectonemenu .ui-selectonemenu-trigger .ui-icon{
     margin-top: 6px !important;
 }
 
-#tblBungalowContainer .ui-column-customfilter{
+#tblBungalowContainer .ui-column-customfilter,#tblEventContainer .ui-column-customfilter{
     padding-top: 7px;
+    max-width: 100%;
 }
 
-#tblBungalowContainer .ui-outputpanel{
+#tblBungalowContainer .ui-outputpanel,#tblCustomerContainer .ui-outputpanel,
+#tblReservationContainer .ui-outputpanel,#tblEventContainer .ui-outputpanel{
     padding-bottom: 15px;
+}
+
+#tblEventContainer .ui-selectonemenu{
+    width: 100% !important;
 }
