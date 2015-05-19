@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
-import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.EventTypeEntity;
 
 
 /**
@@ -22,24 +22,24 @@ import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
  
     
 @Stateless
-public class EventtypeDao implements Serializable {
+public class EventTypeDao implements Serializable {
 
     @PersistenceContext
     private EntityManager em;
 
-    public void save(EventtypeEntity eventtypeEntity) {
+    public void save(EventTypeEntity eventtypeEntity) {
         em.merge(eventtypeEntity);
     }
 
-    public List<EventtypeEntity> listAll() {
+    public List<EventTypeEntity> listAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-        cq.select(cq.from(EventtypeEntity.class));
+        cq.select(cq.from(EventTypeEntity.class));
         Query q = em.createQuery(cq);
         return q.getResultList();
     }
 
-    public EventtypeEntity findById(String id) {
-        return em.find(EventtypeEntity.class, id);
+    public EventTypeEntity findById(String id) {
+        return em.find(EventTypeEntity.class, id);
     }
 
     public void deleteById(String id) {

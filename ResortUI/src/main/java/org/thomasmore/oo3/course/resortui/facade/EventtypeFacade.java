@@ -9,25 +9,25 @@ import java.util.List;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
-import org.thomasmore.oo3.course.resortui.dao.EventtypeDao;
-import org.thomasmore.oo3.course.resortui.model.EventtypeListDetailDto;
-import org.thomasmore.oo3.course.resortui.model.EventtypePageDto;
+import org.thomasmore.oo3.course.resortui.business.entity.EventTypeEntity;
+import org.thomasmore.oo3.course.resortui.dao.EventTypeDao;
+import org.thomasmore.oo3.course.resortui.model.EventTypeListDetailDto;
+import org.thomasmore.oo3.course.resortui.model.EventTypePageDto;
 
 /**
  *
  * @author Jeroen
  */
 @Stateless
-public class EventtypeFacade {
+public class EventTypeFacade {
 
     @EJB
-    private EventtypeDao eventtypeDao;
+    private EventTypeDao eventtypeDao;
 
-    public EventtypePageDto loadEventtypeOverviewPage(String editId, String deleteId) {
-        EventtypePageDto dto = new EventtypePageDto();
+    public EventTypePageDto loadEventtypeOverviewPage(String editId, String deleteId) {
+        EventTypePageDto dto = new EventTypePageDto();
         if (editId != null) {
-            EventtypeEntity eventtypeEntity = eventtypeDao.findById(editId);
+            EventTypeEntity eventtypeEntity = eventtypeDao.findById(editId);
             if (eventtypeEntity != null) {
                 dto.getDetail().setId(eventtypeEntity.getId());
                 dto.getDetail().setEventname(eventtypeEntity.getEventname());
@@ -38,10 +38,10 @@ public class EventtypeFacade {
         if (deleteId != null) {
             eventtypeDao.deleteById(deleteId);
         }
-        List<EventtypeEntity> events = eventtypeDao.listAll();
+        List<EventTypeEntity> events = eventtypeDao.listAll();
 
-        for (EventtypeEntity eventtype : events) {
-            EventtypeListDetailDto listDetail = new EventtypeListDetailDto();
+        for (EventTypeEntity eventtype : events) {
+            EventTypeListDetailDto listDetail = new EventTypeListDetailDto();
             listDetail.setId(eventtype.getId());
             listDetail.setEventname(eventtype.getEventname());
             dto.getList().add(listDetail);
@@ -49,9 +49,9 @@ public class EventtypeFacade {
         return dto;
     }
 
-    public EventtypePageDto add(EventtypePageDto dto) {
+    public EventTypePageDto add(EventTypePageDto dto) {
 
-        EventtypeEntity eventtypeEntity = null;
+        EventTypeEntity eventtypeEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
             dto.getDetail().setId(UUID.randomUUID().toString());
@@ -60,7 +60,7 @@ public class EventtypeFacade {
         }
 
         if (eventtypeEntity == null) {
-            eventtypeEntity = new EventtypeEntity();
+            eventtypeEntity = new EventTypeEntity();
         }
         eventtypeEntity.setId(dto.getDetail().getId());
         eventtypeEntity.setEventname(dto.getDetail().getEventname());

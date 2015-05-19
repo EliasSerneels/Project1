@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class EventtypedetailPageDto {
 
-    private EventtypeDetailDto detail = new EventtypeDetailDto();
+    private EventTypeDetailDto detail = new EventTypeDetailDto();
 
-    private List<EventtypedetailListDetailDto> list = new LinkedList<>();
+    private List<EventTypeDetailListDetailDto> list = new LinkedList<>();
 
     private List<String> eventtypeList = new LinkedList<>();
     
@@ -37,19 +37,19 @@ public class EventtypedetailPageDto {
         this.eventcompanyList = eventcompanyList;
     }
 
-   public EventtypeDetailDto getDetail() {
+   public EventTypeDetailDto getDetail() {
         return detail;
     }
 
-    public void setDetail(EventtypeDetailDto detail) {
+    public void setDetail(EventTypeDetailDto detail) {
         this.detail = detail;
     }
 
-    public List<EventtypedetailListDetailDto> getList() {
+    public List<EventTypeDetailListDetailDto> getList() {
         return list;
     }
 
-    public void setList(List<EventtypedetailListDetailDto> list) {
+    public void setList(List<EventTypeDetailListDetailDto> list) {
         this.list = list;
     }
 }
