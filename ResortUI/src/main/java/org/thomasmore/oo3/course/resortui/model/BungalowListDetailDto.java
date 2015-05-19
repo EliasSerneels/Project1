@@ -28,7 +28,7 @@ public class BungalowListDetailDto {
     private String type;
     private int price;
     private String park;
-    private String maxPeople;
+    private String maxpeople;
     private int reservations;
     private String description;
 
@@ -58,11 +58,11 @@ public class BungalowListDetailDto {
     }
 
     public String getMaxpeople() {
-        return maxPeople;
+        return maxpeople;
     }
 
-    public void setMaxpeople(String maxPeople) {
-        this.maxPeople = maxPeople;
+    public void setMaxpeople(String maxpeople) {
+        this.maxpeople = maxpeople;
     }
 
 

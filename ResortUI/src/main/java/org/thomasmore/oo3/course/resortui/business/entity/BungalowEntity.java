@@ -30,7 +30,7 @@ public class BungalowEntity extends BasicEntity {
     private int price;
     private String name;
     private String park;
-    private String maxPeople;
+    private String maxpeople;
     private int reservations;
     private String description;
 
@@ -68,11 +68,11 @@ public class BungalowEntity extends BasicEntity {
     }
 
     public String getMaxpeople() {
-        return maxPeople;
+        return maxpeople;
     }
 
-    public void setMaxpeople(String maxPeople) {
-        this.maxPeople = maxPeople;
+    public void setMaxpeople(String maxpeople) {
+        this.maxpeople = maxpeople;
     }
     
 
