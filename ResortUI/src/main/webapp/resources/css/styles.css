@@ -994,3 +994,58 @@ table tr:last-child td:last-child{
     margin-bottom: 10px;
     display: inline-block;
 }
+
+h2{
+    color: #333 !important;
+}
+
+footer{
+    background: rgba(255, 255, 255, 0.55) !important;
+}
+
+footer li{
+    background: rgba(255, 255, 255, 0.55) !important;
+    border-radius: 4px;
+    color: black;
+}
+
+footer li p{
+    color:black;
+}
+
+.lightColorFooter{
+    padding: 10px;
+}
+
+#footernamen li{
+    border-radius: 0px;
+}
+
+#footernamen li:first-child{
+    border-top-left-radius: 4px;
+}
+
+#footernamen li:last-child{
+    border-bottom-right-radius: 4px;
+}
+
+#footernamen li:nth-child(3){
+    border-top-right-radius: 4px;
+}
+
+#footernamen li:nth-child(7){
+    border-bottom-left-radius: 4px;
+}
+
+#footernamen li a{
+    text-decoration: none;
+    color:black;
+}
+
+#footernamen li:first-child,#footernamen li:nth-child(2),#footernamen li:nth-child(3){
+    padding-top: 10px;
+}
+
+#footernamen li:last-child,#footernamen li:nth-child(7),#footernamen li:nth-child(8){
+    padding-bottom: 10px;
+}
