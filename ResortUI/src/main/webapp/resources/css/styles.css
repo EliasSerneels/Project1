@@ -959,7 +959,7 @@ table tr:last-child td:last-child{
 #tblBungalowContainer .ui-outputpanel,#tblCustomerContainer .ui-outputpanel,
 #tblReservationContainer .ui-outputpanel,#tblEventContainer .ui-outputpanel,
 #tblEventtypeContainer .ui-outputpanel,#tblLocationContainer .ui-outputpanel,
-#tblStaffContainer .ui-outputpanel{
+#tblStaffContainer .ui-outputpanel,#tblUseroverviewContainer .ui-outputpanel{
     padding-bottom: 15px;
 }
 
@@ -967,6 +967,6 @@ table tr:last-child td:last-child{
     width: 100% !important;
 }
 
-#tblLocationContainer th,#tblStaffContainer th{
+#tblLocationContainer th,#tblStaffContainer th,#tblUseroverviewContainer th{
     height: 75px;
 }
