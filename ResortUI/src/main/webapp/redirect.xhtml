@@ -13,7 +13,7 @@
             <ui:define name="navbar"><h1>Geen toegang!</h1></ui:define>
             
             <ui:define name="content" >
-                
+                <div id="redirectSpacer"></div>
                 <script type="text/javascript">
 
                     document.write('<div class="doorverwijzing" style="background-color:#FF3333; font-weight:bold; text-align:center; border-radius:3px; padding:30px; margin:30px; font-size:50px;">U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 6 seconden doorverwezen naar de loginpagina.</div>');
@@ -42,9 +42,9 @@
                         window.location.href = "login.xhtml";
                     }, 6000);                
                 </script>          
-                
+                    
             </ui:define>
-                
+
         </ui:composition>
     </body>
 </html>
