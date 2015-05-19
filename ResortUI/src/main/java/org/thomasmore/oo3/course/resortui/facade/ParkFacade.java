@@ -20,18 +20,17 @@ import org.thomasmore.oo3.course.resortui.model.ParkPageDto;
  */
 @Stateless
 public class ParkFacade {
-    
+
     @EJB
     private ParkDao parkDao;
-   
 
     public ParkPageDto loadParkOverviewPage(String editId, String deleteId) {
         ParkPageDto dto = new ParkPageDto();
-        
+
         if (deleteId != null) {
             parkDao.deleteById(deleteId);
         }
-        
+
         List<ParkEntity> parks = parkDao.listAll();
 
         if (editId != null) {
@@ -41,30 +40,28 @@ public class ParkFacade {
                 dto.getDetail().setName(parkEntity.getName());
                 dto.getDetail().setLocation(parkEntity.getLocation());
                 dto.getDetail().setCapacity(parkEntity.getCapacity());
+                dto.getDetail().setBungalows(parkEntity.getBungalows());
                 dto.getDetail().setImageID(parkEntity.getImageID());
                 dto.getDetail().setDescription(parkEntity.getDescription());
-
-
             }
         }
-        
+
         for (ParkEntity park : parks) {
             ParkListDetailDto listDetail = new ParkListDetailDto();
             listDetail.setId(park.getId());
             listDetail.setName(park.getName());
             listDetail.setLocation(park.getLocation());
             listDetail.setCapacity(park.getCapacity());
-            listDetail.setBungalowName(park.getBungalowName());
+            listDetail.setBungalows(park.getBungalows());
             listDetail.setImageID(park.getImageID());
             listDetail.setDescription(park.getDescription());
             dto.getList().add(listDetail);
         }
-        
-                
-                return dto;
-            
+        return dto;
+
     }
-    public ParkPageDto add(ParkPageDto dto){
+
+    public ParkPageDto add(ParkPageDto dto) {
         ParkEntity parkEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
@@ -76,13 +73,13 @@ public class ParkFacade {
         if (parkEntity == null) {
             parkEntity = new ParkEntity();
 
-        }       
+        }
         parkEntity.setId(dto.getDetail().getId());
         System.out.println(dto.getDetail().getId());
         parkEntity.setName(dto.getDetail().getName());
         parkEntity.setLocation(dto.getDetail().getLocation());
         parkEntity.setCapacity(dto.getDetail().getCapacity());
-        parkEntity.setBungalowName(dto.getDetail().getBungalowName());
+        parkEntity.setBungalows(dto.getDetail().getBungalows());
         parkEntity.setImageID(dto.getDetail().getImageID());
         parkEntity.setDescription(dto.getDetail().getDescription());
         parkDao.save(parkEntity);

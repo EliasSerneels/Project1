@@ -38,13 +38,37 @@ public class initDbStartup {
         System.out.println("*********Startup Script*********");
         System.out.println("********************************");
         List<Object> objectsToSave = new LinkedList<>();
+        
+        ParkEntity parkEntity1 = new ParkEntity();
+        parkEntity1.setImageID("http://www.venues4africa.com/images/17151/signature-4.jpg");
+        parkEntity1.setName("Safaripark");
+        parkEntity1.setLocation("Brussel");
+        parkEntity1.setCapacity(165);
+        parkEntity1.setDescription("Safaripark ligt in het Afrikaanse hart van Antwerpen. Met 1.250 wilde Afrikaanse dieren op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie niet meer stuk.\n");
+        objectsToSave.add(parkEntity1);
+        
+        ParkEntity parkEntity2 = new ParkEntity();
+        parkEntity2.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/TDE/01/TDE_01_30947_770x260px_JPG_26238.ashx");
+        parkEntity2.setName("Dinopark");
+        parkEntity2.setLocation("Mechelen");
+        parkEntity2.setCapacity(385);
+        parkEntity2.setDescription("Dinopark ligt in het hart van Mechelen. Met 1.250 wilde Dino's  op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie niet meer stuk.\n");
+        objectsToSave.add(parkEntity2);
+
+        ParkEntity parkEntity3 = new ParkEntity();
+        parkEntity3.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/SBG/02/SBG_02_24096_770x260_jpg_20058.ashx");
+        parkEntity3.setName("Olifantenpark");
+        parkEntity3.setLocation("Vilvoorde");
+        parkEntity3.setCapacity(700);
+        parkEntity3.setDescription("Olifantenpark ligt in het  hart van Vilvoorde. Met 1.250 wilde Olifanten  op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie  niet meer stuk.\n");
+        objectsToSave.add(parkEntity3);
 
         BungalowEntity bungalowEntity = new BungalowEntity();
         bungalowEntity.setImageID("http://d3dn52uk7d1eh.cloudfront.net/asset/imagecache/accohead/jungalow-fotogallerij.jpg");
         bungalowEntity.setName("Zebra");
         bungalowEntity.setType("Comfort");
         bungalowEntity.setPrice(50);
-        bungalowEntity.setPark("Safaripark");
+        bungalowEntity.setPark(parkEntity1);
         bungalowEntity.setDescription("Dit is onze normale dagdagelijkse bungalow. Niets aan te zien. Als je goed kijkt misschien wel maar hoogstwaarschijnlijk niet, zelfs niet als je inzoomt. Tenzij je misschien een bovennatuurlijke gave hebt");
         bungalowEntity.setMaxpeople("1");
         objectsToSave.add(bungalowEntity);
@@ -54,7 +78,7 @@ public class initDbStartup {
         bungalowEntity2.setName("Leeuw");
         bungalowEntity2.setType("Premium");
         bungalowEntity2.setPrice(100);
-        bungalowEntity2.setPark("Dinopark");
+        bungalowEntity2.setPark(parkEntity1);
         bungalowEntity2.setDescription("Onze dakbungalow. De architecten waren te lui om een bungalow met zowel muren als dak te ontwerpen dus ze hebben de muren weggelaten. Daaruit is dus deze ingenieuse bungalowvorm ontstaan.");
         bungalowEntity2.setMaxpeople("8");
         objectsToSave.add(bungalowEntity2);
@@ -64,37 +88,10 @@ public class initDbStartup {
         bungalowEntity3.setName("Walrus");
         bungalowEntity3.setType("Luxe");
         bungalowEntity3.setPrice(150);
-        bungalowEntity3.setPark("Olifantenpark");
+        bungalowEntity3.setPark(parkEntity1);
         bungalowEntity3.setMaxpeople("5");
         bungalowEntity3.setDescription("Onze dakbungalow. De architecten waren te lui om een bungalow met zowel muren als dak te ontwerpen dus ze hebben de muren weggelaten. Daaruit is dus deze ingenieuse bungalowvorm ontstaan.");
         objectsToSave.add(bungalowEntity3);
-
-        ParkEntity parkEntity1 = new ParkEntity();
-        parkEntity1.setImageID("http://www.venues4africa.com/images/17151/signature-4.jpg");
-        parkEntity1.setName("Safaripark");
-        parkEntity1.setLocation("Antwerpen");
-        parkEntity1.setBungalowName("Zebra");
-        parkEntity1.setCapacity(165);
-        parkEntity1.setDescription("Safaripark ligt in het Afrikaanse hart van Antwerpen. Met 1.250 wilde Afrikaanse dieren op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie niet meer stuk.\n");
-        objectsToSave.add(parkEntity1);
-
-        ParkEntity parkEntity2 = new ParkEntity();
-        parkEntity2.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/TDE/01/TDE_01_30947_770x260px_JPG_26238.ashx");
-        parkEntity2.setName("Dinopark");
-        parkEntity2.setLocation("Mechelen");
-        parkEntity2.setBungalowName("Leeuw");
-        parkEntity2.setCapacity(385);
-        parkEntity2.setDescription("Dinopark ligt in het hart van Mechelen. Met 1.250 wilde Dino's  op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie niet meer stuk.\n");
-        objectsToSave.add(parkEntity2);
-
-        ParkEntity parkEntity3 = new ParkEntity();
-        parkEntity3.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/SBG/02/SBG_02_24096_770x260_jpg_20058.ashx");
-        parkEntity3.setName("Olifantenpark");
-        parkEntity3.setLocation("Vilvoorde");
-        parkEntity3.setBungalowName("Walrus");
-        parkEntity3.setCapacity(700);
-        parkEntity3.setDescription("Olifantenpark ligt in het  hart van Vilvoorde. Met 1.250 wilde Olifanten  op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie  niet meer stuk.\n");
-        objectsToSave.add(parkEntity3);
 
         CustomerEntity ce1 = new CustomerEntity();
         ce1.setFirstname("Jos");
@@ -305,7 +302,7 @@ public class initDbStartup {
         ee2.setLocationName("Elias' thuis");
         ee2.setCustomerName("Piet Uyttebroeck");
         objectsToSave.add(ee2);
-        
+
         EventEntity ee3 = new EventEntity();
         ee3.setId(UUID.randomUUID().toString());
         ee3.setEventtype("Communie");

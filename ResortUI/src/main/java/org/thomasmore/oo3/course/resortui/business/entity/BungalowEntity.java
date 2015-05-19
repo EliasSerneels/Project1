@@ -17,6 +17,8 @@
 package org.thomasmore.oo3.course.resortui.business.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,10 +31,20 @@ public class BungalowEntity extends BasicEntity {
     private String type;
     private int price;
     private String name;
-    private String park;
     private String maxpeople;
     private int reservations;
     private String description;
+    
+    @ManyToOne(targetEntity=ParkEntity.class,fetch = FetchType.EAGER)
+    private ParkEntity park;
+
+    public ParkEntity getPark() {
+        return park;
+    }
+
+    public void setPark(ParkEntity park) {
+        this.park = park;
+    }
 
     public String getDescription() {
         return description;
@@ -49,14 +61,6 @@ public class BungalowEntity extends BasicEntity {
 
     public void setImageID(String imageID) {
         this.imageID = imageID;
-    }
-    
-    public String getPark() {
-        return park;
-    }
-
-    public void setPark(String park) {
-        this.park = park;
     }
 
     public String getName() {

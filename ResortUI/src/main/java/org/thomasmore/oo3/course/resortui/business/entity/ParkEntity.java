@@ -16,7 +16,10 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -32,9 +35,19 @@ public class ParkEntity extends BasicEntity {
     private String location;
     private int capacity;
     private String name;
-    private String bungalowName;
     private String imageID;
     private String description;
+    
+    @OneToMany(targetEntity=BungalowEntity.class,fetch = FetchType.EAGER, mappedBy = "park")
+    private List<BungalowEntity> bungalows;
+
+    public List<BungalowEntity> getBungalows() {
+        return bungalows;
+    }
+
+    public void setBungalows(List<BungalowEntity> bungalows) {
+        this.bungalows = bungalows;
+    }
 
     public String getDescription() {
         return description;
@@ -51,15 +64,6 @@ public class ParkEntity extends BasicEntity {
 
     public void setImageID(String imageID) {
         this.imageID = imageID;
-    }
-    
-    
-    public String getBungalowName() {
-        return bungalowName;
-    }
-
-    public void setBungalowName(String bungalowName) {
-        this.bungalowName = bungalowName;
     }
     
     public String getLocation() {
@@ -84,8 +88,5 @@ public class ParkEntity extends BasicEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-    
-   
-    
+    }    
 }

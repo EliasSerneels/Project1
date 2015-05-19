@@ -20,18 +20,18 @@
             <p:column headerText="Locatie">
                 <h:outputText value="#{listDetail.location}"/>
             </p:column>
-            <p:column headerText="Bungalow">
-                <h:outputText value="#{listDetail.bungalowName}"/>
+            <p:column headerText="Bungalows">
+                <h:outputText value="#{listDetail.bungalowString}"/>
             </p:column>
 
             <p:column headerText="Afbeelding" exportable="false">
                 <p:lightBox styleClass="imagebox" id="lighbox1">
                     <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.name}">  
-                <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
+                        <h:graphicImage height="50" width="70" value="#{listDetail.imageID}"/>
                     </h:outputLink>
                 </p:lightBox>
             </p:column>
-            
+
             <p:column exportable="false">
                 <a href="park.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
                 <a href="park.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
@@ -43,22 +43,22 @@
         <p:dialog header="Geselecteerde Parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="900" height="700">
             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                 <ui:repeat value="#{park.selectedParks}" var="listDetail">
-                    
-                            
-                        <h:outputText value="#{listDetail.name}" style="font-weight: bold; font-size: 20px;"/>
- 
-                <h:graphicImage class="overview" height="500" width="300" value="#{listDetail.imageID}"/>
-            <p:outputPanel>
-                <h:panelGrid  columns="2" cellpadding="5">
-                   
-                    <h:outputText value="Beschrijving" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.description}"/>
-                    <h:outputText value="Capaciteit" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.capacity}"/>
- 
- 
-                </h:panelGrid>
-            </p:outputPanel>
+
+
+                    <h:outputText value="#{listDetail.name}" style="font-weight: bold; font-size: 20px;"/>
+
+                    <h:graphicImage class="overview" height="500" width="300" value="#{listDetail.imageID}"/>
+                    <p:outputPanel>
+                        <h:panelGrid  columns="2" cellpadding="5">
+
+                            <h:outputText value="Beschrijving" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.description}"/>
+                            <h:outputText value="Capaciteit" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.capacity}"/>
+
+
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

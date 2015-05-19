@@ -44,7 +44,7 @@
             <p:column headerText="Prijs" sortBy="#{listDetail.price}" filterBy="#{listDetail.price}" filterMatchMode="startsWith">
                 <h:outputText value="#{listDetail.price}"/>
             </p:column>
-            <p:column headerText="Park"  sortBy="#{listDetail.park}" filterBy="#{listDetail.park}" filterMatchMode="exact">
+            <p:column headerText="Park"  sortBy="#{listDetail.park.name}" filterBy="#{listDetail.park.name}" filterMatchMode="exact">
                 <f:facet name="filter"> 
                     <p:selectOneMenu onchange="PF('bungalowTable').filter()">
                         <f:selectItem itemLabel="Alle Parken" itemValue="#{null}" noSelectionOption="true" />
@@ -81,22 +81,22 @@
             <p:outputPanel id="multiBungalowDetail" style="text-align:center;" >
                 <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail" rendered="true">
                     <p:outputPanel>
-                                    <h:outputText value="#{listDetail.name} - #{listDetail.park}" style="font-weight: bold; font-size: 20px;"/>
-                <h:graphicImage class="overview" height="500" width="300" value="#{listDetail.imageID}"/>
- 
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Beschrijving" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.description}"/>
-                    <h:outputText value="Capaciteit" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.maxpeople}"/>
-                    <h:outputText value="Type" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.type}"/>
-                    <h:outputText value="Prijs" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.price}"/>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                        <h:outputText value="#{listDetail.name} - #{listDetail.park}" style="font-weight: bold; font-size: 20px;"/>
+                        <h:graphicImage class="overview" height="500" width="300" value="#{listDetail.imageID}"/>
+
+                        <h:panelGrid  columns="2" cellpadding="5">
+                            <h:outputText value="Beschrijving" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.description}"/>
+                            <h:outputText value="Capaciteit" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.maxpeople}"/>
+                            <h:outputText value="Type" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.type}"/>
+                            <h:outputText value="Prijs" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.price}"/>
+
+
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>
