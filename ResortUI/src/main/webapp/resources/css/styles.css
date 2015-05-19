@@ -819,7 +819,7 @@ table tr:last-child td:last-child{
     width: 40% !important;
 }
 
-#lstParkChange li:last-child div{
+#lstParkChange li:last-child div,#lstBungalowChange li:last-child div{
     width: 100%;
     border-radius: 4px;
 }
@@ -936,4 +936,24 @@ table tr:last-child td:last-child{
     margin: 0 auto;
     display: block;
     text-align: left;
+}
+
+#tblBungalowContainer th:nth-child(3n) .ui-button{
+    border-radius: 4px;
+}
+
+#tblBungalowContainer .ui-selectonemenu-label{
+    font-size: 12px;
+}
+
+#tblBungalowContainer .ui-selectonemenu .ui-selectonemenu-trigger .ui-icon{
+    margin-top: 6px !important;
+}
+
+#tblBungalowContainer .ui-column-customfilter{
+    padding-top: 7px;
+}
+
+#tblBungalowContainer .ui-outputpanel{
+    padding-bottom: 15px;
 }
