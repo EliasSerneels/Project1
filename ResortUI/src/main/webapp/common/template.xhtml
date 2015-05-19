@@ -28,17 +28,22 @@
             $(function () {
                 var availableTags = [
                     "Bungalow",
-                    "Bungalow Wizard",
+                    "Wizard Bungalow",
                     "Contact",
                     "Event",
                     "Eventbedrijf",
                     "Eventtype",
-                    "Event Wizard",
+                    "Wizard Event",
                     "Klant",
                     "Locatie",
                     "Overzicht",
                     "Park",
-                    "Reservatie"
+                    "Reservatie",
+                    "Useroverzicht",
+                    "Profiel",
+                    "Personeel",
+                    "Bungalowinfo",
+                    "Parkinfo"
                 ];
                 $("#j_idt12\\:search").autocomplete({
                     source: availableTags
@@ -66,6 +71,15 @@
                             break;
                         case "overzicht":
                             link = "overview";
+                            break;
+                        case "profiel":
+                            link = "profile";
+                            break;
+                        case "personeel":
+                            link = "staff";
+                            break;
+                        case "useroverzicht":
+                            link = "useroverview";
                             break;
                         default:
                             link = ui.item.value.toLowerCase();
