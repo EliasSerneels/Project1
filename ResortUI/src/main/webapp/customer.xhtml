@@ -69,7 +69,7 @@
                             <div class="inputinfo">E-Mail</div>
                             <h:inputText label="Naam"
                                          value="#{customer.dto.detail.email}" class="form-control"
-                                         required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, @.'-.  bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
 
@@ -81,7 +81,7 @@
                             <div class="inputinfo">Land</div>
                             <h:inputText label="Land"
                                          value="#{customer.dto.detail.country}" class="form-control"
-                                         required="true" requiredMessage="Vul een land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" requiredMessage="Vul een land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
 
@@ -100,7 +100,7 @@
                         </li>                                    
                         <li>
                             <div class="inputinfo">Straat</div>
-                            <h:inputText label="Straat"
+                            <h:inputText label="Naam"
                                          value="#{customer.dto.detail.street}" class="form-control"
                                          required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
