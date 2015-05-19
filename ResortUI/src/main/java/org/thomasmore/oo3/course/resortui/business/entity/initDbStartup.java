@@ -73,6 +73,7 @@ public class initDbStartup {
         parkEntity1.setImageID("http://www.venues4africa.com/images/17151/signature-4.jpg");
         parkEntity1.setName("Safaripark");
         parkEntity1.setLocation("Antwerpen");
+        parkEntity1.setBungalowName("Zebra");
         parkEntity1.setCapacity(165);
         parkEntity1.setDescription("Safaripark ligt in het Afrikaanse hart van Antwerpen. Met 1.250 wilde Afrikaanse dieren op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie niet meer stuk.\n");
         objectsToSave.add(parkEntity1);
@@ -81,6 +82,7 @@ public class initDbStartup {
         parkEntity2.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/TDE/01/TDE_01_30947_770x260px_JPG_26238.ashx");
         parkEntity2.setName("Dinopark");
         parkEntity2.setLocation("Mechelen");
+        parkEntity2.setBungalowName("Leeuw");
         parkEntity2.setCapacity(385);
         parkEntity2.setDescription("Dinopark ligt in het hart van Mechelen. Met 1.250 wilde Dino's  op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie niet meer stuk.\n");
         objectsToSave.add(parkEntity2);
@@ -89,6 +91,7 @@ public class initDbStartup {
         parkEntity3.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/SBG/02/SBG_02_24096_770x260_jpg_20058.ashx");
         parkEntity3.setName("Olifantenpark");
         parkEntity3.setLocation("Vilvoorde");
+        parkEntity3.setBungalowName("Walrus");
         parkEntity3.setCapacity(700);
         parkEntity3.setDescription("Olifantenpark ligt in het  hart van Vilvoorde. Met 1.250 wilde Olifanten  op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie  niet meer stuk.\n");
         objectsToSave.add(parkEntity3);
@@ -277,7 +280,7 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         ee1.setLocationName("Zaal 1");
-        ee1.setCustomerName("Jos");
+        ee1.setCustomerName("Jos Janssens");
 
         objectsToSave.add(ee1);
 
@@ -300,8 +303,30 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         ee2.setLocationName("Elias' thuis");
-        ee2.setCustomerName("Piet");
+        ee2.setCustomerName("Piet Uyttebroeck");
         objectsToSave.add(ee2);
+        
+        EventEntity ee3 = new EventEntity();
+        ee3.setId(UUID.randomUUID().toString());
+        ee3.setEventtype("Communie");
+        ee3.setEventcompany("Bedrijf 1");
+        ee3.setEventname("Communie Pepijn Mores");
+        startDateInString = "25/06/2015";
+        startTimeInString = "17:00";
+        endDateInString = "26/06/2015";
+        endTimeInString = "02:00";
+        try {
+            ee3.setStartDate(dateSimple.parse(startDateInString));
+            ee3.setStartTime(timeSimple.parse(startTimeInString));
+            ee3.setEndDate(dateSimple.parse(endDateInString));
+            ee3.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ee3.setLocationName("Zaal 1");
+        ee3.setCustomerName("Thomas Coenen");
+
+        objectsToSave.add(ee3);
 
         EventcompanyEntity ece1 = new EventcompanyEntity();
         ece1.setId(UUID.randomUUID().toString());
