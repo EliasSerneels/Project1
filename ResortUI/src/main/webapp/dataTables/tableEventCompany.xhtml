@@ -41,8 +41,6 @@
             <p:column headerText="Aantal events" sortBy="#{listDetail.totalnumberevents}" filterBy="#{listDetail.totalnumberevents}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.totalnumberevents}"/>
             </p:column>
-
-
             <p:column exportable="false">
                 <a href="eventcompany.xhtml?edit=#{listDetail.id}" class=" btn btn-primary">Wijzig</a>
                 <a href="eventcompany.xhtml?delete=#{listDetail.id}" class=" btn btn-primary">Verwijder</a>
@@ -54,25 +52,23 @@
         <p:dialog header="Geselecteerde Eventbedrijven" widgetVar="multiEventCompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiEventCompanyDetail" style="text-align:center;" >
                 <ui:repeat value="#{eventcompany.selectedEventCompany}" var="listDetail" rendered="true">
-                            <p:outputPanel>
-                          <h:outputText value="Eventbedrijf " style="font-weight: bold"/>
-                          <h:outputText value="#{listDetail.name}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="4" cellpadding="5">
-                     <h:outputText value="Stad" style="font-weight: bold"/>
-                     <h:outputText value="#{listDetail.city}"/>
-                     <h:outputText value="Straat" style="font-weight: bold"/>
-                     <h:outputText value="#{listDetail.street}"/>
-                    <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.phone}"/>
-                    <h:outputText value="Email" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.contact}"/>
-                    <h:outputText value="Aantal gegeven evenementen" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.totalnumberevents}"/>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                    <p:outputPanel>
+                        <h:outputText value="Eventbedrijf " style="font-weight: bold"/>
+                        <h:outputText value="#{listDetail.name}" style="font-weight: bold"/>
+
+                        <h:panelGrid  columns="4" cellpadding="5">
+                            <h:outputText value="Stad" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.city}"/>
+                            <h:outputText value="Straat" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.street}"/>
+                            <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.phone}"/>
+                            <h:outputText value="Email" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.contact}"/>
+                            <h:outputText value="Aantal gegeven evenementen" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.totalnumberevents}"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

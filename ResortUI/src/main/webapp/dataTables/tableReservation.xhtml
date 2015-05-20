@@ -28,11 +28,9 @@
             <p:column id="bungalowname" headerText="Bungalow" sortBy="#{listDetail.bungalowName}" filterBy="#{listDetail.bungalowName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.bungalowName}"/>
             </p:column>
-
             <p:column id="parkname" headerText="Park" sortBy="#{listDetail.parkName}" filterBy="#{listDetail.parkName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.parkName}"/>
             </p:column>
-
             <p:column id="customername" headerText="Klant" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>
@@ -56,8 +54,6 @@
                     <f:convertDateTime pattern="HH:mm" />
                 </h:outputText>
             </p:column>
-
-
             <p:column exportable="false">
                 <a href="reservation.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
                 <a href="reservation.xhtml?delete=#{listDetail.id}" class=" button">Verwijder</a>
@@ -69,7 +65,6 @@
         <p:dialog header="Geselecteerde Reservations" widgetVar="multiReservationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiReservationDetail" style="text-align:center;" >
                 <ui:repeat value="#{reservation.selectedReservation}" var="listDetail" rendered="true">
-
                     <p:outputPanel>
                         <h:outputText value="Reservatie voor:" style="font-weight: bold"/>
                         <h:outputText value="#{listDetail.customerName}" style="font-weight: bold"/>
@@ -95,11 +90,8 @@
                             <h:outputText value="#{listDetail.endTime}">
                                 <f:convertDateTime pattern="HH:mm" />
                             </h:outputText>
-
-
                         </h:panelGrid>
                     </p:outputPanel>
-
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

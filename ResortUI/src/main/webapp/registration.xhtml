@@ -8,45 +8,42 @@
     <body>
 
         <ui:composition template="./common/template.xhtml">
-
             <ui:define name="title">Registreren</ui:define>
-
             <ui:define name="navbar"><h1>Registreren</h1></ui:define>
             <ui:define name="content">
                 <div class="fillerpic">
-                  
-                        <img src="resources/images/logo.png" alt=""/>
+                    <img src="resources/images/logo.png" alt=""/>
                 </div>
                 <h:form>
-					<h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">Gebruikersnaam</span>
-							<h:inputText label="Username" p:placeholder="bv. Jozef van Maria"
-										 value="#{registration.dto.detail.username}" class="form-control"
-										 required="true">
-								<f:validateLength minimum="4" maximum="30" >
-								</f:validateLength>
-							</h:inputText>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">Wachtwoord</span>
-							<h:inputSecret label="Password" p:placeholder="******"
-										   value="#{registration.dto.detail.password}" class="form-control"
-										   required="true">
-								<f:validateLength minimum="4"  >
-								</f:validateLength>
-							</h:inputSecret>
-						</div>
-                                            
-                                            </div>
-                                        <div class="col-md-12" style="margin-top:0px;">
-							<h:commandButton class="button" action="#{registration.add()}" value="Registreer"></h:commandButton>						
-					</div>
-				</h:form>    
-                
+                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">Gebruikersnaam</span>
+                            <h:inputText label="Username" p:placeholder="bv. Jozef van Maria"
+                                         value="#{registration.dto.detail.username}" class="form-control"
+                                         required="true">
+                                <f:validateLength minimum="4" maximum="30" >
+                                </f:validateLength>
+                            </h:inputText>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">Wachtwoord</span>
+                            <h:inputSecret label="Password" p:placeholder="******"
+                                           value="#{registration.dto.detail.password}" class="form-control"
+                                           required="true">
+                                <f:validateLength minimum="4"  >
+                                </f:validateLength>
+                            </h:inputSecret>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12" style="margin-top:0px;">
+                        <h:commandButton class="button" action="#{registration.add()}" value="Registreer"></h:commandButton>						
+                    </div>
+                </h:form>    
             </ui:define>
         </ui:composition>
     </body>

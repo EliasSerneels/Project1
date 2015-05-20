@@ -37,20 +37,17 @@
             <p:column headerText="Level" sortBy="#{detail.level}" filterBy="#{detail.level}" filterMatchMode="contains">                
                 <h:outputText value="#{detail.level}"/>
             </p:column>
-            
             <p:column headerText="Afbeelding" exportable="false">
                 <p:lightBox styleClass="imagebox" id="lighbox1">
                     <h:outputLink value="#{detail.imageID}" title="#{detail.username}">  
-                <h:graphicImage height="50" width="70" value="#{detail.imageID}"/>
+                        <h:graphicImage height="50" width="70" value="#{detail.imageID}"/>
                     </h:outputLink>
                 </p:lightBox>
             </p:column>
-            
-             <p:column exportable="false">
+            <p:column exportable="false">
                 <a href="useroverview.xhtml?edit=#{detail.id}" class=" button">Wijzig</a>
                 <a href="useroverview.xhtml?delete=#{detail.id}" class=" button">Verwijder</a>
             </p:column>
-
             <f:facet name="footer">
                 <p:commandButton process="useroverview" update=":userform:multiUserDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiUserDialog').show()" />
             </f:facet>
@@ -58,22 +55,18 @@
         <p:dialog header="Geselecteerde Users" widgetVar="multiUserDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="500" height="500">
             <p:outputPanel id="multiUserDetail" style="text-align:center;" >
                 <ui:repeat value="#{useroverview.selectedUser}" var="detail" rendered="true">
-
-  <p:outputPanel>
-      <h:outputText value="#{detail.username}" style="font-weight: bold; font-size: 20px;"/>
-       <h:graphicImage class="overview" height="400" width="200" value="#{detail.imageID}"/>
-
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Volledige naam" style="font-weight: bold"/>
-                     <h:outputText value="#{detail.fullName}"/>
-                    <h:outputText value="Wachtwoord" style="font-weight: bold"/>
-                    <h:outputText value="#{detail.password}"/>
-                    <h:outputText value="Level" style="font-weight: bold"/>
-                    <h:outputText value="#{detail.level}"/>
-                    
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                    <p:outputPanel>
+                        <h:outputText value="#{detail.username}" style="font-weight: bold; font-size: 20px;"/>
+                        <h:graphicImage class="overview" height="400" width="200" value="#{detail.imageID}"/>
+                        <h:panelGrid  columns="2" cellpadding="5">
+                            <h:outputText value="Volledige naam" style="font-weight: bold"/>
+                            <h:outputText value="#{detail.fullName}"/>
+                            <h:outputText value="Wachtwoord" style="font-weight: bold"/>
+                            <h:outputText value="#{detail.password}"/>
+                            <h:outputText value="Level" style="font-weight: bold"/>
+                            <h:outputText value="#{detail.level}"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

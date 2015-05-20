@@ -20,7 +20,6 @@
                     <p:dataExporter type="xls" target="location" fileName="locatie" />
                 </h:commandLink>
             </f:facet>
-
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
             </p:column>
@@ -30,7 +29,6 @@
             <p:column headerText="Naam" sortBy="#{listDetail.locationName}"  filterBy="#{listDetail.locationName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.locationName}"/>
             </p:column>
-
             <p:column exportable="false">
                 <a href="location.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
                 <a href="location.xhtml?delete=#{listDetail.id}" class=" button">Verwijder</a>
@@ -42,16 +40,14 @@
         <p:dialog header="Geselecteerde Locaties" widgetVar="multiLocationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiLocationDetail" style="text-align:center;" >
                 <ui:repeat value="#{location.selectedLocation}" var="listDetail" rendered="true">
-      <p:outputPanel>
-
-                <h:panelGrid  columns="4" cellpadding="5">
-                     <h:outputText value="Park" style="font-weight: bold"/>
-                     <h:outputText value="#{listDetail.park}"/>
-                     <h:outputText value="Naam" style="font-weight: bold"/>
-                     <h:outputText value="#{listDetail.locationName}"/>
- 
-                </h:panelGrid>
-            </p:outputPanel>                
+                    <p:outputPanel>
+                        <h:panelGrid  columns="4" cellpadding="5">
+                            <h:outputText value="Park" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.park}"/>
+                            <h:outputText value="Naam" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.locationName}"/>
+                        </h:panelGrid>
+                    </p:outputPanel>                
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

@@ -49,23 +49,24 @@
                                 <div class="inputinfo">Gebruikersnaam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="#{login.sessionDto.userDto.username}"
-                                             required="true" 
-                                             >
+                                             required="true" validatorMessage="Vul uw gebruikersnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een gebruikersnaam in.">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                                 </h:inputText>
                             </li>
                             <li>
                                 <div class="inputinfo">Volledige naam</div>
                                 <h:inputText label="Gebruikersnaam" class="form-control"
                                              value="#{login.sessionDto.userDto.fullName}"
-                                             required="false" 
-                                             >
+                                             required="true" validatorMessage="Vul uw volledige naam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul uw volledige naam in.">
+                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                                 </h:inputText>
                             </li>
                             <li>
                                 <div class="inputinfo">Email-adres</div>
                                 <h:inputText label="Email-adres" class="form-control"
                                              value="#{login.sessionDto.userDto.email}"
-                                             required="false" /> 
+                                             required="true" validatorMessage="Vul een geldig emailadres in." requiredMessage="Vul een emailadres in."/>
+                                <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
                             </li>
                             
                              <li>
@@ -73,7 +74,7 @@
                             <div class="inputinfo">Gebruiker afbeelding</div>
                             <h:inputText label="URL" 
                                          value="#{login.sessionDto.userDto.imageID}" class="form-control"
-                                         required="false" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">     
+                                         required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">     
                             </h:inputText>
                             
                         </li>

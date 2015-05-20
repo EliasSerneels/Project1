@@ -10,22 +10,18 @@
             <p:ajax event="rowReorder" update=":eventtypeform:multiEventTypeDetail" />
 
             <f:facet name="header">
-                
                 <h:outputText value="Exporteren naar Excel: "/>
                 <h:commandLink>
                     <p:graphicImage name="images/icons/excel.png" />
                     <p:dataExporter type="xls" target="eventtype" fileName="eventtype" />
                 </h:commandLink>
             </f:facet>
-
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
             </p:column>
             <p:column headerText="Naam" sortBy="#{listDetail.eventname}" filterBy="#{listDetail.eventname}">
                 <h:outputText value="#{listDetail.eventname}"/>
             </p:column>
-
-
             <p:column exportable="false">
                 <a href="eventtype.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
                 <a href="eventtype.xhtml?delete=#{listDetail.id}" class=" button">Verwijder</a>
@@ -40,15 +36,12 @@
                     <p:outputPanel>
                         <h:outputText value="Eventtype: " style="font-weight: bold"/>
                         <h:outputText value="#{listDetail.eventname}" style="font-weight: bold"/>
-
+                        
                         <h:panelGrid  columns="2" cellpadding="5">
                             <h:outputText value="ID" style="font-weight: bold"/>
                             <h:outputText value="#{listDetail.id}"/>
                             <h:outputText value="Eventnaam" style="font-weight: bold"/>
                             <h:outputText value="#{listDetail.eventname}"/>
-
-
-
                         </h:panelGrid>
                     </p:outputPanel>  
                 </ui:repeat>

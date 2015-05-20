@@ -12,130 +12,125 @@
         <ui:composition template="./common/template.xhtml">
 
             <ui:define name="title">Reserveren</ui:define>
-
             <ui:define name="navbar"><h1>Reserveren</h1></ui:define>
-
             <ui:define name="content">
 
                 <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
-                    <script type="text/javascript">window.location.href="redirect.xhtml";</script>
+                    <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
-                
+
                 <h:form>  
-                <p:growl id="messages" showDetail="false" />
- 
-                <h2>Kalender</h2>   
-                                
+                    <p:growl id="messages" showDetail="false" />
+
+                    <h2>Kalender</h2>   
                     <p:schedule id="schedule" value="#{scheduler.reservationModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+2" timeFormat="HH:mm">
                         <p:ajax event="dateSelect" listener="#{scheduler.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventSelect" listener="#{scheduler.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventMove" listener="#{scheduler.onEventMove}" update="messages" />
                         <p:ajax event="eventResize" listener="#{scheduler.onEventResize}" update="messages" />
                     </p:schedule>
-                    
-                    <style type="text/css">
-                    .loc0, .loc0 .fc-event-skin, .loc0 a{background-color:#d43f3a ; border:0px;}
-                    .loc1, .loc1 .fc-event-skin, .loc1 a{background-color:#00CCCC; border:0px;}
-                    .loc2, .loc2 .fc-event-skin, .loc2 a{background-color:#ec971f; border:0px;}
-                    .loc3, .loc3 .fc-event-skin, .loc3 a{background-color:#c7254e; border:0px;}
-                    .loc4, .loc4 .fc-event-skin, .loc4 a{background-color:#0489DE; border:0px;}
-                    .loc5, .loc5 .fc-event-skin, .loc5 a{background-color:#3c763d; border:0px;}
-                    .loc6, .loc6 .fc-event-skin, .loc6 a{background-color:#bce8f1; border:0px;}
-                    .loc7, .loc7 .fc-event-skin, .loc7 a{background-color:#419641; border:0px;}
-                    .loc8, .loc8 .fc-event-skin, .loc8 a{background-color:#ac2925; border:0px;}
-                    .loc9, .loc9 .fc-event-skin, .loc9 a{background-color:#c0a16b; border:0px;}
-                    .loc10, .loc10 .fc-event-skin, .loc10 a{background-color:#CC33CC; border:0px;}
-                    .loc11, .loc11 .fc-event-skin, .loc11 a{background-color:#CC6633; border:0px;}
-                    .loc12, .loc12 .fc-event-skin, .loc12 a{background-color:#66FF00; border:0px;}
-                    .loc13, .loc13 .fc-event-skin, .loc13 a{background-color:#66FF99; border:0px;}
-                    .loc14, .loc14 .fc-event-skin, .loc14 a{background-color:#9966FF; border:0px;}
-                    .loc15, .loc15 .fc-event-skin, .loc15 a{background-color:#CC3333; border:0px;}
-                    
-                    </style>  
- 
-                    <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-                    <h:panelGrid id="eventDetails" columns="2">
-                        <p:row>
-                                <h:outputLabel value="Evenementnaam:" />
-                        </p:row>
-                        <p:row>                                 
-                            <h:outputLabel value="#{scheduler.event.title}"  />                              
-                        </p:row>
-                                              
-                        <p:row>
-                                <h:outputLabel for="Startdatum" value="Startdatum:" />
-                        </p:row>
-                        <p:row>
-                                <h:outputLabel for="Startdatum" value="#{scheduler.event.startDate}" />
-                        </p:row>
 
-                        <p:row>
+                    <style type="text/css">
+                        .loc0, .loc0 .fc-event-skin, .loc0 a{background-color:#d43f3a ; border:0px;}
+                        .loc1, .loc1 .fc-event-skin, .loc1 a{background-color:#00CCCC; border:0px;}
+                        .loc2, .loc2 .fc-event-skin, .loc2 a{background-color:#ec971f; border:0px;}
+                        .loc3, .loc3 .fc-event-skin, .loc3 a{background-color:#c7254e; border:0px;}
+                        .loc4, .loc4 .fc-event-skin, .loc4 a{background-color:#0489DE; border:0px;}
+                        .loc5, .loc5 .fc-event-skin, .loc5 a{background-color:#3c763d; border:0px;}
+                        .loc6, .loc6 .fc-event-skin, .loc6 a{background-color:#bce8f1; border:0px;}
+                        .loc7, .loc7 .fc-event-skin, .loc7 a{background-color:#419641; border:0px;}
+                        .loc8, .loc8 .fc-event-skin, .loc8 a{background-color:#ac2925; border:0px;}
+                        .loc9, .loc9 .fc-event-skin, .loc9 a{background-color:#c0a16b; border:0px;}
+                        .loc10, .loc10 .fc-event-skin, .loc10 a{background-color:#CC33CC; border:0px;}
+                        .loc11, .loc11 .fc-event-skin, .loc11 a{background-color:#CC6633; border:0px;}
+                        .loc12, .loc12 .fc-event-skin, .loc12 a{background-color:#66FF00; border:0px;}
+                        .loc13, .loc13 .fc-event-skin, .loc13 a{background-color:#66FF99; border:0px;}
+                        .loc14, .loc14 .fc-event-skin, .loc14 a{background-color:#9966FF; border:0px;}
+                        .loc15, .loc15 .fc-event-skin, .loc15 a{background-color:#CC3333; border:0px;}
+
+                    </style>  
+
+                    <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                        <h:panelGrid id="eventDetails" columns="2">
+                            <p:row>
+                                <h:outputLabel value="Evenementnaam:" />
+                            </p:row>
+                            <p:row>                                 
+                                <h:outputLabel value="#{scheduler.event.title}"  />                              
+                            </p:row>
+
+                            <p:row>
+                                <h:outputLabel for="Startdatum" value="Startdatum:" />
+                            </p:row>
+                            <p:row>
+                                <h:outputLabel for="Startdatum" value="#{scheduler.event.startDate}" />
+                            </p:row>
+
+                            <p:row>
                                 <h:outputLabel for="Einddatum" value="Einddatum:" />
-                        </p:row>
-                        <p:row>
+                            </p:row>
+                            <p:row>
                                 <h:outputLabel for="Startdatum" value="#{scheduler.event.endDate}" />
-                        </p:row>      
-                    </h:panelGrid>
+                            </p:row>      
+                        </h:panelGrid>
                     </p:dialog>  
                 </h:form>
-                
+
                 <h2>Reservatie boeken of aanpassen</h2>
                 <h:form id="frmReservation" class="input-form">
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
                     <h:inputHidden value="#{reservation.dto.detail.id}"/>
-                    
+
                     <div id="frmReservationStartdatum" class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Startdatum</span>
                             <p:calendar id="date" value="#{reservation.dto.detail.startDate}" locale="nl" pattern="dd/MM/yyyy" />
-                                <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{reservation.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
-                                    <f:convertDateTime pattern="HH:mm" />
-                                </p:inputMask>
+                            <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{reservation.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </p:inputMask>
                         </div>
-                    </div>          
+                    </div> 
+                    
                     <div id="frmReservationEinddatum" class="col-md-6-r"> 
-                            <div class="input-group">
-                                <span class="input-group-addon">Einddatum</span>
-                                <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" value="#{reservation.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
-                                <p:inputMask id="Eindtijd" placeholder="Eindtijd" style="width:40%;" value="#{reservation.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
-                                    <f:convertDateTime pattern="HH:mm" />
-                                </p:inputMask>
+                        <div class="input-group">
+                            <span class="input-group-addon">Einddatum</span>
+                            <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" value="#{reservation.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
+                            <p:inputMask id="Eindtijd" placeholder="Eindtijd" style="width:40%;" value="#{reservation.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </p:inputMask>
                         </div>
                     </div>
+                    
                     <div class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Klant</span>
-                    <p:selectOneMenu required="true" id="Klant" value="#{reservation.dto.detail.customerName}" requiredMessage="Gelieve een klant toe te kiezen.">
-                    <f:selectItem itemLabel="Kies klant" itemValue="#{customerName}" noSelectionOption="true" />
-                    <f:selectItems value="#{reservation.dto.customerList}" />
-                     </p:selectOneMenu>
+                            <p:selectOneMenu required="true" id="Klant" value="#{reservation.dto.detail.customerName}" requiredMessage="Gelieve een klant toe te kiezen.">
+                                <f:selectItem itemLabel="Kies klant" itemValue="#{customerName}" noSelectionOption="true" />
+                                <f:selectItems value="#{reservation.dto.customerList}" />
+                            </p:selectOneMenu>
                         </div>
-                                         </div>
-   
+                    </div>
+
                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Park</span>
                             <p:selectOneMenu required="true" id="Park" value="#{reservation.dto.detail.parkName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
-                    <f:selectItem itemLabel="Kies park" itemValue="#{parkName}" noSelectionOption="true" />
-                    <f:selectItems value="#{reservation.dto.parkList}" />
-                    <p:ajax listener="#{reservation.update(reservation.dto.detail.parkName)}" update="Bungalow" event="change" />
-                     </p:selectOneMenu>
+                                <f:selectItem itemLabel="Kies park" itemValue="#{parkName}" noSelectionOption="true" />
+                                <f:selectItems value="#{reservation.dto.parkList}" />
+                                <p:ajax listener="#{reservation.update(reservation.dto.detail.parkName)}" update="Bungalow" event="change" />
+                            </p:selectOneMenu>
                         </div>
-                </div>
-                    
-                  
+                    </div>
+
                     <div class="col-md-6-r">
                         <div class="input-group">
                             <span class="input-group-addon">Bungalow</span>
-                    <p:selectOneMenu required="true" id="Bungalow" value="#{reservation.dto.detail.bungalowName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
-                    <f:selectItem itemLabel="Kies bungalow" itemValue="#{bungalowName}" noSelectionOption="true" />
-                    <f:selectItems value="#{reservation.dto.bungalowList}" />
-                     </p:selectOneMenu>
+                            <p:selectOneMenu required="true" id="Bungalow" value="#{reservation.dto.detail.bungalowName}" requiredMessage="Gelieve een bungalow toe te wijzen.">
+                                <f:selectItem itemLabel="Kies bungalow" itemValue="#{bungalowName}" noSelectionOption="true" />
+                                <f:selectItems value="#{reservation.dto.bungalowList}" />
+                            </p:selectOneMenu>
                         </div>
                     </div>
-                    
-                    
-                    
                     <div class="col-md-12">
                         <div class="input-group">
                             <h:commandButton class="button" action="#{reservation.add()}" value="Opslaan" ></h:commandButton>
@@ -145,10 +140,9 @@
                 <br/><br/>
                 <h2>Reservatieoverzicht</h2>
                 <div id="tblReservationContainer">
-                <ui:include src="dataTables/tableReservation.xhtml"></ui:include>
+                    <ui:include src="dataTables/tableReservation.xhtml"></ui:include>
                 </div>
             </ui:define>
-
         </ui:composition>
 
     </body>

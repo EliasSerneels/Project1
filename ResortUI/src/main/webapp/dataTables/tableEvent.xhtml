@@ -45,15 +45,12 @@
                 </f:facet>
                 <h:outputText value="#{listDetail.eventtype}"/>
             </p:column>
-            
             <p:column id="eventstartdate" headerText="Startdatum" sortBy="#{listDetail.startDateFormatted}" filterBy="#{listDetail.startDateFormatted}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.startDateFormatted}"/>
             </p:column>
-
             <p:column id="eventenddate" headerText="Einddatum" sortBy="#{listDetail.endDateFormatted}" filterBy="#{listDetail.endDateFormatted}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.endDateFormatted}"/>
             </p:column>
-            
             <p:column id="eventlocatie" headerText="Locatie" sortBy="#{listDetail.locationName}" filterBy="#{listDetail.locationName}" filterMatchMode="contains">
                 <f:facet name="filter"> 
                     <p:selectOneMenu onchange="PF('eventTable').filter()">
@@ -66,7 +63,6 @@
             <p:column id="eventcustomer" headerText="Klant" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>
-            
             <p:column exportable="false">
                 <a href="event.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
 
@@ -80,40 +76,36 @@
             <p:outputPanel id="multiEventDetail" style="text-align:center;" >
                 <ui:repeat value="#{event.selectedEvent}" var="listDetail" rendered="true">
                     <p:outputPanel>
-                          <h:outputText value="Evenement " style="font-weight: bold"/>
-                          <h:outputText value="#{listDetail.eventname}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="4" cellpadding="5">
-                     <h:outputText value="Klant" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.customerName}"/>
-                     <h:outputText value="Eventbedrijf" style="font-weight: bold"/>
-                     <h:outputText value="#{listDetail.eventcompany}"/>
-                    <h:outputText value="Eventtype" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.eventtype}"/>
-                    <h:outputText value="Startdatum" style="font-weight: bold"/>     
-                    <h:outputText value="#{listDetail.startDate}">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-                     <h:outputText value="Startuur" style="font-weight: bold"/>     
-                     <h:outputText value="#{listDetail.startTime}">
-                        <f:convertDateTime pattern="HH:mm" />
-            </h:outputText>
-                    <h:outputText value="Einddatum" style="font-weight: bold"/>
-                      <h:outputText value="#{listDetail.endDate}">
-                         <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-                     <h:outputText value="Einduur" style="font-weight: bold"/>     
-                     <h:outputText value="#{listDetail.endTime}">
-                        <f:convertDateTime pattern="HH:mm" />
-            </h:outputText>
-                    <h:outputText value="Locatie" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.locationName}"/>
+                        <h:outputText value="Evenement " style="font-weight: bold"/>
+                        <h:outputText value="#{listDetail.eventname}" style="font-weight: bold"/>
 
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
- 
+                        <h:panelGrid  columns="4" cellpadding="5">
+                            <h:outputText value="Klant" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.customerName}"/>
+                            <h:outputText value="Eventbedrijf" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.eventcompany}"/>
+                            <h:outputText value="Eventtype" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.eventtype}"/>
+                            <h:outputText value="Startdatum" style="font-weight: bold"/>     
+                            <h:outputText value="#{listDetail.startDate}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                            <h:outputText value="Startuur" style="font-weight: bold"/>     
+                            <h:outputText value="#{listDetail.startTime}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                            <h:outputText value="Einddatum" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.endDate}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                            <h:outputText value="Einduur" style="font-weight: bold"/>     
+                            <h:outputText value="#{listDetail.endTime}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                            <h:outputText value="Locatie" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.locationName}"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

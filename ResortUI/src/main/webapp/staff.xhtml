@@ -34,9 +34,9 @@
                                          requiredMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-
                             </h:inputText>
                         </li>
+                        
                         <li>
                             <div class="inputinfo">Achternaam</div>
                             <h:inputText label="Achternaam" 
@@ -45,15 +45,14 @@
                                          required="true"
                                          requiredMessage="Vul uw achternaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-
                             </h:inputText>
-                        </li>      
+                        </li>
+                        
                         <li>
                             <div class="inputinfo">Geboortedatum</div>
                             <p:calendar pattern="dd/MM/yyyy" yearRange="c-100:c" navigator="true" id="popup" value="#{staff.dto.detail.birthdate}" maxdate="#{scheduler.minimumAge()}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
-
-
                         </li>
+                        
                         <li>
                             <div class="inputinfo">Telefoonnr.</div>
                             <h:inputText label="Telefoonnummer" 
@@ -62,10 +61,8 @@
                                          validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
                                 <f:validateRegex pattern="([0-9].{6,20})"/>
                             </h:inputText>
-
                         </li> 
-                        
-                        
+
                         <li>
                             <div class="inputinfo">E-Mail</div>
                             <h:inputText label="Naam"
@@ -73,12 +70,9 @@
                                          required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
-
                             </h:inputText>
-
                         </li> 
-                        
-                        
+
                         <li class="typelist">
                             <div class="inputinfo">Land</div>
                             <h:inputText label="Land"
@@ -86,7 +80,6 @@
                                          required="true" requiredMessage="Vul een land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-
                             </h:inputText>
                         </li> 
 
@@ -97,9 +90,9 @@
                                          required="true" requiredMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-
                             </h:inputText>
-                        </li>                              
+                        </li>  
+                        
                         <li>
                             <div class="inputinfo">Straat</div>
                             <h:inputText label="Straat"
@@ -107,23 +100,19 @@
                                          required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-
                             </h:inputText>
-
                         </li>
-
-                       
                         
                         <li>
-                        <div class="inputinfo">Personeelsfoto</div>
+                            <div class="inputinfo">Personeelsfoto</div>
                             <h:inputText label="URL" 
                                          value="#{staff.dto.detail.imageID}" class="form-control"
                                          required="false" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
-                                        
                             </h:inputText>
                         </li>
-                        
+
                     </ul>
+                    
                     <div class="col-md-12">
                         <div class="input-group"> 
                             <h:commandButton class="button" action="#{staff.add()}" value="Opslaan" ></h:commandButton>
@@ -133,12 +122,9 @@
                 <br/><br/>
                 <h2>Personeeloverzicht</h2>
                 <div id="tblStaffContainer">
-                <ui:include src="dataTables/tableStaff.xhtml"></ui:include>
+                    <ui:include src="dataTables/tableStaff.xhtml"></ui:include>
                 </div>
-
-
             </ui:define>
-
         </ui:composition>
     </body>
 </html>

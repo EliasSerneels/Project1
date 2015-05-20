@@ -10,19 +10,15 @@
     <body>
 
         <ui:composition template="./common/template.xhtml">
-
             <ui:define name="title">Eventbedrijven</ui:define>
-
             <ui:define name="navbar"><h1>Eventbedrijven</h1></ui:define>
-
             <ui:define name="content">
-
+                
                 <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
 
                 <h2>Eventbedrijven aanmaken of wijzigen</h2>
-
                 <h:form>
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
                     <ul id="lstEventcompanyChange" class="change-form">
@@ -34,9 +30,9 @@
                                          required="true" requiredMessage="Vul een bedrijfsnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een bedrijfsnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç]{1,50}"/>
-
                             </h:inputText>
-                        </li>                                    
+                        </li>  
+                        
                         <li class="typelist">
                             <div class="inputinfo">Stad</div>
                             <h:inputText label="Naam"
@@ -44,9 +40,9 @@
                                          required="true" requiredMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-
                             </h:inputText>
-                        </li>                                    
+                        </li>  
+                        
                         <li>
                             <div class="inputinfo">Straat</div>
                             <h:inputText label="Naam"
@@ -54,10 +50,9 @@
                                          required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
-
                             </h:inputText>
-
                         </li>
+                        
                         <li>
                             <div class="inputinfo">Telefoonnr.</div>
                             <h:inputText label="Telefoonnr" 
@@ -65,7 +60,8 @@
                                          required="true" validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 9 en maximum 10 cijfers lang zijn." requiredMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
                                 <f:validateRegex pattern="^(1\s*[-\/\.]?)?(\((\d{3})\)|(\d{3}))\s*[-\/\.]?\s*(\d{3})\s*[-\/\.]?\s*(\d{3,4})\s*(([xX]|[eE][xX][tT])\.?\s*(\d+))*$"/>
                             </h:inputText>
-                        </li>     
+                        </li>  
+                        
                         <li>
                             <div class="inputinfo">E-Mail</div>
                             <h:inputText label="Naam"
@@ -73,9 +69,7 @@
                                          required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
-
                             </h:inputText>
-
                         </li>
 
                     </ul>
@@ -90,8 +84,8 @@
                 <br/><br/>
                 <h1>Eventbedrijven</h1>
                 <div id="tblEventContainer">
-            <ui:include src="dataTables/tableEventCompany.xhtml"></ui:include>
-            </div>
+                    <ui:include src="dataTables/tableEventCompany.xhtml"></ui:include>
+                </div>
             </ui:define>
 
         </ui:composition>
