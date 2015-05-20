@@ -34,24 +34,14 @@
             <p:column id="customername" headerText="Klant" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>
-            <p:column id="reservationstartdate" headerText="Startdatum" sortBy="#{listDetail.startDate}" filterBy="#{listDetail.startDate}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.startDate}">
-                    <f:convertDateTime pattern="dd/MM/yyyy" />
+            <p:column id="reservationstartdate" headerText="Startdatum" sortBy="#{listDetail.startDateFormatted}" filterBy="#{listDetail.startDateFormatted}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.startDateFormatted}">
+                    
                 </h:outputText>
             </p:column>
-            <p:column id="reservationstarttime" headerText="Starttijd" sortBy="#{listDetail.startTime}" filterBy="#{listDetail.startTime}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.startTime}">
-                    <f:convertDateTime pattern="HH:mm" />
-                </h:outputText>
-            </p:column>
-            <p:column id="reservationenddate" headerText="Einddatum" sortBy="#{listDetail.endDate}" filterBy="#{listDetail.endDate}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.endDate}">
-                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                </h:outputText>
-            </p:column>
-            <p:column id="reservationendtime" headerText="Eindtijd" sortBy="#{listDetail.endTime}" filterBy="#{listDetail.endTime}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.endTime}">
-                    <f:convertDateTime pattern="HH:mm" />
+            <p:column id="reservationenddate" headerText="Einddatum" sortBy="#{listDetail.endDateFormatted}" filterBy="#{listDetail.endDateFormatted}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.endDateFormatted}">
+                    
                 </h:outputText>
             </p:column>
             <p:column exportable="false">
