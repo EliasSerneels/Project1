@@ -4,42 +4,45 @@
  * and open the template in the editor.
  */
 package org.thomasmore.oo3.course.resortui.model;
+ 
 
 /**
  *
  * @author Jeroen
+ * 
  */
 public class EventtypeListDetailDto {
 
 private String id;
 
-private String eventtypename;
-private String eventname;
-private String eventcompany;
+private String eventTypeName;
+private String eventName;
+private String eventCompany;
+
 
     public String getEventname() {
-        return eventname;
+        return eventName;
     }
 
-    public void setEventname(String eventname) {
-        this.eventname = eventname;
+    public void setEventname(String eventName) {
+        this.eventName = eventName;
     }
 
 
     public String getEventcompany() {
-        return eventcompany;
+        return eventCompany;
     }
 
-    public void setEventcompany(String eventcompany) {
-        this.eventcompany = eventcompany;
+    public void setEventcompany(String eventCompany) {
+        this.eventCompany = eventCompany;
     }
 
     public String getEventtypename() {
-        return eventtypename;
+        return eventTypeName;
     }
 
-    public void setEventtypename(String eventtypename) {
-        this.eventtypename = eventtypename;
+    public void setEventtypename(String eventTypeName) {
+        this.eventTypeName = eventTypeName;
     }
 
     public String getId() {

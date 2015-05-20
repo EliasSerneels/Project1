@@ -18,13 +18,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class EventtypeEntity extends BasicEntity {
 
-    private String eventname;
+    private String eventName;
 
     public String getEventname() {
-        return eventname;
+        return eventName;
     }
 
-    public void setEventname(String eventname) {
-        this.eventname = eventname;
+    public void setEventname(String eventName) {
+        this.eventName = eventName;
     }
 }
