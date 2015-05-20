@@ -634,11 +634,22 @@ footer #footerbuttons li h3 {
     font-size: 12px;
 }
 
+#tblBungalowContainer td:last-child a{
+    padding: 8px !important;
+}
+
+#tblCustomerContainer td:last-child a,#tblReservationContainer td:last-child a,#tblEventContainer td:last-child a,
+#tblStaffContainer td:last-child a,#tblUseroverviewContainer td:last-child a{
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    font-size: 11px;
+}
+
 #tblStaffContainer td:last-child a{
     padding: 4px !important;
     margin-bottom: 1px !important;
     display: inline-block;
-    font-size: 12px;
+    font-size: 10px !important;
 }
 
 #tblStaffContainer img{
@@ -1072,7 +1083,7 @@ footer li p{
 
 #frmProfileChange{
     width: 100%;
-    margin-top: 135px;
+    margin-top: 10px;
 }
 
 #frmProfileChange li{
@@ -1098,4 +1109,8 @@ footer li p{
 
 .profilechange-form{
     padding: 0 !important;
+}
+
+.customerEmail,.eventcompanyEmail,.overviewCustomerEmail,.overviewEventcompanyContact{
+    word-wrap: break-word;
 }
