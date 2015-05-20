@@ -112,6 +112,7 @@ public class ReservationController {
                 bungalowsDao.save(be);
             }
         }
+        schedulecontroller.LoadBungalowSchedule();
     }
 
     public void onDateSelect(SelectEvent event) {

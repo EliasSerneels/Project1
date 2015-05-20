@@ -49,7 +49,7 @@
                                          value="#{eventcompany.dto.detail.street}" class="form-control"
                                          required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                <f:validateRegex pattern="^^[A-z][A-z0-9\'-. éèêâôûîëääüïöàç]{1,100}"/>
                             </h:inputText>
                         </li>
                         
