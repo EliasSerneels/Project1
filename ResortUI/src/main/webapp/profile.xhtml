@@ -65,8 +65,9 @@
                                 <div class="inputinfo">Email-adres</div>
                                 <h:inputText label="Email-adres" class="form-control"
                                              value="#{login.sessionDto.userDto.email}"
-                                             required="true" validatorMessage="Vul een geldig emailadres in." requiredMessage="Vul een emailadres in."/>
-                                <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
+                                             required="true" validatorMessage="Vul een geldig emailadres in." requiredMessage="Vul een emailadres in.">
+                                <f:validateRegex pattern="^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
+                                </h:inputText>
                             </li>
                             
                              <li>
