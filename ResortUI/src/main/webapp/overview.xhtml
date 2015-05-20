@@ -25,46 +25,45 @@
                     <h:form id="formParks"> 
 
                         <div>
-                        <p:dataTable id="DTparks" var="lsdtP" value="#{park.dto.list}" selectionMode="multiple" selection="#{park.selectedParks}" rowKey="#{lsdtP.id}" >
+                            <p:dataTable id="DTparks" var="lsdtP" value="#{park.dto.list}" selectionMode="multiple" selection="#{park.selectedParks}" rowKey="#{lsdtP.id}" >
 
-                            <p:column headerText="ID">
-                                <h:outputText value="#{lsdtP.id}" />
-                            </p:column>
-                            <p:column headerText="Naam">
-                                <h:outputText value="#{lsdtP.name}" />
-                            </p:column>
-                            <p:column headerText="Locatie">
-                                <h:outputText value="#{lsdtP.location}" />
-                            </p:column>
-                            <p:column headerText="Capaciteit">
-                                <h:outputText value="#{lsdtP.capacity}" />
-                            </p:column>
-                            
-                            <f:facet name="footer">
-                                <p:commandButton process="DTparks" update=":formParks:multiParkDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiParkDialog').show()" />
-                            </f:facet>
-                        </p:dataTable>
+                                <p:column headerText="ID">
+                                    <h:outputText value="#{lsdtP.id}" />
+                                </p:column>
+                                <p:column headerText="Naam">
+                                    <h:outputText value="#{lsdtP.name}" />
+                                </p:column>
+                                <p:column headerText="Locatie">
+                                    <h:outputText value="#{lsdtP.location}" />
+                                </p:column>
+                                <p:column headerText="Capaciteit">
+                                    <h:outputText value="#{lsdtP.capacity}" />
+                                </p:column>
+
+                                <f:facet name="footer">
+                                    <p:commandButton process="DTparks" update=":formParks:multiParkDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiParkDialog').show()" />
+                                </f:facet>
+                            </p:dataTable>
                         </div>
-                        
-                        <p:dialog header="Geselecteerde parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="700">
+
+                        <p:dialog header="Geselecteerde parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true" >
+
                             <p:outputPanel id="multiParkDetail" style="text-align:center;">
                                 <ui:repeat value="#{park.selectedParks}" var="lsdtP">
-                    
-                     
-                        <h:outputText value="#{lsdtP.name}" style="font-weight: bold; font-size: 20px;"/>
- 
-                <h:graphicImage class="overview" height="500" width="300" value="#{lsdtP.imageID}"/>
-            <p:outputPanel>
-                <h:panelGrid  columns="2" cellpadding="5">
-                   
-                    <h:outputText value="Beschrijving" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtP.description}"/>
-                    <h:outputText value="Capaciteit" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtP.capacity}"/>
- 
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                                    <h:outputText value="#{lsdtP.name}" style="font-weight: bold; font-size: 20px;"/>
+
+                                    <h:graphicImage class="overview" height="500" width="300" value="#{lsdtP.imageID}"/>
+                                    <p:outputPanel>
+                                        <h:panelGrid  columns="2" cellpadding="5">
+
+                                            <h:outputText value="Beschrijving" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtP.description}"/>
+                                            <h:outputText value="Capaciteit" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtP.capacity}"/>
+
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>
                                 </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
@@ -97,26 +96,26 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="700">
+                        <p:dialog header="Geselecteerde bungalows" widgetVar="multiBungalowDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiBungalowDetail" style="text-align:center;">
                                 <ui:repeat value="#{bungalow.selectedBungalow}" var="lsdtB">
-                                        <p:outputPanel>
-                                    <h:outputText value="#{lsdtB.name} - #{lsdtB.park}" style="font-weight: bold; font-size: 20px;"/>
-                <h:graphicImage class="overview" height="500" width="300" value="#{lsdtB.imageID}"/>
- 
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Beschrijving" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtB.description}"/>
-                    <h:outputText value="Capaciteit" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtB.maxpeople}"/>
-                    <h:outputText value="Type" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtB.type}"/>
-                    <h:outputText value="Prijs" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtB.price}"/>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                                    <p:outputPanel>
+                                        <h:outputText value="#{lsdtB.name} - #{lsdtB.park}" style="font-weight: bold; font-size: 20px;"/>
+                                        <h:graphicImage class="overview" height="500" width="300" value="#{lsdtB.imageID}"/>
+
+                                        <h:panelGrid  columns="2" cellpadding="5">
+                                            <h:outputText value="Beschrijving" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtB.description}"/>
+                                            <h:outputText value="Capaciteit" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtB.maxpeople}"/>
+                                            <h:outputText value="Type" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtB.type}"/>
+                                            <h:outputText value="Prijs" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtB.price}"/>
+
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>
                                 </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
@@ -132,7 +131,7 @@
                             <p:column headerText="ID">
                                 <h:outputText value="#{lsdtC.id}" />
                             </p:column>
-                            
+
                             <p:column headerText="Naam">
                                 <h:outputText value="#{lsdtC.lastname}" />
                             </p:column>
@@ -154,29 +153,29 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde klanten" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="700">
+                        <p:dialog header="Geselecteerde klanten" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiCustomerDetail" style="text-align:center;">
                                 <ui:repeat value="#{customer.selectedCustomer}" var="lsdtC">
-                                         <p:outputPanel>
-                           <h:outputText value="#{lsdtC.firstname} - #{lsdtC.lastname}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="4" cellpadding="5">
-                     <h:outputText value="Land" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtC.country}"/>
-                    <h:outputText value="Stad" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtC.city}"/>
-                    <h:outputText value="Straat" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtC.street}"/>
-                    <h:outputText value="Huisnummer" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtC.housenumber}"/>
-                    <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtC.phonenumber}"/>
-                    <h:outputText value="Email" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtC.email}"/>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                                    <p:outputPanel>
+                                        <h:outputText value="#{lsdtC.firstname} - #{lsdtC.lastname}" style="font-weight: bold"/>
+
+                                        <h:panelGrid  columns="4" cellpadding="5">
+                                            <h:outputText value="Land" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtC.country}"/>
+                                            <h:outputText value="Stad" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtC.city}"/>
+                                            <h:outputText value="Straat" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtC.street}"/>
+                                            <h:outputText value="Huisnummer" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtC.housenumber}"/>
+                                            <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtC.phonenumber}"/>
+                                            <h:outputText value="Email" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtC.email}"/>
+
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>
                                 </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
@@ -200,24 +199,24 @@
                             </p:column>
                             <p:column headerText="StartDatum">
                                 <h:outputText value="#{lsdtR.startDate}" >
-                              <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </p:column>
                             <p:column headerText="StartTijd">
                                 <h:outputText value="#{lsdtR.startTime}" >
-                                <f:convertDateTime pattern="HH:mm" />
-                              </h:outputText>
+                                    <f:convertDateTime pattern="HH:mm" />
+                                </h:outputText>
                             </p:column>
 
                             <p:column headerText="EindDatum">
                                 <h:outputText value="#{lsdtR.endDate}" >
-                                <f:convertDateTime pattern="dd/MM/yyyy" />
-                           </h:outputText>
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:outputText>
                             </p:column>
                             <p:column headerText="EindTijd">
                                 <h:outputText value="#{lsdtR.endTime}" >
-                                <f:convertDateTime pattern="HH:mm" />
-                              </h:outputText>
+                                    <f:convertDateTime pattern="HH:mm" />
+                                </h:outputText>
                             </p:column>
 
                             <f:facet name="footer">
@@ -225,38 +224,38 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde reservaties" widgetVar="multiReservationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde reservaties" widgetVar="multiReservationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiReservationDetail" style="text-align:center;">
                                 <ui:repeat value="#{reservation.selectedReservation}" var="lsdtR">
                                     <p:outputPanel>
-                            <h:outputText value="Reservatie voor:" style="font-weight: bold"/>
-                            <h:outputText value="#{lsdtR.customerName}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Geserveerde bungalow" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtR.bungalowName}"/>
-                    <h:outputText value="Park:" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtR.parkName}"/>
-                    <h:outputText value="Aankomstdatum" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtR.startDate}">
-                           <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-                    <h:outputText value="Vertrekdatum" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtR.endDate}">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-                    <h:outputText value="lsdtR" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtR.startTime}">
-              <f:convertDateTime pattern="HH:mm" />
-            </h:outputText>
-                    <h:outputText value="Vertrekuur" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtR.endTime}">
-                        <f:convertDateTime pattern="HH:mm" />
-                </h:outputText>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                                        <h:outputText value="Reservatie voor:" style="font-weight: bold"/>
+                                        <h:outputText value="#{lsdtR.customerName}" style="font-weight: bold"/>
+
+                                        <h:panelGrid  columns="2" cellpadding="5">
+                                            <h:outputText value="Geserveerde bungalow" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtR.bungalowName}"/>
+                                            <h:outputText value="Park:" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtR.parkName}"/>
+                                            <h:outputText value="Aankomstdatum" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtR.startDate}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </h:outputText>
+                                            <h:outputText value="Vertrekdatum" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtR.endDate}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </h:outputText>
+                                            <h:outputText value="lsdtR" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtR.startTime}">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </h:outputText>
+                                            <h:outputText value="Vertrekuur" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtR.endTime}">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </h:outputText>
+
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>
                                 </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
@@ -289,43 +288,43 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde evenementen" widgetVar="multiEventDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde evenementen" widgetVar="multiEventDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiEventDetail" style="text-align:center;">
                                 <ui:repeat value="#{event.selectedEvent}" var="lsdtE">
-        <p:outputPanel>
-                          <h:outputText value="Evenement " style="font-weight: bold"/>
-                          <h:outputText value="#{lsdtE.eventname}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="4" cellpadding="5">
-                     <h:outputText value="Klant" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtE.customerName}"/>
-                     <h:outputText value="Eventbedrijf" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtE.eventcompany}"/>
-                    <h:outputText value="Eventtype" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtE.eventtype}"/>
-                    <h:outputText value="Startdatum" style="font-weight: bold"/>     
-                    <h:outputText value="#{lsdtE.startDate}">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-                     <h:outputText value="Startuur" style="font-weight: bold"/>     
-                     <h:outputText value="#{lsdtE.startTime}">
-                        <f:convertDateTime pattern="HH:mm" />
-            </h:outputText>
-                    <h:outputText value="Einddatum" style="font-weight: bold"/>
-                      <h:outputText value="#{lsdtE.endDate}">
-                         <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-                     <h:outputText value="Einduur" style="font-weight: bold"/>     
-                     <h:outputText value="#{lsdtE.endTime}">
-                        <f:convertDateTime pattern="HH:mm" />
-            </h:outputText>
-                    <h:outputText value="Locatie" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtE.locationName}"/>
+                                    <p:outputPanel>
+                                        <h:outputText value="Evenement " style="font-weight: bold"/>
+                                        <h:outputText value="#{lsdtE.eventname}" style="font-weight: bold"/>
 
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>                                </ui:repeat>
+                                        <h:panelGrid  columns="4" cellpadding="5">
+                                            <h:outputText value="Klant" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtE.customerName}"/>
+                                            <h:outputText value="Eventbedrijf" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtE.eventcompany}"/>
+                                            <h:outputText value="Eventtype" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtE.eventtype}"/>
+                                            <h:outputText value="Startdatum" style="font-weight: bold"/>     
+                                            <h:outputText value="#{lsdtE.startDate}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </h:outputText>
+                                            <h:outputText value="Startuur" style="font-weight: bold"/>     
+                                            <h:outputText value="#{lsdtE.startTime}">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </h:outputText>
+                                            <h:outputText value="Einddatum" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtE.endDate}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </h:outputText>
+                                            <h:outputText value="Einduur" style="font-weight: bold"/>     
+                                            <h:outputText value="#{lsdtE.endTime}">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </h:outputText>
+                                            <h:outputText value="Locatie" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtE.locationName}"/>
+
+
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>                                </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
@@ -369,35 +368,35 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde eventbedrijven" widgetVar="multiEventcompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde eventbedrijven" widgetVar="multiEventcompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiEventcompanyDetail" style="text-align:center;">
                                 <ui:repeat value="#{eventcompany.selectedEventCompany}" var="lsdtEC">
-       <p:outputPanel>
-                          <h:outputText value="Eventbedrijf " style="font-weight: bold"/>
-                          <h:outputText value="#{lsdtEC.name}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="4" cellpadding="5">
-                     <h:outputText value="Stad" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtEC.city}"/>
-                     <h:outputText value="Straat" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtEC.street}"/>
-                    <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtEC.phone}"/>
-                    <h:outputText value="Contact" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtEC.contact}"/>
-                    <h:outputText value="Aantal gegeven evenementen" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtEC.totalnumberevents}"/>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>                               
+                                    <p:outputPanel>
+                                        <h:outputText value="Eventbedrijf " style="font-weight: bold"/>
+                                        <h:outputText value="#{lsdtEC.name}" style="font-weight: bold"/>
+
+                                        <h:panelGrid  columns="4" cellpadding="5">
+                                            <h:outputText value="Stad" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtEC.city}"/>
+                                            <h:outputText value="Straat" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtEC.street}"/>
+                                            <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtEC.phone}"/>
+                                            <h:outputText value="Contact" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtEC.contact}"/>
+                                            <h:outputText value="Aantal gegeven evenementen" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtEC.totalnumberevents}"/>
+
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>                               
                                 </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
                 </p:panel>
                 <p:draggable for="gpn6"/>
-                
+
                 <p:panel id="gpn7" header="Event Types" class="overviewEC">
 
                     <h:form id="formEventTypes">  
@@ -417,30 +416,30 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde eventtypes" widgetVar="multiEventTypeDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde eventtypes" widgetVar="multiEventTypeDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiEventTypeDetail" style="text-align:center;">
                                 <ui:repeat value="#{eventtype.selectedEventtype}" var="lsdtET">
-                          <p:outputPanel>
-                          <h:outputText value="Eventtype: " style="font-weight: bold"/>
-                          <h:outputText value="#{lsdtET.eventname}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="ID" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtET.id}"/>
-                     <h:outputText value="Eventnaam" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtET.eventname}"/>
+                                    <p:outputPanel>
+                                        <h:outputText value="Eventtype: " style="font-weight: bold"/>
+                                        <h:outputText value="#{lsdtET.eventname}" style="font-weight: bold"/>
 
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>                                  </ui:repeat>
+                                        <h:panelGrid  columns="2" cellpadding="5">
+                                            <h:outputText value="ID" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtET.id}"/>
+                                            <h:outputText value="Eventnaam" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtET.eventname}"/>
+
+
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>                                  </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
                 </p:panel>
                 <p:draggable for="gpn7"/>
 
-                 <p:panel id="gpn8" header="Locaties" class="overviewEC">
+                <p:panel id="gpn8" header="Locaties" class="overviewEC">
 
                     <h:form id="formLocations">  
                         <p:dataTable id="DTlocation" var="lsdtL" value="#{location.dto.list}" selectionMode="multiple" selection="#{location.selectedLocation}" rowKey="#{lsdtL.id}">
@@ -462,30 +461,30 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde locaties" widgetVar="multiLocationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
+                        <p:dialog header="Geselecteerde locaties" widgetVar="multiLocationDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiLocationDetail" style="text-align:center;">
                                 <ui:repeat value="#{location.selectedLocation}" var="lsdtL">
 
-                                 <p:outputPanel>
-                          <h:outputText value="Locatie " style="font-weight: bold"/>
-                          <h:outputText value="#{lsdtL.locationName}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Park" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtL.park}"/>
-                     <h:outputText value="Locatienaam" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtL.locationName}"/>
- 
-                </h:panelGrid>
-            </p:outputPanel>                                
-                </ui:repeat>
+                                    <p:outputPanel>
+                                        <h:outputText value="Locatie " style="font-weight: bold"/>
+                                        <h:outputText value="#{lsdtL.locationName}" style="font-weight: bold"/>
+
+                                        <h:panelGrid  columns="2" cellpadding="5">
+                                            <h:outputText value="Park" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtL.park}"/>
+                                            <h:outputText value="Locatienaam" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtL.locationName}"/>
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>                                
+                                </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
                 </p:panel>
                 <p:draggable for="gpn8"/>
-                
-                  <p:panel id="gpn9" header="Personeel" class="overviewEC">
+
+                <p:panel id="gpn9" header="Personeel" class="overviewEC">
 
                     <h:form id="formStaff">  
                         <p:dataTable id="DTstaff" var="lsdtS" value="#{staff.dto.list}" selectionMode="multiple" selection="#{staff.selectedStaff}" rowKey="#{lsdtS.id}">
@@ -500,27 +499,27 @@
                             <p:column headerText="Achternaam">
                                 <h:outputText value="#{lsdtS.lastname}" />
                             </p:column>
-                            
+
                             <p:column headerText="Geboortedatum">
                                 <h:outputText value="#{lsdtS.birthdate}" />
                             </p:column>
-                            
+
                             <p:column headerText="Telefoonnummer">
                                 <h:outputText value="#{lsdtS.phonenumber}" />
                             </p:column>
-                            
+
                             <p:column headerText="Email" class="gpn9Email">
                                 <h:outputText value="#{lsdtS.email}" />
                             </p:column>
-                            
+
                             <p:column headerText="Land">
                                 <h:outputText value="#{lsdtS.country}" />
                             </p:column>
-                            
+
                             <p:column headerText="Stad">
                                 <h:outputText value="#{lsdtS.city}" />
                             </p:column>
-                            
+
                             <p:column headerText="Straat">
                                 <h:outputText value="#{lsdtS.street}" />
                             </p:column>
@@ -531,37 +530,37 @@
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerd personeel " widgetVar="multiStaffDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="700" height="500" >
+                        <p:dialog header="Geselecteerd personeel " widgetVar="multiStaffDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiStaffDetail" style="text-align:center;">
                                 <ui:repeat value="#{staff.selectedStaff}" var="lsdtS">
-                                
-                                                                         <p:outputPanel>
-                      <h:outputText value="#{lsdtS.firstname} #{lsdtS.lastname}" style="font-weight: bold; font-size: 20px;"/>
-                <h:graphicImage class="overview" height="500" width="200" value="#{lsdtS.imageID}"/>
- 
-                <h:panelGrid  columns="4" cellpadding="5">
-                     <h:outputText value="Stad" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtS.city}"/>
-                    <h:outputText value="Land" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtS.country}"/>
-                    <h:outputText value="Straat" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtS.street}"/>
-                    <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtS.phonenumber}"/>
-                     <h:outputText value="Email" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtS.email}"/>
- 
-                </h:panelGrid>
-            </p:outputPanel>
-                                
+
+                                    <p:outputPanel>
+                                        <h:outputText value="#{lsdtS.firstname} #{lsdtS.lastname}" style="font-weight: bold; font-size: 20px;"/>
+                                        <h:graphicImage class="overview" height="500" width="200" value="#{lsdtS.imageID}"/>
+
+                                        <h:panelGrid  columns="4" cellpadding="5">
+                                            <h:outputText value="Stad" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtS.city}"/>
+                                            <h:outputText value="Land" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtS.country}"/>
+                                            <h:outputText value="Straat" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtS.street}"/>
+                                            <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtS.phonenumber}"/>
+                                            <h:outputText value="Email" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtS.email}"/>
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>
+
                                 </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
                 </p:panel>
                 <p:draggable for="gpn9"/>
-                
-                  <p:panel id="gpn10" header="Gebruikers" class="overviewEC">
+
+                <p:panel id="gpn10" header="Gebruikers" class="overviewEC">
 
                     <h:form id="formUsers">  
                         <p:dataTable id="DTusers" var="lsdtUS" value="#{useroverview.dto.list}" selectionMode="multiple" selection="#{useroverview.selectedUser}" rowKey="#{lsdtUS.id}">
@@ -576,49 +575,49 @@
                             <p:column headerText="Paswoord">
                                 <h:outputText value="#{lsdtUS.password}" />
                             </p:column>
-                            
+
                             <p:column headerText="Geboortedatum">
                                 <h:outputText value="#{lsdtUS.fullName}" />
                             </p:column>
-                            
+
                             <p:column headerText="Telefoonnummer">
                                 <h:outputText value="#{lsdtUS.email}" />
                             </p:column>
-                            
+
                             <p:column headerText="Accesniveau">
                                 <h:outputText value="#{lsdtUS.level}" />
                             </p:column>
-                          
+
                             <f:facet name="footer">
                                 <p:commandButton process="DTusers" update=":formUsers:multiUsersDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiUsersDialog').show()" />
                             </f:facet>
                         </p:dataTable>
 
-                        <p:dialog header="Geselecteerde gebruikers " widgetVar="multiUsersDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500" height="500">
+                        <p:dialog header="Geselecteerde gebruikers " widgetVar="multiUsersDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="900" height="700" closeOnEscape="true">
                             <p:outputPanel id="multiUsersDetail" style="text-align:center;">
                                 <ui:repeat value="#{useroverview.selectedUser}" var="lsdtUS">
                                     <p:outputPanel>
-      <h:outputText value="#{lsdtUS.username}" style="font-weight: bold; font-size: 20px;"/>
-       <h:graphicImage class="overview" height="400" width="200" value="#{lsdtUS.imageID}"/>
+                                        <h:outputText value="#{lsdtUS.username}" style="font-weight: bold; font-size: 20px;"/>
+                                        <h:graphicImage class="overview" height="400" width="200" value="#{lsdtUS.imageID}"/>
 
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Volledige naam" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtUS.fullName}"/>
-                    <h:outputText value="Wachtwoord" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtUS.password}"/>
-                    <h:outputText value="Level" style="font-weight: bold"/>
-                    <h:outputText value="#{lsdtUS.level}"/>
-                    
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                                        <h:panelGrid  columns="2" cellpadding="5">
+                                            <h:outputText value="Volledige naam" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtUS.fullName}"/>
+                                            <h:outputText value="Wachtwoord" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtUS.password}"/>
+                                            <h:outputText value="Level" style="font-weight: bold"/>
+                                            <h:outputText value="#{lsdtUS.level}"/>
+
+
+                                        </h:panelGrid>
+                                    </p:outputPanel>
                                 </ui:repeat>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
                 </p:panel>
                 <p:draggable for="gpn9"/>
-                
+
             </ui:define>
         </ui:composition>
     </body>
