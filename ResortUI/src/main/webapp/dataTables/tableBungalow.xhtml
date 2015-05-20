@@ -21,7 +21,6 @@
                     <p:dataExporter type="xls" target="bungalow" fileName="bungalow" />
                 </h:commandLink>
             </f:facet>
-
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none">
                 <h:outputText value="#{listDetail.id}"/>
             </p:column>
@@ -55,7 +54,6 @@
             <p:column headerText="Max. capaciteit" sortBy="#{listDetail.maxpeople}" filterBy="#{listDetail.maxpeople}" filterMatchMode="exact">
                 <h:outputText value="#{listDetail.maxpeople}"/>
             </p:column>
-
             <p:column headerText="Afbeelding" exportable="false">
                 <p:lightBox styleClass="imagebox" id="lighbox1">
                     <h:outputLink value="#{listDetail.imageID}" title="#{listDetail.name}">  
@@ -63,8 +61,6 @@
                     </h:outputLink>
                 </p:lightBox>
             </p:column>
-
-
             <p:column exportable="false">
                 <a href="bungalow.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
                 <a href="bungalow.xhtml?delete=#{listDetail.id}" class=" button">Verwijder</a>
@@ -72,7 +68,6 @@
             <f:facet name="footer">
                 <p:commandButton process="bungalow" update=":bungalowform:multiBungalowDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiBungalowDialog').show()" />
             </f:facet>
-
         </p:dataTable>
 
 
@@ -80,22 +75,20 @@
             <p:outputPanel id="multiBungalowDetail" style="text-align:center;" >
                 <ui:repeat value="#{bungalow.selectedBungalow}" var="listDetail" rendered="true">
                     <p:outputPanel>
-                                    <h:outputText value="#{listDetail.name} - #{listDetail.park}" style="font-weight: bold; font-size: 20px;"/>
-                <h:graphicImage class="overview" height="500" width="300" value="#{listDetail.imageID}"/>
- 
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Beschrijving" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.description}"/>
-                    <h:outputText value="Capaciteit" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.maxpeople}"/>
-                    <h:outputText value="Type" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.type}"/>
-                    <h:outputText value="Prijs" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.price}"/>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
+                        <h:outputText value="#{listDetail.name} - #{listDetail.park}" style="font-weight: bold; font-size: 20px;"/>
+                        <h:graphicImage class="overview" height="500" width="300" value="#{listDetail.imageID}"/>
+
+                        <h:panelGrid  columns="2" cellpadding="5">
+                            <h:outputText value="Beschrijving" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.description}"/>
+                            <h:outputText value="Capaciteit" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.maxpeople}"/>
+                            <h:outputText value="Type" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.type}"/>
+                            <h:outputText value="Prijs" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.price}"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>

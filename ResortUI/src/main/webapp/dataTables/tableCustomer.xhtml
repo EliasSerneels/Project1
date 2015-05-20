@@ -1,10 +1,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-        <h:form id="customerform">
+    <h:form id="customerform">
 
         <p:dataTable id="customer" var="listDetail" value="#{customer.dto.list}" widgetVar="customerTable" class="overview" selectionMode="multiple" selection="#{customer.selectedCustomer}" rowKey="#{listDetail.id}" emptyMessage="Geen data gevonden.">                          
             <p:ajax event="rowSelect" update=":customerform:multiCustomerDetail" />
@@ -43,7 +43,6 @@
             <p:column id="customerstreet" headerText="Straat" sortBy="#{listDetail.street}" filterBy="#{listDetail.street}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.street}"/>
             </p:column>
-            
             <p:column id="customeremail" class="customerEmail" headerText="Email" sortBy="#{listDetail.email}" filterBy="#{listDetail.email}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.email}"/>
             </p:column>
@@ -61,29 +60,23 @@
         <p:dialog header="Geselecteerde Customers" widgetVar="multiCustomerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiCustomerDetail" style="text-align:center;" >
                 <ui:repeat value="#{customer.selectedCustomer}" var="listDetail" rendered="true">
-                    
                     <p:outputPanel>
-                           <h:outputText value="#{listDetail.firstname} - #{listDetail.lastname}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="4" cellpadding="5">
-                     <h:outputText value="Land" style="font-weight: bold"/>
-                     <h:outputText value="#{listDetail.country}"/>
-                    <h:outputText value="Stad" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.city}"/>
-                    <h:outputText value="Straat" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.street}"/>
-                    <h:outputText value="Huisnummer" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.housenumber}"/>
-                    <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.phonenumber}"/>
-                    <h:outputText value="Email" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.email}"/>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
- 
-                    
+                        <h:outputText value="#{listDetail.firstname} - #{listDetail.lastname}" style="font-weight: bold"/>
+                        <h:panelGrid  columns="4" cellpadding="5">
+                            <h:outputText value="Land" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.country}"/>
+                            <h:outputText value="Stad" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.city}"/>
+                            <h:outputText value="Straat" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.street}"/>
+                            <h:outputText value="Huisnummer" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.housenumber}"/>
+                            <h:outputText value="Telefoonnummer" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.phonenumber}"/>
+                            <h:outputText value="Email" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.email}"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>
