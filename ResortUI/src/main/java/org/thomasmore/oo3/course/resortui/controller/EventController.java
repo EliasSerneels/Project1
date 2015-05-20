@@ -23,48 +23,45 @@ import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 public class EventController {
 
     private EventPageDto dto;
-    private String pageEdit="event.xhtml?edit=${listDetail.id}";
+    private String pageEdit = "event.xhtml?edit=${listDetail.id}";
     private List<EventEntity> selectedEvent;
 
     @EJB
     private EventFacade eventFacade;
-    
+
     @PostConstruct
     public void init() {
 
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
-        
-        dto = eventFacade.loadEventOverviewPage(editId, deleteId);  
+
+        dto = eventFacade.loadEventOverviewPage(editId, deleteId);
     }
-    
 
     public String add() {
-        
+
         String check = eventFacade.checkBooking(dto);
-        
+
         // Check of dubbele boeking in string staat. Zo ja moet string opgespslits worden om suggestie te krijgen.
-        String suggestion="";
-        if(check.contains("doubleBooking:")){
-            suggestion = check.replace("doubleBooking: ","");
+        String suggestion = "";
+        if (check.contains("doubleBooking:")) {
+            suggestion = check.replace("doubleBooking: ", "");
             check = "doubleBooking";
         }
-        
+
         // Zak hoe dan ook naar het formulier wanneer één van deze meldingen getoond wordt
         RequestContext context = RequestContext.getCurrentInstance();
         context.scrollTo("frmEvent");
-        
+
         // check of er meldingen getoond moeten worden
         switch (check) {
-            case "begindateAfterEnddate":
-            {
+            case "begindateAfterEnddate": {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
                 FacesMessage facesMessage = new FacesMessage("De gekozen begindatum is later dan de gekozen einddatum.");
                 return null;
             }
-            case "doubleBooking":
-            {
+            case "doubleBooking": {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
                 FacesMessage facesMessage = new FacesMessage("De gekozen locatie is reeds bezet voor deze datum. Gelieve een andere datum te kiezen.");
                 facesContext.addMessage(null, facesMessage);
@@ -73,8 +70,7 @@ public class EventController {
                 RequestContext.getCurrentInstance().showMessageInDialog(message);
                 return null;
             }
-            case "beginDateBeforeToday":
-            {
+            case "beginDateBeforeToday": {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
                 FacesMessage facesMessage = new FacesMessage("De datum die u gekozen hebt ligt in het verleden.");
                 facesContext.addMessage(null, facesMessage);
@@ -84,8 +80,7 @@ public class EventController {
                 return "event.xhtml?faces-redirect=true";
         }
     }
-    
-    
+
     public EventPageDto getDto() {
         return dto;
     }
@@ -104,6 +99,6 @@ public class EventController {
 
     public String getPageEdit() {
         return pageEdit;
-    }    
-    
+    }
+
 }
