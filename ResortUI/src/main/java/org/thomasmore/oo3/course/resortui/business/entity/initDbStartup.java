@@ -334,7 +334,7 @@ public class initDbStartup {
         ece1.setPhone("0497145474");
         ece1.setCity("Mechelen");
         ece1.setStreet("Hoogstraat");
-        ece1.setContact("Dhr. Maes");
+        ece1.setContact("bedrijf1@gmail.com");
         objectsToSave.add(ece1);
 
         EventcompanyEntity ece2 = new EventcompanyEntity();
@@ -343,7 +343,7 @@ public class initDbStartup {
         ece2.setPhone("0497856236");
         ece2.setCity("Vilvoorde");
         ece2.setStreet("Laagstraat");
-        ece2.setContact("Mevr. De Bakker");
+        ece2.setContact("bedrijf2@gmail.com");
         objectsToSave.add(ece2);
 
         EventcompanyEntity ece3 = new EventcompanyEntity();
@@ -352,7 +352,7 @@ public class initDbStartup {
         ece3.setPhone("0497713554");
         ece3.setCity("Antwerpen");
         ece3.setStreet("Middelstraat");
-        ece3.setContact("Dhr. Thomassen");
+        ece3.setContact("bedrijf3@gmail.com");
         objectsToSave.add(ece3);
 
         EventtypeEntity ete1 = new EventtypeEntity();
