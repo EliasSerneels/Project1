@@ -42,7 +42,7 @@ public class ParkEntity extends BasicEntity {
     @OneToMany(targetEntity=BungalowEntity.class,fetch = FetchType.EAGER, mappedBy = "park")
     private List<BungalowEntity> bungalows;
     
-    @OneToMany(targetEntity = LocationEntity.class, fetch = FetchType.EAGER, mappedBy = "park")
+    @OneToMany(targetEntity = LocationEntity.class, fetch = FetchType.EAGER, mappedBy = "parkje")
     private List<LocationEntity> locations;
 
     public List<LocationEntity> getLocations() {
