@@ -11,11 +11,9 @@
         <ui:composition template="./common/template.xhtml">
 
             <ui:define name="title">Gebruikersoverzicht</ui:define>
-
             <ui:define name="navbar"><h1>Gebruikersoverzicht</h1></ui:define>
-
             <ui:define name="content">
-
+                
                 <ui:fragment rendered="#{sessionDto.userDto.level &lt; 4}">
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
@@ -30,7 +28,6 @@
                             <h:inputText label="Gebruikersnaam"
                                          value="#{useroverview.dto.detail.username}" class="form-control"
                                          required="true">
-
                             </h:inputText>
                         </li>
                         <li>
@@ -58,16 +55,20 @@
                                          required="false"></h:inputText>
                         </li>
                         <li>
-                        <div class="inputinfo">Afbeelding</div>
+                            <div class="inputinfo">Afbeelding</div>
                             <h:inputText label="URL" 
                                          value="#{useroverview.dto.detail.imageID}" class="form-control"
+<<<<<<< HEAD
                                          required="false" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
                                        
 
                                       
+=======
+                                         required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
+                                <f:validateRegex pattern="[^\s]+(\.(?i)(jpg|png|jpeg))#"/>
+>>>>>>> origin/master
                             </h:inputText>
                         </li>
-                        
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">   
@@ -78,7 +79,7 @@
                 <br/><br/>
                 <h2>Gebruikersoverzicht</h2>
                 <div id="tblUseroverviewContainer">
-                <ui:include src="dataTables/tableUser.xhtml"></ui:include>
+                    <ui:include src="dataTables/tableUser.xhtml"></ui:include>
                 </div>
             </ui:define>
         </ui:composition>
