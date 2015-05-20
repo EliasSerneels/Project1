@@ -41,7 +41,7 @@ public class LocationFacade {
         }
         List<LocationEntity> locations = locationDao.listAll();
         for (LocationEntity location : locations) {
-            dto.getLocationList().add(location.getLocationName());
+            dto.getLocationList().add(location.getPark());
         }
         for (LocationEntity location : locations) {
             LocationListDetailDto listDetail = new LocationListDetailDto();
