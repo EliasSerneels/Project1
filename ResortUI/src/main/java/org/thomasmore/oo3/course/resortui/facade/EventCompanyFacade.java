@@ -28,7 +28,7 @@ public class EventCompanyFacade {
     private EventCompanyDao eventcompanyDao;
     
 
-    public EventCompanyPageDto loadEventcompanyOverviewPage(String editId, String deleteId) {
+    public EventCompanyPageDto loadEventCompanyOverviewPage(String editId, String deleteId) {
     EventCompanyPageDto dto = new EventCompanyPageDto();
         if (editId != null) {
             EventCompanyEntity eventcompanyEntity = eventcompanyDao.findById(editId);
