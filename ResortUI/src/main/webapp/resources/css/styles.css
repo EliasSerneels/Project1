@@ -612,7 +612,8 @@ footer #footerbuttons li h3 {
 #tblEventContainer td:last-child a,#tblEventtypeContainer td:last-child a,
 #tblLocationContainer td:last-child a,#tblStaffContainer td:last-child a,
 #tblBWParkContainer td:last-child a,#tblBWBungalowContainer td:last-child a,
-#tblBWCustomerContainer td:last-child a,#tblUseroverviewContainer td:last-child a,.col-md-12 input[type=submit]{
+#tblBWCustomerContainer td:last-child a,#tblUseroverviewContainer td:last-child a,
+#frmProfileChange input[type=submit],.col-md-12 input[type=submit]{
     box-shadow: 0 1px 0 #53BCFF inset, 0 1px 2px rgba(0, 0, 0, 0.2) !important;
     border: 1px solid #168DD9;
     text-transform: capitalize;
@@ -1053,4 +1054,48 @@ footer li p{
 
 #redirectSpacer{
     height: 100px;
+}
+
+#mijnGegevensContainer{
+    width: 50%;
+    display: inline-block;
+    float: left;
+}
+
+#profileImgContainer{
+    width:200px;
+    height: auto;
+    display: inline-block;
+    margin-top: 62px;
+    margin-left: 20px;
+}
+
+#frmProfileChange{
+    width: 100%;
+    margin-top: 135px;
+}
+
+#frmProfileChange li{
+    width: 49.5%;
+    display: inline-block;
+    float:left;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 5px 0 5px 0;
+    background: rgba(255, 255, 255, 0.55);
+    margin-right: 1%;
+}
+
+#frmProfileChange li:last-child{
+    background: none;
+    padding: 0;
+    padding-top: 20px;
+}
+
+#frmProfileChange li:nth-child(2n){
+    margin-right: 0%;
+}
+
+.profilechange-form{
+    padding: 0 !important;
 }

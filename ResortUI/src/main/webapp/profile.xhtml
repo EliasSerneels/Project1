@@ -25,7 +25,7 @@
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
  
-                <div style="float:left; width: 500px;border-radius:4px;" class="col-md-6-l">
+                <div id="mijnGegevensContainer">
                     <h:form>
                         <h3>Mijn gegevens</h3> 
                         <table class="profileTable">
@@ -39,13 +39,13 @@
                     </h:form>
                 </div>   
                 
-                <div style="float:left;margin-top:5px;margin-left: 20px;border-radius:4px;">
+                <div id="profileImgContainer">
                    <h:form >
-                        <h:graphicImage height="300" width="300" value="#{login.sessionDto.userDto.imageID}"/>
+                        <h:graphicImage height="200" width="200" value="#{login.sessionDto.userDto.imageID}"/>
                     </h:form>
                 </div>
                 
-                <div style="display:none; float:left; width: 600px; margin-top: 90px;" id="inputForm" class="col-md-6-r">
+                <div id="frmProfileChange">
                     <h:form>
                         <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                         <ul class="profilechange-form">

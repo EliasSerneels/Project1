@@ -87,28 +87,8 @@ public class ScheduleController {
         event = new DefaultScheduleEvent();
     }
      
-    public EventPageDto onEventSelect(SelectEvent selectEvent) {
-        event = (ScheduleEvent) selectEvent.getObject();
-         
-
-        EventPageDto dto = new EventPageDto();
-        // Zoeken naar event met waarden die we verkrijgen uit de onselecteventmethode
-        List<EventEntity> eventschedule = eventDao.listAll();
-        for (EventEntity evnt : eventschedule) { 
-           String eventName = evnt.getEventname();
-           
-           if(eventName.equals(event.getTitle())){
-               dto.getDetail().setLocationName(evnt.getLocationName());
-               dto.getDetail().setEventtype(evnt.getEventtype());
-               dto.getDetail().setCustomerName(evnt.getCustomerName());
-               dto.getDetail().setEventcompany(evnt.getEventcompany());
-               dto.getDetail().setEventname(evnt.getEventname());
-               
-               RequestContext.getCurrentInstance().update("eventDialog");
-           }
-           
-        }
-        return dto;
+    public void onEventSelect(SelectEvent selectEvent) {
+        event = (ScheduleEvent) selectEvent.getObject();  
     }
      
     public void onDateSelect(SelectEvent selectEvent) {
