@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class EventtypeEntity extends BasicEntity {
 
-    private String eventname;
+    private String typeName;
 
     @OneToMany(targetEntity=EventEntity.class,fetch = FetchType.EAGER, mappedBy = "type")
     private List<EventEntity> events;
@@ -34,11 +34,11 @@ public class EventtypeEntity extends BasicEntity {
         this.events = events;
     }
     
-    public String getEventname() {
-        return eventname;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setEventname(String eventname) {
-        this.eventname = eventname;
+    public void setTypeName(String eventname) {
+        this.typeName = eventname;
     }
 }

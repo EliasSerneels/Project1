@@ -140,10 +140,22 @@ public class initDbStartup {
         le3.setLocationName("Elias' thuis");
         le3.setPark(parkEntity3);
         objectsToSave.add(le3);
+
+        EventtypeEntity ete1 = new EventtypeEntity();
+        ete1.setTypeName("Trouw");
+        objectsToSave.add(ete1);
+
+        EventtypeEntity ete2 = new EventtypeEntity();
+        ete2.setTypeName("BBQ");
+        objectsToSave.add(ete2);
+
+        EventtypeEntity ete3 = new EventtypeEntity();
+        ete3.setTypeName("Communie");
+        objectsToSave.add(ete3);
         
         EventEntity ee1 = new EventEntity();
         ee1.setId(UUID.randomUUID().toString());
-        ee1.setEventtype("Trouw");
+        ee1.setType(ete1);
         ee1.setEventcompany("Bedrijf 1");
         ee1.setEventname("Bruiloft Thomas en Jana");
         String startDateInString = "05/05/2015";
@@ -165,7 +177,7 @@ public class initDbStartup {
 
         EventEntity ee2 = new EventEntity();
         ee2.setId(UUID.randomUUID().toString());
-        ee2.setEventtype("Trouw");
+        ee2.setType(ete2);
         ee2.setEventcompany("Bedrijf 2");
         ee2.setEventname("Bruiloft Elias en Marjolein");
         //Heel belangrijk, datums moeten voor standaardevenementen worden aangemaakt, anders krijg je EJB exceptions.
@@ -187,7 +199,7 @@ public class initDbStartup {
 
         EventEntity ee3 = new EventEntity();
         ee3.setId(UUID.randomUUID().toString());
-        ee3.setEventtype("Communie");
+        ee3.setType(ete3);
         ee3.setEventcompany("Bedrijf 1");
         ee3.setEventname("Communie Pepijn Mores");
         startDateInString = "25/06/2015";
@@ -232,18 +244,6 @@ public class initDbStartup {
         ece3.setStreet("Middelstraat");
         ece3.setContact("Dhr. Thomassen");
         objectsToSave.add(ece3);
-
-        EventtypeEntity ete1 = new EventtypeEntity();
-        ete1.setEventname("Trouw");
-        objectsToSave.add(ete1);
-
-        EventtypeEntity ete2 = new EventtypeEntity();
-        ete2.setEventname("BBQ");
-        objectsToSave.add(ete2);
-
-        EventtypeEntity ete3 = new EventtypeEntity();
-        ete3.setEventname("Communie");
-        objectsToSave.add(ete3);
 
         ReservationEntity re1 = new ReservationEntity();
         re1.setBungalowName("Zebra");

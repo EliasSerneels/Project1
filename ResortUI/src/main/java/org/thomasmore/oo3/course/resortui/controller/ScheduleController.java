@@ -99,7 +99,7 @@ public class ScheduleController {
            
            if(eventName.equals(event.getTitle())){
                dto.getDetail().setLocationName(evnt.getLocation().getLocationName());
-               dto.getDetail().setEventtype(evnt.getEventtype());
+               dto.getDetail().setEventtype(evnt.getType().getTypeName());
                dto.getDetail().setCustomerName(evnt.getCustomerName());
                dto.getDetail().setEventcompany(evnt.getEventcompany());
                dto.getDetail().setEventname(evnt.getEventname());

@@ -62,7 +62,7 @@ public class EventFacade implements Serializable{
             if (eventEntity != null) {
                 dto.getDetail().setId(eventEntity.getId());
                 dto.getDetail().setEventname(eventEntity.getEventname());
-                dto.getDetail().setEventtype(eventEntity.getEventtype());
+                dto.getDetail().setEventtype(eventEntity.getType().getTypeName());
                 dto.getDetail().setEventcompany(eventEntity.getEventcompany());
                 dto.getDetail().setStartTime(eventEntity.getStartTime());
                 dto.getDetail().setEndTime(eventEntity.getEndTime());
@@ -101,7 +101,7 @@ public class EventFacade implements Serializable{
         }
 
         for (EventtypeEntity eventtype : eventtypes) {
-            dto.getEventtypeList().add(eventtype.getEventname());
+            dto.getEventtypeList().add(eventtype.getTypeName());
         }
 
         for (EventEntity event : events) {
@@ -116,7 +116,7 @@ public class EventFacade implements Serializable{
             listDetail.setId(event.getId());
             listDetail.setEventname(event.getEventname());
             listDetail.setEventcompany(event.getEventcompany());
-            listDetail.setEventtype(event.getEventtype());
+            listDetail.setEventtype(event.getType().getTypeName());
 
             listDetail.setStartTime(event.getStartTime());
             listDetail.setEndTime(event.getEndTime());
@@ -211,10 +211,17 @@ public class EventFacade implements Serializable{
                 location = le;
             }
         }
+        List<EventtypeEntity> types = eventtypeDao.listAll();
+        EventtypeEntity type = null;
+        for(EventtypeEntity ete : types) {
+            if(ete.getTypeName().equals(dto.getDetail().getEventtype())) {
+                type = ete;
+            }
+        }
         eventEntity.setId(dto.getDetail().getId());
         eventEntity.setEventname(dto.getDetail().getEventname());
         eventEntity.setEventcompany(dto.getDetail().getEventcompany());
-        eventEntity.setEventtype(dto.getDetail().getEventtype());
+        eventEntity.setType(type);
         
         eventEntity.setStartTime(dto.getDetail().getStartTime());
         eventEntity.setStartDate(dto.getDetail().getStartDate());

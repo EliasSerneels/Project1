@@ -42,13 +42,13 @@
                 <ui:repeat value="#{eventtype.selectedEventtype}" var="listDetail" rendered="true">
  <p:outputPanel>
                           <h:outputText value="Eventtype: " style="font-weight: bold"/>
-                          <h:outputText value="#{listDetail.eventname}" style="font-weight: bold"/>
+                          <h:outputText value="#{listDetail.typeName}" style="font-weight: bold"/>
  
                 <h:panelGrid  columns="2" cellpadding="5">
                      <h:outputText value="ID" style="font-weight: bold"/>
                      <h:outputText value="#{listDetail.id}"/>
                      <h:outputText value="Eventnaam" style="font-weight: bold"/>
-                     <h:outputText value="#{listDetail.eventname}"/>
+                     <h:outputText value="#{listDetail.typeName}"/>
 
                    
  

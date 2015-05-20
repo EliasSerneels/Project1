@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class EventEntity extends BasicEntity implements Serializable {
 
-    private String eventtype;
     private String eventname;
     private String eventcompany;
     private Date startDate;
@@ -141,14 +140,6 @@ public class EventEntity extends BasicEntity implements Serializable {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public String getEventtype() {
-        return eventtype;
-    }
-
-    public void setEventtype(String eventtype) {
-        this.eventtype = eventtype;
     }
 
     public String getEventname() {
