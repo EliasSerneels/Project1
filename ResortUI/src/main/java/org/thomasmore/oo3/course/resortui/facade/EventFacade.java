@@ -20,14 +20,14 @@ import org.primefaces.context.RequestContext;
 
 import org.thomasmore.oo3.course.resortui.business.entity.CustomerEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
-import org.thomasmore.oo3.course.resortui.business.entity.EventcompanyEntity;
-import org.thomasmore.oo3.course.resortui.business.entity.EventtypeEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.EventCompanyEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.EventTypeEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.LocationEntity;
 import org.thomasmore.oo3.course.resortui.controller.ScheduleController;
 import org.thomasmore.oo3.course.resortui.dao.CustomerDao;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
-import org.thomasmore.oo3.course.resortui.dao.EventcompanyDao;
-import org.thomasmore.oo3.course.resortui.dao.EventtypeDao;
+import org.thomasmore.oo3.course.resortui.dao.EventCompanyDao;
+import org.thomasmore.oo3.course.resortui.dao.EventTypeDao;
 import org.thomasmore.oo3.course.resortui.dao.LocationDao;
 import org.thomasmore.oo3.course.resortui.model.EventListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.EventPageDto;
@@ -41,9 +41,9 @@ public class EventFacade implements Serializable{
     @EJB
     private EventDao eventDao;
     @EJB
-    private EventcompanyDao eventcompanyDao;
+    private EventCompanyDao eventcompanyDao;
     @EJB
-    private EventtypeDao eventtypeDao;
+    private EventTypeDao eventtypeDao;
     @EJB
     private LocationDao locationDao;
     @EJB
@@ -83,8 +83,7 @@ public class EventFacade implements Serializable{
             schedulecontroller.LoadEventSchedule();
         }
         List<EventEntity> events = eventDao.listAll();
-        List<EventcompanyEntity> eventcompanys = eventcompanyDao.listAll();
-        List<EventtypeEntity> eventtypes = eventtypeDao.listAll();
+        List<EventTypeEntity> eventtypes = eventtypeDao.listAll();
         List<LocationEntity> locations = locationDao.listAll();
         List<CustomerEntity> customers = customerDao.listAll();
 
@@ -96,7 +95,7 @@ public class EventFacade implements Serializable{
             dto.getLocationList().add(location.getLocationName());
         }
         
-        for (EventcompanyEntity eventcompany : eventcompanys) {
+        for (EventCompanyEntity eventcompany : eventcompanys) {
             dto.getEventcompanyList().add(eventcompany.getName());
         }
 
