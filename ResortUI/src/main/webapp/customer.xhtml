@@ -51,7 +51,7 @@
                         </li>      
                         <li>
                             <div class="inputinfo">Geboortedatum</div>
-                            <p:calendar pattern="dd-MM-yyyy" yearRange="c-100:c" navigator="true" id="popup" value="#{customer.dto.detail.birthdate}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
+                            <p:calendar pattern="dd/MM/yyyy" yearRange="c-100:c" navigator="true" id="popup" value="#{customer.dto.detail.birthdate}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
 
 
                         </li>
@@ -71,7 +71,7 @@
 
                                          value="#{customer.dto.detail.email}" class="form-control"
                                          required="false" validatorMessage="De inhoud van e-mail voldoet niet aan de vereisten.">
-                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})#"/> 
+                                <!--<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})#"/> -->
                             </h:inputText>
                         </li>  
 

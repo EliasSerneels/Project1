@@ -21,12 +21,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class EventEntity extends BasicEntity implements Serializable {
 
     private String eventname;
-    //private String eventcompany;
     private Date startDate;
     private Date endDate;
     private Date startTime;
     private Date endTime;
-    private String customerName;
     private Date currentDate;
 
     private String startDateFormatted;
@@ -41,8 +39,19 @@ public class EventEntity extends BasicEntity implements Serializable {
     @ManyToOne(targetEntity = LocationEntity.class, fetch = FetchType.EAGER)
     private LocationEntity location;
     
+    @ManyToOne(targetEntity = CustomerEntity.class, fetch = FetchType.EAGER)
+    private CustomerEntity customer;
+    
     @ManyToMany(targetEntity = StaffEntity.class, fetch = FetchType.EAGER)
     private List<StaffEntity> staff;
+
+    public CustomerEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
+    }
 
     public LocationEntity getLocation() {
         return location;
@@ -116,14 +125,6 @@ public class EventEntity extends BasicEntity implements Serializable {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
     }
 
     public Date getStartDate() {

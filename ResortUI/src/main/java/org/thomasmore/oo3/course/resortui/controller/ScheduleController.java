@@ -100,7 +100,7 @@ public class ScheduleController {
            if(eventName.equals(event.getTitle())){
                dto.getDetail().setLocationName(evnt.getLocation().getLocationName());
                dto.getDetail().setEventtype(evnt.getType().getTypeName());
-               dto.getDetail().setCustomerName(evnt.getCustomerName());
+               dto.getDetail().setCustomerName(evnt.getCustomer().getFirstname() + " " + evnt.getCustomer().getLastname());
                dto.getDetail().setEventcompany(evnt.getCompany().getName());
                dto.getDetail().setEventname(evnt.getEventname());
                
@@ -196,8 +196,8 @@ public class ScheduleController {
 
         for (ReservationEntity res : reservationschedule) { 
             // Check of de locatie al in de lijst zit
-            if(!locList.contains(res.getBungalowName()) ) {
-                locList.add(res.getBungalowName());
+            if(!locList.contains(res.getBungalow().getName()) ) {
+                locList.add(res.getBungalow().getName());
              }
             
             // Datum formateren
@@ -208,8 +208,8 @@ public class ScheduleController {
             try {
                 Date startDate = dateSimple.parse(res.getStartDateFormatted());
                 Date endDate = dateSimple.parse(res.getEndDateFormatted());
-                loc = "loc"+String.valueOf(locList.indexOf(res.getBungalowName()));
-                DefaultScheduleEvent evento = new DefaultScheduleEvent (res.getBungalowName(),startDate,endDate,loc);
+                loc = "loc"+String.valueOf(locList.indexOf(res.getBungalow().getName()));
+                DefaultScheduleEvent evento = new DefaultScheduleEvent (res.getBungalow().getName(),startDate,endDate,loc);
                 reservationModel.addEvent(evento);
             } catch (ParseException ex) {
                 Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);

@@ -38,14 +38,14 @@ public class initDbStartup {
         System.out.println("*********Startup Script*********");
         System.out.println("********************************");
         List<Object> objectsToSave = new LinkedList<>();
-        
+
         ParkEntity parkEntity1 = new ParkEntity();
         parkEntity1.setImageID("http://www.venues4africa.com/images/17151/signature-4.jpg");
         parkEntity1.setName("Safaripark");
         parkEntity1.setCapacity(165);
         parkEntity1.setDescription("Safaripark ligt in het Afrikaanse hart van Antwerpen. Met 1.250 wilde Afrikaanse dieren op loopafstand, parkfaciliteiten en animatie en entertainment voor jong en oud en geweldige aanbiedingen en kortingsacties kan de kampeervakantie niet meer stuk.\n");
         objectsToSave.add(parkEntity1);
-        
+
         ParkEntity parkEntity2 = new ParkEntity();
         parkEntity2.setImageID("http://d2bae186y49u92.cloudfront.net/bp/media/Parken/TDE/01/TDE_01_30947_770x260px_JPG_26238.ashx");
         parkEntity2.setName("Dinopark");
@@ -93,7 +93,13 @@ public class initDbStartup {
         CustomerEntity ce1 = new CustomerEntity();
         ce1.setFirstname("Jos");
         ce1.setLastname("Janssens");
-        ce1.setBirthdate("01/01/1980");
+        String birthdateInString = "01/01/1980";
+        try {
+            ce1.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ce1.setBirthdateFormatted(birthdateInString);
         ce1.setCountry("België");
         ce1.setCity("Vilvoorde");
         ce1.setStreet("Leuvensestraat");
@@ -105,7 +111,12 @@ public class initDbStartup {
         CustomerEntity ce2 = new CustomerEntity();
         ce2.setFirstname("Piet");
         ce2.setLastname("Uyttebroeck");
-        ce2.setBirthdate("01/01/1970");
+        try {
+            ce2.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ce2.setBirthdateFormatted(birthdateInString);
         ce2.setCountry("België");
         ce2.setCity("Mechelen");
         ce2.setEmail("pietuyttebroeck@hotmail.com");
@@ -117,7 +128,12 @@ public class initDbStartup {
         CustomerEntity ce3 = new CustomerEntity();
         ce3.setFirstname("Thomas");
         ce3.setLastname("Coenen");
-        ce3.setBirthdate("13/08/1995");
+        try {
+            ce3.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ce3.setBirthdateFormatted(birthdateInString);
         ce3.setCountry("België");
         ce3.setCity("Peutie");
         ce3.setStreet("Kerkstraat");
@@ -179,7 +195,7 @@ public class initDbStartup {
         ece3.setStreet("Middelstraat");
         ece3.setContact("Dhr. Thomassen");
         objectsToSave.add(ece3);
-        
+
         EventEntity ee1 = new EventEntity();
         ee1.setId(UUID.randomUUID().toString());
         ee1.setType(ete1);
@@ -198,7 +214,7 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         ee1.setLocation(le1);
-        ee1.setCustomerName("Jos Janssens");
+        ee1.setCustomer(ce1);
 
         objectsToSave.add(ee1);
 
@@ -221,7 +237,7 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         ee2.setLocation(le2);
-        ee2.setCustomerName("Piet Uyttebroeck");
+        ee2.setCustomer(ce2);
         objectsToSave.add(ee2);
 
         EventEntity ee3 = new EventEntity();
@@ -242,7 +258,7 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         ee3.setLocation(le3);
-        ee3.setCustomerName("Thomas Coenen");
+        ee3.setCustomer(ce3);
         objectsToSave.add(ee3);
 
         ReservationEntity re1 = new ReservationEntity();
