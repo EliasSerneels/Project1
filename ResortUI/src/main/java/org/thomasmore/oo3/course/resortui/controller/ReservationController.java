@@ -29,6 +29,8 @@ import org.thomasmore.oo3.course.resortui.model.ReservationPageDto;
 @ViewScoped
 public class ReservationController {
 
+    @EJB
+    private ScheduleController schedulecontroller;
     private ReservationPageDto dto;
     @EJB
     private ReservationDao reservationsDao;
@@ -36,8 +38,8 @@ public class ReservationController {
     private BungalowDao bungalowsDao;
     @EJB
     private CustomerDao customersDao;
-        @EJB
-   private ParkDao parkDao;
+    @EJB
+    private ParkDao parkDao;
 
     private List<BungalowEntity> bungalows;
     private List<ReservationEntity> selectedReservation;
@@ -85,6 +87,7 @@ public class ReservationController {
         
             dto.getList().add(listDetail);
         }
+        schedulecontroller.LoadBungalowSchedule();
     }
 
     public void add() {

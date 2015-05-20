@@ -145,6 +145,7 @@ public class EventFacade implements Serializable{
         return dto;
     }
     
+    
     public String checkBooking(EventPageDto dto){
         
         // Check of begintijd na eindtijd komt
@@ -175,6 +176,11 @@ public class EventFacade implements Serializable{
                     eventStartDate           != null && 
                     eventEndDate             != null && 
                     evnt.getLocationName()   != null &&
+                    // Check of gekozen datum niet dezelfde datum is dan begin of einddatum 
+                    ( dtoStartDate.equals(eventStartDate) && dto.getDetail().getLocationName().equals(evnt.getLocationName()) ) ||      
+                    ( dtoEndDate.equals(eventEndDate) && dto.getDetail().getLocationName().equals(evnt.getLocationName()) ) || 
+                    ( dtoStartDate.equals(eventEndDate) && dto.getDetail().getLocationName().equals(evnt.getLocationName()) ) ||      
+                    ( dtoEndDate.equals(eventStartDate) && dto.getDetail().getLocationName().equals(evnt.getLocationName()) ) ||     
                     // Als event tussen begin en einddatum ligt en Zelfde locatie heeft
                     ( dtoStartDate.before(eventStartDate) && dtoEndDate.after(eventEndDate)     && dto.getDetail().getLocationName().equals(evnt.getLocationName()) ) ||     
                     // Als begintijd = binnen range of eindtijd is binnen range     

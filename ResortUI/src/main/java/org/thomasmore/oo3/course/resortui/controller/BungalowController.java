@@ -17,18 +17,14 @@
 package org.thomasmore.oo3.course.resortui.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
 import org.thomasmore.oo3.course.resortui.facade.BungalowFacade;
 

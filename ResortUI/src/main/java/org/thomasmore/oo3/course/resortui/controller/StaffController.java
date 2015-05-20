@@ -10,12 +10,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
 import org.thomasmore.oo3.course.resortui.business.entity.StaffEntity;
 import org.thomasmore.oo3.course.resortui.facade.StaffFacade;
 import org.thomasmore.oo3.course.resortui.model.StaffPageDto;
@@ -30,16 +27,19 @@ public class StaffController implements Serializable {
 
     private StaffPageDto dto;
     private final String pageRedirect = "staff.xhtml?faces-redirect=true";
+    private final String pageEdit="event.xhtml?edit=${listDetail.id}";
     private List<StaffEntity> selectedStaff;
 
     @EJB
     private StaffFacade staffFacade;
 
     @PostConstruct
-    public void init() {
+      public void init() {
+
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
+
         dto = staffFacade.loadStaffOverviewPage(editId, deleteId);
     }
 
@@ -63,4 +63,8 @@ public class StaffController implements Serializable {
     public void setSelectedStaff(List<StaffEntity> selectedStaff) {
         this.selectedStaff = selectedStaff;
     }
+    
+    public String getPageEdit() {
+        return pageEdit;
+    }  
 }
