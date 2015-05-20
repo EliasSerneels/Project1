@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 package org.thomasmore.oo3.course.resortui.model;
-
+ 
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
  * @author Jeroen
+ * 
  */
 public class EventtypePageDto {
 
     private EventtypeDetailDto detail = new EventtypeDetailDto();
+    
 
     private List<EventtypeListDetailDto> list = new LinkedList<>();
     
