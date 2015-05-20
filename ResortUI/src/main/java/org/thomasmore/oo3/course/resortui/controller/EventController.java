@@ -59,6 +59,7 @@ public class EventController {
             case "begindateAfterEnddate": {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
                 FacesMessage facesMessage = new FacesMessage("De gekozen begindatum is later dan de gekozen einddatum.");
+                facesContext.addMessage(null, facesMessage);
                 return null;
             }
             case "doubleBooking": {
