@@ -39,7 +39,7 @@ public class StaffFacade {
                 dto.getDetail().setFirstname(staffEntity.getFirstname());
                 dto.getDetail().setLastname(staffEntity.getLastname());
                 dto.getDetail().setBirthdate(staffEntity.getBirthdate());
-                dto.getDetail().setBirthdateFormatted(staffEntity.getBirthdateFomatted());
+                dto.getDetail().setBirthdateFormatted(staffEntity.getBirthdateFormatted());
                 dto.getDetail().setCountry(staffEntity.getCountry());
                 dto.getDetail().setCity(staffEntity.getCity());
                 dto.getDetail().setStreet(staffEntity.getStreet());
@@ -101,7 +101,7 @@ public class StaffFacade {
         staffEntity.setLastname(dto.getDetail().getLastname());
         staffEntity.setFirstname(dto.getDetail().getFirstname());
         staffEntity.setBirthdate(dto.getDetail().getBirthdate());
-        staffEntity.setBirthdateFomatted(dto.getDetail().getBirthdateFormatted());
+        staffEntity.setBirthdateFormatted(dto.getDetail().getBirthdateFormatted());
         staffEntity.setCountry(dto.getDetail().getCountry());
         staffEntity.setCity(dto.getDetail().getCity());
         staffEntity.setStreet(dto.getDetail().getStreet());

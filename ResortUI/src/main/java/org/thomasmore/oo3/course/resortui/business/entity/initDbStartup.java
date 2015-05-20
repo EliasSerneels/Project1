@@ -369,7 +369,7 @@ public class initDbStartup {
 
         ReservationEntity re1 = new ReservationEntity();
         re1.setBungalowName("Zebra");
-        re1.setParkName("Funpark 1");
+        re1.setParkName("Dinopark");
         re1.setCustomerName("Thomas Coenen");
         startDateInString = "05/05/2015";
         startTimeInString = "15:14";
@@ -387,7 +387,7 @@ public class initDbStartup {
 
         ReservationEntity re2 = new ReservationEntity();
         re2.setBungalowName("Leeuw");
-        re2.setParkName("Funpark 2");
+        re2.setParkName("Safaripark");
         re2.setCustomerName("Piet Uyttebroeck");
         startDateInString = "03/05/2015";
         startTimeInString = "16:15";
@@ -406,7 +406,7 @@ public class initDbStartup {
         ReservationEntity re3 = new ReservationEntity();
         re3.setBungalowName("Walrus");
         re3.setCustomerName("Jos Janssens");
-        re3.setParkName("Funpark 3");
+        re3.setParkName("Olifantenpark");
         startDateInString = "13/05/2015";
         startTimeInString = "16:15";
         endDateInString = "15/05/2015";
@@ -445,7 +445,7 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        se1.setBirthdateFomatted(birthDateInString);
+        se1.setBirthdateFormatted(birthDateInString);
         se1.setCountry("België");
         se1.setCity("Mechelen");
         se1.setStreet("Kerkstraat 18");
@@ -463,7 +463,7 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        se2.setBirthdateFomatted(birthDateInString);
+        se2.setBirthdateFormatted(birthDateInString);
         se2.setCountry("België");
         se2.setCity("Mechelen");
         se2.setStreet("Schoolstraat 68");
@@ -481,7 +481,7 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        se3.setBirthdateFomatted(birthDateInString);
+        se3.setBirthdateFormatted(birthDateInString);
         se3.setCountry("België");
         se3.setCity("Vilvoorde");
         se3.setStreet("Stationstraat 91");

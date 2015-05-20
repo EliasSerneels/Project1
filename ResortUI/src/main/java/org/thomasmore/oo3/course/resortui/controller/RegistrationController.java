@@ -30,6 +30,7 @@ public class RegistrationController {
         ue.setId(dto.getDetail().getId());
         ue.setUsername(dto.getDetail().getUsername());
         ue.setPassword(dto.getDetail().getPassword());
+        ue.setLevel(2);
         registrationDao.save(ue);
         return "login.xhtml";
     }
