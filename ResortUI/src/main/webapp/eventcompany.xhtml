@@ -68,7 +68,8 @@
                                          value="#{eventcompany.dto.detail.contact}" class="form-control"
                                          required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^[A-Za-z0-9+_.-]+@(.+)$"/>
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+ 
                             </h:inputText>
                         </li>
 

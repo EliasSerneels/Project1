@@ -67,9 +67,10 @@
                             <div class="inputinfo">E-Mail</div>
                             <h:inputText label="Naam"
                                          value="#{staff.dto.detail.email}" class="form-control"
-                                         required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en @ bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en @ bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+ 
                             </h:inputText>
                         </li> 
 
@@ -77,7 +78,7 @@
                             <div class="inputinfo">Land</div>
                             <h:inputText label="Land"
                                          value="#{staff.dto.detail.country}" class="form-control"
-                                         required="true" requiredMessage="Vul een land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een stad in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" requiredMessage="Vul een land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" validatorMessage="Vul een land in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                             </h:inputText>
