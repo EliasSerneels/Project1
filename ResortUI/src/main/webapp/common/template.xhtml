@@ -174,10 +174,6 @@
                             <p:menuitem value="Locatie" url="location.xhtml"/>
                             <p:menuitem value="Personeel" url="staff.xhtml"/>
                         </p:submenu>
-                        <p:submenu label="Wizards" rendered="${sessionDto.userDto.level &gt;= 3}">
-                            <p:menuitem value="Wizard Event" url="event_wizard.xhtml" />
-                            <p:menuitem value="Wizard Bungalow" url="bungalow_wizard.xhtml" />
-                        </p:submenu>
                         <p:menuitem value="Overzicht" url="overview.xhtml" rendered="${sessionDto.userDto.level &gt;= 2}"/>
                         <p:menuitem value="Profiel" url="profile.xhtml" rendered="${sessionDto.userDto.level &gt;= 2}"/>
                         <p:menuitem value="Useroverzicht" url="useroverview.xhtml" rendered="${sessionDto.userDto.level &gt;= 4}"/>
