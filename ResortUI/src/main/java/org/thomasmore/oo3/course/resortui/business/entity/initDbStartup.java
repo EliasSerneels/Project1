@@ -156,7 +156,7 @@ public class initDbStartup {
         ue3.setId(UUID.randomUUID().toString());
         ue3.setUsername("Elias");
         ue3.setPassword("Elias");
-        ue2.setFullName("Elias Serneels");
+        ue3.setFullName("Elias Serneels");
         ue3.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue3.setEmail("elias.gmail.com");
         ue3.setLevel(4);
@@ -176,7 +176,7 @@ public class initDbStartup {
         ue5.setId(UUID.randomUUID().toString());
         ue5.setUsername("Pepijn");
         ue5.setPassword("Pepijn");
-        ue4.setFullName("Pepijn Mores");
+        ue5.setFullName("Pepijn Mores");
         ue5.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue5.setEmail("pepijn@gmail.com");
         ue5.setLevel(4);
@@ -334,7 +334,7 @@ public class initDbStartup {
         ece1.setPhone("0497145474");
         ece1.setCity("Mechelen");
         ece1.setStreet("Hoogstraat");
-        ece1.setContact("Dhr. Maes");
+        ece1.setContact("bedrijf1@gmail.com");
         objectsToSave.add(ece1);
 
         EventcompanyEntity ece2 = new EventcompanyEntity();
@@ -343,7 +343,7 @@ public class initDbStartup {
         ece2.setPhone("0497856236");
         ece2.setCity("Vilvoorde");
         ece2.setStreet("Laagstraat");
-        ece2.setContact("Mevr. De Bakker");
+        ece2.setContact("bedrijf2@gmail.com");
         objectsToSave.add(ece2);
 
         EventcompanyEntity ece3 = new EventcompanyEntity();
@@ -352,7 +352,7 @@ public class initDbStartup {
         ece3.setPhone("0497713554");
         ece3.setCity("Antwerpen");
         ece3.setStreet("Middelstraat");
-        ece3.setContact("Dhr. Thomassen");
+        ece3.setContact("bedrijf3@gmail.com");
         objectsToSave.add(ece3);
 
         EventtypeEntity ete1 = new EventtypeEntity();

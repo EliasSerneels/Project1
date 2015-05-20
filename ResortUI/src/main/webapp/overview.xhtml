@@ -335,7 +335,7 @@
                 <p:panel id="gpn6" header="Eventbedrijven" class="overviewEC">
 
                     <h:form id="formEventcomp">  
-                        <p:dataTable id="DTeventcompany" var="lsdtEC" value="#{eventcompany.dto.list}" selectionMode="multiple" selection="#{eventcompany.selectedEventcompany}" rowKey="#{lsdtEC.id}">
+                        <p:dataTable id="DTeventcompany" var="lsdtEC" value="#{eventcompany.dto.list}" selectionMode="multiple" selection="#{eventcompany.selectedEventCompany}" rowKey="#{lsdtEC.id}">
 
                             <p:column headerText="ID">
                                 <h:outputText value="#{lsdtEC.id}" />
@@ -371,7 +371,7 @@
 
                         <p:dialog header="Geselecteerde eventbedrijven" widgetVar="multiEventcompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="500">
                             <p:outputPanel id="multiEventcompanyDetail" style="text-align:center;">
-                                <ui:repeat value="#{eventcompany.selectedEventcompany}" var="lsdtEC">
+                                <ui:repeat value="#{eventcompany.selectedEventCompany}" var="lsdtEC">
        <p:outputPanel>
                           <h:outputText value="Eventbedrijf " style="font-weight: bold"/>
                           <h:outputText value="#{lsdtEC.name}" style="font-weight: bold"/>
@@ -471,10 +471,10 @@
                           <h:outputText value="#{lsdtL.locationName}" style="font-weight: bold"/>
  
                 <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Stad" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtL.city}"/>
-                     <h:outputText value="Straat" style="font-weight: bold"/>
-                     <h:outputText value="#{lsdtL.street}"/>
+                     <h:outputText value="Park" style="font-weight: bold"/>
+                     <h:outputText value="#{lsdtL.park}"/>
+                     <h:outputText value="Locatienaam" style="font-weight: bold"/>
+                     <h:outputText value="#{lsdtL.locationName}"/>
  
                 </h:panelGrid>
             </p:outputPanel>                                
