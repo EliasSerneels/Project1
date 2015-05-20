@@ -31,7 +31,6 @@
                 <h2>Kalender</h2>   
                                 
                     <p:schedule id="schedule" value="#{scheduler.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+2" timeFormat="HH:mm">
-                        
                         <p:ajax event="dateSelect" listener="#{scheduler.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventSelect" listener="#{scheduler.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventMove" listener="#{scheduler.onEventMove}" update="messages" />
@@ -55,12 +54,9 @@
                     .loc13, .loc13 .fc-event-skin, .loc13 a{background-color:#66FF99; border:0px;}
                     .loc14, .loc14 .fc-event-skin, .loc14 a{background-color:#9966FF; border:0px;}
                     .loc15, .loc15 .fc-event-skin, .loc15 a{background-color:#CC3333; border:0px;}
-                    
                     </style>  
  
                 <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-                    
-                    <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <h:panelGrid id="eventDetails" columns="2">
                         <p:row>
                                 <h:outputLabel value="Evenementnaam:" />
@@ -81,11 +77,7 @@
                         </p:row>
                         <p:row>
                                 <h:outputLabel for="Startdatum" value="#{scheduler.event.endDate}" />
-                        </p:row>
-                        <p:row>
-                                <h:outputLabel value="Locatie:" />
-                        </p:row>
-                      
+                        </p:row>      
                     </h:panelGrid>
                 </p:dialog>    
             </h:form>

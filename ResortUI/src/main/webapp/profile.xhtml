@@ -26,7 +26,6 @@
                 </ui:fragment>
                 
                 <div id="mijnGegevensContainer">
-                    <h:form>
                         <h3>Mijn gegevens</h3> 
                         <table class="profileTable">
                             <tr><td>Gebruikersnaam</td><td>#{login.sessionDto.userDto.username}</td></tr>
@@ -34,7 +33,6 @@
                             <tr><td>Email-adres</td><td>#{login.sessionDto.userDto.email}</td></tr>
                             <tr><td>Level</td><td>#{login.sessionDto.userDto.level}</td> </tr> 
                         </table>
-                    </h:form>
                 </div>   
                 
                 <div id="profileImgContainer">
@@ -45,7 +43,7 @@
                 
                 <div id="frmProfileChange">
                     <h:form>
-                        <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+                        <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages><br/>
                         <ul class="profilechange-form">
                             <li>
                                 <div class="inputinfo">Gebruikersnaam</div>
