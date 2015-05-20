@@ -41,7 +41,7 @@ public class EventCompanyController {
         String deleteId = req.getParameter("delete");
         dto = eventcompanyFacade.loadEventCompanyOverviewPage(editId, deleteId);
         
-        
+     
         
     }
     
