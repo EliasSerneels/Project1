@@ -5,6 +5,7 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -21,7 +22,8 @@ public class StaffEntity extends BasicEntity{
     
     private String firstname;
     private String lastname;
-    private String birthdate;
+    private Date  birthdate;
+    private String birthdateFomatted;
     private String country;
     private String city;
     private String street;
@@ -30,6 +32,15 @@ public class StaffEntity extends BasicEntity{
     private String email;
         private String imageID;
 
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
+        
     public String getImageID() {
         return imageID;
     }
@@ -63,12 +74,12 @@ public class StaffEntity extends BasicEntity{
         this.lastname = lastname;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getBirthdateFomatted() {
+        return birthdateFomatted;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthdateFomatted(String birthdateFomatted) {
+        this.birthdateFomatted = birthdateFomatted;
     }
 
     public String getCountry() {

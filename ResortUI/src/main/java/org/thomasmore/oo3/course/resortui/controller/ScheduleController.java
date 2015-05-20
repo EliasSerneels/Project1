@@ -214,4 +214,21 @@ public class ScheduleController {
         Date yesterday = cal.getTime();
         return yesterday;
     }
+    public Date minimumAge(){
+        Date now = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(now);
+        cal.add(Calendar.YEAR, -16); 
+        Date minimumAge = cal.getTime();
+        return minimumAge;
+    }
+    public String minimumAgeString(){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date now = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(now);
+        cal.add(Calendar.YEAR, -16); 
+        Date minimumAge = cal.getTime();
+        return dateFormat.format(minimumAge);
+    }
 }

@@ -28,35 +28,35 @@
             <p:column id="bungalowname" headerText="Bungalow" sortBy="#{listDetail.bungalowName}" filterBy="#{listDetail.bungalowName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.bungalowName}"/>
             </p:column>
-            
+
             <p:column id="parkname" headerText="Park" sortBy="#{listDetail.parkName}" filterBy="#{listDetail.parkName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.parkName}"/>
             </p:column>
-            
+
             <p:column id="customername" headerText="Klant" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>
             <p:column id="reservationstartdate" headerText="Startdatum" sortBy="#{listDetail.startDate}" filterBy="#{listDetail.startDate}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.startDate}">
                     <f:convertDateTime pattern="dd/MM/yyyy" />
- </h:outputText>
+                </h:outputText>
             </p:column>
             <p:column id="reservationstarttime" headerText="Starttijd" sortBy="#{listDetail.startTime}" filterBy="#{listDetail.startTime}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.startTime}">
-                 <f:convertDateTime pattern="HH:mm" />
+                    <f:convertDateTime pattern="HH:mm" />
                 </h:outputText>
             </p:column>
             <p:column id="reservationenddate" headerText="Einddatum" sortBy="#{listDetail.endDate}" filterBy="#{listDetail.endDate}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.endDate}">
                     <f:convertDateTime pattern="dd/MM/yyyy" />
- </h:outputText>
+                </h:outputText>
             </p:column>
             <p:column id="reservationendtime" headerText="Eindtijd" sortBy="#{listDetail.endTime}" filterBy="#{listDetail.endTime}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.endTime}">
-                  <f:convertDateTime pattern="HH:mm" />
+                    <f:convertDateTime pattern="HH:mm" />
                 </h:outputText>
             </p:column>
-            
+
 
             <p:column exportable="false">
                 <a href="reservation.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
@@ -71,35 +71,35 @@
                 <ui:repeat value="#{reservation.selectedReservation}" var="listDetail" rendered="true">
 
                     <p:outputPanel>
-                            <h:outputText value="Reservatie voor:" style="font-weight: bold"/>
-                            <h:outputText value="#{listDetail.customerName}" style="font-weight: bold"/>
- 
-                <h:panelGrid  columns="2" cellpadding="5">
-                     <h:outputText value="Geserveerde bungalow" style="font-weight: bold"/>
-                     <h:outputText value="#{listDetail.bungalowName}"/>
-                    <h:outputText value="Park:" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.parkName}"/>
-                    <h:outputText value="Aankomstdatum" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.startDate}">
-                           <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-                    <h:outputText value="Vertrekdatum" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.endDate}">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-                    <h:outputText value="Aankomstuur" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.startTime}">
-              <f:convertDateTime pattern="HH:mm" />
-            </h:outputText>
-                    <h:outputText value="Vertrekuur" style="font-weight: bold"/>
-                    <h:outputText value="#{listDetail.endTime}">
-                        <f:convertDateTime pattern="HH:mm" />
-                </h:outputText>
-                   
- 
-                </h:panelGrid>
-            </p:outputPanel>
-                    
+                        <h:outputText value="Reservatie voor:" style="font-weight: bold"/>
+                        <h:outputText value="#{listDetail.customerName}" style="font-weight: bold"/>
+
+                        <h:panelGrid  columns="2" cellpadding="5">
+                            <h:outputText value="Geserveerde bungalow" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.bungalowName}"/>
+                            <h:outputText value="Park:" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.parkName}"/>
+                            <h:outputText value="Aankomstdatum" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.startDate}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                            <h:outputText value="Vertrekdatum" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.endDate}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                            <h:outputText value="Aankomstuur" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.startTime}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                            <h:outputText value="Vertrekuur" style="font-weight: bold"/>
+                            <h:outputText value="#{listDetail.endTime}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+
+
+                        </h:panelGrid>
+                    </p:outputPanel>
+
                 </ui:repeat>
             </p:outputPanel>
         </p:dialog>
