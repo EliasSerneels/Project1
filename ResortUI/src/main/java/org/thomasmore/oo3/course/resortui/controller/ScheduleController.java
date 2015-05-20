@@ -101,7 +101,7 @@ public class ScheduleController {
                dto.getDetail().setLocationName(evnt.getLocation().getLocationName());
                dto.getDetail().setEventtype(evnt.getType().getTypeName());
                dto.getDetail().setCustomerName(evnt.getCustomerName());
-               dto.getDetail().setEventcompany(evnt.getEventcompany());
+               dto.getDetail().setEventcompany(evnt.getCompany().getName());
                dto.getDetail().setEventname(evnt.getEventname());
                
                RequestContext.getCurrentInstance().update("eventDialog");

@@ -152,71 +152,6 @@ public class initDbStartup {
         EventtypeEntity ete3 = new EventtypeEntity();
         ete3.setTypeName("Communie");
         objectsToSave.add(ete3);
-        
-        EventEntity ee1 = new EventEntity();
-        ee1.setId(UUID.randomUUID().toString());
-        ee1.setType(ete1);
-        ee1.setEventcompany("Bedrijf 1");
-        ee1.setEventname("Bruiloft Thomas en Jana");
-        String startDateInString = "05/05/2015";
-        String startTimeInString = "15:14";
-        String endDateInString = "10/05/2015";
-        String endTimeInString = "16:14";
-        try {
-            ee1.setStartDate(dateSimple.parse(startDateInString));
-            ee1.setStartTime(timeSimple.parse(startTimeInString));
-            ee1.setEndDate(dateSimple.parse(endDateInString));
-            ee1.setEndTime(timeSimple.parse(endTimeInString));
-        } catch (ParseException ex) {
-            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ee1.setLocation(le1);
-        ee1.setCustomerName("Jos Janssens");
-
-        objectsToSave.add(ee1);
-
-        EventEntity ee2 = new EventEntity();
-        ee2.setId(UUID.randomUUID().toString());
-        ee2.setType(ete2);
-        ee2.setEventcompany("Bedrijf 2");
-        ee2.setEventname("Bruiloft Elias en Marjolein");
-        //Heel belangrijk, datums moeten voor standaardevenementen worden aangemaakt, anders krijg je EJB exceptions.
-        startDateInString = "03/05/2015";
-        startTimeInString = "16:15";
-        endDateInString = "05/05/2015";
-        endTimeInString = "17:14";
-        try {
-            ee2.setStartDate(dateSimple.parse(startDateInString));
-            ee2.setStartTime(timeSimple.parse(startTimeInString));
-            ee2.setEndDate(dateSimple.parse(endDateInString));
-            ee2.setEndTime(timeSimple.parse(endTimeInString));
-        } catch (ParseException ex) {
-            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ee2.setLocation(le2);
-        ee2.setCustomerName("Piet Uyttebroeck");
-        objectsToSave.add(ee2);
-
-        EventEntity ee3 = new EventEntity();
-        ee3.setId(UUID.randomUUID().toString());
-        ee3.setType(ete3);
-        ee3.setEventcompany("Bedrijf 1");
-        ee3.setEventname("Communie Pepijn Mores");
-        startDateInString = "25/06/2015";
-        startTimeInString = "17:00";
-        endDateInString = "26/06/2015";
-        endTimeInString = "02:00";
-        try {
-            ee3.setStartDate(dateSimple.parse(startDateInString));
-            ee3.setStartTime(timeSimple.parse(startTimeInString));
-            ee3.setEndDate(dateSimple.parse(endDateInString));
-            ee3.setEndTime(timeSimple.parse(endTimeInString));
-        } catch (ParseException ex) {
-            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ee3.setLocation(le3);
-        ee3.setCustomerName("Thomas Coenen");
-        objectsToSave.add(ee3);
 
         EventcompanyEntity ece1 = new EventcompanyEntity();
         ece1.setId(UUID.randomUUID().toString());
@@ -244,6 +179,71 @@ public class initDbStartup {
         ece3.setStreet("Middelstraat");
         ece3.setContact("Dhr. Thomassen");
         objectsToSave.add(ece3);
+        
+        EventEntity ee1 = new EventEntity();
+        ee1.setId(UUID.randomUUID().toString());
+        ee1.setType(ete1);
+        ee1.setCompany(ece1);
+        ee1.setEventname("Bruiloft Thomas en Jana");
+        String startDateInString = "05/05/2015";
+        String startTimeInString = "15:14";
+        String endDateInString = "10/05/2015";
+        String endTimeInString = "16:14";
+        try {
+            ee1.setStartDate(dateSimple.parse(startDateInString));
+            ee1.setStartTime(timeSimple.parse(startTimeInString));
+            ee1.setEndDate(dateSimple.parse(endDateInString));
+            ee1.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ee1.setLocation(le1);
+        ee1.setCustomerName("Jos Janssens");
+
+        objectsToSave.add(ee1);
+
+        EventEntity ee2 = new EventEntity();
+        ee2.setId(UUID.randomUUID().toString());
+        ee2.setType(ete2);
+        ee2.setCompany(ece2);
+        ee2.setEventname("Bruiloft Elias en Marjolein");
+        //Heel belangrijk, datums moeten voor standaardevenementen worden aangemaakt, anders krijg je EJB exceptions.
+        startDateInString = "03/05/2015";
+        startTimeInString = "16:15";
+        endDateInString = "05/05/2015";
+        endTimeInString = "17:14";
+        try {
+            ee2.setStartDate(dateSimple.parse(startDateInString));
+            ee2.setStartTime(timeSimple.parse(startTimeInString));
+            ee2.setEndDate(dateSimple.parse(endDateInString));
+            ee2.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ee2.setLocation(le2);
+        ee2.setCustomerName("Piet Uyttebroeck");
+        objectsToSave.add(ee2);
+
+        EventEntity ee3 = new EventEntity();
+        ee3.setId(UUID.randomUUID().toString());
+        ee3.setType(ete3);
+        ee3.setCompany(ece1);
+        ee3.setEventname("Communie Pepijn Mores");
+        startDateInString = "25/06/2015";
+        startTimeInString = "17:00";
+        endDateInString = "26/06/2015";
+        endTimeInString = "02:00";
+        try {
+            ee3.setStartDate(dateSimple.parse(startDateInString));
+            ee3.setStartTime(timeSimple.parse(startTimeInString));
+            ee3.setEndDate(dateSimple.parse(endDateInString));
+            ee3.setEndTime(timeSimple.parse(endTimeInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ee3.setLocation(le3);
+        ee3.setCustomerName("Thomas Coenen");
+        objectsToSave.add(ee3);
 
         ReservationEntity re1 = new ReservationEntity();
         re1.setBungalowName("Zebra");

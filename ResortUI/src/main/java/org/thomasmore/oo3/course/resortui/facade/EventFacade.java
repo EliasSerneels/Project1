@@ -63,7 +63,7 @@ public class EventFacade implements Serializable{
                 dto.getDetail().setId(eventEntity.getId());
                 dto.getDetail().setEventname(eventEntity.getEventname());
                 dto.getDetail().setEventtype(eventEntity.getType().getTypeName());
-                dto.getDetail().setEventcompany(eventEntity.getEventcompany());
+                dto.getDetail().setEventcompany(eventEntity.getCompany().getName());
                 dto.getDetail().setStartTime(eventEntity.getStartTime());
                 dto.getDetail().setEndTime(eventEntity.getEndTime());
                 dto.getDetail().setStartDate(eventEntity.getStartDate());
@@ -107,7 +107,7 @@ public class EventFacade implements Serializable{
         for (EventEntity event : events) {
            int ReservationCount = 0;            
                      for (EventcompanyEntity eventcompany : eventcompanys){
-                            if(eventcompany.getName().equals(event.getEventcompany())){
+                            if(eventcompany.getName().equals(event.getCompany().getName())){
                                 ReservationCount ++;
                                 eventcompany.setTotalnumberevents(ReservationCount);
                             }
@@ -115,7 +115,7 @@ public class EventFacade implements Serializable{
             EventListDetailDto listDetail = new EventListDetailDto();
             listDetail.setId(event.getId());
             listDetail.setEventname(event.getEventname());
-            listDetail.setEventcompany(event.getEventcompany());
+            listDetail.setEventcompany(event.getCompany().getName());
             listDetail.setEventtype(event.getType().getTypeName());
 
             listDetail.setStartTime(event.getStartTime());
@@ -218,9 +218,16 @@ public class EventFacade implements Serializable{
                 type = ete;
             }
         }
+        List<EventcompanyEntity> companies = eventcompanyDao.listAll();
+        EventcompanyEntity company = null;
+        for(EventcompanyEntity ece : companies) {
+            if(ece.getName().equals(dto.getDetail().getEventcompany())) {
+                company = ece;
+            }
+        }
         eventEntity.setId(dto.getDetail().getId());
         eventEntity.setEventname(dto.getDetail().getEventname());
-        eventEntity.setEventcompany(dto.getDetail().getEventcompany());
+        eventEntity.setCompany(company);
         eventEntity.setType(type);
         
         eventEntity.setStartTime(dto.getDetail().getStartTime());
