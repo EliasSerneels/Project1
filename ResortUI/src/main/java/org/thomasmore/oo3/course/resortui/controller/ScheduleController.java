@@ -20,7 +20,6 @@ import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -32,7 +31,6 @@ import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.ReservationEntity;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
 import org.thomasmore.oo3.course.resortui.dao.ReservationDao;
-import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 
 @Named(value = "scheduler")
 @Stateless
@@ -137,7 +135,7 @@ public class ScheduleController {
         
         // Deze waarden en list zijn nodig voor de kleuren te veranderen per locatie
         String loc;
-        ArrayList<String> locList = new ArrayList<String>();
+        ArrayList<String> locList = new ArrayList<>();
 
         for (EventEntity evnt : eventschedule) { 
             // Check of de locatie al in de lijst zit

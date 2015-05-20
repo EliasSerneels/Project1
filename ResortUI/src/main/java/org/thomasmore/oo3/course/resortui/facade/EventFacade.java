@@ -145,6 +145,7 @@ public class EventFacade implements Serializable{
         return dto;
     }
     
+    
     public String checkBooking(EventPageDto dto){
         
         // Check of begintijd na eindtijd komt

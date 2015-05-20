@@ -85,6 +85,7 @@ public class EventController {
         }
     }
     
+    
     public EventPageDto getDto() {
         return dto;
     }
