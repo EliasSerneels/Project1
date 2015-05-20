@@ -33,11 +33,11 @@
             </p:column>
             
             <p:column exportable="false">
-                <a href="park.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
-                <a href="park.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
+                <a href="park.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
+                <a href="park.xhtml?delete=#{listDetail.id}" class=" button">Verwijder</a>
             </p:column> 
             <f:facet name="footer">
-                <p:commandButton process="park" update=":parkform:multiParkDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiParkDialog').show()" />
+                <p:commandButton process="park" update=":parkform:multiParkDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiParkDialog').show()" />
             </f:facet>
         </p:dataTable>
         <p:dialog header="Geselecteerde Parken" widgetVar="multiParkDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="900" height="700">

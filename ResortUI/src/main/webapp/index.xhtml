@@ -12,19 +12,18 @@
     <ui:define name="navbar"><h1 style="text-align:center;">Bungalowpark Funpark1</h1></ui:define>
 
     <ui:define name="content">
-
         <div class="col-md-index niceSldr"> 
+           <form>
             <div class="banner-slide">
                 <p:imageSwitch effect="scrollRight" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="true">
                     <ui:repeat value="#{bungalow.dto.list}" var="listDetail" id="manuelSwitcherImages">
                         <p:graphicImage value="#{listDetail.imageID}" id="image" height="460" width="860"/>
                     </ui:repeat>
                 </p:imageSwitch>
-                <form>
                 <p:commandButton type="button" onclick="PF('switcher').previous();" icon="ui-icon-circle-triangle-w" id="prev"/>
-                <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-circle-triangle-e" id="next"/>
-                </form>
+                <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-circle-triangle-e" id="next"/>          
             </div>
+            </form>
         </div>
 
     </ui:define>

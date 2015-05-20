@@ -66,8 +66,8 @@
 
 
             <p:column exportable="false">
-                <a href="bungalow.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
-                <a href="bungalow.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
+                <a href="bungalow.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
+                <a href="bungalow.xhtml?delete=#{listDetail.id}" class=" button">Verwijder</a>
             </p:column>
             <f:facet name="footer">
                 <p:commandButton process="bungalow" update=":bungalowform:multiBungalowDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiBungalowDialog').show()" />

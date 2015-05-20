@@ -61,9 +61,9 @@
 
             
             <p:column exportable="false">
-                <a href="staff.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
+                <a href="staff.xhtml?edit=#{listDetail.id}" class=" button">Wijzig</a>
 
-                <a href="staff.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
+                <a href="staff.xhtml?delete=#{listDetail.id}" class=" button">Verwijder</a>
             </p:column>
             <f:facet name="footer">
                 <p:commandButton process="staff" update=":staffform:multiStaffDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiStaffDialog').show()" />

@@ -10,9 +10,9 @@
 
         <ui:composition template="./common/template.xhtml">
 
-            <ui:define name="title">Useroverzicht</ui:define>
+            <ui:define name="title">Gebruikersoverzicht</ui:define>
 
-            <ui:define name="navbar"><h1>Useroverzicht</h1></ui:define>
+            <ui:define name="navbar"><h1>Gebruikersoverzicht</h1></ui:define>
 
             <ui:define name="content">
 
@@ -20,7 +20,7 @@
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
 
-                <h2>Users aanmaken of wijzigen</h2>
+                <h2>Gebruikers aanmaken of wijzigen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul id="lstUseroverviewChange" class="change-form">
@@ -71,12 +71,12 @@
                     </ul>
                     <div class="col-md-12">
                         <div class="input-group">   
-                            <h:commandButton class="button" action="#{useroverview.add()}" value="User toevoegen"></h:commandButton>
+                            <h:commandButton class="button" action="#{useroverview.add()}" value="Opslaan"></h:commandButton>
                         </div>
                     </div>
                 </h:form>
                 <br/><br/>
-                <h2>Useroverzicht</h2>
+                <h2>Gebruikersoverzicht</h2>
                 <div id="tblUseroverviewContainer">
                 <ui:include src="dataTables/tableUser.xhtml"></ui:include>
                 </div>

@@ -30,8 +30,8 @@
 
 
             <p:column exportable="false">
-                <a href="eventtype.xhtml?edit=#{listDetail.id}" class=" button">edit</a>
-                <a href="eventtype.xhtml?delete=#{listDetail.id}" class=" button">delete</a>
+                <a href="eventtype.xhtml?edit=#{listDetail.id}" class=" button">Verwijder</a>
+                <a href="eventtype.xhtml?delete=#{listDetail.id}" class=" button">Wijzig</a>
             </p:column>
             <f:facet name="footer">
                 <p:commandButton process="eventtype" update=":eventtypeform:multiEventTypeDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiEventTypeDialog').show()" />

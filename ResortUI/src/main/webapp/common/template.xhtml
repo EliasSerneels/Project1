@@ -182,10 +182,10 @@
                         </p:submenu>
                         <p:menuitem value="Overzicht" url="overview.xhtml" rendered="${sessionDto.userDto.level &gt;= 2}"/>
                         <p:menuitem value="Profiel" url="profile.xhtml" rendered="${sessionDto.userDto.level &gt;= 2}"/>
-                        <p:menuitem value="Useroverzicht" url="useroverview.xhtml" rendered="${sessionDto.userDto.level &gt;= 4}"/>
+                        <p:menuitem value="Gebruikersoverzicht" url="useroverview.xhtml" rendered="${sessionDto.userDto.level &gt;= 4}"/>
                         <p:menuitem value="Contact" url="contact.xhtml" />
                         <f:facet name="options">
-                            <p:inputText id="search" style="margin-right:10px" placeholder="Search"/>
+                            <p:inputText id="search" style="margin-right:10px" placeholder=" Zoeken"/>
                             <p:commandButton rendered="${sessionDto.userDto.loggedIn}" value="Uitloggen" action="${login.logOut()}" icon="ui-icon-extlink" />
                             <p:commandButton rendered="${!sessionDto.userDto.loggedIn}" value="Inloggen" action="${login.goToLogin()}" icon="ui-icon-extlink" />
                         </f:facet>

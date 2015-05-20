@@ -44,8 +44,8 @@
 
 
             <p:column exportable="false">
-                <a href="eventcompany.xhtml?edit=#{listDetail.id}" class=" btn btn-primary">edit</a>
-                <a href="eventcompany.xhtml?delete=#{listDetail.id}" class=" btn btn-primary">delete</a>
+                <a href="eventcompany.xhtml?edit=#{listDetail.id}" class=" btn btn-primary">Wijzig</a>
+                <a href="eventcompany.xhtml?delete=#{listDetail.id}" class=" btn btn-primary">Verwijder</a>
             </p:column> 
             <f:facet name="footer">
                 <p:commandButton process="eventcompany" update=":eventcompanyform:multiEventCompanyDetail" icon="ui-icon-search" value="Bekijk" oncomplete="PF('multiEventCompanyDialog').show()" />
