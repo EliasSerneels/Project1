@@ -31,7 +31,7 @@
 
                                          value="#{staff.dto.detail.firstname}" class="form-control"
                                          required="true"
-                                         requiredMessage="Vul uw voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         validatorMessage="Vul een voornaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een bungalownaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                             </h:inputText>
@@ -43,7 +43,8 @@
 
                                          value="#{staff.dto.detail.lastname}" class="form-control"
                                          required="true"
-                                         requiredMessage="Vul uw achternaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)">
+                                         validatorMessage="Vul een achternaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een bungalownaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         >
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                             </h:inputText>
                         </li>
