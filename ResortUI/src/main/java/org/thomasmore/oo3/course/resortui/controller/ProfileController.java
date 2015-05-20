@@ -37,6 +37,7 @@ public class ProfileController {
         ue.setEmail(sessionDto.getUserDto().getEmail());
         ue.setFullName(sessionDto.getUserDto().getFullName());
         ue.setUsername(sessionDto.getUserDto().getUsername());
+        ue.setImageID(sessionDto.getUserDto().getImageID());
         dao.save(ue);
         return pageRedirect;
     }
