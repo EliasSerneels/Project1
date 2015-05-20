@@ -156,7 +156,7 @@ public class initDbStartup {
         ue3.setId(UUID.randomUUID().toString());
         ue3.setUsername("Elias");
         ue3.setPassword("Elias");
-        ue2.setFullName("Elias Serneels");
+        ue3.setFullName("Elias Serneels");
         ue3.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue3.setEmail("elias.gmail.com");
         ue3.setLevel(4);
@@ -176,7 +176,7 @@ public class initDbStartup {
         ue5.setId(UUID.randomUUID().toString());
         ue5.setUsername("Pepijn");
         ue5.setPassword("Pepijn");
-        ue4.setFullName("Pepijn Mores");
+        ue5.setFullName("Pepijn Mores");
         ue5.setImageID("http://fc08.deviantart.net/fs48/f/2009/170/9/5/Spongebob_Imagination_by_Disneycartoon.png");
         ue5.setEmail("pepijn@gmail.com");
         ue5.setLevel(4);

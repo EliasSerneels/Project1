@@ -4,7 +4,7 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:form id="eventcompanyform">
-        <p:dataTable id="eventcompany" var="listDetail" value="#{eventcompany.dto.list}" widgetVar="eventCompanyTable" class="overview" selectionMode="multiple" selection="#{eventcompany.selectedEventcompany}" rowKey="#{listDetail.id}" emptyMessage="Geen data gevonden.">                          
+        <p:dataTable id="eventcompany" var="listDetail" value="#{eventcompany.dto.list}" widgetVar="eventCompanyTable" class="overview" selectionMode="multiple" selection="#{eventcompany.selectedEventCompany}" rowKey="#{listDetail.id}" emptyMessage="Geen data gevonden.">                          
             <p:ajax event="rowSelect" update=":eventcompanyform:multiEventCompanyDetail" />
             <p:ajax event="rowUnselect" update=":eventcompanyform:multiEventCompanyDetail" />
             <p:ajax event="rowReorder" update=":eventcompanyform:multiEventCompanyDetail" />
@@ -53,7 +53,7 @@
         </p:dataTable>
         <p:dialog header="Geselecteerde Eventbedrijven" widgetVar="multiEventCompanyDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" width="800" height="400">
             <p:outputPanel id="multiEventCompanyDetail" style="text-align:center;" >
-                <ui:repeat value="#{eventcompany.selectedEventcompany}" var="listDetail" rendered="true">
+                <ui:repeat value="#{eventcompany.selectedEventCompany}" var="listDetail" rendered="true">
                             <p:outputPanel>
                           <h:outputText value="Eventbedrijf " style="font-weight: bold"/>
                           <h:outputText value="#{listDetail.name}" style="font-weight: bold"/>
