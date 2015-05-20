@@ -8,18 +8,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
-        <ui:composition template="./common/template.xhtml">
-            
+        <ui:composition template="./common/template.xhtml">       
             <ui:define name="title">Eventtypes</ui:define>
-            
             <ui:define name="navbar"><h1>Eventtypes</h1></ui:define>
-            
             <ui:define name="content">
 
                 <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
                     <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
                 </ui:fragment>
-                
+
                 <h2>Eventtype aanmaken of aanpassen</h2>
                 <h:form>
                     <h:messages styleClass="alert alert-danger" ps:role="alert"></h:messages>
@@ -35,11 +32,13 @@
                             </h:inputText>
                         </li>                                                             
                     </ul>
+                    
                     <div class="col-md-12">
                         <div class="input-group">  
                             <h:commandButton class="button" action="#{eventtype.add()}" value="Opslaan" ></h:commandButton>
                         </div> 
                     </div>
+                    
                 </h:form> 
 
                 <br/><br/>

@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
+      >
 
     <body>
 
@@ -11,38 +11,32 @@
             <ui:define name="title">Geen toegang!</ui:define>
 
             <ui:define name="navbar"><h1>Geen toegang!</h1></ui:define>
-            
+
             <ui:define name="content" >
                 <div id="redirectSpacer"></div>
                 <script type="text/javascript">
 
                     document.write('<div class="doorverwijzing" style="background-color:#FF3333; font-weight:bold; text-align:center; border-radius:3px; padding:30px; margin:30px; font-size:50px;">U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 6 seconden doorverwezen naar de loginpagina.</div>');
-                    
-                    setTimeout(function() {
-                        #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 5 seconden doorverwezen naar de loginpagina.").text();
-                    }, 1000);   
-                    
-                    setTimeout(function() {
-                        #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 4 seconden doorverwezen naar de loginpagina.").text();
-                    }, 2000);   
-                    
-                    setTimeout(function() {
-                        #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 3 seconden doorverwezen naar de loginpagina.").text();
-                    }, 3000);   
-                    
-                    setTimeout(function() {
-                        #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 2 seconden doorverwezen naar de loginpagina.").text();
-                    }, 4000);   
-                    
-                    setTimeout(function() {
-                        #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 1 seconden doorverwezen naar de loginpagina.").text();
-                    }, 5000);            
-    
-                    setTimeout(function() {
-                        window.location.href = "login.xhtml";
-                    }, 6000);                
+                            setTimeout(function() {
+                            #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 5 seconden doorverwezen naar de loginpagina.").text();
+                         }, 1000);
+                            setTimeout(function() {
+                            #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 4 seconden doorverwezen naar de loginpagina.").text();
+                         }, 2000);
+                            setTimeout(function() {
+                            #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 3 seconden doorverwezen naar de loginpagina.").text();
+                         }, 3000);
+                            setTimeout(function() {
+                            #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 2 seconden doorverwezen naar de loginpagina.").text();
+                         }, 4000);
+                            setTimeout(function() {
+                            #(".doorverwijzing").text("U heeft niet het nodige toegangsniveau om deze pagina te kunnen bekijken. U wordt binnen 1 seconden doorverwezen naar de loginpagina.").text();
+                            }, 5000);
+                            setTimeout(function() {
+                            window.location.href = "login.xhtml";
+                            }, 6000);
                 </script>          
-                    
+
             </ui:define>
 
         </ui:composition>

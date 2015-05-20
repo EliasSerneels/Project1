@@ -10,9 +10,7 @@
     <body>
         <ui:composition template="./common/template.xhtml">
             <ui:define name="title">Locatie</ui:define>
-
             <ui:define name="navbar"><h1>Locatie</h1></ui:define>
-
             <ui:define name="content">  
 
                 <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
@@ -21,7 +19,6 @@
 
                 <h:form>
                     <h2> Locatie aanmaken of aanpassen </h2>
-
                     <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
                     <ul id="lstLocatieChange" class="change-form">
                         <li>
@@ -32,6 +29,7 @@
                                 <f:selectItems value="#{location.dto.locationList}" />
                             </p:selectOneMenu>
                         </li>
+                        
                         <li>
                             <div class="inputinfo">Naam Locatie</div>
                             <h:inputText label="Naam locatie"
@@ -44,6 +42,7 @@
                             </h:inputText>
                         </li>   
                     </ul>
+                    
                     <div class="col-md-12">
                         <div class="input-group"> 
                             <h:commandButton class="button" action="#{location.add()}" value="Opslaan" ></h:commandButton>
@@ -51,6 +50,7 @@
                     </div>
                 </h:form>
                 <br/><br/>
+                
                 <h2>Locatie overzicht</h2>
                 <div id="tblLocationContainer">
                     <ui:include src="dataTables/tableLocation.xhtml"></ui:include>

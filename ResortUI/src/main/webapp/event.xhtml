@@ -8,36 +8,24 @@
 
     <body>
     <ui:composition template="./common/template.xhtml">
-        
         <ui:define name="title">Event reserveren</ui:define>
-
         <ui:define name="navbar"><h1>Event reserveren</h1></ui:define>
-        
         <ui:define name="content">
-            
             <ui:fragment rendered="#{sessionDto.userDto.level &lt; 3}">
                 <script type="text/javascript">window.location.href = "redirect.xhtml";</script>
             </ui:fragment>
             <h:form>  
-                
                 <p:growl id="messages" showDetail="false" />
-
-                <p:dialog widgetVar="suggestieDubbeleBoeking" header="Suggestie tot het boeken van een andere datum." showEffect="clip" hideEffect="clip">
-                    <p>Jammer! De datum die u voor deze locatie hebt opgegeven is reeds ingenomen.</p>
-                    <p>Het is uiteraard mogelijk om een andere datum te kiezen.</p>
-                    <p>Om het u gemakkelijk te maken stellen wij u hieronder een aantal andere data voor:</p>
-                        
-                </p:dialog>
+                
                 <h2>Kalender</h2>   
-                                
-                    <p:schedule id="schedule" value="#{scheduler.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+2" timeFormat="HH:mm">
-                        <p:ajax event="dateSelect" listener="#{scheduler.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-                        <p:ajax event="eventSelect" listener="#{scheduler.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-                        <p:ajax event="eventMove" listener="#{scheduler.onEventMove}" update="messages" />
-                        <p:ajax event="eventResize" listener="#{scheduler.onEventResize}" update="messages" />
-                    </p:schedule>
-                    
-                    <style type="text/css">
+                <p:schedule id="schedule" value="#{scheduler.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+2" timeFormat="HH:mm">
+                    <p:ajax event="dateSelect" listener="#{scheduler.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                    <p:ajax event="eventSelect" listener="#{scheduler.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                    <p:ajax event="eventMove" listener="#{scheduler.onEventMove}" update="messages" />
+                    <p:ajax event="eventResize" listener="#{scheduler.onEventResize}" update="messages" />
+                </p:schedule>
+
+                <style type="text/css">
                     .loc0, .loc0 .fc-event-skin, .loc0 a{background-color:#d43f3a ; border:0px;}
                     .loc1, .loc1 .fc-event-skin, .loc1 a{background-color:#00CCCC; border:0px;}
                     .loc2, .loc2 .fc-event-skin, .loc2 a{background-color:#ec971f; border:0px;}
@@ -54,116 +42,118 @@
                     .loc13, .loc13 .fc-event-skin, .loc13 a{background-color:#66FF99; border:0px;}
                     .loc14, .loc14 .fc-event-skin, .loc14 a{background-color:#9966FF; border:0px;}
                     .loc15, .loc15 .fc-event-skin, .loc15 a{background-color:#CC3333; border:0px;}
-                    </style>  
- 
+                </style>  
+
                 <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
                     <h:panelGrid id="eventDetails" columns="2">
                         <p:row>
-                                <h:outputLabel value="Evenementnaam:" />
+                            <h:outputLabel value="Evenementnaam:" />
                         </p:row>
                         <p:row>                                 
                             <h:outputLabel value="#{scheduler.event.title}"  />                              
                         </p:row>
-                                              
                         <p:row>
-                                <h:outputLabel for="Startdatum" value="Startdatum:" />
+                            <h:outputLabel for="Startdatum" value="Startdatum:" />
                         </p:row>
                         <p:row>
-                                <h:outputLabel for="Startdatum" value="#{scheduler.event.startDate}" />
-                        </p:row>
-
-                        <p:row>
-                                <h:outputLabel for="Einddatum" value="Einddatum:" />
+                            <h:outputLabel for="Startdatum" value="#{scheduler.event.startDate}" />
                         </p:row>
                         <p:row>
-                                <h:outputLabel for="Startdatum" value="#{scheduler.event.endDate}" />
+                            <h:outputLabel for="Einddatum" value="Einddatum:" />
+                        </p:row>
+                        <p:row>
+                            <h:outputLabel for="Startdatum" value="#{scheduler.event.endDate}" />
                         </p:row>      
                     </h:panelGrid>
                 </p:dialog>    
             </h:form>
- 
-            
+
             <h:form id="frmEvent">
                 <h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
-
                 <h:inputHidden value="#{event.dto.detail.id}"/>
-
-                        <div class="col-md-6-l">
-                            <div class="input-group">
-                                <span class="input-group-addon">Event Naam</span>
-                                <h:inputText label="eventnaam" 
-                                             value="#{event.dto.detail.eventname}" class="form-control"
-                                             required="true" requiredMessage="Vul een eventnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 100 tekens)" validatorMessage="Vul een eventnaam in. Dit veld kan letters, hoofdletters, cijfers en spaties bevatten. (Max. 100 tekens)"
-                                             >
-                                    <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç0-9]{1,100}"/>
-                                </h:inputText>
-                            </div>
-                        </div>  
-                         <div class="col-md-6-r">
-                            <div class="input-group">
-                                <span class="input-group-addon">Locatie</span>
-                                <p:selectOneMenu required="true" id="Locatie" value="#{event.dto.detail.locationName}" requiredMessage="Gelieve een locatie te kiezen." validatorMessage="Gelieve een locatie te kiezen.">
-                                    <f:selectItem itemLabel="Kies locatie"  noSelectionOption="true" />
-                                    <f:selectItems value="#{event.dto.locationList}" />
-                                </p:selectOneMenu>                          
-                            </div>
-                        </div> 
-                        <div id="frmEventStartdatum" class="col-md-6-l">
-                        <div class="input-group">
-                            <span class="input-group-addon">Startdatum</span>
-                            <p:calendar id="date" value="#{event.dto.detail.startDate}" locale="nl" mindate="#{scheduler.todayString()}" pattern="dd/MM/yyyy"  />
-                                <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
-                                    <f:convertDateTime pattern="HH:mm" />
-                                </p:inputMask>
-                            </div>
-                        </div>          
-                        <div id="frmEventEinddatum" class="col-md-6-r"> 
-                            <div class="input-group">
-                                <span class="input-group-addon">Einddatum</span>
-                                <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" mindate="#{scheduler.todayString()}" value="#{event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
-                                <p:inputMask id="Eindtijd" placeholder="Eindtijd" style="width:40%;" value="#{event.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
-                                    <f:convertDateTime pattern="HH:mm" />
-                                </p:inputMask>
-                        </div>
-                        </div>
-                        <div class="col-md-6-l">
-                            <div class="input-group">
-                                <span class="input-group-addon">Klant</span>
-                                <p:selectOneMenu required="true" id="Klant" value="#{event.dto.detail.customerName}" requiredMessage="Gelieve een klantnaam te kiezen." validatorMessage="Gelieve een klantnaam te kiezen.">
-                                    <f:selectItem itemLabel="Kies klant"  noSelectionOption="true" />
-                                    <f:selectItems value="#{event.dto.customerList}" />
-                                </p:selectOneMenu>                                 
-                            </div>
-                        </div> 
-                        <div class="col-md-6-r">
-                            <div class="input-group">
-                                <span class="input-group-addon">Eventbedrijf</span>
-                                <p:selectOneMenu required="true" id="Eventbedrijf" value="#{event.dto.detail.eventcompany}" requiredMessage="Gelieve een bedrijf te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
-                                    <f:selectItem itemLabel="Kies bedrijf"  noSelectionOption="true" />
-                                    <f:selectItems value="#{event.dto.eventcompanyList}" />
-                                </p:selectOneMenu>                                 
-                            </div>
-                        </div> 
-                        <div class="col-md-6-l">
-                            <div class="input-group">
-                                <span class="input-group-addon">Eventtype</span>
-                                <p:selectOneMenu required="true" id="Eventtype" value="#{event.dto.detail.eventtype}" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een eventtype te kiezen.">
-                                    <f:selectItem itemLabel="Kies eventtype"  noSelectionOption="true" />
-                                    <f:selectItems value="#{event.dto.eventtypeList}" />
-                                </p:selectOneMenu>                          
-                            </div>
-                        </div>                      
-                        <div class="col-md-12">
-                            <div class="input-group">  
-                                <h:commandButton class="button" action="#{event.add()}" value="Opslaan" ></h:commandButton>
-                            </div> 
-                        </div>
+                <div class="col-md-6-l">
+                    <div class="input-group">
+                        <span class="input-group-addon">Event Naam</span>
+                        <h:inputText label="eventnaam" 
+                                     value="#{event.dto.detail.eventname}" class="form-control"
+                                     required="true" requiredMessage="Vul een eventnaam in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 100 tekens)" validatorMessage="Vul een eventnaam in. Dit veld kan letters, hoofdletters, cijfers en spaties bevatten. (Max. 100 tekens)"
+                                     >
+                            <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç0-9]{1,100}"/>
+                        </h:inputText>
+                    </div>
+                </div>  
+                
+                <div class="col-md-6-r">
+                    <div class="input-group">
+                        <span class="input-group-addon">Locatie</span>
+                        <p:selectOneMenu required="true" id="Locatie" value="#{event.dto.detail.locationName}" requiredMessage="Gelieve een locatie te kiezen." validatorMessage="Gelieve een locatie te kiezen.">
+                            <f:selectItem itemLabel="Kies locatie"  noSelectionOption="true" />
+                            <f:selectItems value="#{event.dto.locationList}" />
+                        </p:selectOneMenu>                          
+                    </div>
+                </div> 
+                
+                <div id="frmEventStartdatum" class="col-md-6-l">
+                    <div class="input-group">
+                        <span class="input-group-addon">Startdatum</span>
+                        <p:calendar id="date" value="#{event.dto.detail.startDate}" locale="nl" mindate="#{scheduler.todayString()}" pattern="dd/MM/yyyy"  />
+                        <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{event.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
+                            <f:convertDateTime pattern="HH:mm" />
+                        </p:inputMask>
+                    </div>
+                </div>  
+                
+                <div id="frmEventEinddatum" class="col-md-6-r"> 
+                    <div class="input-group">
+                        <span class="input-group-addon">Einddatum</span>
+                        <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" mindate="#{scheduler.todayString()}" value="#{event.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
+                        <p:inputMask id="Eindtijd" placeholder="Eindtijd" style="width:40%;" value="#{event.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
+                            <f:convertDateTime pattern="HH:mm" />
+                        </p:inputMask>
+                    </div>
+                </div>
+                
+                <div class="col-md-6-l">
+                    <div class="input-group">
+                        <span class="input-group-addon">Klant</span>
+                        <p:selectOneMenu required="true" id="Klant" value="#{event.dto.detail.customerName}" requiredMessage="Gelieve een klantnaam te kiezen." validatorMessage="Gelieve een klantnaam te kiezen.">
+                            <f:selectItem itemLabel="Kies klant"  noSelectionOption="true" />
+                            <f:selectItems value="#{event.dto.customerList}" />
+                        </p:selectOneMenu>                                 
+                    </div>
+                </div> 
+                
+                <div class="col-md-6-r">
+                    <div class="input-group">
+                        <span class="input-group-addon">Eventbedrijf</span>
+                        <p:selectOneMenu required="true" id="Eventbedrijf" value="#{event.dto.detail.eventcompany}" requiredMessage="Gelieve een bedrijf te kiezen." validatorMessage="Gelieve een bedrijf te kiezen.">
+                            <f:selectItem itemLabel="Kies bedrijf"  noSelectionOption="true" />
+                            <f:selectItems value="#{event.dto.eventcompanyList}" />
+                        </p:selectOneMenu>                                 
+                    </div>
+                </div> 
+                
+                <div class="col-md-6-l">
+                    <div class="input-group">
+                        <span class="input-group-addon">Eventtype</span>
+                        <p:selectOneMenu required="true" id="Eventtype" value="#{event.dto.detail.eventtype}" requiredMessage="Gelieve een eventtype te kiezen." validatorMessage="Gelieve een eventtype te kiezen.">
+                            <f:selectItem itemLabel="Kies eventtype"  noSelectionOption="true" />
+                            <f:selectItems value="#{event.dto.eventtypeList}" />
+                        </p:selectOneMenu>                          
+                    </div>
+                </div>  
+                
+                <div class="col-md-12">
+                    <div class="input-group">  
+                        <h:commandButton class="button" action="#{event.add()}" value="Opslaan" ></h:commandButton>
+                    </div> 
+                </div>
             </h:form> 
 
             <br/><br/>
             <h2>Eventoverzicht</h2>
             <div id="tblEventContainer">
-            <ui:include src="dataTables/tableEvent.xhtml"></ui:include>
+                <ui:include src="dataTables/tableEvent.xhtml"></ui:include>
             </div>
         </ui:define>
 

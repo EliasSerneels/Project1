@@ -8,15 +8,14 @@
     <body>
 
         <ui:composition template="./common/template.xhtml">
-
             <ui:define name="title">Inloggen</ui:define>
-
             <ui:define name="navbar"><h1>Inloggen</h1></ui:define>
-
             <ui:define name="content">
+                
                 <div class="fillerpic">
                     <img src="resources/images/logo.png" alt="Logo tipiel resort"/>
                 </div>
+                
                 <h:form>
                     <h:messages styleClass="alert alert-danger loginMelding" p:role="alert"></h:messages>
                     <div class="col-md-6">
@@ -28,6 +27,7 @@
                             </h:inputText>
                         </div>
                     </div>
+                    
                     <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-addon">Wachtwoord</span>
@@ -37,15 +37,16 @@
                             </h:inputSecret>
                         </div>
                     </div>
+                    
                     <div class="col-md-6" style="width:auto;">
                         <div class="input-group">U kan zich <a href="registration.xhtml" style="width:auto;">hier registreren.</a></div>
                     </div>
+                    
                     <div class="col-md-12" style="margin-top:0px;">
                         <h:commandButton class="button" action="#{login.login()}" value="Inloggen"></h:commandButton>						
                     </div>
                 </h:form>
             </ui:define>
-
         </ui:composition>
 
     </body>
