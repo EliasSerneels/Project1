@@ -5,8 +5,12 @@
  */
 package org.thomasmore.oo3.course.resortui.facade;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.thomasmore.oo3.course.resortui.business.entity.StaffEntity;
@@ -20,9 +24,12 @@ import org.thomasmore.oo3.course.resortui.model.StaffPageDto;
  */
 @Stateless
 public class StaffFacade {
-@EJB
+
+    @EJB
     private StaffDao staffDao;
 
+    private final SimpleDateFormat dateDate = new SimpleDateFormat("dd/MM/yyyy");
+    
     public StaffPageDto loadStaffOverviewPage(String editId, String deleteId) {
         StaffPageDto dto = new StaffPageDto();
         if (editId != null) {
@@ -31,7 +38,7 @@ public class StaffFacade {
                 dto.getDetail().setId(staffEntity.getId());
                 dto.getDetail().setFirstname(staffEntity.getFirstname());
                 dto.getDetail().setLastname(staffEntity.getLastname());
-                dto.getDetail().setBirthdate(staffEntity.getBirthdate());
+                dto.getDetail().setBirthdateFormatted(staffEntity.getBirthdateFormatted());
                 dto.getDetail().setCountry(staffEntity.getCountry());
                 dto.getDetail().setCity(staffEntity.getCity());
                 dto.getDetail().setStreet(staffEntity.getStreet());
@@ -45,12 +52,22 @@ public class StaffFacade {
             staffDao.deleteById(deleteId);
         }
         List<StaffEntity> staffs = staffDao.listAll();
-        
+
         for (StaffEntity staff : staffs) {
             StaffListDetailDto listDetail = new StaffListDetailDto();
             listDetail.setId(staff.getId());
             listDetail.setFirstname(staff.getFirstname());
             listDetail.setLastname(staff.getLastname());
+            // Datum formateren
+            listDetail.setBirthdateFormatted(dateDate.format(staff.getBirthdate()));
+
+            try {
+                listDetail.setBirthdate(dateDate.parse(listDetail.getBirthdateFormatted())
+                );
+            } catch (ParseException ex) {
+                Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            // Tot hier wordt datum geformateerd
             listDetail.setBirthdate(staff.getBirthdate());
             listDetail.setCountry(staff.getCountry());
             listDetail.setCity(staff.getCity());
@@ -75,13 +92,14 @@ public class StaffFacade {
             staffEntity = staffDao.findById(dto.getDetail().getId());
 
         }
-        if(staffEntity == null){
+        if (staffEntity == null) {
             staffEntity = new StaffEntity();
         }
         staffEntity.setId(dto.getDetail().getId());
         staffEntity.setLastname(dto.getDetail().getLastname());
         staffEntity.setFirstname(dto.getDetail().getFirstname());
         staffEntity.setBirthdate(dto.getDetail().getBirthdate());
+        staffEntity.setBirthdateFormatted(dto.getDetail().getBirthdateFormatted());
         staffEntity.setCountry(dto.getDetail().getCountry());
         staffEntity.setCity(dto.getDetail().getCity());
         staffEntity.setStreet(dto.getDetail().getStreet());
@@ -91,9 +109,5 @@ public class StaffFacade {
         staffEntity.setImageID(dto.getDetail().getImageID());
         staffDao.save(staffEntity);
         return dto;
-    }}
-
-    
-    
-    
-
+    }
+}

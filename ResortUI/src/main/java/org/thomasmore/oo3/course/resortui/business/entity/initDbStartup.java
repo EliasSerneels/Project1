@@ -324,7 +324,13 @@ public class initDbStartup {
         StaffEntity se1 = new StaffEntity();
         se1.setFirstname("Olivier");
         se1.setLastname("Ollisen");
-        se1.setBirthdate("17-02-1980");
+        birthdateInString = "17/02/1980";
+        try {
+            se1.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        se1.setBirthdateFormatted(birthdateInString);
         se1.setCountry("België");
         se1.setCity("Mechelen");
         se1.setStreet("Kerkstraat 18");
@@ -335,8 +341,14 @@ public class initDbStartup {
 
         StaffEntity se2 = new StaffEntity();
         se2.setFirstname("Piet");
-        se2.setLastname("Pieters");
-        se2.setBirthdate("10-11-1983");
+        se2.setLastname("Pieters");  
+        birthdateInString = "10/11/1983";      
+        try {
+            se2.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        se2.setBirthdateFormatted(birthdateInString);
         se2.setCountry("België");
         se2.setCity("Mechelen");
         se2.setStreet("Schoolstraat 68");
@@ -348,7 +360,13 @@ public class initDbStartup {
         StaffEntity se3 = new StaffEntity();
         se3.setFirstname("Jean");
         se3.setLastname("Keuleers");
-        se3.setBirthdate("04-04-1974");
+        birthdateInString = "04/04/1974";       
+        try {
+            se3.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        se3.setBirthdateFormatted(birthdateInString);
         se3.setCountry("België");
         se3.setCity("Vilvoorde");
         se3.setStreet("Stationstraat 91");

@@ -58,7 +58,7 @@ public class CustomerFacade {
             listDetail.setId(customer.getId());
             listDetail.setFirstname(customer.getFirstname());
             listDetail.setLastname(customer.getLastname());
-            // Datum formaterenF
+            // Datum formateren
             listDetail.setBirthdateFormatted(dateDate.format(customer.getBirthdate()));
 
             try {
