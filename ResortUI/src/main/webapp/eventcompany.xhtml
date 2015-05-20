@@ -49,7 +49,7 @@
                                          value="#{eventcompany.dto.detail.street}" class="form-control"
                                          required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
+                                <f:validateRegex pattern="^^[A-z][A-z0-9\'-. éèêâôûîëääüïöàç]{1,100}"/>
                             </h:inputText>
                         </li>
                         
@@ -58,7 +58,7 @@
                             <h:inputText label="Telefoonnr" 
                                          value="#{eventcompany.dto.detail.phone}" class="form-control"
                                          required="true" validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 9 en maximum 10 cijfers lang zijn." requiredMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
-                                <f:validateRegex pattern="^(1\s*[-\/\.]?)?(\((\d{3})\)|(\d{3}))\s*[-\/\.]?\s*(\d{3})\s*[-\/\.]?\s*(\d{3,4})\s*(([xX]|[eE][xX][tT])\.?\s*(\d+))*$"/>
+                                <f:validateRegex pattern="^(?:\+\d{1,3}|0\d{1,3}|00\d{1,2})?(?:\s?\(\d+\))?(?:[-\/\s.]|\d)+$"/>
                             </h:inputText>
                         </li>  
                         
@@ -66,9 +66,10 @@
                             <div class="inputinfo">E-Mail</div>
                             <h:inputText label="Naam"
                                          value="#{eventcompany.dto.detail.contact}" class="form-control"
-                                         required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en @ bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en @ bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+ 
                             </h:inputText>
                         </li>
 

@@ -35,9 +35,35 @@ public class ReservationController {
         dto = reservationFacade.loadReservationOverviewPage(editId, deleteId);
     }
 
+<<<<<<< HEAD
     public String add() {
         reservationFacade.add(dto);
         return pageRedirect;
+=======
+    public void add() {
+        dto.getDetail().setId(UUID.randomUUID().toString());
+        dto.getList().add(dto.getDetail());
+        ReservationEntity reservationEntity = new ReservationEntity();
+        reservationEntity.setId(dto.getDetail().getId());
+        reservationEntity.setStartDate(dto.getDetail().getStartDate());
+        reservationEntity.setStartTime(dto.getDetail().getStartTime());
+        reservationEntity.setEndDate(dto.getDetail().getEndDate());
+        reservationEntity.setEndTime(dto.getDetail().getEndTime());
+        reservationEntity.setCustomerName(dto.getDetail().getCustomerName());
+        reservationEntity.setBungalowName(dto.getDetail().getBungalowName());
+        reservationEntity.setParkName(dto.getDetail().getParkName());
+
+        reservationsDao.save(reservationEntity);
+        BungalowEntity be = null;
+        for (BungalowEntity bungalow : bungalows) {
+            if (bungalow.getName().equals(dto.getDetail().getBungalowName())) {
+                be = bungalow;
+                be.addReservation();
+                bungalowsDao.save(be);
+            }
+        }
+        schedulecontroller.LoadBungalowSchedule();
+>>>>>>> origin/master
     }
 
     public void onDateSelect(SelectEvent event) {
