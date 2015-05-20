@@ -368,6 +368,8 @@ public class initDbStartup {
         re1.setBungalowName("Zebra");
         re1.setParkName("Funpark 1");
         re1.setCustomerName("Thomas Coenen");
+        re1.setCustomer(ce1);
+        re1.setBungalow(bungalowEntity);
         startDateInString = "05/05/2015";
         startTimeInString = "15:14";
         endDateInString = "10/05/2015";
@@ -386,6 +388,8 @@ public class initDbStartup {
         re2.setBungalowName("Leeuw");
         re2.setParkName("Funpark 2");
         re2.setCustomerName("Piet Uyttebroeck");
+        re2.setCustomer(ce2);
+        re2.setBungalow(bungalowEntity2);
         startDateInString = "03/05/2015";
         startTimeInString = "16:15";
         endDateInString = "05/05/2015";
@@ -404,6 +408,8 @@ public class initDbStartup {
         re3.setBungalowName("Walrus");
         re3.setCustomerName("Jos Janssens");
         re3.setParkName("Funpark 3");
+        re3.setCustomer(ce3);
+        re3.setBungalow(bungalowEntity3);
         startDateInString = "13/05/2015";
         startTimeInString = "16:15";
         endDateInString = "15/05/2015";
