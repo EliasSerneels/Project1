@@ -70,15 +70,14 @@
                                 </h:inputText>
                             </li>
                             
-                             <li>
-                            
+                            <li>                        
                             <div class="inputinfo">Gebruiker afbeelding</div>
                             <h:inputText label="URL" 
                                          value="#{login.sessionDto.userDto.imageID}" class="form-control"
                                          required="true" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">     
-                            </h:inputText>
-                            
-                        </li>
+                            <f:validateRegex pattern="^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\.(?:jpg|gif|png))(?:\?([^#]*))?(?:#(.*))?$"/>
+                            </h:inputText>                           
+                            </li>
                             
                             <li>
                                 <h:commandButton class="button" action="#{profile.edit()}" value="Opslaan"/>
