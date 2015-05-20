@@ -108,6 +108,7 @@
                             <h:inputText label="URL" 
                                          value="#{staff.dto.detail.imageID}" class="form-control"
                                          required="false" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
+                            <f:validateRegex pattern="^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\.(?:jpg|gif|png))(?:\?([^#]*))?(?:#(.*))?$"/>
                             </h:inputText>
                         </li>
 

@@ -84,7 +84,7 @@
                     <div id="frmReservationStartdatum" class="col-md-6-l">
                         <div class="input-group">
                             <span class="input-group-addon">Startdatum</span>
-                            <p:calendar id="date" value="#{reservation.dto.detail.startDate}" locale="nl" pattern="dd/MM/yyyy" />
+                            <p:calendar id="date" value="#{reservation.dto.detail.startDate}" mindate="#{scheduler.todayString()}" locale="nl" pattern="dd/MM/yyyy" />
                             <p:inputMask id="Begintijd" placeholder="Starttijd" style="width:40%;" value="#{reservation.dto.detail.startTime}" mask="99:99" required="true" requiredMessage="Gelieve een starttijd in te vullen.">
                                 <f:convertDateTime pattern="HH:mm" />
                             </p:inputMask>
@@ -94,7 +94,7 @@
                     <div id="frmReservationEinddatum" class="col-md-6-r"> 
                         <div class="input-group">
                             <span class="input-group-addon">Einddatum</span>
-                            <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" value="#{reservation.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
+                            <p:calendar pattern="dd/MM/yyyy" id="popup2"  locale="nl" mindate="#{scheduler.todayString()}" value="#{reservation.dto.detail.endDate}" required="true" requiredMessage="Gelieve een einddatum in te vullen."/>
                             <p:inputMask id="Eindtijd" placeholder="Eindtijd" style="width:40%;" value="#{reservation.dto.detail.endTime}" mask="99:99" required="true" requiredMessage="Gelieve een eindtijd in te vullen.">
                                 <f:convertDateTime pattern="HH:mm" />
                             </p:inputMask>
