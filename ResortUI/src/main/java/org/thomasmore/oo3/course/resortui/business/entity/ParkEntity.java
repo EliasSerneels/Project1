@@ -33,7 +33,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ParkEntity extends BasicEntity {
     
-    private String location;
     private int capacity;
     private String name;
     private String imageID;
@@ -42,7 +41,7 @@ public class ParkEntity extends BasicEntity {
     @OneToMany(targetEntity=BungalowEntity.class,fetch = FetchType.EAGER, mappedBy = "park")
     private List<BungalowEntity> bungalows;
     
-    @OneToMany(targetEntity = LocationEntity.class, fetch = FetchType.EAGER, mappedBy = "parkje")
+    @OneToMany(targetEntity = LocationEntity.class, fetch = FetchType.EAGER, mappedBy = "park")
     private List<LocationEntity> locations;
 
     public List<LocationEntity> getLocations() {
@@ -76,14 +75,6 @@ public class ParkEntity extends BasicEntity {
 
     public void setImageID(String imageID) {
         this.imageID = imageID;
-    }
-    
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public int getCapacity() {

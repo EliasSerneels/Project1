@@ -38,9 +38,9 @@ public class ParkFacade {
             if (parkEntity != null) {
                 dto.getDetail().setId(parkEntity.getId());
                 dto.getDetail().setName(parkEntity.getName());
-                dto.getDetail().setLocation(parkEntity.getLocation());
                 dto.getDetail().setCapacity(parkEntity.getCapacity());
                 dto.getDetail().setBungalows(parkEntity.getBungalows());
+                dto.getDetail().setLocations(parkEntity.getLocations());
                 dto.getDetail().setImageID(parkEntity.getImageID());
                 dto.getDetail().setDescription(parkEntity.getDescription());
             }
@@ -50,9 +50,9 @@ public class ParkFacade {
             ParkListDetailDto listDetail = new ParkListDetailDto();
             listDetail.setId(park.getId());
             listDetail.setName(park.getName());
-            listDetail.setLocation(park.getLocation());
             listDetail.setCapacity(park.getCapacity());
             listDetail.setBungalows(park.getBungalows());
+            listDetail.setLocations(park.getLocations());
             listDetail.setImageID(park.getImageID());
             listDetail.setDescription(park.getDescription());
             dto.getList().add(listDetail);
@@ -77,9 +77,9 @@ public class ParkFacade {
         parkEntity.setId(dto.getDetail().getId());
         System.out.println(dto.getDetail().getId());
         parkEntity.setName(dto.getDetail().getName());
-        parkEntity.setLocation(dto.getDetail().getLocation());
         parkEntity.setCapacity(dto.getDetail().getCapacity());
         parkEntity.setBungalows(dto.getDetail().getBungalows());
+        parkEntity.setLocations(dto.getDetail().getLocations());
         parkEntity.setImageID(dto.getDetail().getImageID());
         parkEntity.setDescription(dto.getDetail().getDescription());
         parkDao.save(parkEntity);

@@ -10,7 +10,9 @@ import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.thomasmore.oo3.course.resortui.business.entity.LocationEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.ParkEntity;
 import org.thomasmore.oo3.course.resortui.dao.LocationDao;
+import org.thomasmore.oo3.course.resortui.dao.ParkDao;
 import org.thomasmore.oo3.course.resortui.model.LocationListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.LocationPageDto;
 
@@ -23,14 +25,22 @@ public class LocationFacade {
 
     @EJB
     private LocationDao locationDao;
+    @EJB
+    private ParkDao parkDao;
 
     public LocationPageDto loadLocationOverviewPage(String editId, String deleteId) {
         LocationPageDto dto = new LocationPageDto();
+
+        List<ParkEntity> parks = parkDao.listAll();
+        for (ParkEntity park : parks) {
+            dto.getParkList().add(park.getName());
+        }
+        
         if (editId != null) {
             LocationEntity locationEntity = locationDao.findById(editId);
             if (locationEntity != null) {
                 dto.getDetail().setId(locationEntity.getId());
-                dto.getDetail().setPark(locationEntity.getPark());
+                dto.getDetail().setPark(locationEntity.getPark().getName());
                 dto.getDetail().setLocationName(locationEntity.getLocationName());
 
             }
@@ -39,14 +49,12 @@ public class LocationFacade {
         if (deleteId != null) {
             locationDao.deleteById(deleteId);
         }
+        
         List<LocationEntity> locations = locationDao.listAll();
-        for (LocationEntity location : locations) {
-            dto.getLocationList().add(location.getLocationName());
-        }
         for (LocationEntity location : locations) {
             LocationListDetailDto listDetail = new LocationListDetailDto();
             listDetail.setId(location.getId());
-            listDetail.setPark(location.getPark());
+            listDetail.setPark(location.getPark().getName());
             listDetail.setLocationName(location.getLocationName());
             dto.getList().add(listDetail);
 
@@ -64,14 +72,20 @@ public class LocationFacade {
 
         }
         if (locationEntity == null) {
-                                                                                                                                                              locationEntity = new LocationEntity();
+            locationEntity = new LocationEntity();
+        }
+        ParkEntity park = null;
+        List<ParkEntity> parks = parkDao.listAll();
+        for (ParkEntity pe : parks) {
+            if (pe.getName().equals(dto.getDetail().getPark())) {
+                park = pe;
+            }
         }
         locationEntity.setId(dto.getDetail().getId());
-        locationEntity.setPark(dto.getDetail().getPark());
+        locationEntity.setPark(park);
         locationEntity.setLocationName(dto.getDetail().getLocationName());
 
         locationDao.save(locationEntity);
         return dto;
     }
 }
-

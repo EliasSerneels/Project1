@@ -44,7 +44,7 @@
             <p:column headerText="Prijs" sortBy="#{listDetail.price}" filterBy="#{listDetail.price}" filterMatchMode="startsWith">
                 <h:outputText value="#{listDetail.price}"/>
             </p:column>
-            <p:column headerText="Park"  sortBy="#{listDetail.park.name}" filterBy="#{listDetail.park.name}" filterMatchMode="exact">
+            <p:column headerText="Park"  sortBy="#{listDetail.park}" filterBy="#{listDetail.park}" filterMatchMode="exact">
                 <f:facet name="filter"> 
                     <p:selectOneMenu onchange="PF('bungalowTable').filter()">
                         <f:selectItem itemLabel="Alle Parken" itemValue="#{null}" noSelectionOption="true" />

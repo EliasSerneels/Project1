@@ -23,11 +23,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class LocationEntity extends BasicEntity implements Serializable {
 
-private String park;
 private String locationName;
 
     @ManyToOne(targetEntity = ParkEntity.class, fetch = FetchType.EAGER)
-    private ParkEntity parkje;
+    private ParkEntity park;
     
     @OneToMany(targetEntity = EventEntity.class, fetch = FetchType.EAGER, mappedBy = "location")
     private List<EventEntity> events;
@@ -40,12 +39,12 @@ private String locationName;
         this.events = events;
     }
 
-    public ParkEntity getParkje() {
-        return parkje;
+    public ParkEntity getPark() {
+        return park;
     }
 
-    public void setParkje(ParkEntity parkje) {
-        this.parkje = parkje;
+    public void setPark(ParkEntity parkje) {
+        this.park = parkje;
     }
 
     public String getLocationName() {
@@ -54,13 +53,5 @@ private String locationName;
 
     public void setLocationName(String locationName) {
         this.locationName = locationName;
-    }
-
-    public String getPark() {
-        return park;
-    }
-
-    public void setPark(String park) {
-        this.park = park;
     }
 }

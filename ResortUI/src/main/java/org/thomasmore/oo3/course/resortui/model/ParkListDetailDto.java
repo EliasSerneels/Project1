@@ -18,6 +18,7 @@ package org.thomasmore.oo3.course.resortui.model;
 
 import java.util.List;
 import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.LocationEntity;
 
 /**
  *
@@ -28,12 +29,13 @@ public class ParkListDetailDto {
     private String id;
 
     private String name;
-    private String location;
     private int capacity;
     private List<BungalowEntity> bungalows;
+    private List<LocationEntity> locations;
     private String imageID;
     private String description;
     private String bungalowsString;
+    private String locationsString;
 
     public String getBungalowString() {
         if (!bungalows.isEmpty()) {
@@ -45,6 +47,18 @@ public class ParkListDetailDto {
             bungalowsString = "Geen bungalows aanwezig";
         }
         return bungalowsString;
+    }
+    
+    public String getLocationsString() {        
+        if (!locations.isEmpty()) {
+            locationsString = locations.get(0).getLocationName();
+            for (int i = 1; i < locations.size(); i++) {
+                locationsString += ", " + locations.get(i).getLocationName();
+            }
+        } else {
+            locationsString = "Geen locaties aanwezig";
+        }
+        return locationsString;
     }
 
     public String getDescription() {
@@ -71,12 +85,12 @@ public class ParkListDetailDto {
         this.bungalows = bungalows;
     }
 
-    public String getLocation() {
-        return location;
+    public List<LocationEntity> getLocations() {
+        return locations;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocations(List<LocationEntity> locations) {
+        this.locations = locations;
     }
 
     public int getCapacity() {
