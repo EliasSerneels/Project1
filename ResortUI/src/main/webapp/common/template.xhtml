@@ -31,14 +31,14 @@
         <script type="text/javascript">
             cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
                 $(document).ready(function () {
-                    $("#b").css("display","block");
-                    $("#b").animate({left: '+=450'},2000);
+                    $("#b").css("display", "block");
+                    $("#b").animate({left: '+=450'}, 2000);
                 });
                 ;
             });
             cheet('v a n d e r m e i r e n', function () {
                 $(document).ready(function () {
-                    window.location="http://blog.associatie.kuleuven.be/chrisvandermeiren/";
+                    window.location = "http://blog.associatie.kuleuven.be/chrisvandermeiren/";
                 });
                 ;
             });
@@ -147,17 +147,13 @@
         </script>
         <nav class="navbar  navbar-fixed-top" role="navigation">
             <div class="container">
-
                 <h:form>  
                     <p:growl id="messages"/>
-
                     <p:menubar>
                         <p:menuitem value="" url="index.xhtml" icon="ui-icon-home"/>
                         <p:submenu label="Info">
-
                             <p:menuitem value="Bungalowinfo" url="bungalowinfo.xhtml"/>
                             <p:menuitem value="Parkinfo" url="parkinfo.xhtml"/>
-
                         </p:submenu>
                         <p:submenu label="Bungalows" rendered="${sessionDto.userDto.level &gt;= 3}">
                             <p:menuitem value="Park" url="park.xhtml"  />
@@ -183,10 +179,9 @@
                         </f:facet>
                     </p:menubar>
                 </h:form>
-
-
             </div>
         </nav> 
+        
         <div class="jumbotron">
             <div class="container">
                 <ui:insert name="navbar"></ui:insert>
@@ -195,13 +190,11 @@
 
         <div class="container">
             <ui:insert name="content"></ui:insert>
-            
         </div>
-        <div class="push">
-
-        </div>
+        
+        <div class="push"></div>
+        
         <footer>
-
             <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
                 <ul id="footerbuttons">
                     <li>
