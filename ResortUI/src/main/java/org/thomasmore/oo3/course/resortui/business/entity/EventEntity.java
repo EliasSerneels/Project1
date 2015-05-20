@@ -27,7 +27,6 @@ public class EventEntity extends BasicEntity implements Serializable {
     private Date endDate;
     private Date startTime;
     private Date endTime;
-    private String locationName;
     private String customerName;
     private Date currentDate;
 
@@ -118,14 +117,6 @@ public class EventEntity extends BasicEntity implements Serializable {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
-    }
-
-    public String getLocationName() {
-        return locationName;
-    }
-
-    public void setLocationName(String locationName) {
-        this.locationName = locationName;
     }
 
     public String getCustomerName() {

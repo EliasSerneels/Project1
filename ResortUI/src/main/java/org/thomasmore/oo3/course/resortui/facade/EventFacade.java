@@ -68,7 +68,7 @@ public class EventFacade implements Serializable{
                 dto.getDetail().setEndTime(eventEntity.getEndTime());
                 dto.getDetail().setStartDate(eventEntity.getStartDate());
                 dto.getDetail().setEndDate(eventEntity.getEndDate());
-                dto.getDetail().setLocationName(eventEntity.getLocationName());  
+                dto.getDetail().setLocationName(eventEntity.getLocation().getLocationName());  
                 dto.getDetail().setCustomerName(eventEntity.getCustomerName());
                 dto.getDetail().setImageID(eventEntity.getImageID());
                 
@@ -121,7 +121,7 @@ public class EventFacade implements Serializable{
             listDetail.setStartTime(event.getStartTime());
             listDetail.setEndTime(event.getEndTime());
 
-            listDetail.setLocationName(event.getLocationName());  
+            listDetail.setLocationName(event.getLocation().getLocationName());  
 
             // Datum formateren
             listDetail.setStartDateFormatted(schedulecontroller.DateAndTime(event.getStartDate(), event.getStartTime()));
@@ -174,15 +174,15 @@ public class EventFacade implements Serializable{
                 if(// Nullpointers vermijden
                     eventStartDate           != null && 
                     eventEndDate             != null && 
-                    evnt.getLocationName()   != null &&
+                    evnt.getLocation().getLocationName()   != null &&
                     // Als event tussen begin en einddatum ligt en Zelfde locatie heeft
-                    ( dtoStartDate.before(eventStartDate) && dtoEndDate.after(eventEndDate)     && dto.getDetail().getLocationName().equals(evnt.getLocationName()) ) ||     
+                    ( dtoStartDate.before(eventStartDate) && dtoEndDate.after(eventEndDate)     && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName()) ) ||     
                     // Als begintijd = binnen range of eindtijd is binnen range     
-                    ( dtoStartDate.after(eventStartDate)  && dtoStartDate.before(eventEndDate)  && dto.getDetail().getLocationName().equals(evnt.getLocationName()) ) ||
-                    ( dtoEndDate.after(eventStartDate)    && dtoEndDate.before(eventEndDate)    && dto.getDetail().getLocationName().equals(evnt.getLocationName()) )
+                    ( dtoStartDate.after(eventStartDate)  && dtoStartDate.before(eventEndDate)  && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName()) ) ||
+                    ( dtoEndDate.after(eventStartDate)    && dtoEndDate.before(eventEndDate)    && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName()) )
                    )                 
                 {
-                   return "doubleBooking: <p>Locatie "+evnt.getLocationName()+" is reeds volboekt van</p><p>"+evnt.getStartDateFormatted()+" tot "+evnt.getEndDateFormatted()+".</p><p>Gelieve andere datum te selecteren.</p>";
+                   return "doubleBooking: <p>Locatie "+evnt.getLocation().getLocationName()+" is reeds volboekt van</p><p>"+evnt.getStartDateFormatted()+" tot "+evnt.getEndDateFormatted()+".</p><p>Gelieve andere datum te selecteren.</p>";
                 }          
         }
 
@@ -204,7 +204,13 @@ public class EventFacade implements Serializable{
         if (eventEntity == null) {
             eventEntity = new EventEntity();
         }
-        
+        List<LocationEntity> locations = locationDao.listAll();
+        LocationEntity location = null;
+        for(LocationEntity le : locations) {
+            if(le.getLocationName().equals(dto.getDetail().getLocationName())) {
+                location = le;
+            }
+        }
         eventEntity.setId(dto.getDetail().getId());
         eventEntity.setEventname(dto.getDetail().getEventname());
         eventEntity.setEventcompany(dto.getDetail().getEventcompany());
@@ -216,7 +222,7 @@ public class EventFacade implements Serializable{
         eventEntity.setEndTime(dto.getDetail().getEndTime());
         eventEntity.setEndDate(dto.getDetail().getEndDate());
         
-        eventEntity.setLocationName(dto.getDetail().getLocationName());  
+        eventEntity.setLocation(location);  
         eventEntity.setCustomerName(dto.getDetail().getCustomerName());
         
         eventDao.save(eventEntity);

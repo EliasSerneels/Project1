@@ -126,6 +126,21 @@ public class initDbStartup {
         ce3.setPhonenumber("0488992211");
         objectsToSave.add(ce3);
 
+        LocationEntity le1 = new LocationEntity();
+        le1.setLocationName("Zaal 1");
+        le1.setPark(parkEntity1);
+        objectsToSave.add(le1);
+
+        LocationEntity le2 = new LocationEntity();
+        le2.setLocationName("Antwerpse feestzaal");
+        le2.setPark(parkEntity2);
+        objectsToSave.add(le2);
+
+        LocationEntity le3 = new LocationEntity();
+        le3.setLocationName("Elias' thuis");
+        le3.setPark(parkEntity3);
+        objectsToSave.add(le3);
+        
         EventEntity ee1 = new EventEntity();
         ee1.setId(UUID.randomUUID().toString());
         ee1.setEventtype("Trouw");
@@ -143,7 +158,7 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ee1.setLocationName("Zaal 1");
+        ee1.setLocation(le1);
         ee1.setCustomerName("Jos Janssens");
 
         objectsToSave.add(ee1);
@@ -166,7 +181,7 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ee2.setLocationName("Elias' thuis");
+        ee2.setLocation(le2);
         ee2.setCustomerName("Piet Uyttebroeck");
         objectsToSave.add(ee2);
 
@@ -187,9 +202,8 @@ public class initDbStartup {
         } catch (ParseException ex) {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ee3.setLocationName("Zaal 1");
+        ee3.setLocation(le3);
         ee3.setCustomerName("Thomas Coenen");
-
         objectsToSave.add(ee3);
 
         EventcompanyEntity ece1 = new EventcompanyEntity();
@@ -290,22 +304,6 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         objectsToSave.add(re3);
-
-        LocationEntity le1 = new LocationEntity();
-        le1.setLocationName("Zaal 1");
-        le1.setPark(parkEntity1);
-        objectsToSave.add(le1);
-
-        LocationEntity le2 = new LocationEntity();
-        le2.setLocationName("Antwerpse feestzaal");
-        le2.setPark(parkEntity2);
-        objectsToSave.add(le2);
-
-        LocationEntity le3 = new LocationEntity();
-        le3.setLocationName("Elias' thuis");
-        le3.setPark(parkEntity3);
-        objectsToSave.add(le3);
-        
 
         StaffEntity se1 = new StaffEntity();
         se1.setFirstname("Olivier");

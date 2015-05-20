@@ -98,7 +98,7 @@ public class ScheduleController {
            String eventName = evnt.getEventname();
            
            if(eventName.equals(event.getTitle())){
-               dto.getDetail().setLocationName(evnt.getLocationName());
+               dto.getDetail().setLocationName(evnt.getLocation().getLocationName());
                dto.getDetail().setEventtype(evnt.getEventtype());
                dto.getDetail().setCustomerName(evnt.getCustomerName());
                dto.getDetail().setEventcompany(evnt.getEventcompany());
@@ -157,12 +157,12 @@ public class ScheduleController {
         
         // Deze waarden en list zijn nodig voor de kleuren te veranderen per locatie
         String loc;
-        ArrayList<String> locList = new ArrayList<String>();
+        ArrayList<String> locList = new ArrayList<>();
 
         for (EventEntity evnt : eventschedule) { 
             // Check of de locatie al in de lijst zit
-            if(!locList.contains(evnt.getLocationName()) ) {
-                locList.add(evnt.getLocationName());
+            if(!locList.contains(evnt.getLocation().getLocationName()) ) {
+                locList.add(evnt.getLocation().getLocationName());
              }
             
             // Datum formateren
@@ -175,7 +175,7 @@ public class ScheduleController {
                 Date startDate = dateSimple.parse(evnt.getStartDateFormatted());
                 Date endDate = dateSimple.parse(evnt.getEndDateFormatted());
                 
-                loc = "loc"+String.valueOf(locList.indexOf(evnt.getLocationName()));
+                loc = "loc"+String.valueOf(locList.indexOf(evnt.getLocation().getLocationName()));
                 DefaultScheduleEvent evento = new DefaultScheduleEvent (evnt.getEventname(),startDate,endDate,loc);
                 eventModel.addEvent(evento);
             } catch (ParseException ex) {
@@ -192,7 +192,7 @@ public class ScheduleController {
         
         // Deze waarden en list zijn nodig voor de kleuren te veranderen per locatie
         String loc;
-        ArrayList<String> locList = new ArrayList<String>();
+        ArrayList<String> locList = new ArrayList<>();
 
         for (ReservationEntity res : reservationschedule) { 
             // Check of de locatie al in de lijst zit
