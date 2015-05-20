@@ -25,6 +25,7 @@ public class UserOverviewFacade {
             if (ue != null) {
                 dto.getDetail().setId(ue.getId());
                 dto.getDetail().setUsername(ue.getUsername());
+                dto.getDetail().setFullName(ue.getFullName());
                 dto.getDetail().setPassword(ue.getPassword());
                 dto.getDetail().setEmail(ue.getEmail());
                 dto.getDetail().setLevel(ue.getLevel());

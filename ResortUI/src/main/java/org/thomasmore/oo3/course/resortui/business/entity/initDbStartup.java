@@ -99,7 +99,13 @@ public class initDbStartup {
         CustomerEntity ce1 = new CustomerEntity();
         ce1.setFirstname("Jos");
         ce1.setLastname("Janssens");
-        ce1.setBirthdate("01/01/1980");
+        String birthdateInString = "01/01/1980";
+        try {
+            ce1.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ce1.setBirthdateFormatted(birthdateInString);
         ce1.setCountry("België");
         ce1.setCity("Vilvoorde");
         ce1.setStreet("Leuvensestraat");
@@ -111,7 +117,13 @@ public class initDbStartup {
         CustomerEntity ce2 = new CustomerEntity();
         ce2.setFirstname("Piet");
         ce2.setLastname("Uyttebroeck");
-        ce2.setBirthdate("01/01/1970");
+        birthdateInString = "01/01/1970";
+        try {
+            ce2.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ce2.setBirthdateFormatted(birthdateInString);
         ce2.setCountry("België");
         ce2.setCity("Mechelen");
         ce2.setEmail("pietuyttebroeck@hotmail.com");
@@ -123,7 +135,13 @@ public class initDbStartup {
         CustomerEntity ce3 = new CustomerEntity();
         ce3.setFirstname("Thomas");
         ce3.setLastname("Coenen");
-        ce3.setBirthdate("13/08/1995");
+        birthdateInString = "13/08/1995";
+        try {
+            ce3.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ce3.setBirthdateFormatted(birthdateInString);
         ce3.setCountry("België");
         ce3.setCity("Peutie");
         ce3.setStreet("Kerkstraat");

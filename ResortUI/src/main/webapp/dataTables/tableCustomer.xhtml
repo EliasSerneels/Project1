@@ -31,8 +31,8 @@
             <p:column id="customerlastname" headerText="Achternaam" sortBy="#{listDetail.lastname}" filterBy="#{listDetail.lastname}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.lastname}"/>
             </p:column>
-            <p:column id="customerbirthdate" headerText="Geb. datum" sortBy="#{listDetail.birthdate}" filterBy="#{listDetail.birthdate}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.birthdate}"/>
+            <p:column id="customerbirthdate" headerText="Geb. datum" sortBy="#{listDetail.birthdateFormatted}" filterBy="#{listDetail.birthdateFormatted}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.birthdateFormatted}"/>
             </p:column>
             <p:column id="customercountry" headerText="Land" sortBy="#{listDetail.country}" filterBy="#{listDetail.country}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.country}"/>
