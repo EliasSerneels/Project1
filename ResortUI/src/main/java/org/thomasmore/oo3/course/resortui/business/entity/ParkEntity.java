@@ -19,6 +19,7 @@ package org.thomasmore.oo3.course.resortui.business.entity;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -40,6 +41,17 @@ public class ParkEntity extends BasicEntity {
     
     @OneToMany(targetEntity=BungalowEntity.class,fetch = FetchType.EAGER, mappedBy = "park")
     private List<BungalowEntity> bungalows;
+    
+    @OneToMany(targetEntity = LocationEntity.class, fetch = FetchType.EAGER, mappedBy = "park")
+    private List<LocationEntity> locations;
+
+    public List<LocationEntity> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<LocationEntity> locations) {
+        this.locations = locations;
+    }
 
     public List<BungalowEntity> getBungalows() {
         return bungalows;

@@ -5,7 +5,10 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -17,8 +20,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "staff")
 @XmlRootElement
 
-public class StaffEntity extends BasicEntity{
-    
+public class StaffEntity extends BasicEntity {
+
     private String firstname;
     private String lastname;
     private String birthdate;
@@ -28,7 +31,18 @@ public class StaffEntity extends BasicEntity{
     private int housenumber;
     private String phonenumber;
     private String email;
-        private String imageID;
+    private String imageID;
+    
+    @ManyToMany(targetEntity = EventEntity.class, fetch = FetchType.EAGER, mappedBy = "staff")
+    private List<EventEntity> events;
+
+    public List<EventEntity> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<EventEntity> events) {
+        this.events = events;
+    }
 
     public String getImageID() {
         return imageID;
@@ -36,9 +50,8 @@ public class StaffEntity extends BasicEntity{
 
     public void setImageID(String imageID) {
         this.imageID = imageID;
-    }   
-        
-        
+    }
+
     public String getEmail() {
         return email;
     }
@@ -111,5 +124,4 @@ public class StaffEntity extends BasicEntity{
         this.phonenumber = phonenumber;
     }
 
-   
 }

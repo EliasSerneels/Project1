@@ -66,7 +66,7 @@ public class BungalowFacade {
             listDetail.setPrice(bungalow.getPrice());
             listDetail.setPark(bungalow.getPark().getName());
             listDetail.setMaxpeople(bungalow.getMaxpeople());
-            listDetail.setReservations(bungalow.getReservations());
+            listDetail.setReservations(bungalow.getNumberOfReservations());
             listDetail.setImageID(bungalow.getImageID());
             listDetail.setDescription(bungalow.getDescription());
             dto.getList().add(listDetail);

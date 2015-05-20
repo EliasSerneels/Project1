@@ -7,14 +7,18 @@ package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "event")
 @XmlRootElement
-public class EventEntity extends BasicEntity implements Serializable{
+public class EventEntity extends BasicEntity implements Serializable {
 
     private String eventtype;
     private String eventname;
@@ -29,6 +33,50 @@ public class EventEntity extends BasicEntity implements Serializable{
 
     private String startDateFormatted;
     private String endDateFormatted;
+
+    @ManyToOne(targetEntity = EventtypeEntity.class, fetch = FetchType.EAGER)
+    private EventtypeEntity type;
+    
+    @ManyToOne(targetEntity = EventcompanyEntity.class, fetch = FetchType.EAGER)
+    private EventcompanyEntity company;
+    
+    @ManyToOne(targetEntity = LocationEntity.class, fetch = FetchType.EAGER)
+    private LocationEntity location;
+    
+    @ManyToMany(targetEntity = StaffEntity.class, fetch = FetchType.EAGER)
+    private List<StaffEntity> staff;
+
+    public LocationEntity getLocation() {
+        return location;
+    }
+
+    public void setLocation(LocationEntity location) {
+        this.location = location;
+    }
+
+    public EventcompanyEntity getCompany() {
+        return company;
+    }
+
+    public void setCompany(EventcompanyEntity company) {
+        this.company = company;
+    }
+
+    public List<StaffEntity> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(List<StaffEntity> staff) {
+        this.staff = staff;
+    }
+
+    public EventtypeEntity getType() {
+        return type;
+    }
+
+    public void setType(EventtypeEntity type) {
+        this.type = type;
+    }
 
     public String getStartDateFormatted() {
         return startDateFormatted;
@@ -71,7 +119,7 @@ public class EventEntity extends BasicEntity implements Serializable{
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
-    
+
     public String getLocationName() {
         return locationName;
     }
@@ -103,7 +151,7 @@ public class EventEntity extends BasicEntity implements Serializable{
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-  
+
     public String getEventtype() {
         return eventtype;
     }
@@ -126,7 +174,8 @@ public class EventEntity extends BasicEntity implements Serializable{
 
     public void setEventcompany(String eventcompany) {
         this.eventcompany = eventcompany;
-    }  
+    }
+
     public Date getCurrentDate() {
         return currentDate;
     }

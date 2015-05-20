@@ -7,12 +7,9 @@ package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,17 +21,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "eventcompany")
 @XmlRootElement
-public class EventcompanyEntity extends BasicEntity implements Serializable{
+public class EventcompanyEntity extends BasicEntity implements Serializable {
 
+    private String name;
+    private String city;
+    private String street;
+    private String phone;
+    private String contact;
+    private String imageID;
+    private int totalnumberevents;
 
-private String name;
-private String city;
-private String street;
-private String phone;
-private String contact;
-private String imageID;
-private int totalnumberevents;
+    @OneToMany(targetEntity=EventEntity.class,fetch = FetchType.EAGER, mappedBy = "company")
+    private List<BungalowEntity> events;
 
+    public List<BungalowEntity> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<BungalowEntity> events) {
+        this.events = events;
+    }
+    
     public int getTotalnumberevents() {
         return totalnumberevents;
     }
@@ -43,7 +50,6 @@ private int totalnumberevents;
         this.totalnumberevents = totalnumberevents;
     }
 
-
     public String getImageID() {
         return imageID;
     }
@@ -51,9 +57,6 @@ private int totalnumberevents;
     public void setImageID(String imageID) {
         this.imageID = imageID;
     }
-
-
-
 
     public String getContact() {
         return contact;
@@ -94,6 +97,5 @@ private int totalnumberevents;
     public void setContact(String contact) {
         this.contact = contact;
     }
-    
-    
+
 }

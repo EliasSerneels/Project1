@@ -16,7 +16,10 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -37,6 +40,9 @@ public class CustomerEntity extends BasicEntity{
     private String email;
     private boolean receiveupdate;
     private String imageID;
+    
+    @OneToMany(targetEntity = ReservationEntity.class, fetch = FetchType.EAGER, mappedBy = "customer")
+    private List<ReservationEntity> reservations;
 
     public String getImageID() {
         return imageID;
