@@ -86,6 +86,7 @@ public class EventFacade implements Serializable{
         List<EventTypeEntity> eventtypes = eventtypeDao.listAll();
         List<LocationEntity> locations = locationDao.listAll();
         List<CustomerEntity> customers = customerDao.listAll();
+        List<EventCompanyEntity> eventcompanys = eventcompanyDao.listAll();
 
         for (CustomerEntity customer: customers) {
             dto.getCustomerList().add(customer.getFirstname()+" "+customer.getLastname());
@@ -99,13 +100,13 @@ public class EventFacade implements Serializable{
             dto.getEventcompanyList().add(eventcompany.getName());
         }
 
-        for (EventtypeEntity eventtype : eventtypes) {
+        for (EventTypeEntity eventtype : eventtypes) {
             dto.getEventtypeList().add(eventtype.getEventname());
         }
 
         for (EventEntity event : events) {
            int ReservationCount = 0;            
-                     for (EventcompanyEntity eventcompany : eventcompanys){
+                     for (EventCompanyEntity eventcompany : eventcompanys){
                             if(eventcompany.getName().equals(event.getEventcompany())){
                                 ReservationCount ++;
                                 eventcompany.setTotalnumberevents(ReservationCount);
