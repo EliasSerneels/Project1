@@ -19,10 +19,7 @@
                 
                 <h2>Kalender</h2>   
                 <p:schedule id="schedule" value="#{scheduler.eventModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+2" timeFormat="HH:mm">
-                    <p:ajax event="dateSelect" listener="#{scheduler.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                     <p:ajax event="eventSelect" listener="#{scheduler.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-                    <p:ajax event="eventMove" listener="#{scheduler.onEventMove}" update="messages" />
-                    <p:ajax event="eventResize" listener="#{scheduler.onEventResize}" update="messages" />
                 </p:schedule>
 
                 <style type="text/css">
@@ -42,6 +39,11 @@
                     .loc13, .loc13 .fc-event-skin, .loc13 a{background-color:#66FF99; border:0px;}
                     .loc14, .loc14 .fc-event-skin, .loc14 a{background-color:#9966FF; border:0px;}
                     .loc15, .loc15 .fc-event-skin, .loc15 a{background-color:#CC3333; border:0px;}
+                    .fc-content .fc-state-highlight { 
+                            background-color: black!important;
+                            border:1px solid black!important;
+                    }
+                    
                 </style>  
 
                 <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">

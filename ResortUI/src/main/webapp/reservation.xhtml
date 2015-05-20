@@ -24,10 +24,7 @@
 
                     <h2>Kalender</h2>   
                     <p:schedule id="schedule" value="#{scheduler.reservationModel}"  widgetVar="myschedule" locale="nl" timeZone="GMT+2" timeFormat="HH:mm">
-                        <p:ajax event="dateSelect" listener="#{scheduler.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventSelect" listener="#{scheduler.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-                        <p:ajax event="eventMove" listener="#{scheduler.onEventMove}" update="messages" />
-                        <p:ajax event="eventResize" listener="#{scheduler.onEventResize}" update="messages" />
                     </p:schedule>
 
                     <style type="text/css">
