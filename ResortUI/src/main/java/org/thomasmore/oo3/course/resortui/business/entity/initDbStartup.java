@@ -142,6 +142,60 @@ public class initDbStartup {
         ce3.setPhonenumber("0488992211");
         objectsToSave.add(ce3);
 
+        StaffEntity se1 = new StaffEntity();
+        se1.setFirstname("Olivier");
+        se1.setLastname("Ollisen");
+        birthdateInString = "17/02/1980";
+        try {
+            se1.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        se1.setBirthdateFormatted(birthdateInString);
+        se1.setCountry("België");
+        se1.setCity("Mechelen");
+        se1.setStreet("Kerkstraat 18");
+        se1.setEmail("Olivierollisen@hotmail.com");
+        se1.setPhonenumber("0478523698");
+        se1.setImageID("http://38.media.tumblr.com/tumblr_md46rdywDo1rx6bzyo2_500.jpg");
+        objectsToSave.add(se1);
+
+        StaffEntity se2 = new StaffEntity();
+        se2.setFirstname("Piet");
+        se2.setLastname("Pieters");  
+        birthdateInString = "10/11/1983";      
+        try {
+            se2.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        se2.setBirthdateFormatted(birthdateInString);
+        se2.setCountry("België");
+        se2.setCity("Mechelen");
+        se2.setStreet("Schoolstraat 68");
+        se2.setEmail("Pieterspiet@hotmail.com");
+        se2.setPhonenumber("0477423638");
+        se2.setImageID("https://oost.deondernemer.nl/content/files/Images/Header_members/Profielfoto_Ronald.jpg");
+        objectsToSave.add(se2);
+
+        StaffEntity se3 = new StaffEntity();
+        se3.setFirstname("Jean");
+        se3.setLastname("Keuleers");
+        birthdateInString = "04/04/1974";       
+        try {
+            se3.setBirthdate(dateSimple.parse(birthdateInString));
+        } catch (ParseException ex) {
+            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        se3.setBirthdateFormatted(birthdateInString);
+        se3.setCountry("België");
+        se3.setCity("Vilvoorde");
+        se3.setStreet("Stationstraat 91");
+        se3.setEmail("Keuleersjan@hotmail.com");
+        se3.setPhonenumber("0468123874");
+        se3.setImageID("http://www.blog.edwinvandegraaf.nl/wp-content/uploads/2013/05/profielfotograaf-edwinvandegraaf-4.jpg");
+        objectsToSave.add(se3);
+
         LocationEntity le1 = new LocationEntity();
         le1.setLocationName("Zaal 1");
         le1.setPark(parkEntity1);
@@ -214,8 +268,8 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         ee1.setLocation(le1);
+        ee1.getStaff().add(se1);
         ee1.setCustomer(ce1);
-
         objectsToSave.add(ee1);
 
         EventEntity ee2 = new EventEntity();
@@ -237,6 +291,7 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         ee2.setLocation(le2);
+        ee2.getStaff().add(se2);
         ee2.setCustomer(ce2);
         objectsToSave.add(ee2);
 
@@ -258,6 +313,7 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         ee3.setLocation(le3);
+        ee3.getStaff().add(se3);
         ee3.setCustomer(ce3);
         objectsToSave.add(ee3);
 
@@ -320,60 +376,6 @@ public class initDbStartup {
             Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
         }
         objectsToSave.add(re3);
-
-        StaffEntity se1 = new StaffEntity();
-        se1.setFirstname("Olivier");
-        se1.setLastname("Ollisen");
-        birthdateInString = "17/02/1980";
-        try {
-            se1.setBirthdate(dateSimple.parse(birthdateInString));
-        } catch (ParseException ex) {
-            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        se1.setBirthdateFormatted(birthdateInString);
-        se1.setCountry("België");
-        se1.setCity("Mechelen");
-        se1.setStreet("Kerkstraat 18");
-        se1.setEmail("Olivierollisen@hotmail.com");
-        se1.setPhonenumber("0478523698");
-        se1.setImageID("http://38.media.tumblr.com/tumblr_md46rdywDo1rx6bzyo2_500.jpg");
-        objectsToSave.add(se1);
-
-        StaffEntity se2 = new StaffEntity();
-        se2.setFirstname("Piet");
-        se2.setLastname("Pieters");  
-        birthdateInString = "10/11/1983";      
-        try {
-            se2.setBirthdate(dateSimple.parse(birthdateInString));
-        } catch (ParseException ex) {
-            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        se2.setBirthdateFormatted(birthdateInString);
-        se2.setCountry("België");
-        se2.setCity("Mechelen");
-        se2.setStreet("Schoolstraat 68");
-        se2.setEmail("Pieterspiet@hotmail.com");
-        se2.setPhonenumber("0477423638");
-        se2.setImageID("https://oost.deondernemer.nl/content/files/Images/Header_members/Profielfoto_Ronald.jpg");
-        objectsToSave.add(se2);
-
-        StaffEntity se3 = new StaffEntity();
-        se3.setFirstname("Jean");
-        se3.setLastname("Keuleers");
-        birthdateInString = "04/04/1974";       
-        try {
-            se3.setBirthdate(dateSimple.parse(birthdateInString));
-        } catch (ParseException ex) {
-            Logger.getLogger(initDbStartup.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        se3.setBirthdateFormatted(birthdateInString);
-        se3.setCountry("België");
-        se3.setCity("Vilvoorde");
-        se3.setStreet("Stationstraat 91");
-        se3.setEmail("Keuleersjan@hotmail.com");
-        se3.setPhonenumber("0468123874");
-        se3.setImageID("http://www.blog.edwinvandegraaf.nl/wp-content/uploads/2013/05/profielfotograaf-edwinvandegraaf-4.jpg");
-        objectsToSave.add(se3);
 
         UserEntity ue1 = new UserEntity();
         ue1.setId(UUID.randomUUID().toString());

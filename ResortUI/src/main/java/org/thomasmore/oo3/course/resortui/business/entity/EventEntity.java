@@ -7,6 +7,7 @@ package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -43,7 +44,7 @@ public class EventEntity extends BasicEntity implements Serializable {
     private CustomerEntity customer;
     
     @ManyToMany(targetEntity = StaffEntity.class, fetch = FetchType.EAGER)
-    private List<StaffEntity> staff;
+    private List<StaffEntity> staff = new LinkedList<>();
 
     public CustomerEntity getCustomer() {
         return customer;
