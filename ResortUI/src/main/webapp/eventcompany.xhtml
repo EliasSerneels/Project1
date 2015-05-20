@@ -63,14 +63,14 @@
                             <h:inputText label="Telefoonnr" 
                                          value="#{eventcompany.dto.detail.phone}" class="form-control"
                                          required="true" validatorMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn." requiredMessage="Het telefoonnummer mag enkel cijfers bevatten en moet minstens 7 en maximum 20 cijfers lang zijn.">
-                                <f:validateRegex pattern="([0-9].{6,20})"/>
+                                <f:validateRegex pattern="([0-9].{6,10})"/>
                             </h:inputText>
                         </li>     
                         <li>
                             <div class="inputinfo">E-Mail</div>
                             <h:inputText label="Naam"
                                          value="#{eventcompany.dto.detail.contact}" class="form-control"
-                                         required="true" validatorMessage="Vul een contact in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
+                                         required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç@]{1,50}"/>
 
