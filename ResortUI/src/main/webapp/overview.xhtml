@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -33,7 +32,7 @@
                                     <h:outputText value="#{lsdtP.name}" />
                                 </p:column>
                                 <p:column headerText="Locatie">
-                                    <h:outputText value="#{lsdtP.location}" />
+                                    <h:outputText value="#{lsdtP.locations}" />
                                 </p:column>
                                 <p:column headerText="Capaciteit">
                                     <h:outputText value="#{lsdtP.capacity}" />
@@ -294,7 +293,7 @@
 
                                         <h:panelGrid  columns="4" cellpadding="5">
                                             <h:outputText value="Klant" style="font-weight: bold"/>
-                                            <h:outputText value="#{lsdtE.customerName}"/>
+                                            <h:outputText value="#{lsdtE.customer.firstname}"/>
                                             <h:outputText value="Eventbedrijf" style="font-weight: bold"/>
                                             <h:outputText value="#{lsdtE.eventcompany}"/>
                                             <h:outputText value="Eventtype" style="font-weight: bold"/>
@@ -402,13 +401,13 @@
                                 <ui:repeat value="#{eventtype.selectedEventtype}" var="lsdtET">
                                     <p:outputPanel>
                                         <h:outputText value="Eventtype: " style="font-weight: bold"/>
-                                        <h:outputText value="#{lsdtET.eventname}" style="font-weight: bold"/>
+                                        <h:outputText value="#{lsdtET.typeName}" style="font-weight: bold"/>
 
                                         <h:panelGrid  columns="2" cellpadding="5">
                                             <h:outputText value="ID" style="font-weight: bold"/>
                                             <h:outputText value="#{lsdtET.id}"/>
                                             <h:outputText value="Eventnaam" style="font-weight: bold"/>
-                                            <h:outputText value="#{lsdtET.eventname}"/>
+                                            <h:outputText value="#{lsdtET.typeName}"/>
                                         </h:panelGrid>
                                     </p:outputPanel>                                  
                                 </ui:repeat>
