@@ -5,20 +5,34 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:form id="parkform">
-        <p:dataTable id="park" var="listDetail" value="#{park.dto.list}" class="overview" selectionMode="multiple" selection="#{park.selectedParks}" rowKey="#{listDetail.id}">                          
+        <p:dataTable id="park" var="listDetail" value="#{park.dto.list}" widgetVar="parkTable" class="overview" selectionMode="multiple" selection="#{park.selectedParks}" rowKey="#{listDetail.id}" emptyMessage="Geen data gevonden.">                          
+            <p:ajax event="rowSelect" update=":parkform:multiParkDetail" />
+            <p:ajax event="rowUnselect" update=":parkform:multiParkDetail" />
+            <p:ajax event="rowReorder" update=":parkform:multiParkDetail" />
+            <f:facet name="header">
+                <p:outputPanel>
+                    <h:outputText value="Doorzoek alle velden: " />
+                    <p:inputText id="globalFilter" onkeyup="PF('parkTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
+                </p:outputPanel>
+                <h:outputText value="Exporteren naar Excel: "/>
+                <h:commandLink>
+                    <p:graphicImage name="images/icons/excel.png" />
+                    <p:dataExporter type="xls" target="park" fileName="park" />
+                </h:commandLink>
+            </f:facet>
             <p:column headerText="Id" sortBy="#{listDetail.id}" style="display:none" >
                 <h:outputText value="#{listDetail.id}"/>
             </p:column>
-            <p:column headerText="Naam" sortBy="#{listDetail.name}">
+            <p:column headerText="Naam" sortBy="#{listDetail.name}" filterBy="#{listDetail.name}">
                 <h:outputText value="#{listDetail.name}"/>
             </p:column>
-            <p:column headerText="Capaciteit">
-                <h:outputText value="#{listDetail.capacity}"/>
+            <p:column headerText="Capaciteit" sortBy="#{listDetail.capacity}" filterBy="#{listDetail.capacity}">
+                <h:outputText value="#{listDetail.capacity}" />
             </p:column>
-            <p:column headerText="Locaties">
+            <p:column headerText="Locaties" sortBy="#{listDetail.locationsString}" filterBy="#{listDetail.locationsString}">
                 <h:outputText value="#{listDetail.locationsString}"/>
             </p:column>
-            <p:column headerText="Bungalows">
+            <p:column headerText="Bungalows" sortBy="#{listDetail.bungalowString}" filterBy="#{listDetail.bungalowString}">
                 <h:outputText value="#{listDetail.bungalowString}"/>
             </p:column>
             <p:column headerText="Afbeelding" exportable="false">
