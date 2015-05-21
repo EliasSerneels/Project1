@@ -60,6 +60,9 @@
                 </f:facet>
                 <h:outputText value="#{listDetail.locationName}"/>
             </p:column>
+            <p:column id="eventstaff" headerText="Personeel" filterBy="#{listDetail.staffString}" filterMatchMode="contains">
+                <h:outputText value="#{listDetail.staffString}"/>
+            </p:column>
             <p:column id="eventcustomer" headerText="Klant" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>

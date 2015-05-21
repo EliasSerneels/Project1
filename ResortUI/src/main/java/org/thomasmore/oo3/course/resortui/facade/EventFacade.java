@@ -71,6 +71,7 @@ public class EventFacade implements Serializable {
                 dto.getDetail().setLocationName(eventEntity.getLocation().getLocationName());
                 dto.getDetail().setCustomerName(eventEntity.getCustomer().getFirstname() + " " + eventEntity.getCustomer().getLastname());
                 dto.getDetail().setImageID(eventEntity.getImageID());
+                dto.getDetail().setStaff(eventEntity.getStaff());
 
                 // zak naar formulier
                 RequestContext context = RequestContext.getCurrentInstance();
@@ -117,10 +118,9 @@ public class EventFacade implements Serializable {
             listDetail.setEventname(event.getEventname());
             listDetail.setEventcompany(event.getCompany().getName());
             listDetail.setEventtype(event.getType().getTypeName());
-
+            listDetail.setStaff(event.getStaff());
             listDetail.setStartTime(event.getStartTime());
             listDetail.setEndTime(event.getEndTime());
-
             listDetail.setLocationName(event.getLocation().getLocationName());
 
             // Datum formateren

@@ -9,7 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -75,7 +74,7 @@ public class initDbStartup {
         bungalowEntity2.setName("Leeuw");
         bungalowEntity2.setType("Premium");
         bungalowEntity2.setPrice(100);
-        bungalowEntity2.setPark(parkEntity1);
+        bungalowEntity2.setPark(parkEntity2);
         bungalowEntity2.setDescription("Onze dakbungalow. De architecten waren te lui om een bungalow met zowel muren als dak te ontwerpen dus ze hebben de muren weggelaten. Daaruit is dus deze ingenieuse bungalowvorm ontstaan.");
         bungalowEntity2.setMaxpeople("8");
         objectsToSave.add(bungalowEntity2);
@@ -85,7 +84,7 @@ public class initDbStartup {
         bungalowEntity3.setName("Walrus");
         bungalowEntity3.setType("Luxe");
         bungalowEntity3.setPrice(150);
-        bungalowEntity3.setPark(parkEntity1);
+        bungalowEntity3.setPark(parkEntity2);
         bungalowEntity3.setMaxpeople("5");
         bungalowEntity3.setDescription("Onze dakbungalow. De architecten waren te lui om een bungalow met zowel muren als dak te ontwerpen dus ze hebben de muren weggelaten. Daaruit is dus deze ingenieuse bungalowvorm ontstaan.");
         objectsToSave.add(bungalowEntity3);

@@ -6,6 +6,8 @@
 package org.thomasmore.oo3.course.resortui.model;
 
 import java.util.Date;
+import java.util.List;
+import org.thomasmore.oo3.course.resortui.business.entity.StaffEntity;
 
 public class EventListDetailDto {
 
@@ -23,6 +25,28 @@ public class EventListDetailDto {
     private String customerName;
     private Date currentDate;
     private String imageID;
+    private List<StaffEntity> staff;
+    private String staffString;
+    
+    public String getStaffString() {
+        if (!staff.isEmpty()) {
+            staffString = staff.get(0).getFullName();
+            for (int i = 1; i < staff.size(); i++) {
+                staffString += ", " + staff.get(i).getFullName();
+            }
+        } else {
+            staffString = "Geen personeel toegewezen";
+        }
+        return staffString;
+    }
+
+    public List<StaffEntity> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(List<StaffEntity> staff) {
+        this.staff = staff;
+    }
 
     public String getImageID() {
         return imageID;

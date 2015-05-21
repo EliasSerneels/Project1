@@ -45,6 +45,10 @@ public class StaffEntity extends BasicEntity {
     public void setEvents(List<EventEntity> events) {
         this.events = events;
     }
+    
+    public String getFullName() {
+        return firstname + " " + lastname;
+    }
         
     public String getImageID() {
         return imageID;
