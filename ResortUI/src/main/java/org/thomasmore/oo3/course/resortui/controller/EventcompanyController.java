@@ -39,7 +39,7 @@ public class EventcompanyController {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String editId = req.getParameter("edit");
         String deleteId = req.getParameter("delete");
-        dto = eventcompanyFacade.loadEventCompanyOverviewPage(editId, deleteId);
+        dto = eventcompanyFacade.loadEventcompanyOverviewPage(editId, deleteId);
         
      
         
