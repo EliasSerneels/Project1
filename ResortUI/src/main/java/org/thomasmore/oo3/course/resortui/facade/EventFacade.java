@@ -170,19 +170,25 @@ public class EventFacade implements Serializable {
 
             // Checkt of datum en tijd tussen een reeds geboekte tijd ligt voor een bepaalde locatie
             // OPGELET! De !=null moet aanwezig zijn want anders wordt een nullpointer gegeven wanneer vergeleken wordt met een lege waarde              
-            if (// Nullpointers vermijden
-                    eventStartDate != null
-                    && eventEndDate != null
-                    && evnt.getLocation().getLocationName() != null
-                    && // Als event tussen begin en einddatum ligt en Zelfde locatie heeft
-                    (dtoStartDate.before(eventStartDate) && dtoEndDate.after(eventEndDate) && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName()))
-                    || // Als begintijd = binnen range of eindtijd is binnen range     
-                    (dtoStartDate.after(eventStartDate) && dtoStartDate.before(eventEndDate) && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName()))
-                    || (dtoEndDate.after(eventStartDate) && dtoEndDate.before(eventEndDate) && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName()))) {
-                return "doubleBooking: <p>Locatie " + evnt.getLocation().getLocationName() + " is reeds volboekt van</p><p>" + evnt.getStartDateFormatted() + " tot " + evnt.getEndDateFormatted() + ".</p><p>Gelieve andere datum te selecteren.</p>";
+            if(// Nullpointers vermijden
+                    eventStartDate           != null && 
+                    eventEndDate             != null && 
+                    evnt.getLocation().getLocationName()   != null &&
+                    // Check of gekozen datum niet dezelfde datum is dan begin of einddatum 
+                    ( dtoStartDate.equals(eventStartDate) && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName() ) ) ||      
+                    ( dtoEndDate.equals(eventEndDate) && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName() ) ) || 
+                    ( dtoStartDate.equals(eventEndDate) && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName() ) ) ||      
+                    ( dtoEndDate.equals(eventStartDate) && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName() ) ) ||     
+                    // Als event tussen begin en einddatum ligt en Zelfde locatie heeft
+                    ( dtoStartDate.before(eventStartDate) && dtoEndDate.after(eventEndDate)     && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName() ) ) ||     
+                    // Als begintijd = binnen range of eindtijd is binnen range     
+                    ( dtoStartDate.after(eventStartDate)  && dtoStartDate.before(eventEndDate)  && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName() ) ) ||
+                    ( dtoEndDate.after(eventStartDate)    && dtoEndDate.before(eventEndDate)    && dto.getDetail().getLocationName().equals(evnt.getLocation().getLocationName() ) )
+                   )                 
+                {
+                   return "doubleBooking: <p>Locatie "+evnt.getLocation().getLocationName() +" is reeds volboekt van</p><p>"+evnt.getStartDateFormatted()+" tot "+evnt.getEndDateFormatted()+".</p><p>Gelieve andere datum te selecteren.</p>";
+                }
             }
-        }
-
         add(dto);
         return "";
     }
