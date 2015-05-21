@@ -26,14 +26,6 @@ public class StaffListDetailDto {
     private String email;
     private String imageID;
 
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
-
     public String getId() {
         return id;
     }
@@ -58,12 +50,20 @@ public class StaffListDetailDto {
         this.lastname = lastname;
     }
 
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
     public String getBirthdateFormatted() {
         return birthdateFormatted;
     }
 
-    public void setBirthdateFormatted(String birthdateFormatted) {
-        this.birthdateFormatted = birthdateFormatted;
+    public void setBirthdateFormatted(String birthdateFormetted) {
+        this.birthdateFormatted = birthdateFormetted;
     }
 
     public String getCountry() {
@@ -121,6 +121,5 @@ public class StaffListDetailDto {
     public void setImageID(String imageID) {
         this.imageID = imageID;
     }
-    
-    
+
 }

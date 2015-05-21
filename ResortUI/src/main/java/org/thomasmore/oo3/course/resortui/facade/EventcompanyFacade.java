@@ -22,14 +22,14 @@ import org.thomasmore.oo3.course.resortui.model.EventcompanyPageDto;
  */
 @Stateless
 public class EventcompanyFacade {
+
     @EJB
- private EventDao eventDao;
+    private EventDao eventDao;
     @EJB
     private EventcompanyDao eventcompanyDao;
-    
 
-    public EventcompanyPageDto loadEventCompanyOverviewPage(String editId, String deleteId) {
-    EventcompanyPageDto dto = new EventcompanyPageDto();
+    public EventcompanyPageDto loadEventcompanyOverviewPage(String editId, String deleteId) {
+        EventcompanyPageDto dto = new EventcompanyPageDto();
         if (editId != null) {
             EventcompanyEntity eventcompanyEntity = eventcompanyDao.findById(editId);
             if (eventcompanyEntity != null) {
@@ -43,28 +43,23 @@ public class EventcompanyFacade {
                 dto.getDetail().setTotalnumberevents(eventcompanyEntity.getTotalnumberevents());
             }
         }
-        
-        
+
         if (deleteId != null) {
             eventcompanyDao.deleteById(deleteId);
         }
         List<EventcompanyEntity> eventcompanies = eventcompanyDao.listAll();
-        
 
-        
         for (EventcompanyEntity eventcompany : eventcompanies) {
-            
-            
-                    List<EventEntity> events = eventDao.listAll();
 
-            
-            int ReservationCount = 0;            
-                     for (EventEntity event : events) {
-                            if(eventcompany.getName().equals(event.getEventcompany())){
-                                ReservationCount ++;
-                                eventcompany.setTotalnumberevents(ReservationCount);
-                            }
-                        }
+            List<EventEntity> events = eventDao.listAll();
+
+            int ReservationCount = 0;
+            for (EventEntity event : events) {
+                if (eventcompany.getName().equals(event.getCompany().getName())) {
+                    ReservationCount++;
+                    eventcompany.setTotalnumberevents(ReservationCount);
+                }
+            }
             EventcompanyListDetailDto listDetail = new EventcompanyListDetailDto();
             listDetail.setId(eventcompany.getId());
             listDetail.setName(eventcompany.getName());
@@ -80,8 +75,8 @@ public class EventcompanyFacade {
     }
 
     public EventcompanyPageDto add(EventcompanyPageDto dto) {
-        
-EventcompanyEntity eventcompanyEntity = null;
+
+        EventcompanyEntity eventcompanyEntity = null;
         // Als de id niet geset is, dan kennen we hem 1 toe
         if (dto.getDetail().getId() == null || dto.getDetail().getId().isEmpty()) {
             dto.getDetail().setId(UUID.randomUUID().toString());
@@ -90,8 +85,8 @@ EventcompanyEntity eventcompanyEntity = null;
         }
 
         if (eventcompanyEntity == null) {
-            eventcompanyEntity = new EventcompanyEntity();            
-        }       
+            eventcompanyEntity = new EventcompanyEntity();
+        }
         eventcompanyEntity.setId(dto.getDetail().getId());
         eventcompanyEntity.setName(dto.getDetail().getName());
         eventcompanyEntity.setCity(dto.getDetail().getCity());

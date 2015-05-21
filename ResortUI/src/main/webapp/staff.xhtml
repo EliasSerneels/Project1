@@ -36,7 +36,7 @@
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                             </h:inputText>
                         </li>
-                        
+
                         <li>
                             <div class="inputinfo">Achternaam</div>
                             <h:inputText label="Achternaam" 
@@ -48,12 +48,12 @@
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                             </h:inputText>
                         </li>
-                        
+
                         <li>
                             <div class="inputinfo">Geboortedatum</div>
                             <p:calendar pattern="dd/MM/yyyy" locale="nl" yearRange="c-100:c" navigator="true" id="popup" value="#{staff.dto.detail.birthdate}" maxdate="#{scheduler.minimumAge()}" required="true" requiredMessage="Gelieve een geboortedatum in te vullen." />
-                        </li>
-                        
+
+                        </li>                        
                         <li>
                             <div class="inputinfo">Telefoonnr.</div>
                             <h:inputText label="Telefoonnummer" 
@@ -71,7 +71,6 @@
                                          required="true" validatorMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en @ bevatten. (Max. 50 tekens)" requiredMessage="Vul een email in. Dit veld kan letters, hoofdletters, '-. en @ bevatten. (Max. 50 tekens)"
                                          >
                                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
- 
                             </h:inputText>
                         </li> 
 
@@ -94,28 +93,28 @@
                                 <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,50}"/>
                             </h:inputText>
                         </li>  
-                        
+
                         <li>
                             <div class="inputinfo">Straat</div>
                             <h:inputText label="Straat"
                                          value="#{staff.dto.detail.street}" class="form-control"
                                          required="true" validatorMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)" requiredMessage="Vul een straat in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 50 tekens)"
                                          >
-                                <f:validateRegex pattern="^^[A-z][A-z0-9\'-. éèêâôûîëääüïöàç]{1,100}"/>
+                                <f:validateRegex pattern="^^[A-z][A-z0-9\'-. éèêâôûîëääüïöàç]{1,50}"/>
                             </h:inputText>
                         </li>
-                        
+
                         <li>
                             <div class="inputinfo">Personeelsfoto</div>
                             <h:inputText label="URL" 
                                          value="#{staff.dto.detail.imageID}" class="form-control"
                                          required="false" validatorMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg" requiredMessage="Gelieve een geldige url te gebruiken. Volgende formaten zijn toegestaan: .jpg,.png,.jpeg">
-                            <f:validateRegex pattern="^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\.(?:jpg|gif|png))(?:\?([^#]*))?(?:#(.*))?$"/>
+                                <f:validateRegex pattern="^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\.(?:jpg|gif|png))(?:\?([^#]*))?(?:#(.*))?$"/>
                             </h:inputText>
                         </li>
 
                     </ul>
-                    
+
                     <div class="col-md-12">
                         <div class="input-group"> 
                             <h:commandButton class="button" action="#{staff.add()}" value="Opslaan" ></h:commandButton>

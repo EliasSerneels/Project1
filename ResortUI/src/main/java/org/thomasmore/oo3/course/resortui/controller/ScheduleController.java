@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,6 +21,7 @@ import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -31,6 +33,7 @@ import org.thomasmore.oo3.course.resortui.business.entity.EventEntity;
 import org.thomasmore.oo3.course.resortui.business.entity.ReservationEntity;
 import org.thomasmore.oo3.course.resortui.dao.EventDao;
 import org.thomasmore.oo3.course.resortui.dao.ReservationDao;
+import org.thomasmore.oo3.course.resortui.model.EventPageDto;
 
 @Named(value = "scheduler")
 @Stateless
@@ -85,8 +88,28 @@ public class ScheduleController {
         event = new DefaultScheduleEvent();
     }
      
-    public void onEventSelect(SelectEvent selectEvent) {
-        event = (ScheduleEvent) selectEvent.getObject();  
+    public EventPageDto onEventSelect(SelectEvent selectEvent) {
+        event = (ScheduleEvent) selectEvent.getObject();
+         
+
+        EventPageDto dto = new EventPageDto();
+        // Zoeken naar event met waarden die we verkrijgen uit de onselecteventmethode
+        List<EventEntity> eventschedule = eventDao.listAll();
+        for (EventEntity evnt : eventschedule) { 
+           String eventName = evnt.getEventname();
+           
+           if(eventName.equals(event.getTitle())){
+               dto.getDetail().setLocationName(evnt.getLocation().getLocationName());
+               dto.getDetail().setEventtype(evnt.getType().getTypeName());
+               dto.getDetail().setCustomerName(evnt.getCustomer().getFirstname() + " " + evnt.getCustomer().getLastname());
+               dto.getDetail().setEventcompany(evnt.getCompany().getName());
+               dto.getDetail().setEventname(evnt.getEventname());
+               
+               RequestContext.getCurrentInstance().update("eventDialog");
+           }
+           
+        }
+        return dto;
     }
      
     public void onDateSelect(SelectEvent selectEvent) {
@@ -139,8 +162,8 @@ public class ScheduleController {
 
         for (EventEntity evnt : eventschedule) { 
             // Check of de locatie al in de lijst zit
-            if(!locList.contains(evnt.getLocationName()) ) {
-                locList.add(evnt.getLocationName());
+            if(!locList.contains(evnt.getLocation().getLocationName()) ) {
+                locList.add(evnt.getLocation().getLocationName());
              }
             
             // Datum formateren
@@ -153,7 +176,7 @@ public class ScheduleController {
                 Date startDate = dateSimple.parse(evnt.getStartDateFormatted());
                 Date endDate = dateSimple.parse(evnt.getEndDateFormatted());
                 
-                loc = "loc"+String.valueOf(locList.indexOf(evnt.getLocationName()));
+                loc = "loc"+String.valueOf(locList.indexOf(evnt.getLocation().getLocationName()));
                 DefaultScheduleEvent evento = new DefaultScheduleEvent (evnt.getEventname(),startDate,endDate,loc);
                 eventModel.addEvent(evento);
             } catch (ParseException ex) {
@@ -170,12 +193,12 @@ public class ScheduleController {
         
         // Deze waarden en list zijn nodig voor de kleuren te veranderen per locatie
         String loc;
-        ArrayList<String> locList = new ArrayList<String>();
+        ArrayList<String> locList = new ArrayList<>();
 
         for (ReservationEntity res : reservationschedule) { 
             // Check of de locatie al in de lijst zit
-            if(!locList.contains(res.getBungalowName()) ) {
-                locList.add(res.getBungalowName());
+            if(!locList.contains(res.getBungalow().getName()) ) {
+                locList.add(res.getBungalow().getName());
              }
             
             // Datum formateren
@@ -186,8 +209,8 @@ public class ScheduleController {
             try {
                 Date startDate = dateSimple.parse(res.getStartDateFormatted());
                 Date endDate = dateSimple.parse(res.getEndDateFormatted());
-                loc = "loc"+String.valueOf(locList.indexOf(res.getBungalowName()));
-                DefaultScheduleEvent evento = new DefaultScheduleEvent (res.getBungalowName(),startDate,endDate,loc);
+                loc = "loc"+String.valueOf(locList.indexOf(res.getBungalow().getName()));
+                DefaultScheduleEvent evento = new DefaultScheduleEvent (res.getBungalow().getName(),startDate,endDate,loc);
                 reservationModel.addEvent(evento);
             } catch (ParseException ex) {
                 Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
@@ -214,21 +237,13 @@ public class ScheduleController {
         Date yesterday = cal.getTime();
         return yesterday;
     }
+    
     public Date minimumAge(){
         Date now = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(now);
-        cal.add(Calendar.YEAR, -16); 
-        Date minimumAge = cal.getTime();
-        return minimumAge;
-    }
-    public String minimumAgeString(){
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date now = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(now);
-        cal.add(Calendar.YEAR, -16); 
-        Date minimumAge = cal.getTime();
-        return dateFormat.format(minimumAge);
+        cal.add(Calendar.YEAR, -18); 
+        Date yesterday = cal.getTime();
+        return yesterday;
     }
 }

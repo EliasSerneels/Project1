@@ -39,7 +39,6 @@ public class BungalowListDetailDto {
     public void setDescription(String description) {
         this.description = description;
     }
-
     
     public String getImageID() {
         return imageID;

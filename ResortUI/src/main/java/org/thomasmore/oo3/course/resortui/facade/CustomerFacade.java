@@ -29,7 +29,7 @@ public class CustomerFacade {
     private CustomerDao customerDao;
 
     private final SimpleDateFormat dateDate = new SimpleDateFormat("dd/MM/yyyy");
-    
+
     public CustomerPageDto loadCustomerOverviewPage(String editId, String deleteId) {
         CustomerPageDto dto = new CustomerPageDto();
         if (editId != null) {
@@ -53,7 +53,7 @@ public class CustomerFacade {
             customerDao.deleteById(deleteId);
         }
         List<CustomerEntity> customers = customerDao.listAll();
-        
+
         for (CustomerEntity customer : customers) {
             CustomerListDetailDto listDetail = new CustomerListDetailDto();
             listDetail.setId(customer.getId());
@@ -64,12 +64,11 @@ public class CustomerFacade {
 
             try {
                 listDetail.setBirthdate(dateDate.parse(listDetail.getBirthdateFormatted())
-             );
+                );
             } catch (ParseException ex) {
                 Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
             // Tot hier wordt datum geformateerd
-            
             listDetail.setBirthdate(customer.getBirthdate());
             listDetail.setCountry(customer.getCountry());
             listDetail.setCity(customer.getCity());
@@ -94,7 +93,7 @@ public class CustomerFacade {
             customerEntity = customerDao.findById(dto.getDetail().getId());
 
         }
-        if(customerEntity == null){
+        if (customerEntity == null) {
             customerEntity = new CustomerEntity();
         }
         customerEntity.setId(dto.getDetail().getId());

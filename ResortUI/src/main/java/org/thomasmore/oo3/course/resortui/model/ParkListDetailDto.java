@@ -16,20 +16,50 @@
  */
 package org.thomasmore.oo3.course.resortui.model;
 
+import java.util.List;
+import org.thomasmore.oo3.course.resortui.business.entity.BungalowEntity;
+import org.thomasmore.oo3.course.resortui.business.entity.LocationEntity;
+
 /**
  *
  * @author lucs
  */
 public class ParkListDetailDto {
-    
+
     private String id;
-    
+
     private String name;
-    private String location;
     private int capacity;
-    private String bungalowName;
+    private List<BungalowEntity> bungalows;
+    private List<LocationEntity> locations;
     private String imageID;
     private String description;
+    private String bungalowsString;
+    private String locationsString;
+
+    public String getBungalowString() {
+        if (!bungalows.isEmpty()) {
+            bungalowsString = bungalows.get(0).getName();
+            for (int i = 1; i < bungalows.size(); i++) {
+                bungalowsString += ", " + bungalows.get(i).getName();
+            }
+        } else {
+            bungalowsString = "Geen bungalows aanwezig";
+        }
+        return bungalowsString;
+    }
+    
+    public String getLocationsString() {        
+        if (!locations.isEmpty()) {
+            locationsString = locations.get(0).getLocationName();
+            for (int i = 1; i < locations.size(); i++) {
+                locationsString += ", " + locations.get(i).getLocationName();
+            }
+        } else {
+            locationsString = "Geen locaties aanwezig";
+        }
+        return locationsString;
+    }
 
     public String getDescription() {
         return description;
@@ -39,7 +69,6 @@ public class ParkListDetailDto {
         this.description = description;
     }
 
-    
     public String getImageID() {
         return imageID;
     }
@@ -47,22 +76,21 @@ public class ParkListDetailDto {
     public void setImageID(String imageID) {
         this.imageID = imageID;
     }
-    
 
-    public String getBungalowName() {
-        return bungalowName;
+    public List<BungalowEntity> getBungalows() {
+        return bungalows;
     }
 
-    public void setBungalowName(String bungalowName) {
-        this.bungalowName = bungalowName;
+    public void setBungalows(List<BungalowEntity> bungalows) {
+        this.bungalows = bungalows;
     }
 
-    public String getLocation() {
-        return location;
+    public List<LocationEntity> getLocations() {
+        return locations;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocations(List<LocationEntity> locations) {
+        this.locations = locations;
     }
 
     public int getCapacity() {
@@ -88,5 +116,5 @@ public class ParkListDetailDto {
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }

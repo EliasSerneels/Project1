@@ -16,14 +16,14 @@ public class LocationPageDto {
     private LocationDetailDto detail = new LocationDetailDto();
     private List<LocationListDetailDto> list = new LinkedList<>();
 
-    private List<String> locationList = new LinkedList<>();
+    private List<String> parkList = new LinkedList<>();
 
-    public List<String> getLocationList() {
-        return locationList;
+    public List<String> getParkList() {
+        return parkList;
     }
 
-    public void setLocationList(List<String> locationList) {
-        this.locationList = locationList;
+    public void setParkList(List<String> locationList) {
+        this.parkList = locationList;
     }
     
     public LocationDetailDto getDetail() {

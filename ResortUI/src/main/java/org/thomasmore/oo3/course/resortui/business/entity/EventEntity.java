@@ -7,28 +7,84 @@ package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "event")
 @XmlRootElement
-public class EventEntity extends BasicEntity implements Serializable{
+public class EventEntity extends BasicEntity implements Serializable {
 
-    private String eventtype;
     private String eventname;
-    private String eventcompany;
     private Date startDate;
     private Date endDate;
     private Date startTime;
     private Date endTime;
-    private String locationName;
-    private String customerName;
     private Date currentDate;
 
     private String startDateFormatted;
     private String endDateFormatted;
+
+    @ManyToOne(targetEntity = EventtypeEntity.class, fetch = FetchType.EAGER)
+    private EventtypeEntity type;
+    
+    @ManyToOne(targetEntity = EventcompanyEntity.class, fetch = FetchType.EAGER)
+    private EventcompanyEntity company;
+    
+    @ManyToOne(targetEntity = LocationEntity.class, fetch = FetchType.EAGER)
+    private LocationEntity location;
+    
+    @ManyToOne(targetEntity = CustomerEntity.class, fetch = FetchType.EAGER)
+    private CustomerEntity customer;
+    
+    @ManyToMany(targetEntity = StaffEntity.class, fetch = FetchType.EAGER)
+    private List<StaffEntity> staff = new LinkedList<>();
+
+    public CustomerEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
+    }
+
+    public LocationEntity getLocation() {
+        return location;
+    }
+
+    public void setLocation(LocationEntity location) {
+        this.location = location;
+    }
+
+    public EventcompanyEntity getCompany() {
+        return company;
+    }
+
+    public void setCompany(EventcompanyEntity company) {
+        this.company = company;
+    }
+
+    public List<StaffEntity> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(List<StaffEntity> staff) {
+        this.staff = staff;
+    }
+
+    public EventtypeEntity getType() {
+        return type;
+    }
+
+    public void setType(EventtypeEntity type) {
+        this.type = type;
+    }
 
     public String getStartDateFormatted() {
         return startDateFormatted;
@@ -71,22 +127,6 @@ public class EventEntity extends BasicEntity implements Serializable{
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
-    
-    public String getLocationName() {
-        return locationName;
-    }
-
-    public void setLocationName(String locationName) {
-        this.locationName = locationName;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
 
     public Date getStartDate() {
         return startDate;
@@ -103,14 +143,6 @@ public class EventEntity extends BasicEntity implements Serializable{
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-  
-    public String getEventtype() {
-        return eventtype;
-    }
-
-    public void setEventtype(String eventtype) {
-        this.eventtype = eventtype;
-    }
 
     public String getEventname() {
         return eventname;
@@ -120,13 +152,6 @@ public class EventEntity extends BasicEntity implements Serializable{
         this.eventname = eventname;
     }
 
-    public String getEventcompany() {
-        return eventcompany;
-    }
-
-    public void setEventcompany(String eventcompany) {
-        this.eventcompany = eventcompany;
-    }  
     public Date getCurrentDate() {
         return currentDate;
     }

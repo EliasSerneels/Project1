@@ -27,7 +27,7 @@ public class StaffFacade {
 
     @EJB
     private StaffDao staffDao;
-    
+
     private final SimpleDateFormat dateDate = new SimpleDateFormat("dd/MM/yyyy");
 
     public StaffPageDto loadStaffOverviewPage(String editId, String deleteId) {
@@ -59,13 +59,12 @@ public class StaffFacade {
             listDetail.setId(staff.getId());
             listDetail.setFirstname(staff.getFirstname());
             listDetail.setLastname(staff.getLastname());
-
             // Datum formateren
             listDetail.setBirthdateFormatted(dateDate.format(staff.getBirthdate()));
 
             try {
                 listDetail.setBirthdate(dateDate.parse(listDetail.getBirthdateFormatted())
-             );
+                );
             } catch (ParseException ex) {
                 Logger.getLogger(EventFacade.class.getName()).log(Level.SEVERE, null, ex);
             }

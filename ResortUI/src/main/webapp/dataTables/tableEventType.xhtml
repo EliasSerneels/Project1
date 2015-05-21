@@ -10,6 +10,10 @@
             <p:ajax event="rowReorder" update=":eventtypeform:multiEventTypeDetail" />
 
             <f:facet name="header">
+                <p:outputPanel>
+                    <h:outputText value="Doorzoek alle velden: " />
+                    <p:inputText id="globalFilter" onkeyup="PF('eventTypeTable').filter()" style="width:150px" placeholder="Geef zoekwoord in..."/>
+                </p:outputPanel>
                 <h:outputText value="Exporteren naar Excel: "/>
                 <h:commandLink>
                     <p:graphicImage name="images/icons/excel.png" />
@@ -35,13 +39,13 @@
                 <ui:repeat value="#{eventtype.selectedEventtype}" var="listDetail" rendered="true">
                     <p:outputPanel>
                         <h:outputText value="Eventtype: " style="font-weight: bold"/>
-                        <h:outputText value="#{listDetail.eventname}" style="font-weight: bold"/>
-                        
+                        <h:outputText value="#{listDetail.typeName}" style="font-weight: bold"/>
+
                         <h:panelGrid  columns="2" cellpadding="5">
                             <h:outputText value="ID" style="font-weight: bold"/>
                             <h:outputText value="#{listDetail.id}"/>
                             <h:outputText value="Eventnaam" style="font-weight: bold"/>
-                            <h:outputText value="#{listDetail.eventname}"/>
+                            <h:outputText value="#{listDetail.typeName}"/>
                         </h:panelGrid>
                     </p:outputPanel>  
                 </ui:repeat>

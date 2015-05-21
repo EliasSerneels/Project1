@@ -30,18 +30,7 @@
                                          >
                                 <f:validateRegex pattern="^^[a-zA-Z0-9][a-zA-Z0-9\'-. éèêâôûîëääüïöàç]{1,50}"/>
                             </h:inputText>
-                        </li>
-                        
-                        <li>
-                            <div class="inputinfo">Locatie</div>
-                            <h:inputText label="Locatie" 
-                                         value="#{park.dto.detail.location}" class="form-control"
-                                         required="true" requiredMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten." validatorMessage="Vul een locatie in. Dit veld kan letters, hoofdletters, '-. en spaties bevatten. (Max. 20 tekens)"
-                                         >
-                                <f:validateRegex pattern="^^[A-z][A-z\'-. éèêâôûîëääüïöàç]{1,20}"/>
-                            </h:inputText>
-                        </li>
-                        
+                        </li>                        
                         <li>
                             <div class="inputinfo">Capaciteit</div>
                             <h:inputText label="Capaciteit" 

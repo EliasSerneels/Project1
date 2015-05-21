@@ -26,10 +26,10 @@
                             <div class="inputinfo">Park</div>
                             <p:selectOneMenu required="true" id="parklist" value="#{location.dto.detail.park}" style="width:419px;" requiredMessage="Gelieve een park te kiezen.">
                                 <f:selectItem itemLabel="Kies park" itemValue="#{null}" noSelectionOption="true" />
-                                <f:selectItems value="#{location.dto.locationList}" />
+                                <f:selectItems value="#{location.dto.parkList}" />
                             </p:selectOneMenu>
                         </li>
-                        
+
                         <li>
                             <div class="inputinfo">Naam Locatie</div>
                             <h:inputText label="Naam locatie"
@@ -42,7 +42,7 @@
                             </h:inputText>
                         </li>   
                     </ul>
-                    
+
                     <div class="col-md-12">
                         <div class="input-group"> 
                             <h:commandButton class="button" action="#{location.add()}" value="Opslaan" ></h:commandButton>
@@ -50,7 +50,7 @@
                     </div>
                 </h:form>
                 <br/><br/>
-                
+
                 <h2>Locatie overzicht</h2>
                 <div id="tblLocationContainer">
                     <ui:include src="dataTables/tableLocation.xhtml"></ui:include>

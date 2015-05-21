@@ -18,10 +18,9 @@ import org.thomasmore.oo3.course.resortui.dao.ParkDao;
 import org.thomasmore.oo3.course.resortui.model.BungalowListDetailDto;
 import org.thomasmore.oo3.course.resortui.model.BungalowPageDto;
 
-
 @Stateless
 public class BungalowFacade {
-    
+
     @EJB
     private ScheduleController schedulecontroller;
     @EJB
@@ -33,7 +32,7 @@ public class BungalowFacade {
     public void init() {
         schedulecontroller.LoadBungalowSchedule();
     }
-    
+
     public BungalowPageDto loadBungalowOverviewPage(String editId, String deleteId) {
         BungalowPageDto dto = new BungalowPageDto();
 
@@ -52,23 +51,22 @@ public class BungalowFacade {
                 dto.getDetail().setName(bungalowEntity.getName());
                 dto.getDetail().setPrice(bungalowEntity.getPrice());
                 dto.getDetail().setType(bungalowEntity.getType());
-                dto.getDetail().setPark(bungalowEntity.getPark());
+                dto.getDetail().setPark(bungalowEntity.getPark().getName());
                 dto.getDetail().setMaxpeople(bungalowEntity.getMaxpeople());
                 dto.getDetail().setImageID(bungalowEntity.getImageID());
                 dto.getDetail().setDescription(bungalowEntity.getDescription());
             }
         }
         List<BungalowEntity> bungalows = bungalowDao.listAll();
-
         for (BungalowEntity bungalow : bungalows) {
             BungalowListDetailDto listDetail = new BungalowListDetailDto();
             listDetail.setId(bungalow.getId());
             listDetail.setName(bungalow.getName());
             listDetail.setType(bungalow.getType());
             listDetail.setPrice(bungalow.getPrice());
-            listDetail.setPark(bungalow.getPark());
+            listDetail.setPark(bungalow.getPark().getName());
             listDetail.setMaxpeople(bungalow.getMaxpeople());
-            listDetail.setReservations(bungalow.getReservations());
+            listDetail.setReservations(bungalow.getNumberOfReservations());
             listDetail.setImageID(bungalow.getImageID());
             listDetail.setDescription(bungalow.getDescription());
             dto.getList().add(listDetail);
@@ -85,15 +83,21 @@ public class BungalowFacade {
         } else {
             bungalowEntity = bungalowDao.findById(dto.getDetail().getId());
         }
-
         if (bungalowEntity == null) {
             bungalowEntity = new BungalowEntity();
+        }
+        List<ParkEntity> parks = parkDao.listAll();
+        ParkEntity park = null;
+        for (ParkEntity pe : parks) {
+            if (pe.getName().equals(dto.getDetail().getPark())) {
+                park = pe;
+            }
         }
         bungalowEntity.setId(dto.getDetail().getId());
         bungalowEntity.setName(dto.getDetail().getName());
         bungalowEntity.setPrice(dto.getDetail().getPrice());
         bungalowEntity.setType(dto.getDetail().getType());
-        bungalowEntity.setPark(dto.getDetail().getPark());
+        bungalowEntity.setPark(park);
         bungalowEntity.setMaxpeople(dto.getDetail().getMaxpeople());
         bungalowEntity.setImageID(dto.getDetail().getImageID());
         bungalowEntity.setDescription(dto.getDetail().getDescription());

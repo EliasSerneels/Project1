@@ -16,7 +16,11 @@
  */
 package org.thomasmore.oo3.course.resortui.business.entity;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,10 +33,31 @@ public class BungalowEntity extends BasicEntity {
     private String type;
     private int price;
     private String name;
-    private String park;
     private String maxPeople;
-    private int reservations;
-    private String description;
+    private int numberOfReservations;
+    private String description;    
+    
+    @OneToMany(targetEntity = ReservationEntity.class, fetch = FetchType.EAGER, mappedBy = "bungalow")
+    private List<ReservationEntity> reservations;
+    
+    @ManyToOne(targetEntity=ParkEntity.class,fetch = FetchType.EAGER)
+    private ParkEntity park;
+
+    public List<ReservationEntity> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<ReservationEntity> reservations) {
+        this.reservations = reservations;
+    }
+
+    public ParkEntity getPark() {
+        return park;
+    }
+
+    public void setPark(ParkEntity park) {
+        this.park = park;
+    }
 
     public String getDescription() {
         return description;
@@ -49,14 +74,6 @@ public class BungalowEntity extends BasicEntity {
 
     public void setImageID(String imageID) {
         this.imageID = imageID;
-    }
-    
-    public String getPark() {
-        return park;
-    }
-
-    public void setPark(String park) {
-        this.park = park;
     }
 
     public String getName() {
@@ -92,16 +109,16 @@ public class BungalowEntity extends BasicEntity {
         this.name = name;
     }
 
-    public int getReservations() {
-        return reservations;
+    public int getNumberOfReservations() {
+        return numberOfReservations;
     }
 
-    public void setReservations(int reservaties) {
-        this.reservations = reservaties;
+    public void setNumberOfReservations(int numberOfReservations) {
+        this.numberOfReservations = numberOfReservations;
     }
     
     public void addReservation() {
-        reservations++;
+        numberOfReservations++;
     }
     
 }

@@ -18,9 +18,8 @@ package org.thomasmore.oo3.course.resortui.model;
 
 import java.util.Date;
 
-
 public class CustomerListDetailDto {
-    
+
     private String id;
     private String firstname;
     private String lastname;
@@ -35,14 +34,6 @@ public class CustomerListDetailDto {
     private boolean receiveupdate;
     private String imageID;
 
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
-
     public String getImageID() {
         return imageID;
     }
@@ -51,8 +42,6 @@ public class CustomerListDetailDto {
         this.imageID = imageID;
     }
 
-    
-    
     public boolean isReceiveupdate() {
         return receiveupdate;
     }
@@ -91,6 +80,14 @@ public class CustomerListDetailDto {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getBirthdateFormatted() {
@@ -140,6 +137,5 @@ public class CustomerListDetailDto {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
-    
-    
-    }
+
+}

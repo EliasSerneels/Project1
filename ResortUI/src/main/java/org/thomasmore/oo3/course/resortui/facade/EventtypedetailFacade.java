@@ -57,7 +57,7 @@ EventtypedetailPageDto dto = new EventtypedetailPageDto();
         
         dto.getEventtypeList().add("");
         for (EventtypeEntity eventtype : eventtypes) {
-            dto.getEventtypeList().add(eventtype.getEventname());
+            dto.getEventtypeList().add(eventtype.getTypeName());
         }
         
         dto.getEventcompanyList().add("");

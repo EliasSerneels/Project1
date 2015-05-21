@@ -53,8 +53,6 @@ public class BungalowPageDto {
 
     public void setList(List<BungalowListDetailDto> list) {
         this.list = list;
-    }
-
-    
+    }  
     
 }

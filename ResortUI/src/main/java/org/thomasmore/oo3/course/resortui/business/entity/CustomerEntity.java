@@ -17,7 +17,10 @@
 package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -39,14 +42,9 @@ public class CustomerEntity extends BasicEntity{
     private String email;
     private boolean receiveupdate;
     private String imageID;
-
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
+    
+    @OneToMany(targetEntity = ReservationEntity.class, fetch = FetchType.EAGER, mappedBy = "customer")
+    private List<ReservationEntity> reservations;
 
     public String getImageID() {
         return imageID;
@@ -89,12 +87,20 @@ public class CustomerEntity extends BasicEntity{
         this.lastname = lastname;
     }
 
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
     public String getBirthdateFormatted() {
         return birthdateFormatted;
     }
 
-    public void setBirthdateFormatted(String birthdateFormatted) {
-        this.birthdateFormatted = birthdateFormatted;
+    public void setBirthdateFormatted(String birthdate) {
+        this.birthdateFormatted = birthdate;
     }
 
     public String getCountry() {

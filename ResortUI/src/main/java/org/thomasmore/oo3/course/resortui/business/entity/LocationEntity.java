@@ -6,7 +6,11 @@
 package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -19,8 +23,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class LocationEntity extends BasicEntity implements Serializable {
 
-private String park;
 private String locationName;
+
+    @ManyToOne(targetEntity = ParkEntity.class, fetch = FetchType.EAGER)
+    private ParkEntity park;
+    
+    @OneToMany(targetEntity = EventEntity.class, fetch = FetchType.EAGER, mappedBy = "location")
+    private List<EventEntity> events;
+
+    public List<EventEntity> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<EventEntity> events) {
+        this.events = events;
+    }
+
+    public ParkEntity getPark() {
+        return park;
+    }
+
+    public void setPark(ParkEntity parkje) {
+        this.park = parkje;
+    }
 
     public String getLocationName() {
         return locationName;
@@ -28,13 +53,5 @@ private String locationName;
 
     public void setLocationName(String locationName) {
         this.locationName = locationName;
-    }
-
-    public String getPark() {
-        return park;
-    }
-
-    public void setPark(String park) {
-        this.park = park;
     }
 }

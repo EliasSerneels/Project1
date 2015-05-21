@@ -7,6 +7,8 @@ package org.thomasmore.oo3.course.resortui.business.entity;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,6 +26,28 @@ public class ReservationEntity extends BasicEntity {
     private Date endTime;
     private String startDateFormatted;
     private String endDateFormatted;
+    
+    @ManyToOne(targetEntity = CustomerEntity.class, fetch = FetchType.EAGER)
+    private CustomerEntity customer;
+    
+    @ManyToOne(targetEntity = BungalowEntity.class, fetch = FetchType.EAGER)
+    private BungalowEntity bungalow;
+
+    public CustomerEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
+    }
+
+    public BungalowEntity getBungalow() {
+        return bungalow;
+    }
+
+    public void setBungalow(BungalowEntity bungalow) {
+        this.bungalow = bungalow;
+    }
 
     public Date getStartTime() {
         return startTime;
