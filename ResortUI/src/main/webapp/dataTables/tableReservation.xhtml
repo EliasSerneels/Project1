@@ -28,9 +28,6 @@
             <p:column id="bungalowname" headerText="Bungalow" sortBy="#{listDetail.bungalowName}" filterBy="#{listDetail.bungalowName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.bungalowName}"/>
             </p:column>
-            <p:column id="parkname" headerText="Park" sortBy="#{listDetail.parkName}" filterBy="#{listDetail.parkName}" filterMatchMode="contains">
-                <h:outputText value="#{listDetail.parkName}"/>
-            </p:column>
             <p:column id="customername" headerText="Klant" sortBy="#{listDetail.customerName}" filterBy="#{listDetail.customerName}" filterMatchMode="contains">
                 <h:outputText value="#{listDetail.customerName}"/>
             </p:column>
@@ -57,13 +54,11 @@
                 <ui:repeat value="#{reservation.selectedReservation}" var="listDetail" rendered="true">
                     <p:outputPanel>
                         <h:outputText value="Reservatie voor:" style="font-weight: bold"/>
-                        <h:outputText value="#{listDetail.customerName}" style="font-weight: bold"/>
+                        <h:outputText value="#{listDetail.customer.fullName}" style="font-weight: bold"/>
 
                         <h:panelGrid  columns="2" cellpadding="5">
                             <h:outputText value="Geserveerde bungalow" style="font-weight: bold"/>
                             <h:outputText value="#{listDetail.bungalowName}"/>
-                            <h:outputText value="Park:" style="font-weight: bold"/>
-                            <h:outputText value="#{listDetail.parkName}"/>
                             <h:outputText value="Aankomstdatum" style="font-weight: bold"/>
                             <h:outputText value="#{listDetail.startDate}">
                                 <f:convertDateTime pattern="dd/MM/yyyy" />

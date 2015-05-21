@@ -17,9 +17,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ReservationEntity extends BasicEntity {
 
-    private String bungalowName;
-    private String customerName;
-    private String parkName;
     private Date startDate;
     private Date endDate;
     private Date startTime;
@@ -80,14 +77,6 @@ public class ReservationEntity extends BasicEntity {
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
-    
-    public String getParkName() {
-        return parkName;
-    }
-
-    public void setParkName(String parkName) {
-        this.parkName = parkName;
-    }
 
     public Date getStartDate() {
         return startDate;
@@ -104,22 +93,4 @@ public class ReservationEntity extends BasicEntity {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-
-    public String getBungalowName() {
-        return bungalowName;
-    }
-
-    public void setBungalowName(String bungalowName) {
-        this.bungalowName = bungalowName;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
 }
-

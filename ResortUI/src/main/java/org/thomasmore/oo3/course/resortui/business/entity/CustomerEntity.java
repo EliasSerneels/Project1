@@ -53,7 +53,10 @@ public class CustomerEntity extends BasicEntity{
     public void setImageID(String imageID) {
         this.imageID = imageID;
     }
-
+    
+    public String getFullName() {
+        return firstname + " " + lastname;
+    }
 
     public boolean isReceiveupdate() {
         return receiveupdate;

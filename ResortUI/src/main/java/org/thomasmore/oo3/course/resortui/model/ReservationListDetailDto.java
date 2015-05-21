@@ -11,7 +11,6 @@ public class ReservationListDetailDto {
     private Date endTime;
     private String bungalowName;
     private String customerName;
-    private String parkName;
     private String startDateFormatted;
     private String endDateFormatted;
     
@@ -85,15 +84,6 @@ public class ReservationListDetailDto {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
-    }    
-
-    public String getParkName() {
-        return parkName;
-    }
-
-    public void setParkName(String parkName) {
-        this.parkName = parkName;
-    }
-    
+    }   
     
 }

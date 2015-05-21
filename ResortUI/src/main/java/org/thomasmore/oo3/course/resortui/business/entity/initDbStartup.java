@@ -313,9 +313,6 @@ public class initDbStartup {
         objectsToSave.add(ee3);
 
         ReservationEntity re1 = new ReservationEntity();
-        re1.setBungalowName("Zebra");
-        re1.setParkName("Funpark 1");
-        re1.setCustomerName("Thomas Coenen");
         re1.setCustomer(ce1);
         re1.setBungalow(bungalowEntity);
         startDateInString = "05/05/2015";
@@ -333,9 +330,6 @@ public class initDbStartup {
         objectsToSave.add(re1);
 
         ReservationEntity re2 = new ReservationEntity();
-        re2.setBungalowName("Leeuw");
-        re2.setParkName("Funpark 2");
-        re2.setCustomerName("Piet Uyttebroeck");
         re2.setCustomer(ce2);
         re2.setBungalow(bungalowEntity2);
         startDateInString = "03/05/2015";
@@ -353,9 +347,6 @@ public class initDbStartup {
         objectsToSave.add(re2);
 
         ReservationEntity re3 = new ReservationEntity();
-        re3.setBungalowName("Walrus");
-        re3.setCustomerName("Jos Janssens");
-        re3.setParkName("Funpark 3");
         re3.setCustomer(ce3);
         re3.setBungalow(bungalowEntity3);
         startDateInString = "13/05/2015";

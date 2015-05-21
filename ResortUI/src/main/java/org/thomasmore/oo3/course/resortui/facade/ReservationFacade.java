@@ -42,7 +42,7 @@ public class ReservationFacade {
     public void init() {
         schedulecontroller.LoadBungalowSchedule();
     }
-    
+
     public ReservationPageDto loadReservationOverviewPage(String editId, String deleteId) {
         ReservationPageDto dto = new ReservationPageDto();
         if (editId != null) {
@@ -50,12 +50,11 @@ public class ReservationFacade {
 
             if (reservationEntity != null) {
                 dto.getDetail().setId(reservationEntity.getId());
-                dto.getDetail().setBungalowName(reservationEntity.getBungalowName());
-                dto.getDetail().setCustomerName(reservationEntity.getCustomerName());
+                dto.getDetail().setBungalowName(reservationEntity.getBungalow().getName());
+                dto.getDetail().setCustomerName(reservationEntity.getCustomer().getFullName());
                 dto.getDetail().setEndDate(reservationEntity.getEndDate());
                 dto.getDetail().setEndDateFormatted(reservationEntity.getEndDateFormatted());
                 dto.getDetail().setEndTime(reservationEntity.getEndTime());
-                dto.getDetail().setParkName(reservationEntity.getParkName());
                 dto.getDetail().setStartDate(reservationEntity.getStartDate());
                 dto.getDetail().setStartDateFormatted(reservationEntity.getStartDateFormatted());
                 dto.getDetail().setStartTime(reservationEntity.getStartTime());
@@ -90,8 +89,8 @@ public class ReservationFacade {
         for (ReservationEntity reservation : reservations) {
             ReservationListDetailDto listDetail = new ReservationListDetailDto();
             listDetail.setId(reservation.getId());
-            listDetail.setBungalowName(reservation.getBungalowName());
-            listDetail.setCustomerName(reservation.getCustomerName());
+            listDetail.setBungalowName(reservation.getBungalow().getName());
+            listDetail.setCustomerName(reservation.getCustomer().getFullName());
 
             // Datum formateren
             listDetail.setStartDateFormatted(schedulecontroller.DateAndTime(reservation.getStartDate(), reservation.getStartTime()));
@@ -107,8 +106,6 @@ public class ReservationFacade {
             listDetail.setStartDate(reservation.getStartTime());
             listDetail.setEndDate(reservation.getEndTime());
             // Tot hier wordt datum geformateerd
-
-            listDetail.setParkName(reservation.getParkName());
             dto.getList().add(listDetail);
 
         }
@@ -127,13 +124,26 @@ public class ReservationFacade {
         if (reservationEntity == null) {
             reservationEntity = new ReservationEntity();
         }
+        List<CustomerEntity> customers = customersDao.listAll();
+        CustomerEntity customer = null;
+        for (CustomerEntity ce : customers) {
+            if (ce.getFullName().equals(dto.getDetail().getCustomerName())) {
+                customer = ce;
+            }
+        }
+        List<BungalowEntity> bungalows = bungalowsDao.listAll();
+        BungalowEntity bungalow = null;
+        for (BungalowEntity be : bungalows) {
+            if (be.getName().equals(dto.getDetail().getBungalowName())) {
+                bungalow = be;
+            }
+        }
         reservationEntity.setId(dto.getDetail().getId());
-        reservationEntity.setBungalowName(dto.getDetail().getBungalowName());
-        reservationEntity.setCustomerName(dto.getDetail().getCustomerName());
+        reservationEntity.setBungalow(bungalow);
+        reservationEntity.setCustomer(customer);
         reservationEntity.setEndDate(dto.getDetail().getEndDate());
         reservationEntity.setEndDateFormatted(dto.getDetail().getEndDateFormatted());
         reservationEntity.setEndTime(dto.getDetail().getEndTime());
-        reservationEntity.setParkName(dto.getDetail().getParkName());
         reservationEntity.setStartDate(dto.getDetail().getStartDate());
         reservationEntity.setStartDateFormatted(dto.getDetail().getStartDateFormatted());
         reservationEntity.setStartTime(dto.getDetail().getStartTime());
@@ -168,23 +178,23 @@ public class ReservationFacade {
 
             System.out.println(reservationStartDate + ", " + reservationEndDate + ", " + dtoStartDate + ", " + dtoEndDate);
 
-                // Checkt of datum en tijd tussen een reeds geboekte tijd ligt voor een bepaalde locatie
+            // Checkt of datum en tijd tussen een reeds geboekte tijd ligt voor een bepaalde locatie
             // OPGELET! De !=null moet aanwezig zijn want anders wordt een nullpointer gegeven wanneer vergeleken wordt met een lege waarde              
             if (// Nullpointers vermijden
                     reservationStartDate != null
                     && reservationEndDate != null
-                    && res.getBungalowName() != null
+                    && res.getBungalow().getName() != null
                     && // Check of gekozen datum niet dezelfde datum is dan begin of einddatum 
-                    (dtoStartDate.equals(reservationStartDate) && dto.getDetail().getBungalowName().equals(res.getBungalowName()))
-                    || (dtoEndDate.equals(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalowName()))
-                    || (dtoStartDate.equals(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalowName()))
-                    || (dtoEndDate.equals(reservationStartDate) && dto.getDetail().getBungalowName().equals(res.getBungalowName()))
+                    (dtoStartDate.equals(reservationStartDate) && dto.getDetail().getBungalowName().equals(res.getBungalow().getName()))
+                    || (dtoEndDate.equals(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalow().getName()))
+                    || (dtoStartDate.equals(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalow().getName()))
+                    || (dtoEndDate.equals(reservationStartDate) && dto.getDetail().getBungalowName().equals(res.getBungalow().getName()))
                     || // Als reservation tussen begin en einddatum ligt en Zelfde locatie heeft
-                    (dtoStartDate.before(reservationStartDate) && dtoEndDate.after(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalowName()))
+                    (dtoStartDate.before(reservationStartDate) && dtoEndDate.after(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalow().getName()))
                     || // Als begintijd = binnen range of eindtijd is binnen range     
-                    (dtoStartDate.after(reservationStartDate) && dtoStartDate.before(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalowName()))
-                    || (dtoEndDate.after(reservationStartDate) && dtoEndDate.before(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalowName()))) {
-                return "doubleBooking: <p>Locatie " + res.getBungalowName() + " is reeds volboekt van</p><p>" + res.getStartDateFormatted() + " tot " + res.getEndDateFormatted() + ".</p><p>Gelieve andere datum te selecteren.</p>";
+                    (dtoStartDate.after(reservationStartDate) && dtoStartDate.before(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalow().getName()))
+                    || (dtoEndDate.after(reservationStartDate) && dtoEndDate.before(reservationEndDate) && dto.getDetail().getBungalowName().equals(res.getBungalow().getName()))) {
+                return "doubleBooking: <p>Locatie " + res.getBungalow().getName() + " is reeds volboekt van</p><p>" + res.getStartDateFormatted() + " tot " + res.getEndDateFormatted() + ".</p><p>Gelieve andere datum te selecteren.</p>";
             }
         }
 
